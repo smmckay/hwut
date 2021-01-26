@@ -1,0 +1,29 @@
+IfElse.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/IfElse.tlr:1: rule awake. rule 'on'
+# 1 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.000000: Bubble
+0.100000: Crumble
+0.300000: Crumble
+0.500000: Crumble
+0.700000: Crumble
+0.800000: Bubble
+rules/IfElse.tlr:1: rule broken
+0.800000:  by Bubble.
+0.900000:            Crumble
+rules/IfElse.tlr:1: rule broken
+0.900000:  by Crumble.
+1.000000:            Bubble
+rules/IfElse.tlr:1: rule broken
+1.000000:  by Bubble.
+1.100000:            Crumble
+rules/IfElse.tlr:1: rule broken
+1.100000:  by Crumble.
+#            9 statements found. Result = [FAIL]
+_______________________________________________________________________________
+result = FAIL
+

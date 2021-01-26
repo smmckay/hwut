@@ -1,0 +1,14 @@
+Here:                data/directory_tree/1/10/100/1000
+IncludeDirs:         ['../../../..']
+RootDirListIncludes: ['../../../..']
+Verdict:             True
+New IncludeDirs:     ['.', '../../../../2/10/100/1000', '../../../12/100', '../1001']
+Not Compiled:        []
+SourceToObjectDb: {
+        some.c -> ((./tmpNTT7pl.o))
+        ../../../../2/10/100/1000/main.c -> ((./tmpa3Q5vr.o))
+        ../../../../2/10/100/1000/some.c -> ((./tmpDXAhzp.o))
+        ../../../../2/10/100/1000/almost-good.c -> ((./tmpF6iwyT.o))
+}
+Implemented:         anything, good, main, some, 
+Required:            anonymous_integer, nothing, sesome, 

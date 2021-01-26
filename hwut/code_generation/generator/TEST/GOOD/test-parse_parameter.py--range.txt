@@ -1,0 +1,8 @@
+Input: {|5:10|}
+    -> [0] no_name: (INTEGER) |5:10|
+Input: {|5:10| step 5}
+    -> [0] no_name: (INTEGER) |5:10|step 5
+Input: {|5.1 : 10.1| step 0.5}
+    -> [0] no_name: (FLOAT) |5.1:10.1|step 0.5
+Input: {|0x10: 0x7F| step 0x4}
+    -> [0] no_name: (INTEGER) |16:127|step 4

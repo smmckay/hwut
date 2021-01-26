@@ -1,0 +1,10 @@
+Consider only leaf directory: '13/1/1/1/13'
+
+Have dirt files have been created?
+
+./dirt.txt
+
+Have dirt files have been removed (no output is good output)?
+
+
+<Test Done>

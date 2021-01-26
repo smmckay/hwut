@@ -1,0 +1,68 @@
+#if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
+#   include <stdio.h>
+#else
+    typedef int FILE; /* Required to implement the dummy 'print' functions.  */
+#endif
+
+#if ! defined(HWUT_OPTION_ALLOC_FORBIDDEN)
+#   include <malloc.h>
+#endif
+
+#include <hwut_cursor.h>   /* Use: -I<<HWUT_PATH>>/support/c                  */
+
+/* The 'hwut_cursor_t' is a type which is kept inside the generator. It
+ * is pasted along the generated code. To avoid exposing it in detail, 
+ * a forward decleration is used here.                                       */
+struct $$G$$_t_tag;
+
+typedef struct $$G$$_section_t_tag {
+    hwut_cursor_key_t  key_offset;
+
+    void (*init)(struct $$G$$_t_tag* it);
+    int  (*implement)(struct $$G$$_t_tag* it); 
+    int  (*is_admissible)(struct $$G$$_t_tag* it); 
+} $$G$$_section_t;
+
+$$ARRAY_DEF$$
+
+typedef struct $$G$$_t_tag {
+    /* Internal iterator data _______________________________________________*/
+    struct { 
+        /* Cursor and section                                                */
+        hwut_cursor_t          $S$cursor;
+        const $$G$$_section_t* $Z$section;
+
+        void   (*print)(FILE*, struct $$G$$_t_tag*);
+
+        /* Allocate memory for the index array of the cursor directly along  
+         * with the memory of the iterator.                                  */
+        hwut_cursor_index_t    __memory_index_array[$$MAX_INDEX_NUMBER$$];
+        
+    } hwut;
+
+    /* Parameter settings ___________________________________________________*/
+$$MEMBERS$$
+} $$G$$_t;
+
+/* API ______________________________________________________________________*/
+
+extern void              $S$$$G$$_init($$G$$_t* me);
+
+extern int               $S$$$G$$_next($$G$$_t* it);
+
+/* Each setting can be associated with a unique scalar key. The transformation
+ * from key to setting and from setting to key is done with the subsequent 
+ * functions.
+ * 
+ * The total number of iterations is equal to 'max. key + 1'.                */
+extern hwut_cursor_key_t $S$$$G$$_key_max(); 
+extern hwut_cursor_key_t $S$$$G$$_key_get($$G$$_t* it);
+extern int               $S$$$G$$_key_set($$G$$_t* it, hwut_cursor_key_t key);
+extern int               $S$$$G$$_is_admissible($$G$$_t* it);
+
+/* Print functions for convenience                                           */
+/* (No <stdio.h>, then 'FILE*' is 'int*' and functions are dummies.)         */
+extern void $$G$$_print(FILE* fh, $$G$$_t* it);
+extern void $$G$$_print_table_header(FILE* fh, const char* Separator);
+extern void $$G$$_print_table_line(FILE* fh, $$G$$_t* it, const char* Separator);
+extern void $$G$$_print_table(FILE* fh, const char* Separator);

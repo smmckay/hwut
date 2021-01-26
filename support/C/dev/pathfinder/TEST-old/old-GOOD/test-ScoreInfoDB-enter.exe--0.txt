@@ -1,0 +1,18 @@
+
+ _(Node Set)_______________ 
+|_f_score_:_g_score_:_node_|
+'---------^---------^------'
+
+Enter:  FScore = 9;
+ _(Result Node Set)________ 
+|_f_score_:_g_score_:_node_|
+| 9       : 9       : 0    |
+'---------^---------^------'
+
+
+Enter:  FScore = 11;
+ _(Result Node Set)________ 
+|_f_score_:_g_score_:_node_|
+| 11      : 10      : 0    |
+'---------^---------^------'
+

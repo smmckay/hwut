@@ -1,0 +1,4 @@
+Without hwut_info.dat: None
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+With hwut_info.dat:    [Hallo]

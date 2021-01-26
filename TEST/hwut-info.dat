@@ -1,0 +1,32 @@
+Regression Tests on fixed bugs
+-----------
+bash *.sh
+--not hwut_call.sh hwut_greet.sh
+-----------
+BRIEF:
+
+This directory contains regression tests on bugs that were found and fixed.
+A number identifies the bug as it has been logged on HWUT's sourceforge but
+tracker.
+
+EXPLANATION:
+
+The following files help to develop unit tests on HWUT's behavior:
+
+ * hwut_greet.sh 
+
+   Provides a standardized response to '--hwut-info' where submitter, bug
+   identifier, and title have a specific format.
+
+ * hwut_call.sh    
+
+   Calls HWUT in a given sub directory. For this call, the variable 
+   HWUT_TEST_DIR_NAME is defined as the directory where the test shall be 
+   executed. That is, 
+
+              > hwut_call.sh 15
+
+   Sets HWUT_TEST_DIR_NAME=15, and HWUT will run only in the directory 15
+   as the TEST directory.
+-----------
+                

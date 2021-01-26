@@ -1,0 +1,49 @@
+{
+build_time: 0.06200599670410156;
+file_name: BugRaid;
+make_dependent_f: True;
+result_list: [
+  [ ; NO GOOD FILE; 0.023002; 0; ]
+]
+}
+{
+build_time: 0.06300616264343262;
+file_name: DoctorGrade;
+make_dependent_f: True;
+result_list: [
+  [ ; NO GOOD FILE; 0.029003; 0; ]
+]
+}
+{
+build_time: 0.05800604820251465;
+file_name: GoodTrade;
+make_dependent_f: True;
+result_list: [
+  [ ; NO GOOD FILE; 0.035003; 0; ]
+]
+}
+{
+build_time: 0.06200599670410156;
+file_name: MilkMaid;
+make_dependent_f: True;
+result_list: [
+  [ ; NO GOOD FILE; 0.028002; 0; ]
+]
+}
+{
+build_time: 0.060005903244018555;
+file_name: MedicalAid;
+make_dependent_f: True;
+result_list: [
+  [ ; NO GOOD FILE; 0.030003; 0; ]
+]
+}
+{
+title: Also this;
+file_name: also.sh;
+hwut_info_time: 1415353154L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; NO GOOD FILE; 0.003151; 0; ]
+]
+}

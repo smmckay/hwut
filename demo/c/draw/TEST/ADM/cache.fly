@@ -1,0 +1,26 @@
+{
+title: Exceed Borders;
+title_group: Box;
+build_time: 0.4202909469604492;
+file_name: box-2.exe;
+hwut_info_time: 1438256806L;
+make_dependent_f: True;
+result_list: [
+  [ LEFT; OK; 0.007609; 0; ]
+  [ RIGHT; OK; 0.004852; 0; ]
+  [ TOP; OK; 0.009796; 0; ]
+  [ BOTTOM; OK; 0.002552; 0; ]
+  [ OUT; OK; 0.002942; 0; ]
+]
+}
+{
+title: Simple;
+title_group: Box;
+build_time: 0.579352855682373;
+file_name: box.exe;
+hwut_info_time: 1438256805L;
+make_dependent_f: True;
+result_list: [
+  [ ; OK; 0.005905; None; ]
+]
+}

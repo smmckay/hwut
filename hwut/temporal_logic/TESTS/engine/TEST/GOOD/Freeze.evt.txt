@@ -1,0 +1,56 @@
+Freeze.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Freeze.tlr:2: rule awake. rule 'on'
+rules/Freeze.tlr:3: rule awake. rule 'on'
+rules/Freeze.tlr:6: rule awake. rule 'on'
+rules/Freeze.tlr:7: rule awake. rule 'on'
+rules/Freeze.tlr:11: rule awake. rule 'on'
+rules/Freeze.tlr:12: rule awake. rule 'on'
+rules/Freeze.tlr:13: rule awake. rule 'on'
+rules/Freeze.tlr:14: rule awake. rule 'on'
+# 8 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.100000: A
+        : << otto detected A >>
+        : << elfriede detected A >>
+0.200000: B
+        : << otto detected B >>
+        : << elfriede detected B >>
+0.300000: FREEZE_OTTO
+        : << Freezing otto >>
+rules/Freeze.tlr:2: rule frozen. rule 'off'
+rules/Freeze.tlr:3: rule frozen. rule 'off'
+0.400000: A
+        : << elfriede detected A >>
+0.500000: B
+        : << elfriede detected B >>
+0.600000: FREEZE_ELFRIEDE
+        : << Freezing elfriede >>
+rules/Freeze.tlr:6: rule frozen. rule 'off'
+rules/Freeze.tlr:7: rule frozen. rule 'off'
+0.700000: A
+0.800000: B
+0.900000: UNFREEZE_OTTO
+        : << Un-Freezing otto >>
+rules/Freeze.tlr:2: rule alive (unfrozen). rule 'on'
+rules/Freeze.tlr:3: rule alive (unfrozen). rule 'on'
+1.100000: A
+        : << otto detected A >>
+1.200000: B
+        : << otto detected B >>
+1.300000: UNFREEZE_ELFRIEDE
+        : << Un-Freezing elfriede >>
+rules/Freeze.tlr:6: rule alive (unfrozen). rule 'on'
+rules/Freeze.tlr:7: rule alive (unfrozen). rule 'on'
+1.400000: A
+        : << otto detected A >>
+        : << elfriede detected A >>
+1.500000: B
+        : << otto detected B >>
+        : << elfriede detected B >>
+# 14 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

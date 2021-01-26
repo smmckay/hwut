@@ -1,0 +1,5 @@
+Database:
+    nonsense.h <-- set([('nonsense.c', '4711')])
+    nice.h <-- set([('nice.c', '<unknown>')])
+    hwut_unit.h <-- set([('test-hwut_unit.c', '1')])
+<terminated>

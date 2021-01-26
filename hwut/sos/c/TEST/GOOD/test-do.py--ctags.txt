@@ -1,0 +1,31 @@
+To be ignored: {
+   compiled: to_be_ignored.c -> ((./tmpg4T4Cc.o))
+   compiled: 1/12/123/1234/12345/common_file_name.c -> ((1/12/123/1234/12345/tmpCTP4Hu.o))
+   compiled: 1/12/123/1234/12345/number.c -> ((1/12/123/1234/12345/tmp4Iumks.o))
+   compiled: A/AB/ABC/ABCD/common_file_name.c -> ((A/AB/ABC/ABCD/tmpbn6_Jl.o))
+   compiled: A/AB/ABC/ABCD/letter.c -> ((A/AB/ABC/ABCD/tmpMokdmB.o))
+   compiled: main.c -> ((./tmpxiKgAq.o))
+}
+
+Analyse ...
+        ... done.
+Make 'main.exe' ...
+          ... done.
+Make 'main2.exe' ...
+          ... done.
+Have fun!
+Execute 'main.exe' ...
+Have more fun!
+             ... done.
+Execute 'main2.exe' ...
+             ... done.
+<terminated>
+
+
+
+
+
+
+
+
+

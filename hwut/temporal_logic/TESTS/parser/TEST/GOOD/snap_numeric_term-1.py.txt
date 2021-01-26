@@ -1,0 +1,50 @@
+code:   '  $x + 4'
+result: 
+    NumericTerm:
+      NumericExpr:
+        NumericPrimary: variable 'x'
+      Plus
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary: constant number '4.000000'
+
+code:   '  EVENT_X.time '
+result: 
+    NumericTerm:
+      NumericExpr:
+        NumericPrimary:
+          TIME
+          Event: 'EVENT_X' 
+
+code:   '  (1 - 4) * 3'
+result: 
+    NumericTerm:
+      NumericExpr:
+        NumericPrimary:
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary: constant number '1.000000'
+            Minus
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: constant number '4.000000'
+        Multiply
+        NumericExpr:
+          NumericPrimary: constant number '3.000000'
+
+code:   '  3 * (1 - 4)'
+result: 
+    NumericTerm:
+      NumericExpr:
+        NumericPrimary: constant number '3.000000'
+        Multiply
+        NumericExpr:
+          NumericPrimary:
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: constant number '1.000000'
+              Minus
+              NumericTerm:
+                NumericExpr:
+                  NumericPrimary: constant number '4.000000'
+

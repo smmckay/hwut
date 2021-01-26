@@ -1,0 +1,10 @@
+# An implicit statement that is triggered whenever a condition gets true
+once TRUTH.value == 1: {
+      send HELLO_WORLD;
+}
+
+once $time > 10:
+      send TIME_AFTER_10;
+
+on HELLO_WORLD:
+   print "Hello World";

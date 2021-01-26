@@ -1,0 +1,18 @@
+ForIn.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/ForIn.tlr:1: rule awake. rule 'on'
+# 1 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.000000: PRINT
+## Expression in 'for in' construct does not result in collection.
+## Iterations can only happen over collections.
+        :  << Aber >>
+        :          << Otto >>
+        : << 4711.0 >>
+        : << 0.815 >>
+# 1 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

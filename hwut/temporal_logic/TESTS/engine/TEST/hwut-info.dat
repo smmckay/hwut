@@ -1,0 +1,5 @@
+Temporal Logic Engine
+-------------
+python ./interpreter.py *.evt
+--not interpreter.py
+-------------

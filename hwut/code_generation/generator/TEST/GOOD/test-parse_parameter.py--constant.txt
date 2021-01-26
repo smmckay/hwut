@@ -1,0 +1,20 @@
+Input: {5}
+    -> [0] no_name: (INTEGER)5
+Input: {0x47}
+    -> [0] no_name: (INTEGER)71
+Input: {0o777}
+    -> [0] no_name: (INTEGER)511
+Input: {0b01011010}
+    -> [0] no_name: (INTEGER)90
+Input: {0.1}
+    -> [0] no_name: (FLOAT)0.1
+Input: {"Otto"}
+    -> [0] no_name: (STRING)Otto
+Input: {{ 0 }}
+    -> [0] no_name: (IARRAY)[0]
+Input: {{ 0x10, 0x50, 0x42 }}
+    -> [0] no_name: (IARRAY)[16, 80, 66]
+Input: {{ 0.0 }}
+    -> [0] no_name: (FARRAY)[0.0]
+Input: {{ 0.1, 0.2, 0.3 }}
+    -> [0] no_name: (FARRAY)[0.1, 0.2, 0.3]

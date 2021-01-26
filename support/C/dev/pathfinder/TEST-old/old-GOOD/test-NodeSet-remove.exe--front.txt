@@ -1,0 +1,34 @@
+
+ _(Node Set)___________________ 
+|_x__:_y_:_parent___:_info_____|
+| 10 : 0 : FFFFFFFF : FFFFFFFF |
+| 11 : 0 : FFFFFFFF : FFFFFFFF |
+| 12 : 0 : FFFFFFFF : FFFFFFFF |
+| 13 : 0 : FFFFFFFF : FFFFFFFF |
+| 14 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+ _(Result Node Set)____________ 
+|_x__:_y_:_parent___:_info_____|
+| 11 : 0 : FFFFFFFF : FFFFFFFF |
+| 12 : 0 : FFFFFFFF : FFFFFFFF |
+| 13 : 0 : FFFFFFFF : FFFFFFFF |
+| 14 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+ _(Result Node Set)____________ 
+|_x__:_y_:_parent___:_info_____|
+| 12 : 0 : FFFFFFFF : FFFFFFFF |
+| 13 : 0 : FFFFFFFF : FFFFFFFF |
+| 14 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+ _(Result Node Set)____________ 
+|_x__:_y_:_parent___:_info_____|
+| 13 : 0 : FFFFFFFF : FFFFFFFF |
+| 14 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+ _(Result Node Set)____________ 
+|_x__:_y_:_parent___:_info_____|
+| 14 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+ _(Result Node Set)_____ 
+|_x_:_y_:_parent_:_info_|
+'---^---^--------^------'

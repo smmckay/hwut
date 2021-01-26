@@ -1,0 +1,18 @@
+Run choice quicky
+Run choice slow-starter
+Run choice stalker
+Check on generated files sizes. HWUT's default size limit is 1MB.
+
+-- No output shall be bigger than 10MB               --> [good] or [bad ]
+-- No process shall be actively working on the file. --> users: []
+
+[good] ./OUT/oversizer.sh--quicky.txt
+       users: []
+
+[good] ./OUT/oversizer.sh--slow-starter.txt
+       users: []
+
+[good] ./OUT/oversizer.sh--stalker.txt
+       users: []
+
+<Test Done>

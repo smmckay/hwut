@@ -1,0 +1,163 @@
+state_machine.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/state_machine.tlr:3: rule awake. rule 'on'
+rules/state_machine.tlr:4: rule awake. rule 'on'
+rules/state_machine.tlr:5: rule awake. rule 'on'
+rules/state_machine.tlr:7: rule awake. rule 'on'
+rules/state_machine.tlr:8: rule awake. rule 'on'
+rules/state_machine.tlr:9: rule awake. rule 'on'
+rules/state_machine.tlr:11: rule awake. rule 'on'
+rules/state_machine.tlr:12: rule awake. rule 'on'
+rules/state_machine.tlr:13: rule awake. rule 'on'
+rules/state_machine.tlr:15: rule awake. rule 'on'
+rules/state_machine.tlr:16: rule awake. rule 'on'
+rules/state_machine.tlr:17: rule awake. rule 'on'
+rules/state_machine.tlr:19: rule awake. rule 'on'
+rules/state_machine.tlr:20: rule awake. rule 'on'
+rules/state_machine.tlr:21: rule awake. rule 'on'
+rules/state_machine.tlr:23: rule awake. rule 'on'
+rules/state_machine.tlr:24: rule awake. rule 'on'
+rules/state_machine.tlr:25: rule awake. rule 'on'
+rules/state_machine.tlr:27: rule awake. rule 'on'
+rules/state_machine.tlr:28: rule awake. rule 'on'
+rules/state_machine.tlr:29: rule awake. rule 'on'
+rules/state_machine.tlr:31: rule awake. rule 'on'
+rules/state_machine.tlr:32: rule awake. rule 'on'
+rules/state_machine.tlr:33: rule awake. rule 'on'
+rules/state_machine.tlr:35: rule awake. rule 'on'
+rules/state_machine.tlr:36: rule awake. rule 'on'
+rules/state_machine.tlr:37: rule awake. rule 'on'
+rules/state_machine.tlr:39: rule awake. rule 'on'
+rules/state_machine.tlr:40: rule awake. rule 'on'
+rules/state_machine.tlr:41: rule awake. rule 'on'
+rules/state_machine.tlr:43: rule awake. rule 'on'
+rules/state_machine.tlr:44: rule awake. rule 'on'
+rules/state_machine.tlr:45: rule awake. rule 'on'
+rules/state_machine.tlr:47: rule awake. rule 'on'
+rules/state_machine.tlr:48: rule awake. rule 'on'
+rules/state_machine.tlr:49: rule awake. rule 'on'
+# 37 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.000000: WORK
+        : << WORK(on) >>
+        : << WORK(once) >>
+        : << WORK(if) >>
+0.000001: WORK
+        : << WORK->WORK(on) >>
+        : << WORK(on) >>
+        : << WORK->WORK(once) >>
+        : << WORK(if) >>
+        : << WORK->WORK(if) >>
+0.000002: WORK
+        : << WORK->WORK(on) >>
+        : << WORK(on) >>
+        : << WORK(if) >>
+        : << WORK->WORK(if) >>
+0.000003: BED
+        : << WORK->BED(on) >>
+        : << BED(on) >>
+        : << WORK->BED(once) >>
+        : << BED(once) >>
+        : << WORK->BED(if) >>
+        : << BED(if) >>
+0.000004: BED
+        : << BED->BED(on) >>
+        : << BED(on) >>
+        : << BED->BED(once) >>
+        : << BED(if) >>
+        : << BED->BED(if) >>
+0.000005: BED
+        : << BED->BED(on) >>
+        : << BED(on) >>
+        : << BED(if) >>
+        : << BED->BED(if) >>
+0.000006: HOME
+        : << BED->HOME(on) >>
+        : << HOME(on) >>
+        : << HOME(once) >>
+        : << BED->HOME(once) >>
+        : << HOME(if) >>
+        : << BED->HOME(if) >>
+0.000007: HOME
+        : << HOME->HOME(on) >>
+        : << HOME(on) >>
+        : << HOME->HOME(once) >>
+        : << HOME(if) >>
+        : << HOME->HOME(if) >>
+0.000008: HOME
+        : << HOME->HOME(on) >>
+        : << HOME(on) >>
+        : << HOME(if) >>
+        : << HOME->HOME(if) >>
+0.000009: BED
+        : << HOME->BED(on) >>
+        : << BED(on) >>
+        : << HOME->BED(once) >>
+        : << BED(once) >>
+        : << HOME->BED(if) >>
+        : << BED(if) >>
+0.000010: BED
+        : << BED->BED(on) >>
+        : << BED(on) >>
+        : << BED->BED(once) >>
+        : << BED(if) >>
+        : << BED->BED(if) >>
+0.000011: BED
+        : << BED->BED(on) >>
+        : << BED(on) >>
+        : << BED(if) >>
+        : << BED->BED(if) >>
+0.000012: WORK
+        : << BED->WORK(on) >>
+        : << WORK(on) >>
+        : << WORK(once) >>
+        : << BED->WORK(once) >>
+        : << WORK(if) >>
+        : << BED->WORK(if) >>
+0.000013: WORK
+        : << WORK->WORK(on) >>
+        : << WORK(on) >>
+        : << WORK->WORK(once) >>
+        : << WORK(if) >>
+        : << WORK->WORK(if) >>
+0.000014: WORK
+        : << WORK->WORK(on) >>
+        : << WORK(on) >>
+        : << WORK(if) >>
+        : << WORK->WORK(if) >>
+0.000015: HOME
+        : << WORK->HOME(on) >>
+        : << HOME(on) >>
+        : << HOME(once) >>
+        : << WORK->HOME(once) >>
+        : << HOME(if) >>
+        : << WORK->HOME(if) >>
+0.000016: HOME
+        : << HOME->HOME(on) >>
+        : << HOME(on) >>
+        : << HOME->HOME(once) >>
+        : << HOME(if) >>
+        : << HOME->HOME(if) >>
+0.000017: HOME
+        : << HOME->HOME(on) >>
+        : << HOME(on) >>
+        : << HOME(if) >>
+        : << HOME->HOME(if) >>
+# 18 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK
+
+
+
+
+
+
+
+
+
+
+
+

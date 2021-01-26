@@ -1,0 +1,21 @@
+Import.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Import.tlr:1: rule awake. rule 'on'
+rules/Import.tlr:3: rule awake. rule 'on'
+rules/Imported.tlr:2: rule awake. rule 'on'
+rules/ImportedImported.tlr:2: rule awake. rule 'on'
+# 4 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : a = (MAP: {})
+0.000000: X
+        : << X detected >>
+0.000001: Y
+        : << Y detected >>
+0.000002: Z
+        : << Z detected >>
+# 3 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

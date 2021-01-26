@@ -1,0 +1,7 @@
+
+Make sure that modules do not use 'os.path.relpath'.
+This causes trouble under Windows with driver letters.
+They shall use 'hwut.auxiliary.path.relative(...)' instead.
+
+./hwut/auxiliary/path.py:272:    """The 'relpath' may fail on operating systems, that have 'drive letters'.
+./hwut/auxiliary/path.py:276:        result = os.path.relpath(Path, RDir)

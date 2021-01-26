@@ -1,0 +1,72 @@
+_______________________________________________________
+0.000000:     $d = 0.815
+              attributes:
+                  d: 0.81499999999999995
+              events:
+              time: 0.0, file=, line-n=0
+_______________________________________________________
+1.000000:     RESET
+              attributes:
+                  d: 0.81499999999999995
+              events:
+                  RESET: (time = 1.000000, count = 1)
+              time: 1.0, file=, line-n=0
+_______________________________________________________
+2.000000:     SHUTDOWN
+              attributes:
+                  d: 0.81499999999999995
+              events:
+                  RESET: (time = 1.000000, count = 1)
+                  SHUTDOWN: (time = 2.000000, count = 1)
+              time: 2.0, file=, line-n=0
+_______________________________________________________
+3.000000:     $a = SHUTDOWN.time
+              attributes:
+                  a: 2.0
+                  d: 0.81499999999999995
+              events:
+                  RESET: (time = 1.000000, count = 1)
+                  SHUTDOWN: (time = 2.000000, count = 1)
+              time: 3.0, file=, line-n=0
+_______________________________________________________
+4.000000:     $c = (($a + 4) - ($a * $a ))
+              attributes:
+                  a: 2.0
+                  c: 2.0
+                  d: 0.81499999999999995
+              events:
+                  RESET: (time = 1.000000, count = 1)
+                  SHUTDOWN: (time = 2.000000, count = 1)
+              time: 4.0, file=, line-n=0
+_______________________________________________________
+5.000000:     SHUTDOWN
+              attributes:
+                  a: 2.0
+                  c: 2.0
+                  d: 0.81499999999999995
+              events:
+                  RESET: (time = 1.000000, count = 1)
+                  SHUTDOWN: (time = 5.000000, count = 2)
+              time: 5.0, file=, line-n=0
+_______________________________________________________
+6.000000:     $b = SHUTDOWN.time - $a
+              attributes:
+                  a: 2.0
+                  b: 3.0
+                  c: 2.0
+                  d: 0.81499999999999995
+              events:
+                  RESET: (time = 1.000000, count = 1)
+                  SHUTDOWN: (time = 5.000000, count = 2)
+              time: 6.0, file=, line-n=0
+_______________________________________________________
+7.000000:     $d = SHUTDOWN.count / (RESET.time - SHUTDOWN.time)
+              attributes:
+                  a: 2.0
+                  b: 3.0
+                  c: 2.0
+                  d: -0.5
+              events:
+                  RESET: (time = 1.000000, count = 1)
+                  SHUTDOWN: (time = 5.000000, count = 2)
+              time: 7.0, file=, line-n=0

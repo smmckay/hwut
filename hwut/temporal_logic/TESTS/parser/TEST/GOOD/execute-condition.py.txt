@@ -1,0 +1,35 @@
+0.000000:   $d = 0.815
+1.000000:   RESET
+2.000000:   SHUTDOWN
+3.000000:   $a = SHUTDOWN.time
+4.000000:   $c = (($a + 4) - ($a * $a ))
+5.000000:   SHUTDOWN
+6.000000:   $b = SHUTDOWN.time - $a
+7.000000:   $e = SHUTDOWN.count / (RESET.time - SHUTDOWN.time)
+________________________________________________________________________
+              attributes:
+                  a: 2.0
+                  b: 3.0
+                  c: 2.0
+                  d: 0.81499999999999995
+                  e: -0.5
+              events:
+                  RESET: (time = 1.000000, count = 1)
+                  SHUTDOWN: (time = 5.000000, count = 2)
+              time: 7.0, file=, line-n=0
+________________________________________________________________________
+
+-- SHUTDOWN.time > 1
+   result: True
+-- SHUTDOWN.time < 1
+   result: False
+-- $d == 0.815
+   result: True
+-- ($a + $c) * $b == 36 / $b
+   result: True
+-- ($a + $c) * $b == 36 / $b and $d > 1.0
+   result: False
+-- ($a + $c) * $b == 36 / $b and $d < 1.0
+   result: True
+-- ($a + $c) * $b == 36 / $b and $d > 1.0 or SHUTDOWN.time - RESET.time == 4
+   result: True

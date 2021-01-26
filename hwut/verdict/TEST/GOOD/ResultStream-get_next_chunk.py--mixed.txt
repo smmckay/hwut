@@ -1,0 +1,47 @@
+Test: 0
+  [Bonjour]
+  {
+    [||||]
+    [Hallo]
+    [||||]
+  }
+<end>
+Test: 1
+  [Bonjour]
+  {
+    [||||]
+    [Hallo]
+    [||||]
+  }
+  [Good Morning]
+<end>
+Test: 2
+  {
+    [||||]
+    [Hallo]
+    [||||]
+  }
+  [Good Morning]
+<end>
+Test: 3
+  [Bonjour]
+  {
+    [||||]
+    [||||]
+  }
+<end>
+Test: 4
+  [Bonjour]
+  {
+    [||||]
+    [||||]
+  }
+  [Good Morning]
+<end>
+Test: 5
+  {
+    [||||]
+    [||||]
+  }
+  [Good Morning]
+<end>

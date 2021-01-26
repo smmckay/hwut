@@ -1,0 +1,6 @@
+do_init:    { user_data: ((0xbf84eadc)); }
+do_event:    { user_data: ((0xbf84eadc)); name: 1st; event_id: 88; }
+do_event:    { user_data: ((0xbf84eadc)); name: 1st; event_id: 88; }
+do_event:    { user_data: ((0xbf84eadc)); name: 1st; event_id: 88; }
+do_terminal: { user_data: ((0xbf84eadc)); name: 1st; }
+

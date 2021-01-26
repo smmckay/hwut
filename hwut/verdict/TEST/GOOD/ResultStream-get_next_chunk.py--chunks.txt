@@ -1,0 +1,63 @@
+Test: 0
+  {
+    [||||]
+    [<<Error: potpourri line block not closed.>>]
+  }
+<end>
+Test: 1
+  {
+    [||||]
+    [<<Error: potpourri line block not closed.>>]
+  }
+<end>
+Test: 2
+  {
+    [||||]
+    [||||]
+  }
+<end>
+Test: 3
+  {
+    [||||]
+    [Hallo]
+    [||||]
+  }
+<end>
+Test: 4
+  {
+    [||||]
+    [||||]
+  }
+<end>
+Test: 5
+  {
+    [||||]
+    [||||]
+  }
+<end>
+Test: 6
+  {
+    [||||]
+    [||||]
+  }
+<end>
+Test: 7
+  {
+    [||||]
+    [Bonjour]
+    [||||]
+  }
+<end>
+Test: 8
+  {
+    [||||]
+    [Bonjour]
+    [||||]
+  }
+<end>
+
+
+
+
+
+

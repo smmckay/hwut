@@ -1,3 +1,0 @@
-(C) 2007 Frank-Rene Schaefer
-ABSOLUTELY NO WARRANTY
-Distributed under LPGL.

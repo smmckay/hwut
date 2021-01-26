@@ -1,0 +1,47 @@
+OnTrigger-2.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/OnTrigger-2.tlr:2: rule awake. rule 'on'
+rules/OnTrigger-2.tlr:10: rule awake. rule 'on'
+rules/OnTrigger-2.tlr:16: rule awake. rule 'on'
+# 3 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.100000: NOTHING_SPECIAL
+0.200000: MYFUNC
+0.300000: BUTTON
+0.400000: MYFUNC
+0.500000: MYFUNC
+1.000000: BUTTON
+1.000000: HELLO_WORLD
+        : << Hello World >>
+        : << 1 + 1 != 1 >>
+rules/OnTrigger-2.tlr:2: rule broken
+1.000000: by BUTTON.
+1.000000: BUTTON
+1.100000: MYFUNC
+1.200000: MYFUNC
+1.200000: HELLO_WORLD
+        : << Hello World >>
+        : << 1 + 1 != 1 >>
+rules/OnTrigger-2.tlr:2: rule broken
+1.200000: by MYFUNC.
+1.300000: MYFUNC
+1.400000: MYFUNC
+1.700000: BYE
+        : << Hm! >>
+        : << 1 + 1 != 1 >>
+rules/OnTrigger-2.tlr:10: rule broken
+1.700000: by BYE.
+2.000000: BUTTON
+3.000000: END
+3.800000: BYE
+        : << Bye >>
+        : << 1 + 1 != 1 >>
+rules/OnTrigger-2.tlr:10:  rule broken
+3.800000:                  by BYE.
+4.000000: THE_END
+# 16 statements found. Result = [FAIL]
+_______________________________________________________________________________
+result = FAIL

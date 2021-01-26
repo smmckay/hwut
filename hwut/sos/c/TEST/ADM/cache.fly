@@ -1,0 +1,106 @@
+{
+title: Collect files in hint directories;
+title_group: C;
+file_name: test-find_directory.py;
+hwut_info_time: 1438000342L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.182090; 0; ]
+]
+}
+{
+title: Compile User Sources;
+title_group: C;
+file_name: test-compile_user_sources.py;
+hwut_info_time: 1438176488L;
+interpreter_list: [ python; ]
+time_out_detection_f: False;
+happy_pattern_list: [ ^Error:\[' a-zA-Z/\\\\]+; ]
+result_list: [
+  [ good; OK; 0.670966; 0; ]
+  [ fail; OK; 0.581508; 0; ]
+]
+}
+{
+title: ImplementationDb;
+title_group: C;
+file_name: test-ImplementationDb.py;
+hwut_info_time: 1438000342L;
+interpreter_list: [ python; ]
+result_list: [
+  [ Sources; OK; 0.739720; 0; ]
+  [ NoSources; OK; 0.770177; 0; ]
+]
+}
+{
+title: Try compiling, linking, nm;
+title_group: C;
+file_name: test-try_command_line.py;
+hwut_info_time: 1438000342L;
+interpreter_list: [ python; ]
+result_list: [
+  [ compile; OK; 0.633835; 0; ]
+  [ link; OK; 0.740461; 0; ]
+  [ nm; OK; 0.333258; 0; ]
+  [ preprocess; OK; 0.176366; 0; ]
+]
+}
+{
+title: compile_source_list;
+title_group: C;
+file_name: test-compile_sources.py;
+hwut_info_time: 1438000341L;
+interpreter_list: [ python; ]
+result_list: [
+  [ good; OK; 0.482021; 0; ]
+  [ fail; OK; 0.339108; 0; ]
+]
+}
+{
+title: detect_implemented_references;
+title_group: C;
+file_name: test-detect_implemented_references.py;
+hwut_info_time: 1438000341L;
+interpreter_list: [ python; ]
+result_list: [
+  [ Empty; OK; 0.162432; 0; ]
+  [ NoInfo; OK; 0.178024; 0; ]
+  [ SomeInfo; OK; 0.130516; 0; ]
+]
+}
+{
+title: detect_missing_include_headers;
+title_group: C;
+file_name: test-detect_missing_include_headers.py;
+hwut_info_time: 1438000342L;
+interpreter_list: [ python; ]
+result_list: [
+  [ Empty; OK; 0.106471; 0; ]
+  [ NoInfo; OK; 0.118389; 0; ]
+  [ SomeInfo; OK; 0.106021; 0; ]
+]
+}
+{
+title: detect_missing_references;
+title_group: C;
+file_name: test-detect_missing_references.py;
+hwut_info_time: 1438000342L;
+interpreter_list: [ python; ]
+result_list: [
+  [ Empty; OK; 0.114118; 0; ]
+  [ NoInfo; OK; 0.101363; 0; ]
+  [ SomeInfo; OK; 0.116619; 0; ]
+]
+}
+{
+title: do;
+title_group: C;
+file_name: test-do.py;
+hwut_info_time: 1438000342L;
+interpreter_list: [ python; ]
+time_out_detection_f: False;
+result_list: [
+  [ without-ctags; OK; 5.331914; 0; ]
+  [ ctags; OK; 3.391356; 0; ]
+]
+}

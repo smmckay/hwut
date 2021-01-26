@@ -1,0 +1,48 @@
+RE: ['file.c:[0-9]+:']
+Test: 0
+    A:       [file.c:12:]
+    B:       [file.c:43:]
+    verdict: True
+<end>
+Test: 1
+    A:       [The file.c:12:]
+    B:       [The file.c:43:]
+    verdict: True
+<end>
+Test: 2
+    A:       [The file.c:12: is nice]
+    B:       [The file.c:43: is nice]
+    verdict: True
+<end>
+RE: ['^file.c:[0-9]+:'] (Begin of Line)
+Test: 3
+    A:       [file.c:12:]
+    B:       [file.c:43:]
+    verdict: True
+<end>
+Test: 4
+    A:       [The file.c:12:]
+    B:       [The file.c:43:]
+    verdict: False
+<end>
+Test: 5
+    A:       [The file.c:12: is nice]
+    B:       [The file.c:43: is nice]
+    verdict: False
+<end>
+RE: ['file.c:[0-9]+:$'] (End of Line)
+Test: 6
+    A:       [file.c:12:]
+    B:       [file.c:43:]
+    verdict: True
+<end>
+Test: 7
+    A:       [The file.c:12:]
+    B:       [The file.c:43:]
+    verdict: True
+<end>
+Test: 8
+    A:       [The file.c:12: is nice]
+    B:       [The file.c:43: is nice]
+    verdict: False
+<end>

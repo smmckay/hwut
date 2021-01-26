@@ -1,0 +1,14 @@
+Warning: Using sos/sols while 'ctags' has not been installed or not
+Warning: specified in environment variable HWUT_CTAGS_APP.
+Here:                data/directory_tree/1/10/100/1000
+IncludeDirs:         ['../../../..']
+RootDirListIncludes: ['../../../..']
+Verdict:             True
+New IncludeDirs:     ['.', '../../../../2/10/100/1000', '../../../12/100', '../1001']
+Not Compiled:        []
+SourceToObjectDb: {
+        main.c -> ((./tmpuUdzcb.o))
+        some.c -> ((./tmpwDnG53.o))
+}
+
+

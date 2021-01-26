@@ -1,0 +1,36 @@
+code:   '  SHUTDOWN;'
+result: 
+    Event: SHUTDOWN
+
+code:   '  RESET( error_n = 12, retry_n = 1023, segmentation_fault_n = 1);'
+result: 
+    Event: RESET
+          [0] error_n =
+           Access Primary: constant number '12.000000'
+          [1] retry_n =
+           Access Primary: constant number '1023.000000'
+          [2] segmentation_fault_n =
+           Access Primary: constant number '1.000000'
+
+code:   '  TUNE_STATION( 1);'
+result: 
+    Event: TUNE_STATION
+          [0] =
+           Access Primary: constant number '1.000000'
+
+code:   '  PHONEBOOK_QUERY("Alfons Haeberle");'
+result: 
+    Event: PHONEBOOK_QUERY
+          [0] =
+           Access Primary: constant string 'Alfons Haeberle'
+
+code:   '  TUNE_STATION( 1, SID="01.E0.4711", PTY=0);'
+result: 
+    Event: TUNE_STATION
+          [0] =
+           Access Primary: constant number '1.000000'
+          [1] SID =
+           Access Primary: constant string '01.E0.4711'
+          [2] PTY =
+           Access Primary: constant number '0.000000'
+

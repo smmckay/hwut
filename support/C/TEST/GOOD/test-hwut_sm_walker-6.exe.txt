@@ -1,0 +1,38 @@
+Without 'do_init'
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 2; result: FAIL; }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 2; result: FAIL; }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbf810b1c)); name: X; event_id: 3; }
+do_event:    { user_data: ((0xbf810b1c)); name: Y; event_id: 1; }
+do_terminal: { user_data: ((0xbf810b1c)); name: Z; }
+
+Without 'do_event'
+do_init:    { user_data: ((0xbf810b1c)); }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 2; result: FAIL; }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 2; result: FAIL; }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 1; result: OK; }
+do_terminal: { user_data: ((0xbf810b1c)); name: Z; }
+
+Without 'do_condition'
+do_init:    { user_data: ((0xbf810b1c)); }
+do_event:    { user_data: ((0xbf810b1c)); name: X; event_id: 1; }
+do_event:    { user_data: ((0xbf810b1c)); name: Y; event_id: 1; }
+do_terminal: { user_data: ((0xbf810b1c)); name: Z; }
+
+do_init:    { user_data: ((0xbf810b1c)); }
+do_event:    { user_data: ((0xbf810b1c)); name: X; event_id: 2; }
+do_event:    { user_data: ((0xbf810b1c)); name: Y; event_id: 1; }
+do_terminal: { user_data: ((0xbf810b1c)); name: Z; }
+
+do_init:    { user_data: ((0xbf810b1c)); }
+do_event:    { user_data: ((0xbf810b1c)); name: X; event_id: 3; }
+do_event:    { user_data: ((0xbf810b1c)); name: Y; event_id: 1; }
+do_terminal: { user_data: ((0xbf810b1c)); name: Z; }
+
+Without 'do_terminal'
+do_init:    { user_data: ((0xbf810b1c)); }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 2; result: FAIL; }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 2; result: FAIL; }
+condition:   { user_data: ((0xbf810b1c)); name: X; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbf810b1c)); name: X; event_id: 3; }
+do_event:    { user_data: ((0xbf810b1c)); name: Y; event_id: 1; }

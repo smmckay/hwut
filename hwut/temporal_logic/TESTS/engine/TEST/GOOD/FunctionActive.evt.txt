@@ -1,0 +1,48 @@
+FunctionActive.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/FunctionActive.tlr:1: rule awake. rule 'on'
+rules/FunctionActive.tlr:13: rule awake. rule 'on'
+rules/FunctionActive.tlr:17: rule awake. rule 'on'
+rules/FunctionActive.tlr:21: rule awake. rule 'on'
+# 4 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : printix = (FUNCTION: )
+         : regulix = (FUNCTION: )
+         : three = (FUNCTION: )
+0.000000: A
+0.100000: X
+        : << X detected we call printix() >>
+        : << printix: 'I am called' >>
+0.200000: Y
+        : << Y detected, we call regulix() >>
+0.300000: A
+0.500000: A
+0.700000: A
+0.800000: X
+        : << X detected we call printix() >>
+        : << printix: 'I am called' >>
+0.900000: X
+        : << X detected we call printix() >>
+        : << printix: 'I am called' >>
+1.300000: A
+1.600000: A
+1.700000: X
+        : << X detected we call printix() >>
+        : << printix: 'I am called' >>
+2.200000: Y
+        : << Y detected, we call regulix() >>
+        : << A appeared more than four times. >>
+3.900000: A
+4.300000: A
+4.600000: X
+        : << X detected we call printix() >>
+        : << printix: 'I am called' >>
+4.700000: Z
+        : << Z detected, we call three() >>
+        : << 10 : 4711.0 : 3.7 >>
+# 16 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

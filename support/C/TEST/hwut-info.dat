@@ -1,0 +1,5 @@
+HWUT Support Modules for C
+--------------------------
+*.exe
+--coverage-not ./*
+--------------------------

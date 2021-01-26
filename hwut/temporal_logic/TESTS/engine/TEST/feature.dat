@@ -1,0 +1,32 @@
+
+engine: {
+  condition: [  # Condition evaluation
+      if; 
+      on; 
+      once; 
+      from;
+      to;
+      from_to;
+  ]
+  operators: [
+     plus_asgn; minus_asgn; mult_asgn; div_asgn;  # +=, -=, *=, /=
+     plus;      minus;      mult;      div;       # +,  -,  *,  /
+  ]
+  data: {
+      list:          [ setup; item_et; item_set; clear; string; ]
+      map:           [ setup; item_et; item_set; clear; string; ]
+      variable:      [ read; write; ]
+      events:        [ member_read; member_write; instant; ]
+      state_entries: [ member_read; member_write; instant; ]
+  }
+  namespace: [
+      access;
+      freeze_unfreeze;
+  ]
+}
+  
+===============================================================================
+
+engine.condition: {^
+   Conditions of the engine. 
+^}

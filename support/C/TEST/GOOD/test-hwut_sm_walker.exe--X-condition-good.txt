@@ -1,0 +1,18 @@
+do_init:    { user_data: ((0xbfef9548)); }
+do_event:    { user_data: ((0xbfef9548)); name: Prehistoric; event_id: 1; }
+condition:   { user_data: ((0xbfef9548)); name: Init; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfef9548)); name: Init; event_id: 1; }
+do_terminal: { user_data: ((0xbfef9548)); name: Terminal; }
+
+do_init:    { user_data: ((0xbfef9548)); }
+do_event:    { user_data: ((0xbfef9548)); name: Prehistoric; event_id: 1; }
+condition:   { user_data: ((0xbfef9548)); name: Init; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfef9548)); name: Init; event_id: 2; }
+do_terminal: { user_data: ((0xbfef9548)); name: Terminal; }
+
+do_init:    { user_data: ((0xbfef9548)); }
+do_event:    { user_data: ((0xbfef9548)); name: Prehistoric; event_id: 1; }
+condition:   { user_data: ((0xbfef9548)); name: Init; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfef9548)); name: Init; event_id: 3; }
+do_terminal: { user_data: ((0xbfef9548)); name: Terminal; }
+

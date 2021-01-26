@@ -1,0 +1,19 @@
+code:   '  
+"hello-world.c":23:21.001:  ++$x;
+21.002:                     ++$x;
+$x = "string";
+'
+result: 
+    AnnouncementList:
+      (1)
+      Announcement:
+        Origin: hello-world.c:23: time = 23.000000
+        Expression: increment 'x'
+      (2)
+      Announcement:
+        Origin: time = 21.002000
+        Expression: increment 'x'
+      (3)
+      Announcement:
+        Expression: assign 'x' = "string"
+

@@ -1,0 +1,10 @@
+do_init:    { user_data: ((0xbfd2bc78)); }
+I walk!
+do_event:    { user_data: ((0xbfd2bc78)); name: BEGIN1; event: walkes; }
+do_terminal: { user_data: ((0xbfd2bc78)); name: Frieda; }
+
+do_init:    { user_data: ((0xbfd2bc78)); }
+I go!
+do_event:    { user_data: ((0xbfd2bc78)); name: BEGIN1; event: goes; }
+do_terminal: { user_data: ((0xbfd2bc78)); name: Frieda; }
+

@@ -1,0 +1,44 @@
+Test: 0
+    A:       [||||]
+             [Walter von der Vogelweide.]
+             [----\nSamson von der Sesamstrasse.\nOscar aus der Muelltonne.\n----]
+             [||||]
+    B:       [||||]
+             [----\nSamson von der Sesamstrasse.\nOscar aus der Muelltonne.\n----]
+             [Walter von der Vogelweide.]
+             [||||]
+    verdict: True
+<end>
+Test: 1
+    A:       [||||]
+             [Walter von der Vogelweide.]
+             [----\nOscar aus der Muelltonne.\nSamson von der Sesamstrasse.\n----]
+             [||||]
+    B:       [||||]
+             [----\nSamson von der Sesamstrasse.\nOscar aus der Muelltonne.\n----]
+             [Walter von der Vogelweide.]
+             [||||]
+    verdict: False
+<end>
+Test: 2
+    A:       [||||]
+             [----\nOscar\nSamson\n----]
+             [----\nOscar\nSamson\n----]
+             [||||]
+    B:       [||||]
+             [----\nSamson\nOscar\n----]
+             [----\nSamson\nOscar\n----]
+             [||||]
+    verdict: False
+<end>
+Test: 3
+    A:       [||||]
+             [----\nOscar\nSamson\n----]
+             [----\nOscar\nSamson\n----]
+             [||||]
+    B:       [||||]
+             [----\nOscar\nSamson\n----]
+             [----\nOscar\nSamson\n----]
+             [||||]
+    verdict: True
+<end>

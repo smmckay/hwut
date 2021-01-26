@@ -1,0 +1,10 @@
+Ctags is used as an external application. At the time of this writing
+it is available freely under GPL 3.0.
+
+Website: http://ctags.sourceforge.net/
+
+(C) 1998-2002, Darren Hiebert
+
+AUTHOR: Darren Hiebert
+
+ABSOLUTELY NO WARRANTY

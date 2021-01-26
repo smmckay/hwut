@@ -1,0 +1,28 @@
+state_machine HOME, WORK, BED;
+
+once true: print "INIT";
+
+once $time % 24 >= 7: {       
+    print "7'oclock: slept_hour_n = ", slept_hour_n, ";"; # Comment 
+    slept_hour_n >= 6;
+    slept_hour_n  = 0;        
+}
+
+once $time % 6 == 0:
+    print "Day time = ", $time % 24, "; slept_hour_n = ", slept_hour_n, ";";
+
+on BED: {
+   if ($time % 24 > 20) or ($time % 24 < 7): {
+      slept_hour_n += 1;
+   }
+   print "slept:", slept_hour_n;
+}
+
+on WORK:
+    WORK.nfs < 20;
+
+on WORK->HOME: {
+    print "I am home!";
+}
+
+

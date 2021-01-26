@@ -1,0 +1,13 @@
+ _(Node Set)_______________ 
+|_f_score_:_g_score_:_node_|
+| 35      : 220     : 0    |
+'---------^---------^------'
+Search: FScore = 34;
+Found:  END
+
+Search: FScore = 35;
+Found:  END
+
+Search: FScore = 36;
+Found:  FScore = 35;
+

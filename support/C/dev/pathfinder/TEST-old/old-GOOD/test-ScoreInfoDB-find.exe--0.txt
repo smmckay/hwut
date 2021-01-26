@@ -1,0 +1,9 @@
+ _(Node Set)_______________ 
+|_f_score_:_g_score_:_node_|
+'---------^---------^------'
+Search: FScore = 0;
+Found:  END
+
+Search: FScore = 33;
+Found:  END
+

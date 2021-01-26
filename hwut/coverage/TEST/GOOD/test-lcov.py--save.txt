@@ -1,0 +1,56 @@
+file name: data/lcov/1/T1-0.info
+    BRDA:15,9999,0,-
+    BRDA:15,9999,1,-
+    BRDA:5,0,0,0
+    BRDA:5,0,1,1
+    BRF:4
+    BRH:1
+    DA:12,0
+    DA:14,0
+    DA:15,0
+    DA:16,0
+    DA:18,0
+    DA:3,1
+    DA:5,1
+    DA:6,0
+    DA:8,1
+    DA:9,1
+    FN:12,never
+    FN:3,nonsense
+    FNDA:0,never
+    FNDA:1,nonsense
+    FNF:2
+    FNH:1
+    LF:10
+    LH:4
+    TN:T1
+    end_of_record
+
+file name: data/lcov/2/T2-0.info
+    BRDA:15,9999,0,-
+    BRDA:15,9999,1,-
+    BRDA:5,0,0,1
+    BRDA:5,0,1,0
+    BRF:4
+    BRH:1
+    DA:12,0
+    DA:14,0
+    DA:15,0
+    DA:16,0
+    DA:18,0
+    DA:3,1
+    DA:5,1
+    DA:6,1
+    DA:8,1
+    DA:9,1
+    FN:12,never
+    FN:3,nonsense
+    FNDA:0,never
+    FNDA:1,nonsense
+    FNF:2
+    FNH:1
+    LF:10
+    LH:5
+    TN:T2
+    end_of_record
+

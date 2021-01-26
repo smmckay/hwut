@@ -1,0 +1,4 @@
+on PRINT: 
+    for x in ["Aber", "Otto", 4711, 0.815]: {
+         print x;
+    }

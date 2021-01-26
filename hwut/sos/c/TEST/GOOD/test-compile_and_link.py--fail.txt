@@ -1,0 +1,35 @@
+Source File: ['some.c', 'main.c']
+Verdict:     False
+MissingRefs: {
+    'anonymous_integer' <- "main.c";
+    'nothing'           <- "main.c"; "some.c";
+    'sesome'            <- "main.c";
+}
+
+
+
+Source File: ['main.c']
+Verdict:     False
+MissingRefs: {
+    'anonymous_integer' <- "main.c";
+    'nothing'           <- "main.c";
+    'sesome'            <- "main.c";
+}
+
+
+
+Source File: ['almost-good.c']
+Verdict:     False
+MissingRefs: {
+    Function 'main' is missing--application cannot be built!
+}
+
+
+
+Source File: some.c
+Verdict:     True
+MissingRefs: {
+}
+
+Let the application greet:
+<no application has been buildt>

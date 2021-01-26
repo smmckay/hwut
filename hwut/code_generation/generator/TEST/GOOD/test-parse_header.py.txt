@@ -1,0 +1,7 @@
+Input: {int x;}
+    -> (int)x; 
+Input: {int x; const char const* name;}
+    -> (int)x; (const char const*)name; 
+Input: {int x; \
+        const char const* name;}
+    -> (int)x; (const char const*)name; 

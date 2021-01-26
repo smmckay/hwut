@@ -1,0 +1,19 @@
+ _(Node Set)____________________ 
+|_x__:_y__:_parent___:_info_____|
+| 34 : 47 : FFFFFFFF : FFFFFFFF |
+'----^----^----------^----------'
+Search: X = 33; Y = 99;
+Found:  X = 34; Y = 47;
+
+Search: X = 34; Y = 46;
+Found:  X = 34; Y = 47;
+
+Search: X = 34; Y = 47;
+Found:  X = 34; Y = 47;
+
+Search: X = 34; Y = 48;
+Found:  END
+
+Search: X = 35; Y = 0;
+Found:  END
+

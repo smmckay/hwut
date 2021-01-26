@@ -1,0 +1,37 @@
+code:   '  SHUTDOWN;'
+result:
+    Event: SHUTDOWN
+
+pruned =
+    Event: SHUTDOWN
+
+code:   '  START(0, 10);'
+result:
+    Event: START
+          [0] =
+           Access Primary: constant number '0.000000'
+          [1] =
+           Access Primary: constant number '10.000000'
+
+pruned =
+    Event: START
+          [0] =
+           Access Primary: constant number '0.000000'
+          [1] =
+           Access Primary: constant number '10.000000'
+
+code:   '  RESET(time = "tomorrow", error_n = 10);'
+result:
+    Event: RESET
+          [0] time =
+           Access Primary: constant string 'tomorrow'
+          [1] error_n =
+           Access Primary: constant number '10.000000'
+
+pruned =
+    Event: RESET
+          [0] time =
+           Access Primary: constant string 'tomorrow'
+          [1] error_n =
+           Access Primary: constant number '10.000000'
+

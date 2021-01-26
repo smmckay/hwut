@@ -1,0 +1,33 @@
+(1a) Impossible: len(GeneratorName) == 0
+     source_do() --> None
+
+(1b) Impossible: len(ParameterList) == 0
+     source_do() --> None
+
+(2)  Normal Case 1: (no constraints)
+
+    Lines:    273
+    Open $-s: 0 (must be ZERO!)
+    Generator references at line begin:
+        hwut_generator-ZZZ.c:020: ZZZ_init(ZZZ_t* it)
+        hwut_generator-ZZZ.c:029: ZZZ_intern_next(ZZZ_t* it)
+        hwut_generator-ZZZ.c:053: ZZZ_next(ZZZ_t* it)
+        hwut_generator-ZZZ.c:076: ZZZ_implement(ZZZ_t* it)
+        hwut_generator-ZZZ.c:092: ZZZ_key_max()
+        hwut_generator-ZZZ.c:099: ZZZ_key_get(ZZZ_t* it)
+        hwut_generator-ZZZ.c:109: ZZZ_key_set(ZZZ_t* it, hwut_cursor_key_t key)
+        hwut_generator-ZZZ.c:146: ZZZ_print(FILE* fh, ZZZ_t* it)
+        hwut_generator-ZZZ.c:159: ZZZ_print_table_header(FILE* fh, const char* Separator)
+        hwut_generator-ZZZ.c:165: ZZZ_print_table_line(FILE* fh, ZZZ_t* it, const char* Separator)
+        hwut_generator-ZZZ.c:179: ZZZ_print_table(FILE* fh, const char* Separator)
+        hwut_generator-ZZZ.c:181: ZZZ_t   it;
+        hwut_generator-ZZZ.c:183: ZZZ_init(&it);
+        hwut_generator-ZZZ.c:185: ZZZ_print_table_header(fh, Separator);
+        hwut_generator-ZZZ.c:188: ZZZ_print_table_line(fh, &it, Separator);
+        hwut_generator-ZZZ.c:193: ZZZ_print(FILE* fh, ZZZ_t* it)
+        hwut_generator-ZZZ.c:197: ZZZ_print_table_header(FILE* fh, const char* Separator)
+        hwut_generator-ZZZ.c:201: ZZZ_print_table_line(FILE* fh, ZZZ_t* it, const char* Separator)
+        hwut_generator-ZZZ.c:205: ZZZ_print_table(FILE* fh, const char* Separator)
+        hwut_generator-ZZZ.c:211: ZZZ_0_init(ZZZ_t* it)
+        hwut_generator-ZZZ.c:221: ZZZ_0_implement(ZZZ_t* it)
+        hwut_generator-ZZZ.c:258: ZZZ_0_is_admissible(ZZZ_t* it)

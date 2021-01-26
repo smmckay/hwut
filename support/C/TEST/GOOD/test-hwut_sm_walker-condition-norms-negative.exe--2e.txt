@@ -1,0 +1,11 @@
+state[0].my_do_condition 1: 0
+state[1].my_do_condition 2: 0
+state[2].my_do_condition 3: 0
+[[BEGIN]]--.
+ .---------'
+ 0 -->--| not Cond1 |-- 1 -->--| not Cond2 |--( Event1 )--.
+ .--------------------------------------------------------'
+ 2
+
+Forbidden value 'false' for condition 'Cond3'.
+Comment: "must be true"

@@ -1,0 +1,24 @@
+on $INIT: {
+    printix = function() : { 
+        print "printix: 'I am called'";
+    };
+    regulix = function(): {
+        if A.count() > 4: print "A appeared more than four times.";
+    };
+    three = function(a, b, c): {
+        print a, " : ", b, " : ", c;
+    };
+}
+
+on X: { 
+   print "X detected we call printix()"; 
+   printix();
+}
+on Y: {
+   print "Y detected, we call regulix()";
+   regulix();
+}
+on Z: {
+   print "Z detected, we call three()";
+   three(X.count() * Y.count(), 4711, $time-1);
+}

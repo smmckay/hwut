@@ -1,0 +1,30 @@
+List.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/List.tlr:1: rule awake. rule 'on'
+rules/List.tlr:3: rule awake. rule 'on'
+rules/List.tlr:4: rule awake. rule 'on'
+rules/List.tlr:5: rule awake. rule 'on'
+rules/List.tlr:7: rule awake. rule 'on'
+# 5 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : a = (LIST: [])
+0.000000: X
+        : << X detected >>
+        : <constant> = (STRING: Spagethi)
+0.000001: Y
+        : << Y detected >>
+        : <constant> = (STRING: Pommes Frites)
+0.000002: Z
+        : << Z detected >>
+        : <constant> = (STRING: Spaetzle)
+0.000003: PRINT
+        : << [None, Spagethi, Pommes Frites, None, Spaetzle] >>
+        : << Spagethi >>
+        : << Pommes Frites >>
+        : << Spaetzle >>
+# 4 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

@@ -1,0 +1,10 @@
+gcc -Wall -Werror -I -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_unit.c -o test-hwut_unit.o -I -DHWUT_OPTION_CONTINUE_ON_FAIL
+test-hwut_unit.c:1:23: fatal error: hwut_unit.h: No such file or directory
+ #include <hwut_unit.h>
+nonsense.c:4711:23: fatal error: nonsense.h: No such file or directory
+ #include <nonsense.h>
+nice.c:fatal error: nice.h: No such file or directory
+ #include <nice.h>
+                       ^
+compilation terminated.
+make: *** [test-hwut_unit.o] Error 1

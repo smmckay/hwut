@@ -1,0 +1,11 @@
+0.1:  A(nationality="german", name="Otto", family="Walkes");
+0.2:  NAME_CHECK;
+0.3:  A(nationality="german", name="Otto", family="Bismarck");
+0.4:  A(nationality="german", name="Franz", family="Beckenbauer");
+0.5:  A(nationality="german", name="Franz", family="Strauss");
+0.6:  A(nationality="german", name="Elfriede", family="Strauss");
+0.7:  A(nationality="german", name="Heino", family="Mueller");
+1.4:  A(nationality="french", name="Jaque", family="Brelle");
+1.5:  A(nationality="french", name="Jaque", family="Chiraque");
+1.6:  A(nationality="french", name="",      family="Berlusconi");
+1.7:  A(nationality="french", name="Heino", family="Mueller");

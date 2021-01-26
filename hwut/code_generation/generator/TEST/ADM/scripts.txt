@@ -1,0 +1,3 @@
+*.py
+--not *.orig
+--not *.bak

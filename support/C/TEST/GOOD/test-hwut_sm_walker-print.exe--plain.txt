@@ -1,0 +1,5 @@
+do_terminal:
+S:A_STATE_A;S:B_STATE_B;C:not MARVELOUS;S:C_STATE_C;C:EXCELLENT;E:THE_GREAT_EVENT;S:D_STATE_D;C:FORMIDABLE;E:THE_GREAT_EVENT;S:E_STATE_E;
+
+
+____________________________________________________________

@@ -1,0 +1,20 @@
+{
+title: Generate Test Suite;
+file_name: all.py;
+hwut_info_time: 1438000340L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 1.477145; 1965409919; ]
+]
+}
+{
+title: Write Tests;
+file_name: write_test.py;
+hwut_info_time: 1438000341L;
+interpreter_list: [ python; ]
+happy_pattern_list: [ \[0-9]+ +\[0-9]+ +\[0-9]+; ]
+result_list: [
+  [ Empty; OK; 0.122688; 0; ]
+  [ Non-Empty; OK; 0.124834; 0; ]
+]
+}

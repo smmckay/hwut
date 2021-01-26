@@ -1,0 +1,18 @@
+do_init:    { user_data: ((0xbfd04658)); }
+condition:   { user_data: ((0xbfd04658)); name: Init; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfd04658)); name: Init; event_id: 1; }
+do_event:    { user_data: ((0xbfd04658)); name: Terminal; event_id: 1; }
+do_terminal: { user_data: ((0xbfd04658)); name: Posthistoric; }
+
+do_init:    { user_data: ((0xbfd04658)); }
+condition:   { user_data: ((0xbfd04658)); name: Init; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfd04658)); name: Init; event_id: 2; }
+do_event:    { user_data: ((0xbfd04658)); name: Terminal; event_id: 1; }
+do_terminal: { user_data: ((0xbfd04658)); name: Posthistoric; }
+
+do_init:    { user_data: ((0xbfd04658)); }
+condition:   { user_data: ((0xbfd04658)); name: Init; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfd04658)); name: Init; event_id: 3; }
+do_event:    { user_data: ((0xbfd04658)); name: Terminal; event_id: 1; }
+do_terminal: { user_data: ((0xbfd04658)); name: Posthistoric; }
+

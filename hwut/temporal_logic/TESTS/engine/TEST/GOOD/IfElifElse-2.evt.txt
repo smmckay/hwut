@@ -1,0 +1,29 @@
+IfElifElse-2.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/IfElifElse-2.tlr:1: rule awake. rule 'on'
+rules/IfElifElse-2.tlr:3: rule awake. rule 'on'
+# 2 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.000000: Start
+        : old_count = (NUMBER: 0.0)
+0.100000: Murks
+        : << 1 >>
+        : << One >>
+0.200000: Murks
+        : << 2 >>
+        : << Two >>
+0.300000: Murks
+        : << 3 >>
+        : << Three >>
+0.400000: Murks
+        : << 4 >>
+        : << Greater then three >>
+0.500000: Murks
+        : << 5 >>
+        : << Greater then three >>
+# 6 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

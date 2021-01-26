@@ -1,0 +1,34 @@
+code:   '  ( SHUTDOWN.time > 1000 )'
+result: 
+    Operation >(
+      Access Primary: event 'SHUTDOWN'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+      Access Primary: constant number '1000.000000'
+    )
+
+code:   '  not x < 1'
+result: 
+    Operation $verdict-inversion(
+      Operation <(
+        Access Primary: variable 'x'
+        Access Primary: constant number '1.000000'
+      )
+    )
+
+code:   '  ( not x < 4 * (1 + x) )'
+result: 
+    Operation $verdict-inversion(
+      Operation <(
+        Access Primary: variable 'x'
+        Operation *(
+          Access Primary: constant number '4.000000'
+          Access Operation +(
+  Access Primary: constant number '1.000000'
+  Access Primary: variable 'x'
+)
+        )
+      )
+    )
+

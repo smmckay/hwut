@@ -1,0 +1,15 @@
+space otto : {
+    on A: print "otto detected A";
+    on B: print "otto detected B";
+}
+space elfriede : { 
+    on A: print "elfriede detected A";
+    on B: print "elfriede detected B";
+}
+
+
+on FREEZE_OTTO:       { print "Freezing otto";     freeze otto;     } 
+on FREEZE_ELFRIEDE:   { print "Freezing elfriede"; freeze elfriede; }
+on UNFREEZE_OTTO:     { print "Un-Freezing otto";     unfreeze otto;     }
+on UNFREEZE_ELFRIEDE: { print "Un-Freezing elfriede"; unfreeze elfriede; }
+

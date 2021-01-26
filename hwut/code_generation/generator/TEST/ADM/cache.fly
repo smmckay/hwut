@@ -1,0 +1,89 @@
+{
+title: DependencyDb;
+file_name: test-dependency_db.py;
+hwut_info_time: 1438000334L;
+interpreter_list: [ python; ]
+result_list: [
+  [ init; OK; 0.139867; 0; ]
+  [ circularity; OK; 0.151900; 0; ]
+  [ sequence; OK; 0.144360; 0; ]
+]
+}
+{
+title: The whole chain;
+build_time: 0.811547040939331;
+file_name: total.exe;
+hwut_info_time: 1438256808L;
+make_dependent_f: True;
+result_list: [
+  [ constant; OK; 0.002270; 0; ]
+  [ selection; OK; 0.005493; 0; ]
+  [ range; OK; 0.002635; 0; ]
+  [ focus; OK; 0.002938; 0; ]
+]
+}
+{
+title: C source code basic tests;
+title_group: Generator;
+file_name: basic-c.py;
+hwut_info_time: 1438000334L;
+interpreter_list: [ python; ]
+happy_pattern_list: [ Lines: +\[0-9]+; \[0-9]+; ]
+result_list: [
+  [ header; OK; 0.152850; 0; ]
+  [ source; OK; 0.130585; 0; ]
+]
+}
+{
+title: Extract constant settings;
+title_group: Generator;
+file_name: extract-constant-settings.py;
+hwut_info_time: 1438000334L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.140558; None; ]
+]
+}
+{
+title: Parameter* classes;
+title_group: Parser;
+file_name: test-parse_parameter.py;
+hwut_info_time: 1438000334L;
+interpreter_list: [ python; ]
+result_list: [
+  [ constant; OK; 0.154555; 0; ]
+  [ selection; OK; 0.146153; 0; ]
+  [ range; OK; 0.140475; 0; ]
+  [ focus; OK; 0.141104; 0; ]
+]
+}
+{
+title: Parse Generator Header;
+title_group: Parser;
+file_name: test-parse_header.py;
+hwut_info_time: 1438000334L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.143712; None; ]
+]
+}
+{
+title: Parse Generator Line;
+title_group: Parser;
+file_name: test-parse_line.py;
+hwut_info_time: 1438000334L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.131027; None; ]
+]
+}
+{
+title: The parser function.;
+title_group: Parser;
+file_name: total-parser.py;
+hwut_info_time: 1438000334L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.165436; -357583577; ]
+]
+}

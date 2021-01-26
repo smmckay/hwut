@@ -1,0 +1,70 @@
+
+---// empty //-------------------------------
+
+
+true_db:   []
+false_set: []
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+result:
+
+true_db:   []
+false_set: []
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FILES:
+    a:             True
+    b:             True
+    hwut-info.dat: True
+result:
+
+---// one //---------------------------------
+
+
+true_db:   ['*.a']
+false_set: ['b*']
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+result:
+
+true_db:   ['*.a']
+false_set: ['b*']
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FILES:
+    b.a:           True
+    hwut-info.dat: True
+    x.a:           True
+    x.b:           True
+result:
+   [x.a] --> []
+
+---// two //---------------------------------
+
+
+true_db:   ['*.a', 'b*']
+false_set: ['a*.b', 'b*.a']
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+result:
+
+true_db:   ['*.a', 'b*']
+false_set: ['a*.b', 'b*.a']
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FILES:
+    a00.a:         True
+    a00.b:         True
+    b00.a:         True
+    b00.b:         True
+    b00.b:         True
+    hwut-info.dat: True
+result:
+   [a00.a] --> []
+   [b00.b] --> []

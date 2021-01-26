@@ -1,0 +1,197 @@
+code:   '  a == SHUTDOWN.time'
+result:
+    Operation ==(
+      Access Primary: variable 'a'
+      Access Primary: event 'SHUTDOWN'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+    )
+
+pruned =
+    Operation ==(
+      Access Primary: variable 'a'
+      Access Primary: event 'SHUTDOWN'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+    )
+
+code:   '  b < (x * 1) and 4 + RESET.count + (x / 2)'
+result:
+    Operation and(
+      Operation <(
+        Access Primary: variable 'b'
+        Access Operation *(
+  Access Primary: variable 'x'
+  Access Primary: constant number '1.000000'
+)
+      )
+      Operation $verdict-conversion(
+        Operation +(
+          Operation +(
+            Access Primary: constant number '4.000000'
+            Access Primary: event 'RESET'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+          )
+          Access Operation /(
+  Access Primary: variable 'x'
+  Access Primary: constant number '2.000000'
+)
+        )
+      )
+    )
+
+pruned =
+    Operation and(
+      Operation <(
+        Access Primary: variable 'b'
+        Access Operation *(
+  Access Primary: variable 'x'
+  Access Primary: constant number '1.000000'
+)
+      )
+      Operation $verdict-conversion(
+        Operation +(
+          Operation +(
+            Access Primary: constant number '4.000000'
+            Access Primary: event 'RESET'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+          )
+          Access Operation /(
+  Access Primary: variable 'x'
+  Access Primary: constant number '2.000000'
+)
+        )
+      )
+    )
+
+code:   '  ((c >= ((x * 1))) or not (x * (2)))'
+result:
+    Operation or(
+      Operation >=(
+        Access Primary: variable 'c'
+        Access Access Operation *(
+  Access Primary: variable 'x'
+  Access Primary: constant number '1.000000'
+)
+      )
+      Operation $verdict-inversion(
+        Operation $verdict-conversion(
+          Access Operation *(
+  Access Primary: variable 'x'
+  Access Access Primary: constant number '2.000000'
+)
+        )
+      )
+    )
+
+pruned =
+    Operation or(
+      Operation >=(
+        Access Primary: variable 'c'
+        Access Access Operation *(
+  Access Primary: variable 'x'
+  Access Primary: constant number '1.000000'
+)
+      )
+      Operation $verdict-inversion(
+        Operation $verdict-conversion(
+          Access Operation *(
+  Access Primary: variable 'x'
+  Access Access Primary: constant number '2.000000'
+)
+        )
+      )
+    )
+
+code:   '  d == X.count and ((Y.time) + Z.count) > 0'
+result:
+    Operation and(
+      Operation ==(
+        Access Primary: variable 'd'
+        Access Primary: event 'X'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+      )
+      Operation >(
+        Access Operation +(
+  Access Access Primary: event 'Y'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+  Access Primary: event 'Z'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+)
+        Access Primary: constant number '0.000000'
+      )
+    )
+
+pruned =
+    Operation and(
+      Operation ==(
+        Access Primary: variable 'd'
+        Access Primary: event 'X'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+      )
+      Operation >(
+        Access Operation +(
+  Access Access Primary: event 'Y'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+  Access Primary: event 'Z'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+)
+        Access Primary: constant number '0.000000'
+      )
+    )
+
+code:   '  e == (x - 1) or ((((y)) + x) < 1)'
+result:
+    Operation or(
+      Operation ==(
+        Access Primary: variable 'e'
+        Access Operation -(
+  Access Primary: variable 'x'
+  Access Primary: constant number '1.000000'
+)
+      )
+      Operation <(
+        Access Operation +(
+  Access Access Access Primary: variable 'y'
+  Access Primary: variable 'x'
+)
+        Access Primary: constant number '1.000000'
+      )
+    )
+
+pruned =
+    Operation or(
+      Operation ==(
+        Access Primary: variable 'e'
+        Access Operation -(
+  Access Primary: variable 'x'
+  Access Primary: constant number '1.000000'
+)
+      )
+      Operation <(
+        Access Operation +(
+  Access Access Access Primary: variable 'y'
+  Access Primary: variable 'x'
+)
+        Access Primary: constant number '1.000000'
+      )
+    )
+

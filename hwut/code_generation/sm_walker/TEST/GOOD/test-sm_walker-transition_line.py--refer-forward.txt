@@ -1,0 +1,18 @@
+Input: {  .---| always |---( happyness )---. }
+-> { .from: .; .to: .; .condition: always; .event: happyness; }
+__________________________________________________________________
+Input: { .---|always|---(happyness)---.}
+-> { .from: .; .to: .; .condition: always; .event: happyness; }
+__________________________________________________________________
+Input: {.--|always|--(happyness)--.}
+-> { .from: .; .to: .; .condition: always; .event: happyness; }
+__________________________________________________________________
+Input: {  .---( happyness )---. }
+-> { .from: .; .to: .; .condition: None; .event: happyness; }
+__________________________________________________________________
+Input: { .---(happyness)---.}
+-> { .from: .; .to: .; .condition: None; .event: happyness; }
+__________________________________________________________________
+Input: {.--(happyness)--.}
+-> { .from: .; .to: .; .condition: None; .event: happyness; }
+__________________________________________________________________

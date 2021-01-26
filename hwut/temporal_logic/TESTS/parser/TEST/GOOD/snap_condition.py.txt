@@ -1,0 +1,62 @@
+code:   '  SHUTDOWN'
+result: 
+    Operation $verdict-conversion(
+      Operation $verdict-event-occured(
+        Primary: event 'SHUTDOWN'
+      )
+    )
+
+code:   '  x < 1 and x == 2'
+result: 
+    Operation and(
+      Operation <(
+        Access Primary: variable 'x'
+        Access Primary: constant number '1.000000'
+      )
+      Operation ==(
+        Access Primary: variable 'x'
+        Access Primary: constant number '2.000000'
+      )
+    )
+
+code:   '  X or Y and Z'
+result: 
+    Operation or(
+      Operation $verdict-conversion(
+        Operation $verdict-event-occured(
+          Primary: event 'X'
+        )
+      )
+      Operation and(
+        Operation $verdict-conversion(
+          Operation $verdict-event-occured(
+            Primary: event 'Y'
+          )
+        )
+        Operation $verdict-conversion(
+          Operation $verdict-event-occured(
+            Primary: event 'Z'
+          )
+        )
+      )
+    )
+
+code:   '  x < 1 or x == 2 and x == 1'
+result: 
+    Operation or(
+      Operation <(
+        Access Primary: variable 'x'
+        Access Primary: constant number '1.000000'
+      )
+      Operation and(
+        Operation ==(
+          Access Primary: variable 'x'
+          Access Primary: constant number '2.000000'
+        )
+        Operation ==(
+          Access Primary: variable 'x'
+          Access Primary: constant number '1.000000'
+        )
+      )
+    )
+

@@ -1,0 +1,57 @@
+
+ _(Node Set)___________________ 
+|_x__:_y_:_parent___:_info_____|
+| 10 : 0 : FFFFFFFF : FFFFFFFF |
+| 11 : 0 : FFFFFFFF : FFFFFFFF |
+| 12 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+
+Enter:  X = 9; Y = 1;
+ _(Result Node Set)____________ 
+|_x__:_y_:_parent___:_info_____|
+| 9  : 1 : 0        : 0        |
+| 10 : 0 : FFFFFFFF : FFFFFFFF |
+| 11 : 0 : FFFFFFFF : FFFFFFFF |
+| 12 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+
+
+Enter:  X = 10; Y = 1;
+ _(Result Node Set)____________ 
+|_x__:_y_:_parent___:_info_____|
+| 10 : 0 : 0        : 0        |
+| 10 : 1 : 0        : 0        |
+| 11 : 0 : FFFFFFFF : FFFFFFFF |
+| 12 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+
+
+Enter:  X = 11; Y = 1;
+ _(Result Node Set)____________ 
+|_x__:_y_:_parent___:_info_____|
+| 10 : 0 : 0        : 0        |
+| 11 : 0 : 0        : 0        |
+| 11 : 1 : 0        : 0        |
+| 12 : 0 : FFFFFFFF : FFFFFFFF |
+'----^---^----------^----------'
+
+
+Enter:  X = 12; Y = 1;
+ _(Result Node Set)______ 
+|_x__:_y_:_parent_:_info_|
+| 10 : 0 : 0      : 0    |
+| 11 : 0 : 0      : 0    |
+| 12 : 0 : 0      : 0    |
+| 12 : 1 : 0      : 0    |
+'----^---^--------^------'
+
+
+Enter:  X = 13; Y = 1;
+ _(Result Node Set)______ 
+|_x__:_y_:_parent_:_info_|
+| 10 : 0 : 0      : 0    |
+| 11 : 0 : 0      : 0    |
+| 12 : 0 : 0      : 0    |
+| 13 : 1 : 0      : 0    |
+'----^---^--------^------'
+

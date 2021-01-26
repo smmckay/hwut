@@ -1,0 +1,44 @@
+code:   '  x + 1'
+result: 
+    Operation +(
+      Access Primary: variable 'x'
+      Access Primary: constant number '1.000000'
+    )
+
+code:   '  x * 1'
+result: 
+    Operation *(
+      Access Primary: variable 'x'
+      Access Primary: constant number '1.000000'
+    )
+
+code:   '  "hello world"'
+result: 
+    Access Primary: constant string 'hello world'
+
+code:   '  ($time_alert - SHUTDOWN.time )'
+result: 
+    Access Operation -(
+  Access Primary: variable '$time_alert'
+  Access Primary: event 'SHUTDOWN'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+)
+
+code:   '  X'
+result: 
+    Operation $verdict-event-occured(
+      Primary: event 'X'
+    )
+
+code:   '  a - b + c'
+result: 
+    Operation +(
+      Operation -(
+        Access Primary: variable 'a'
+        Access Primary: variable 'b'
+      )
+      Access Primary: variable 'c'
+    )
+

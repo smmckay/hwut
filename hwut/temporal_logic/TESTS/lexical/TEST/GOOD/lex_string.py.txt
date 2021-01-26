@@ -1,0 +1,8 @@
+code:   | "hello world"|
+result: |hello world|
+code:   |"_aber\" hallo"|
+result: |_aber" hallo|
+code:   |  "_aber" hallo|
+result: |_aber|
+code:   |  "aber\"\\" hallo|
+result: |aber"\\|

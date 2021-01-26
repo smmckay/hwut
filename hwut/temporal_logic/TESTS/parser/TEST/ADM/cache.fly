@@ -1,0 +1,186 @@
+{
+title: Snap Expression;
+file_name: snap_expression.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.165282; -32567754; ]
+]
+}
+{
+title: Snap Identifier;
+file_name: snap_identifier.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.049485; None; ]
+]
+}
+{
+title: Snap Number;
+file_name: snap_number.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.063100; None; ]
+]
+}
+{
+title: Snap Term;
+file_name: snap_numeric_term.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.204868; 928350362; ]
+]
+}
+{
+title: Rules and Events;
+title_group: Execution;
+file_name: execute.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.242331; 664454873; ]
+]
+}
+{
+title: Snap Assignment;
+title_group: Syntax;
+file_name: snap_assignment.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.167791; 1707279116; ]
+]
+}
+{
+title: Snap Condition;
+title_group: Syntax;
+file_name: snap_condition.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.174692; 39738467; ]
+]
+}
+{
+title: Snap Condition Expression;
+title_group: Syntax;
+file_name: snap_condition_expr.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.155288; 982956484; ]
+]
+}
+{
+title: Snap Condition Primary: Avoiding Recursion;
+title_group: Syntax;
+file_name: snap_condition_primary-1.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.150746; -141019624; ]
+]
+}
+{
+title: Snap Condition Primary: Recursion;
+title_group: Syntax;
+file_name: snap_condition_primary-2.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.166754; -548688301; ]
+]
+}
+{
+title: Snap Event;
+title_group: Syntax;
+file_name: snap_event.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.146077; 890718012; ]
+]
+}
+{
+title: Snap Function Definition;
+title_group: Syntax;
+file_name: snap_function_def.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.296185; 965107558; ]
+]
+}
+{
+title: Snap Rule;
+title_group: Syntax;
+file_name: snap_rule.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.262786; -1044537160; ]
+]
+}
+{
+title: Snap Rule II;
+title_group: Syntax;
+file_name: snap_rule-2.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.154620; 398866730; ]
+]
+}
+{
+title: Snap RuleList;
+title_group: Syntax;
+file_name: snap_rule_list.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.189210; 1072348231; ]
+]
+}
+{
+title: Snap StatementList;
+title_group: Syntax;
+file_name: snap_statement_list.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.141519; 1149917916; ]
+]
+}
+{
+title: Snap TimeSpan;
+title_group: Syntax;
+file_name: snap_time_span.py;
+hwut_info_time: 1438000348L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.167511; 640511592; ]
+]
+}
+{
+title: Conditions;
+title_group: Syntax Pruning;
+file_name: prune-condition.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.221469; -1385156204; ]
+]
+}
+{
+title: Numeric Expressions;
+title_group: Syntax Pruning;
+file_name: prune-event.py;
+hwut_info_time: 1438000347L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.147609; 2068271483; ]
+]
+}

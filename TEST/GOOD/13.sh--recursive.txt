@@ -1,0 +1,17 @@
+Walk recursively from directory: 13
+Have dirt files have been created?
+
+./0/0/0/13/dirt.txt
+./0/0/1/13/dirt.txt
+./0/1/0/13/dirt.txt
+./0/1/1/13/dirt.txt
+./1/0/0/13/dirt.txt
+./1/0/1/13/dirt.txt
+./1/1/0/13/dirt.txt
+./1/1/1/13/dirt.txt
+./dirt.txt
+
+Have dirt files have been removed (no output is good output)?
+
+
+<Test Done>

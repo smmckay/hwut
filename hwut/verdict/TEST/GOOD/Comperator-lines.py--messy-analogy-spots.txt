@@ -1,0 +1,110 @@
+Test: 0
+    A:       [((]
+    B:       []
+    verdict: False
+<end>
+Test: 1
+    A:       [((]
+    B:       [((]
+    verdict: True
+<end>
+Test: 2
+    A:       [((]
+    B:       [))]
+    verdict: False
+<end>
+Test: 3
+    A:       [((]
+    B:       [(())]
+    verdict: False
+<end>
+Test: 4
+    A:       [((]
+    B:       [((a))]
+    verdict: False
+<end>
+Test: 5
+    A:       [))]
+    B:       []
+    verdict: False
+<end>
+Test: 6
+    A:       [))]
+    B:       [((]
+    verdict: False
+<end>
+Test: 7
+    A:       [))]
+    B:       [))]
+    verdict: True
+<end>
+Test: 8
+    A:       [))]
+    B:       [(())]
+    verdict: False
+<end>
+Test: 9
+    A:       [))]
+    B:       [((a))]
+    verdict: False
+<end>
+Test: 10
+    A:       [(())]
+    B:       []
+    verdict: False
+<end>
+Test: 11
+    A:       [(())]
+    B:       [((]
+    verdict: False
+<end>
+Test: 12
+    A:       [(())]
+    B:       [))]
+    verdict: False
+<end>
+Test: 13
+    A:       [(())]
+    B:       [(())]
+    verdict: True
+<end>
+Test: 14
+    A:       [(())]
+    B:       [((a))]
+    verdict: True
+<end>
+Test: 15
+    A:       [((a))]
+    B:       []
+    verdict: False
+<end>
+Test: 16
+    A:       [((a))]
+    B:       [((]
+    verdict: False
+<end>
+Test: 17
+    A:       [((a))]
+    B:       [))]
+    verdict: False
+<end>
+Test: 18
+    A:       [((a))]
+    B:       [(())]
+    verdict: True
+<end>
+Test: 19
+    A:       [1((a))]
+    B:       [11((a))]
+    verdict: False
+<end>
+Test: 20
+    A:       [))((]
+    B:       [))((]
+    verdict: True
+<end>
+Test: 21
+    A:       [))((1]
+    B:       [))((2]
+    verdict: False
+<end>

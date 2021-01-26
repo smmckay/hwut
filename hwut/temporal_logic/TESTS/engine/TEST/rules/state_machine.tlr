@@ -1,0 +1,50 @@
+state_machine BED, HOME, WORK;
+
+if   HOME:       print "HOME(if)";
+on   HOME:       print "HOME(on)";
+once HOME:       print "HOME(once)";
+
+if   HOME->HOME: print "HOME->HOME(if)";
+on   HOME->HOME: print "HOME->HOME(on)";
+once HOME->HOME: print "HOME->HOME(once)";
+
+if   HOME->BED: print "HOME->BED(if)";
+on   HOME->BED: print "HOME->BED(on)";
+once HOME->BED: print "HOME->BED(once)";
+
+if   HOME->WORK: print "HOME->WORK(if)";
+on   HOME->WORK: print "HOME->WORK(on)";
+once HOME->WORK: print "HOME->WORK(once)";
+
+if   WORK:       print "WORK(if)";
+on   WORK:       print "WORK(on)";
+once WORK:       print "WORK(once)";
+
+if   WORK->WORK: print "WORK->WORK(if)";
+on   WORK->WORK: print "WORK->WORK(on)";
+once WORK->WORK: print "WORK->WORK(once)";
+
+if   WORK->HOME: print "WORK->HOME(if)";
+on   WORK->HOME: print "WORK->HOME(on)";
+once WORK->HOME: print "WORK->HOME(once)";
+
+if   WORK->BED: print "WORK->BED(if)";
+on   WORK->BED: print "WORK->BED(on)";
+once WORK->BED: print "WORK->BED(once)";
+
+if   BED:       print "BED(if)";
+on   BED:       print "BED(on)";
+once BED:       print "BED(once)";
+
+if   BED->BED:  print "BED->BED(if)";
+on   BED->BED:  print "BED->BED(on)";
+once BED->BED:  print "BED->BED(once)";
+
+if   BED->HOME: print "BED->HOME(if)";
+on   BED->HOME: print "BED->HOME(on)";
+once BED->HOME: print "BED->HOME(once)";
+
+if   BED->WORK: print "BED->WORK(if)";
+on   BED->WORK: print "BED->WORK(on)";
+once BED->WORK: print "BED->WORK(once)";
+

@@ -1,0 +1,14 @@
+0.1: A;
+0.2: B;
+0.3: FREEZE_OTTO;
+0.4: A;
+0.5: B;
+0.6: FREEZE_ELFRIEDE;
+0.7: A;
+0.8: B;
+0.9: UNFREEZE_OTTO;
+1.1: A;
+1.2: B;
+1.3: UNFREEZE_ELFRIEDE;
+1.4: A;
+1.5: B;

@@ -1,0 +1,20 @@
+Test Name:   Non-Existing Object File
+'T' content: {
+}
+Test Name:   0
+'T' content: {
+    T: main
+}
+Test Name:   1
+'T' content: {
+    T: mini0
+}
+Test Name:   2
+'T' content: {
+    T: mini1
+}
+Test Name:   3
+'T' content: {
+    T: mini2
+}
+<terminated>

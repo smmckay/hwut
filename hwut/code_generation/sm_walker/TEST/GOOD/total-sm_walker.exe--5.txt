@@ -1,0 +1,47 @@
+do_init:    { user_data: ((0xbfe4f8c8)); }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+state: A_post0; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post0(1); condition_id: C0; result: FAIL; }
+state: A_post0; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post0(1); condition_id: C0; result: FAIL; }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+do_terminal: { user_data: ((0xbfe4f8c8)); name: A_post0; }
+
+do_init:    { user_data: ((0xbfe4f8c8)); }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+state: A_post0; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post0(1); condition_id: C0; result: FAIL; }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+state: A_post1; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post1(1); condition_id: C1; result: OK; }
+do_terminal: { user_data: ((0xbfe4f8c8)); name: C; }
+
+do_init:    { user_data: ((0xbfe4f8c8)); }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+state: A_post0; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post0(1); condition_id: C0; result: FAIL; }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+state: A_post1; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post1(1); condition_id: C1; result: OK; }
+do_terminal: { user_data: ((0xbfe4f8c8)); name: A_post1; }
+
+do_init:    { user_data: ((0xbfe4f8c8)); }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+state: A_post1; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post1(1); condition_id: C1; result: OK; }
+do_terminal: { user_data: ((0xbfe4f8c8)); name: C; }
+
+do_init:    { user_data: ((0xbfe4f8c8)); }
+state: A; real: true;
+event:       { user_data: ((0xbfe4f8c8)); name: A; event_id: X; }
+state: A_post1; real: false;
+condition:   { user_data: ((0xbfe4f8c8)); name: A_post1(1); condition_id: C1; result: OK; }
+do_terminal: { user_data: ((0xbfe4f8c8)); name: A_post1; }
+

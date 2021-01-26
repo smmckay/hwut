@@ -1,0 +1,78 @@
+code:   '  from SHUTDOWN to RESET'
+result: 
+    TimeSpan:
+      FROM
+      Operation $verdict-conversion(
+        Operation $verdict-event-occured(
+          Primary: event 'SHUTDOWN'
+        )
+      )
+      TO
+      Operation $verdict-conversion(
+        Operation $verdict-event-occured(
+          Primary: event 'RESET'
+        )
+      )
+
+code:   '  from x < 1 and x == 2 to SHUTDOWN.time >= 2.0'
+result: 
+    TimeSpan:
+      FROM
+      Operation and(
+        Operation <(
+          Access Primary: variable 'x'
+          Access Primary: constant number '1.000000'
+        )
+        Operation ==(
+          Access Primary: variable 'x'
+          Access Primary: constant number '2.000000'
+        )
+      )
+      TO
+      Operation >=(
+        Access Primary: event 'SHUTDOWN'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+        Access Primary: constant number '2.000000'
+      )
+
+code:   '  from X or Y and Z'
+result: 
+    TimeSpan:
+      FROM
+      Operation or(
+        Operation $verdict-conversion(
+          Operation $verdict-event-occured(
+            Primary: event 'X'
+          )
+        )
+        Operation and(
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'Y'
+            )
+          )
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'Z'
+            )
+          )
+        )
+      )
+
+code:   '  to x < 1 and x == 2'
+result: 
+    TimeSpan:
+      TO
+      Operation and(
+        Operation <(
+          Access Primary: variable 'x'
+          Access Primary: constant number '1.000000'
+        )
+        Operation ==(
+          Access Primary: variable 'x'
+          Access Primary: constant number '2.000000'
+        )
+      )
+

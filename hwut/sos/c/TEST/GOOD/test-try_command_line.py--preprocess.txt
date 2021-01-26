@@ -1,0 +1,10 @@
+Output:
+
+Output:
+nonsense.o: data/nonsense.c
+
+Output:
+number.o: data/do/1/12/123/1234/12345/number.c /
+ data/do/A/AB/ABC/ABCD/letter.h extra.h only-in-numbers.h
+
+<terminated>

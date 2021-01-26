@@ -1,0 +1,10 @@
+on $INIT: a = {};
+
+on X: { print "X detected"; }
+
+import "rules/Imported-2.tlr" as nice.imported.stuff;
+
+on FREEZE_IMPORTED_IMPORTED: freeze nice.imported.stuff.more;
+on FREEZE_IMPORTED:          freeze nice.imported.stuff;
+
+

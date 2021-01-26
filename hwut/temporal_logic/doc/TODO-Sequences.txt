@@ -1,0 +1,22 @@
+future: [no] ... until ...
+past: [no] ... since ...
+
+//: [label] no X since Y
+//: only X, Y, Z   until Z 
+//: no X, Y, Z     until Z  
+//: require X, Y, X until Y
+//: X
+//: Y
+//: forbid X, Y, Z until Z
+//: X
+//: Z
+#
+
+Let '// ...\n' be comment, in the sense of 'not subject to direct comparison.
+
+Let '/* ... */' be a comment range, in the same sense.
+
+Let '//: ... \n' be a sequence statement, in the sense 'not subject to comparison', but ...
+
+
+

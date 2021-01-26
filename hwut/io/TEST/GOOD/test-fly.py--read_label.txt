@@ -1,0 +1,115 @@
+IN:     ":"
+RESULT: [None]
+LEXEME: ":"
+NEXT:   ""
+----------------------------
+IN:     "a:"
+RESULT: [a]
+LEXEME: "a:"
+NEXT:   ""
+----------------------------
+IN:     "_:"
+RESULT: [_]
+LEXEME: "_:"
+NEXT:   ""
+----------------------------
+IN:     "aber:"
+RESULT: [aber]
+LEXEME: "aber:"
+NEXT:   ""
+----------------------------
+IN:     "file_name:"
+RESULT: [file_name]
+LEXEME: "file_name:"
+NEXT:   ""
+----------------------------
+IN:     "analogy:"
+RESULT: [analogy]
+LEXEME: "analogy:"
+NEXT:   ""
+----------------------------
+IN:     "result_list:"
+RESULT: [result_list]
+LEXEME: "result_list:"
+NEXT:   ""
+----------------------------
+IN:     "build_time:"
+RESULT: [build_time]
+LEXEME: "build_time:"
+NEXT:   ""
+----------------------------
+IN:     "happy_pattern_list:"
+RESULT: [happy_pattern_list]
+LEXEME: "happy_pattern_list:"
+NEXT:   ""
+----------------------------
+IN:     "interpreter_list:"
+RESULT: [interpreter_list]
+LEXEME: "interpreter_list:"
+NEXT:   ""
+----------------------------
+IN:     "make_dependent_f:"
+RESULT: [make_dependent_f]
+LEXEME: "make_dependent_f:"
+NEXT:   ""
+----------------------------
+IN:     "potpourri_f:"
+RESULT: [potpourri_f]
+LEXEME: "potpourri_f:"
+NEXT:   ""
+----------------------------
+IN:     "same_f:"
+RESULT: [same_f]
+LEXEME: "same_f:"
+NEXT:   ""
+----------------------------
+IN:     "shrink_empty_lines_f:"
+RESULT: [shrink_empty_lines_f]
+LEXEME: "shrink_empty_lines_f:"
+NEXT:   ""
+----------------------------
+IN:     "shrink_space_f:"
+RESULT: [shrink_space_f]
+LEXEME: "shrink_space_f:"
+NEXT:   ""
+----------------------------
+IN:     "temporal_logic_f:"
+RESULT: [temporal_logic_f]
+LEXEME: "temporal_logic_f:"
+NEXT:   ""
+----------------------------
+IN:     "temporal_logic_rule_list:"
+RESULT: [temporal_logic_rule_list]
+LEXEME: "temporal_logic_rule_list:"
+NEXT:   ""
+----------------------------
+IN:     "title:"
+RESULT: [title]
+LEXEME: "title:"
+NEXT:   ""
+----------------------------
+IN:     "title_group:"
+RESULT: [title_group]
+LEXEME: "title_group:"
+NEXT:   ""
+----------------------------
+IN:     "vanished_f:"
+RESULT: [vanished_f]
+LEXEME: "vanished_f:"
+NEXT:   ""
+----------------------------
+IN:     "hwut_info_time:"
+RESULT: [hwut_info_time]
+LEXEME: "hwut_info_time:"
+NEXT:   ""
+----------------------------
+IN:     "stdout_post_proc:"
+RESULT: [stdout_post_proc]
+LEXEME: "stdout_post_proc:"
+NEXT:   ""
+----------------------------
+IN:     "stderr_post_proc:"
+RESULT: [stderr_post_proc]
+LEXEME: "stderr_post_proc:"
+NEXT:   ""
+----------------------------

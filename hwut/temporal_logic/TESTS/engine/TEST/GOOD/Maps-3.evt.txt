@@ -1,0 +1,26 @@
+Maps-3.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Maps-3.tlr:1: rule awake. rule 'on'
+rules/Maps-3.tlr:7: rule awake. rule 'on'
+# 2 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : a = (MAP: {})
+         : <anonymous> = (MAP: {childs: (LIST: [(STRING: Walter), (STRING: Wolfgang)]), family: (STRING: Tell)})
+         : <anonymous> = (MAP: {childs: (LIST: [(STRING: Michel), (STRING: Ida)]), family: (STRING: Svenson)})
+0.000000: PRINT
+        : << -------------------- >>
+        : << {Alfons: {childs: [Michel, Ida], family: Svenson}, Wilhelm: {childs: [Walter, Wolfgang], family: Tell}} >>
+        : << {childs: [Walter, Wolfgang], family: Tell} >>
+        : << {childs: [Michel, Ida], family: Svenson} >>
+        : << [Walter, Wolfgang] >>
+        : << [Michel, Ida] >>
+        : << Walter >>
+        : << Wolfgang >>
+        : << childs: [Michel, Ida] >>
+        : << family: Svenson >>
+# 1 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

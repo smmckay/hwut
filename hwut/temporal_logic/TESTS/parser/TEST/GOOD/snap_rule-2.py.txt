@@ -1,0 +1,38 @@
+____________________________________________________________________
+code:   '{ X == 2; call(); }'
+result:
+    Rule:
+      Rule_List:
+        BRACKET
+        Condition:
+          Operation ==(
+            Operation $verdict-event-occured(
+              Primary: event 'X'
+            )
+            Access Primary: constant number '2.000000'
+          )
+        Condition:
+          Operation $verdict-conversion(
+            Access Primary: variable 'call'
+: Operation call(
+)
+          )
+
+pruned:
+    Rule:
+      Rule_List:
+        BRACKET
+        Condition:
+          Operation ==(
+            Operation $verdict-event-occured(
+              Primary: event 'X'
+            )
+            Access Primary: constant number '2.000000'
+          )
+        Condition:
+          Operation $verdict-conversion(
+            Access Primary: variable 'call'
+: Operation call(
+)
+          )
+

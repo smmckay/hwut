@@ -1,0 +1,85 @@
+code:   '  
+X.time - Y.time > 12;
+from SHUTDOWN to RESET : not RETRY;
+on X, Y : send START(0,0,1);
+from RESET to RESTART: not SLEEP;
+'
+result: 
+    Fork:
+      (1)
+      Rule:
+        Condition:
+          Operation >(
+            Operation -(
+              Access Primary: event 'X'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+              Access Primary: event 'Y'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+            )
+            Access Primary: constant number '12.000000'
+          )
+      (2)
+      Rule:
+        TimeSpan:
+          FROM
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'SHUTDOWN'
+            )
+          )
+          TO
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'RESET'
+            )
+          )
+        REQUIRES
+        Condition:
+          Operation $verdict-inversion(
+            Operation $verdict-conversion(
+              Operation $verdict-event-occured(
+                Primary: event 'RETRY'
+              )
+            )
+          )
+      (3)
+      Rule: On 'X', 'Y'
+        =>
+        Operation $send(
+          Event: START
+                   [0] =
+                    Access Primary: constant number '0.000000'
+                   [1] =
+                    Access Primary: constant number '0.000000'
+                   [2] =
+                    Access Primary: constant number '1.000000'
+        )
+      (4)
+      Rule:
+        TimeSpan:
+          FROM
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'RESET'
+            )
+          )
+          TO
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'RESTART'
+            )
+          )
+        REQUIRES
+        Condition:
+          Operation $verdict-inversion(
+            Operation $verdict-conversion(
+              Operation $verdict-event-occured(
+                Primary: event 'SLEEP'
+              )
+            )
+          )
+

@@ -1,0 +1,36 @@
+code:   '  x < 1 and (3 + 1) * 2 > x + 1 and RESET'
+result:
+    Operation and(
+      Operation <(
+        Access Primary: variable 'x'
+        Access Primary: constant number '1.000000'
+      )
+      Operation and(
+        Operation >(
+          Operation *(
+            Access Operation +(
+  Access Primary: constant number '3.000000'
+  Access Primary: constant number '1.000000'
+)
+            Access Primary: constant number '2.000000'
+          )
+          Operation +(
+            Access Primary: variable 'x'
+            Access Primary: constant number '1.000000'
+          )
+        )
+        Operation $verdict-conversion(
+          Operation $verdict-event-occured(
+            Primary: event 'RESET'
+          )
+        )
+      )
+    )
+
+code:   '  x < 4 '
+result:
+    Operation <(
+      Access Primary: variable 'x'
+      Access Primary: constant number '4.000000'
+    )
+

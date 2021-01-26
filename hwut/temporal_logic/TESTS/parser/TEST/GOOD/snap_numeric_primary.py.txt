@@ -1,0 +1,100 @@
+code:   '0.815'
+result: 
+    Primary: constant number '0.815000'
+
+code:   ' my_variable '
+result: 
+    Primary: variable 'my_variable'
+
+code:   '  SHUTDOWN.time'
+result: 
+    Primary: 
+
+      Event:   time of SHUTDOWN
+code:   'SHUTDOWN.count' 
+result: 
+
+    Primary:
+      Event: count of SHUTDOWN 
+code: 'SHUTDOWN.error_n' 
+
+result:
+    Primary: 
+      Event: SHUTDOWN . error_n 
+
+code:   'RESET[ 1 ]'
+result: 
+    Primary: 
+
+      Event:   RESET [ (numeric term) ]
+      Term: 
+        (1)
+        Expr:
+          (1)
+          Primary: constant number '1.000000'
+code:   'RESET[ 1 * 1 ]'
+result:
+    Primary:
+      Event: RESET [ (numeric term) ]
+      Term:
+        (1)
+        Function *(
+Primary: constant number '1.000000'
+
+)
+
+        Expr:
+          (1)
+            Primary: constant number '1.000000'
+
+      )
+
+code:   ' ( RESET[1] + my_variable)'
+result: 
+    Primary Bracketed:
+      (1)
+      Function +(
+        Expr:
+          (1)
+          Primary:
+            Event: RESET [ (numeric term) ]
+)
+
+            Term:
+            (1)
+              Expr:
+  (1)
+                Primary: constant number '1.000000'
+    Expr:
+      (1)
+          Primary: variable 'my_variable'
+code: '(FUNCTION_CALL.count / (END.time - START.time))'
+)
+
+result:
+    Primary Bracketed:
+      (1)
+      Term:
+)
+
+  )
+
+        )
+
+        (1)
+        Function /(
+          Primary:
+            Event: count of FUNCTION_CALL
+          Expr:
+            (1)
+            Primary Bracketed:
+              (1)
+              Function -(
+                Expr:
+                  (1)
+                  Primary:
+                    Event: time of END
+                Expr:
+                  (1)
+                  Primary:
+                    Event: time of START

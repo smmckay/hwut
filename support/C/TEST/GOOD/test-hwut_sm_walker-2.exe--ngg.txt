@@ -1,0 +1,8 @@
+do_init:    { user_data: ((0xbfec5adc)); }
+do_event:    { user_data: ((0xbfec5adc)); name: Init; event_id: 66; }
+condition:   { user_data: ((0xbfec5adc)); name: 1st; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfec5adc)); name: 1st; event_id: 66; }
+condition:   { user_data: ((0xbfec5adc)); name: 2nd; condition_id: 1; result: OK; }
+do_event:    { user_data: ((0xbfec5adc)); name: 2nd; event_id: 66; }
+do_terminal: { user_data: ((0xbfec5adc)); name: Terminal; }
+

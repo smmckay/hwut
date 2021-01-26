@@ -1,0 +1,9 @@
+state[0].my_do_condition 1: 0
+[[BEGIN]]--.
+ .---------'
+.
+ .'
+ 0
+
+Forbidden value 'false' for condition 'Cond1'.
+Comment: "must be true"

@@ -1,0 +1,24 @@
+
+data/ctags/three.c,288
+           three_something(three_something2,13
+     three_something_else(three_something_else6,81
+three_implemented_functionthree_implemented_function18,257
+three_static; extern int three_static29,358
+three_global;three_global33,411
+int zz_all(void) { return 0; }zz_all34,425
+
+data/ctags/A/B/C/one.c,306
+#define one_something(one_something1,0
+#define one_something_else(one_something_else2,27
+int        one_implemented_function(void) { return 0; }one_implemented_function6,129
+static int one_static;one_static8,186
+int        one_global;one_global10,232
+int zz_all(void) { return 0; }zz_all11,255
+
+data/ctags/1/2/3/two.c,312
+#define    two_something(two_something1,0
+#define    two_something_else(two_something_else2,30
+int        two_implemented_function(void) { return 0; }two_implemented_function6,135
+static int two_static;two_static8,192
+int        two_global;two_global10,238
+int zz_all(void) { return 0; }zz_all11,261

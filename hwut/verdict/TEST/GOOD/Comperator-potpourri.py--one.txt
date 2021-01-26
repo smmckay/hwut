@@ -1,0 +1,60 @@
+Test: 0
+    A:       [a]
+    B:       [a]
+    verdict: True
+<end>
+Test: 1
+    A:       [a]
+    B:       [a ]
+    verdict: True
+<end>
+Test: 2
+    A:       [ a]
+    B:       [a]
+    verdict: True
+<end>
+Test: 3
+    A:       [ a]
+    B:       [a ]
+    verdict: True
+<end>
+Test: 4
+    A:       [a a]
+    B:       [a 	a]
+    verdict: True
+<end>
+Test: 5
+    A:       [a]
+    B:       [a\n]
+    verdict: True
+<end>
+Test: 6
+    A:       [a\n]
+    B:       [a]
+    verdict: True
+<end>
+Test: 7
+    A:       [a\n]
+    B:       [a\n]
+    verdict: True
+<end>
+Test: 8
+    A:       [a]
+    B:       [b]
+    verdict: False
+<end>
+Test: 9
+    A:       [a]
+    B:       [b\n]
+    verdict: False
+<end>
+Test: 10
+    A:       [a\n]
+    B:       [b]
+    verdict: False
+<end>
+Test: 11
+    A:       [a\n]
+    B:       [b\n]
+    verdict: False
+<end>

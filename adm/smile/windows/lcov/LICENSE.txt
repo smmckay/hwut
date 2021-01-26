@@ -1,0 +1,6 @@
+Lcov and related tools are distributed under GPL 2, or (at the user's option)
+any lated version.
+
+(C) International Business Machines  Corp., 2002,2012.
+
+AUTHOR: Peter Oberparleiter <Peter.Oberparleiter@de.ibm.com>.

@@ -1,0 +1,8 @@
+[[BEGIN]]--.
+ .---------'
+.
+ .'
+ 0
+
+Forbidden state '0' has been entered.
+Comment: "state zero bad!"

@@ -1,0 +1,39 @@
+To be ignored: {
+   compiled: to_be_ignored.c -> ((./tmpUbthwW.o))
+   compiled: 1/12/123/1234/12345/common_file_name.c -> ((1/12/123/1234/12345/tmpTc_Gv9.o))
+   compiled: 1/12/123/1234/12345/number.c -> ((1/12/123/1234/12345/tmpaAdViI.o))
+   compiled: A/AB/ABC/ABCD/common_file_name.c -> ((A/AB/ABC/ABCD/tmpajZP00.o))
+   compiled: A/AB/ABC/ABCD/letter.c -> ((A/AB/ABC/ABCD/tmpr8MGgC.o))
+   compiled: main.c -> ((./tmpsNAYVC.o))
+}
+
+Analyse ...
+Warning: source file: 'main.c'
+Warning: reference(s) resolved - 'crash-on-call' not generated for
+Warning:   'exit'
+Warning:   'printf'
+Warning: source file: 'main2.c'
+Warning: reference(s) resolved - 'crash-on-call' not generated for
+Warning:   'exit'
+Warning:   'printf'
+        ... done.
+Make 'main.exe' ...
+          ... done.
+Make 'main2.exe' ...
+          ... done.
+Have fun!
+Execute 'main.exe' ...
+Have more fun!
+             ... done.
+Execute 'main2.exe' ...
+             ... done.
+<terminated>
+
+
+
+
+
+
+
+
+

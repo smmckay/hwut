@@ -1,0 +1,15 @@
+../../code_generation
+../../code_generation/function_stubs
+../../code_generation/function_stubs/c
+../../code_generation/generator
+../../code_generation/generator/language
+../../code_generation/generator/language/c
+../../code_generation/generator/language/c/templates
+../../code_generation/generator/parser
+../../code_generation/mc_dc
+../../code_generation/sm_walker
+../../code_generation/sm_walker/language
+../../code_generation/sm_walker/language/c
+../../code_generation/sm_walker/language/c/templates
+../../code_generation/sm_walker/parser
+

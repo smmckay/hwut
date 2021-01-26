@@ -1,0 +1,38 @@
+IN:     "[[]]"
+RESULT: [[[]]]
+LEXEME: "[[]]"
+NEXT:   ""
+----------------------------
+Error: missing sub list
+IN:     "[[]"
+RESULT: [None]
+LEXEME: "[[]"
+NEXT:   ""
+----------------------------
+Error: in '.fly' file--missing string.
+Error: missing sub list
+IN:     "[["
+RESULT: [None]
+LEXEME: "["
+NEXT:   "["
+----------------------------
+IN:     "[[a;]]"
+RESULT: [[['a']]]
+LEXEME: "[[a;]]"
+NEXT:   ""
+----------------------------
+IN:     "[[;][;]]"
+RESULT: [[[''], ['']]]
+LEXEME: "[[;][;]]"
+NEXT:   ""
+----------------------------
+IN:     "[[a;][a;]]"
+RESULT: [[['a'], ['a']]]
+LEXEME: "[[a;][a;]]"
+NEXT:   ""
+----------------------------
+IN:     "[[a;b;][a;b;]]"
+RESULT: [[['a', 'b'], ['a', 'b']]]
+LEXEME: "[[a;b;][a;b;]]"
+NEXT:   ""
+----------------------------

@@ -1,0 +1,16 @@
+Input: {[3]}
+    -> [0] no_name: (INTEGER)[3]
+Input: {[3, 2]}
+    -> [0] no_name: (INTEGER)[3, 2]
+Input: {[3, 2, 1]}
+    -> [0] no_name: (INTEGER)[3, 2, 1]
+Input: {[3.1]}
+    -> [0] no_name: (FLOAT)[3.1]
+Input: {[3.1, 2.1]}
+    -> [0] no_name: (FLOAT)[3.1, 2.1]
+Input: {[3.1, 2.1, 1.1]}
+    -> [0] no_name: (FLOAT)[3.1, 2.1, 1.1]
+Input: {[3.1, 2,   1]}
+    -> [0] no_name: (FLOAT)[3.1, 2, 1]
+Input: {[3,   2.1, 1.1]}
+    -> [0] no_name: (FLOAT)[3, 2.1, 1.1]

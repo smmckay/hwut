@@ -1,0 +1,36 @@
+Import-2.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Import-2.tlr:1: rule awake. rule 'on'
+rules/Import-2.tlr:3: rule awake. rule 'on'
+rules/Imported-2.tlr:2: rule awake. rule 'on'
+rules/ImportedImported.tlr:2: rule awake. rule 'on'
+rules/Import-2.tlr:7: rule awake. rule 'on'
+rules/Import-2.tlr:8: rule awake. rule 'on'
+# 6 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : a = (MAP: {})
+0.000000: X
+        : << X detected >>
+0.000001: Y
+        : << Y detected >>
+0.000002: Z
+        : << Z detected >>
+0.000003: FREEZE_IMPORTED_IMPORTED
+rules/ImportedImported.tlr:2: rule frozen. rule 'off'
+0.000004: X
+        : << X detected >>
+0.000005: Y
+        : << Y detected >>
+0.000006: Z
+0.000007: FREEZE_IMPORTED
+rules/Imported-2.tlr:2: rule frozen. rule 'off'
+0.000008: X
+        : << X detected >>
+0.000009: Y
+0.000010: Z
+# 11 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

@@ -1,0 +1,39 @@
+Maps-2.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Maps-2.tlr:1: rule awake. rule 'on'
+rules/Maps-2.tlr:6: rule awake. rule 'on'
+# 2 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : a = (LIST: [(NUMBER: 1.0), (NUMBER: 2.0), (NUMBER: 3.0), (NUMBER: 10.0), (NUMBER: 11.0), (NUMBER: 23.0)])
+         : b = (MAP: {Spaetzle: (STRING: Nudeln), Pommes Frites: (STRING: Kartoffel), Reis: (STRING: Huelsenfrucht)})
+0.000000: PRINT
+        : << -------------------- >>
+        : << [1.0, 2.0, 3.0, 10.0, 11.0, 23.0] >>
+        : << .size() >>
+        : << 6 >>
+        : << .has() >>
+        : << True >>
+        : << False >>
+        : << .key() >>
+        : << 3 >>
+        : << None >>
+        : << .delete() >>
+        : << [3.0, 23.0] >>
+        : << -------------------- >>
+        : << {Spaetzle: Nudeln, Pommes Frites: Kartoffel, Reis: Huelsenfrucht} >>
+        : << .size() >>
+        : << 3 >>
+        : << .has() >>
+        : << True >>
+        : << False >>
+        : << .key() >>
+        : << Spaetzle >>
+        : << None >>
+        : << .delete() >>
+        : << {Pommes Frites: Kartoffel} >>
+# 1 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

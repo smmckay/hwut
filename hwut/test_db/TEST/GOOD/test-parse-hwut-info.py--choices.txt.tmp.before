@@ -1,0 +1,46 @@
+TEST: {A; CHOICES:;}
+|||| potpourri
+
+    title: A;
+    file_name: test-parse-hwut-info.py;
+    hwut_info_time: 1436778503L;
+    result_list: [
+    ]
+|||| potpourri
+
+TEST: {A; CHOICES: 1;}
+|||| potpourri
+
+    title: A;
+    file_name: test-parse-hwut-info.py;
+    hwut_info_time: 1436778503L;
+    result_list: [
+      [ 1; ; None; 0; ]
+    ]
+|||| potpourri
+
+TEST: {A; CHOICES: 1, 2;}
+|||| potpourri
+
+    title: A;
+    file_name: test-parse-hwut-info.py;
+    hwut_info_time: 1436778503L;
+    result_list: [
+      [ 1; ; None; 0; ]
+      [ 2; ; None; 0; ]
+    ]
+|||| potpourri
+
+TEST: {A; CHOICES: 1,2,3;}
+|||| potpourri
+
+    title: A;
+    file_name: test-parse-hwut-info.py;
+    hwut_info_time: 1436778503L;
+    result_list: [
+      [ 1; ; None; 0; ]
+      [ 2; ; None; 0; ]
+      [ 3; ; None; 0; ]
+    ]
+|||| potpourri
+

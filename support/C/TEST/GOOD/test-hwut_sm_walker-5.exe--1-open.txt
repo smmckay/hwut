@@ -1,0 +1,12 @@
+do_init:    { user_data: ((0xbf9e4e88)); }
+do_event:    { user_data: ((0xbf9e4e88)); name: PRE; event_id: 66; }
+do_event:    { user_data: ((0xbf9e4e88)); name: 0; event_id: 11; }
+do_event:    { user_data: ((0xbf9e4e88)); name: 1; event_id: 66; }
+do_terminal: { user_data: ((0xbf9e4e88)); name: 2; }
+
+do_init:    { user_data: ((0xbf9e4e88)); }
+do_event:    { user_data: ((0xbf9e4e88)); name: PRE; event_id: 66; }
+do_event:    { user_data: ((0xbf9e4e88)); name: 0; event_id: 22; }
+do_event:    { user_data: ((0xbf9e4e88)); name: 3; event_id: 66; }
+do_terminal: { user_data: ((0xbf9e4e88)); name: 4; }
+

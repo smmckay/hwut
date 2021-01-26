@@ -1,0 +1,74 @@
+Freeze-3.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Freeze-3.tlr:5: rule awake. rule 'on'
+rules/Freeze-3.tlr:7: rule awake. rule 'on'
+rules/Freeze-3.tlr:9: rule awake. rule 'on'
+rules/Freeze-3.tlr:11: rule awake. rule 'on'
+rules/Freeze-3.tlr:14: rule awake. rule 'on'
+rules/Freeze-3.tlr:18: rule awake. rule 'on'
+rules/Freeze-3.tlr:22: rule awake. rule 'on'
+rules/Freeze-3.tlr:26: rule awake. rule 'on'
+rules/Freeze-3.tlr:30: rule awake. rule 'on'
+rules/Freeze-3.tlr:34: rule awake. rule 'on'
+rules/Freeze-3.tlr:38: rule awake. rule 'on'
+rules/Freeze-3.tlr:42: rule awake. rule 'on'
+rules/Freeze-3.tlr:46: rule awake. rule 'on'
+rules/Freeze-3.tlr:50: rule awake. rule 'on'
+rules/Freeze-3.tlr:55: rule awake. rule 'on'
+# 15 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.000000: FREEZE_ELFRIEDE
+        : << Do not care! >>
+0.100000: A
+        : << earth -> A >>
+        : << earth.europe.germany.prussia -> A >>
+        : << earth.europe.germany.prussia.berlin -> A >>
+        : << earth.europe.germany.prussia.berlin.otto -> A >>
+0.200000: FREEZE_OTTO
+        : << Freezing:   earth.europe.germany.prussia.berlin.otto >>
+rules/Freeze-3.tlr:5: rule frozen. rule 'off'
+0.300000: A
+        : << earth -> A >>
+        : << earth.europe.germany.prussia -> A >>
+        : << earth.europe.germany.prussia.berlin -> A >>
+0.400000: FREEZE_GERMANY
+        : << Freezing:   earth.europe.germany.prussia.berlin >>
+rules/Freeze-3.tlr:7: rule frozen. rule 'off'
+0.500000: A
+        : << earth -> A >>
+        : << earth.europe.germany.prussia -> A >>
+0.600000: FREEZE_EUROPE
+        : << Freezing:   earth.europe >>
+rules/Freeze-3.tlr:9: rule frozen.   rule 'off'
+0.700000: A
+        : << earth -> A >>
+0.800000: FREEZE_EARTH
+        : << Freezing: earth >>
+rules/Freeze-3.tlr:11: rule frozen. rule 'off'
+0.900000: A
+1.000000: UNFREEZE_ELFRIEDE
+        : << Do not care! >>
+1.100000: A
+1.200000: UNFREEZE_EARTH
+        : << UnFreezing: earth >>
+rules/Freeze-3.tlr:11: rule alive (unfrozen). rule 'on'
+rules/Freeze-3.tlr:9: rule alive (unfrozen). rule 'on'
+rules/Freeze-3.tlr:7: rule alive (unfrozen). rule 'on'
+rules/Freeze-3.tlr:5: rule alive (unfrozen). rule 'on'
+1.300000: A
+        : << earth -> A >>
+        : << earth.europe.germany.prussia -> A >>
+        : << earth.europe.germany.prussia.berlin -> A >>
+        : << earth.europe.germany.prussia.berlin.otto -> A >>
+# 14 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK
+
+
+
+
+
+

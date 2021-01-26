@@ -1,0 +1,15 @@
+GeneratorN: 1
+(0) 1, 0.815, 
+    2, 47.11, 
+    
+GeneratorN: 2
+(0) [0] x: (INTEGER)1; [1] str: (STRING)['hello', 'guten tag']; 
+(1) [0] x: (INTEGER)2; [1] str: (STRING)['bonjour', 'hola']; 
+Error: missing ';' after parameter. Found '     '. 
+GeneratorN: 4
+(0) [0] x: (INTEGER)1; [1] str: (STRING)['hello', 'guten tag']; 
+(1) [0] x: (INTEGER)2; [1] str: (STRING)['bonjour', 'hola']; 
+(2) [0] x: (INTEGER)7; [1] str: (STRING)[10, 13]; 
+(3) 90, Hm?, 
+    255, Captain?, 
+    

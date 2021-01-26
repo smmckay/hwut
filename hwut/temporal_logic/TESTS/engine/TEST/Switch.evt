@@ -1,0 +1,5 @@
+       LETTER(name="Otto");
+0.0:   LETTER(name="Otto");
+33:    LETTER(name="Heinz");
+100:   LETTER(name="Elfriede");
+100.1: LETTER(name="Albert");

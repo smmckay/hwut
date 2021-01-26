@@ -1,0 +1,28 @@
+FromTo.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/FromTo.tlr:2: rule asleep. rule 'off'
+rules/FromTo.tlr:5: rule asleep. rule 'off'
+rules/FromTo.tlr:9: rule awake. rule 'on'
+# 3 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.100000: NOTHING_SPECIAL
+0.200000: START
+rules/FromTo.tlr:2: rule awake. rule 'on'
+rules/FromTo.tlr:5: rule awake. rule 'on'
+0.300000: END
+rules/FromTo.tlr:2: rule asleep. rule 'off'
+0.400000: START
+rules/FromTo.tlr:2: rule awake. rule 'on'
+0.500000: ERROR
+rules/FromTo.tlr:2: rule broken
+0.500000: by ERROR.
+rules/FromTo.tlr:5: rule broken
+0.500000: by ERROR.
+0.600000: END
+rules/FromTo.tlr:2:            rule asleep. rule 'off'
+# 6 statements found. Result = [FAIL]
+_______________________________________________________________________________
+result            = FAIL

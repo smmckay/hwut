@@ -1,0 +1,7 @@
+on $INIT: a = {};
+
+on X: { print "X detected"; }
+
+import "rules/Imported.tlr";
+
+

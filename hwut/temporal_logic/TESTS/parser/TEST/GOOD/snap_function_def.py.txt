@@ -1,0 +1,188 @@
+____________________________________________________________________
+code:   '
+        my_function = function(a, b, c): { 
+            x = 12;
+        };
+'
+result: 
+    Rule:
+      Operation =(
+        Access Primary: variable 'my_function'
+        function:
+        ARGUMENTS:
+          (1)
+          Primary: variable 'a'
+          (2)
+          Primary: variable 'b'
+          (3)
+          Primary: variable 'c'
+        BODY:
+          Operation =(
+            Access Primary: variable 'x'
+            Access Primary: constant number '12.000000'
+          )
+      )
+
+____________________________________________________________________
+code:   '
+        my_function = function(a): { 
+            if x == 12: send SOMETHING;
+            else: {
+               if y == 13:   send ELSE;
+               elif y == 14: send THIS;
+               else:         send NOTHING;
+            }
+        };
+'
+result: 
+    Rule:
+      Operation =(
+        Access Primary: variable 'my_function'
+        function:
+        ARGUMENTS:
+          (1)
+          Primary: variable 'a'
+        BODY:
+          Control IfElse:
+            IF:
+            Operation ==(
+              Access Primary: variable 'x'
+              Access Primary: constant number '12.000000'
+            )
+            THEN:
+            Operation $send(
+              Event: SOMETHING
+            )
+            ELSE:
+            Control IfElse:
+              IF:
+              Operation ==(
+                Access Primary: variable 'y'
+                Access Primary: constant number '13.000000'
+              )
+              THEN:
+              Operation $send(
+                Event: ELSE
+              )
+              ELSE:
+              Control IfElse:
+                IF:
+                Operation ==(
+                  Access Primary: variable 'y'
+                  Access Primary: constant number '14.000000'
+                )
+                THEN:
+                Operation $send(
+                  Event: THIS
+                )
+                ELSE:
+                Operation $send(
+                  Event: NOTHING
+                )
+      )
+
+____________________________________________________________________
+code:   '
+        my_function = function(a, b, c): { 
+            x = 12;
+        };
+'
+result: 
+    Rule:
+      Operation =(
+        Access Primary: variable 'my_function'
+        function:
+        ARGUMENTS:
+          (1)
+          Primary: variable 'a'
+          (2)
+          Primary: variable 'b'
+          (3)
+          Primary: variable 'c'
+        BODY:
+          Operation =(
+            Access Primary: variable 'x'
+            Access Primary: constant number '12.000000'
+          )
+      )
+
+____________________________________________________________________
+code:   '
+        my_function = function(a): { 
+            if x == 12:  SOMETHING.count < 24;
+            else: {
+               if y == 13:   ELSE.time > $time - 20;
+               elif y == 14: THIS.time - other_time == 5000;
+               else:         NOTHING.count == 0;
+            }
+        };
+'
+result: 
+    Rule:
+      Operation =(
+        Access Primary: variable 'my_function'
+        function:
+        ARGUMENTS:
+          (1)
+          Primary: variable 'a'
+        BODY:
+          Control IfElse:
+            IF:
+            Operation ==(
+              Access Primary: variable 'x'
+              Access Primary: constant number '12.000000'
+            )
+            THEN:
+            Operation <(
+              Access Primary: event 'SOMETHING'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+              Access Primary: constant number '24.000000'
+            )
+            ELSE:
+            Control IfElse:
+              IF:
+              Operation ==(
+                Access Primary: variable 'y'
+                Access Primary: constant number '13.000000'
+              )
+              THEN:
+              Operation >(
+                Access Primary: event 'ELSE'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+                Operation -(
+                  Access Primary: variable '$time'
+                  Access Primary: constant number '20.000000'
+                )
+              )
+              ELSE:
+              Control IfElse:
+                IF:
+                Operation ==(
+                  Access Primary: variable 'y'
+                  Access Primary: constant number '14.000000'
+                )
+                THEN:
+                Operation ==(
+                  Operation -(
+                    Access Primary: event 'THIS'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+                    Access Primary: variable 'other_time'
+                  )
+                  Access Primary: constant number '5000.000000'
+                )
+                ELSE:
+                Operation ==(
+                  Access Primary: event 'NOTHING'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+                  Access Primary: constant number '0.000000'
+                )
+      )
+

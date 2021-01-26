@@ -1,0 +1,28 @@
+FunctionPassive.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/FunctionPassive.tlr:1: rule awake. rule 'on'
+rules/FunctionPassive.tlr:14: rule awake. rule 'on'
+# 2 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : complicated_conditions = (FUNCTION: )
+0.100000: A(nationality=german, name=Otto, family=Walkes)
+0.200000: NAME_CHECK
+0.300000: A(nationality=german, name=Otto, family=Bismarck)
+0.400000: A(nationality=german, name=Franz, family=Beckenbauer)
+0.500000: A(nationality=german, name=Franz, family=Strauss)
+0.600000: A(nationality=german, name=Elfriede, family=Strauss)
+0.700000: A(nationality=german, name=Heino, family=Mueller)
+rules/FunctionPassive.tlr:14:  rule broken
+0.700000:                      by A(nationality=german, name=Heino, family=Mueller).
+1.400000: A(nationality=french, name=Jaque, family=Brelle)
+1.500000: A(nationality=french, name=Jaque, family=Chiraque)
+1.600000: A(nationality=french, name=, family=Berlusconi)
+rules/FunctionPassive.tlr:14:  rule broken
+1.600000:                      by A(nationality=french, name=, family=Berlusconi).
+1.700000: A(nationality=french, name=Heino, family=Mueller)
+# 11 statements found. Result = [FAIL]
+_______________________________________________________________________________
+result = FAIL

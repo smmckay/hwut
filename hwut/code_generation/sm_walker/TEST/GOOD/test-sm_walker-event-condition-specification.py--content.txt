@@ -1,0 +1,72 @@
+{ name  { some0 { } }}
+->
+name: {
+      file_name: string;
+      line_n:    1;
+      code: {
+           some0 { } 
+      }
+}
+__________________________________________________________________
+{ name1 { some1 { } }
+ name2 { some2 { { {  { { {} }}} }} }}
+->
+name1: {
+      file_name: string;
+      line_n:    1;
+      code: {
+           some1 { } 
+      }
+}
+name2: {
+      file_name: string;
+      line_n:    2;
+      code: {
+           some2 { { {  { { {} }}} }} 
+      }
+}
+__________________________________________________________________
+{ name1 {}
+ name2 { some2 {} }
+ name3 { some3 { } }}
+->
+name1: {
+      file_name: string;
+      line_n:    1;
+      code: {
+          
+      }
+}
+name2: {
+      file_name: string;
+      line_n:    2;
+      code: {
+           some2 {} 
+      }
+}
+name3: {
+      file_name: string;
+      line_n:    3;
+      code: {
+           some3 { } 
+      }
+}
+__________________________________________________________________
+{ @begin { 0 }
+ @end   { 1 }}
+->
+@begin: {
+      file_name: string;
+      line_n:    1;
+      code: {
+           0 
+      }
+}
+@end: {
+      file_name: string;
+      line_n:    2;
+      code: {
+           1 
+      }
+}
+__________________________________________________________________

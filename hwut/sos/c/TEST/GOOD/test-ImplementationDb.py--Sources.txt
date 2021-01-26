@@ -1,0 +1,52 @@
+Warning: Using sos/sols while 'ctags' has not been installed or not
+Warning: specified in environment variable HWUT_CTAGS_APP.
+## Made Library: libMine0.a ((./tmpzldaEs.o))
+## Made Library: libMine1.a ((./tmpriEDWO.o))
+## Made Library: libMine2.a ((./tmpxsTrjn.o))
+## Made Library: libMine3.a ((./tmpXrCWVJ.o))
+## OBJECT: ((./tmpriEDWO.o))
+## OBJECT: ((./tmpXrCWVJ.o))
+## OBJECT: ((./tmpxsTrjn.o))
+## OBJECT: ((./tmpzldaEs.o))
+Warning: Using sos/sols while 'ctags' has not been installed or not
+Warning: specified in environment variable HWUT_CTAGS_APP.
+Directory: hwut/sos/c/test/data/find_references
+
+
+--------------------------------------------------------------------------------
+  source_db:
+    distinct --> ((1/example.c)), 
+    function --> ((1/example.c)), ((2/example.c)), ((3/example.c)), ((example.c)), 
+         one --> ((1/example.c)), 
+       three --> ((3/example.c)), 
+         two --> ((2/example.c)), 
+
+  library_db:
+    distinct --> ((libMine1.a)), 
+    function --> ((libMine0.a)), ((libMine1.a)), ((libMine2.a)), ((libMine3.a)), 
+         one --> ((libMine1.a)), 
+       three --> ((libMine2.a)), 
+         two --> ((libMine3.a)), 
+
+  object_db:
+    distinct --> 
+    function --> 
+         one --> 
+       three --> 
+         two --> 
+
+  required_file_to_reference_set_db:
+    ((1/example.c)): two; 
+    ((libMine1.a)):  two; 
+
+  implemented_file_to_reference_set_db:
+    ((1/example.c)): distinct; function; one; 
+    ((2/example.c)): function; two; 
+    ((3/example.c)): function; three; 
+    ((example.c)):   function; 
+    ((libMine0.a)):  function; 
+    ((libMine1.a)):  distinct; function; one; 
+    ((libMine2.a)):  function; three; 
+    ((libMine3.a)):  function; two; 
+
+

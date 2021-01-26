@@ -1,0 +1,45 @@
+do_init:    { user_data: ((0xbf9dc4e8)); }
+WARM?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: WARM; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Garden; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: LivingRoom; event: BUZZ; }
+WARM?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: WARM; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_terminal: { user_data: ((0xbf9dc4e8)); name: Garden; }
+
+do_init:    { user_data: ((0xbf9dc4e8)); }
+WARM?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: WARM; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Garden; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: LivingRoom; event: BUZZ; }
+COLD?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: COLD; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: LivingRoom; event: BUZZ; }
+do_terminal: { user_data: ((0xbf9dc4e8)); name: Bed; }
+
+do_init:    { user_data: ((0xbf9dc4e8)); }
+COLD?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: COLD; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: LivingRoom; event: BUZZ; }
+WARM?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: WARM; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Garden; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: LivingRoom; event: BUZZ; }
+do_terminal: { user_data: ((0xbf9dc4e8)); name: Bed; }
+
+do_init:    { user_data: ((0xbf9dc4e8)); }
+COLD?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: COLD; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: LivingRoom; event: BUZZ; }
+COLD?
+condition:   { user_data: ((0xbf9dc4e8)); name: Bed; condition_id: COLD; result: OK; }
+do_event:    { user_data: ((0xbf9dc4e8)); name: Bed; event: BUZZ; }
+do_terminal: { user_data: ((0xbf9dc4e8)); name: LivingRoom; }
+

@@ -1,0 +1,4 @@
+file-name;    line coverage[%];    branch coverage [%];    ok;    fail;    
+hwut_bitfield.c;    95;    10;    0;    0;    
+hwut_cursor.c;    100;    19;    0;    0;    
+hwut_sm_walker.c;    95;    60;    0;    0;    

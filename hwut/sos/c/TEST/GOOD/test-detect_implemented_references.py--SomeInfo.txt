@@ -1,0 +1,35 @@
+Implemented:
+    IPC_LIN_get_version
+    IPC_LIN_init
+    IPC_TCPIPHS_get_version
+    IPC_TCPIPHS_init
+    IPC_TCPIPMS_get_version
+    IPC_TCPIPMS_init
+    TEST_get_frame_memory
+    TEST_get_frame_memory_n
+    TEST_get_frame_memory_terminated
+    TEST_send
+    TEST_set_rx_frame_id_list
+    TEST_set_tx_frame_id_list
+Unresolved:
+    __gcov_init
+    __gcov_merge_add
+    printf
+Static:
+    _self_iterator_append
+    _self_iterator_append_small
+    _self_iterator_init
+    _self_iterator_pop
+    _self_iterator_pop_small
+    _self_print_calculate_offset
+    _self_print_value
+<terminated>
+
+
+
+
+
+
+
+
+

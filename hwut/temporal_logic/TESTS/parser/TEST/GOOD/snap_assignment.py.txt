@@ -1,0 +1,83 @@
+code:   ' a = "otto";'
+result: 
+    Operation =(
+      Access Primary: variable 'a'
+      Access Primary: constant string 'otto'
+    )
+
+code:   ' a = b;'
+result: 
+    Operation =(
+      Access Primary: variable 'a'
+      Access Primary: variable 'b'
+    )
+
+code:   ' a = [1, 2, 3, 4];'
+result: 
+    Operation =(
+      Access Primary: variable 'a'
+      Access Primary: list
+[0] -to->
+  Access Primary: constant number '1.000000'
+[1] -to->
+  Access Primary: constant number '2.000000'
+[2] -to->
+  Access Primary: constant number '3.000000'
+[3] -to->
+  Access Primary: constant number '4.000000'
+    )
+
+code:   ' a[3] = b;'
+result: 
+    Operation =(
+      Access Primary: variable 'a'
+: Operation $element-access(
+  Access Primary: constant number '3.000000'
+)
+      Access Primary: variable 'b'
+    )
+
+code:   ' a[3] = b[b + 34] - 24;'
+result: 
+    Operation =(
+      Access Primary: variable 'a'
+: Operation $element-access(
+  Access Primary: constant number '3.000000'
+)
+      Operation -(
+        Access Primary: variable 'b'
+: Operation $element-access(
+  Operation +(
+    Access Primary: variable 'b'
+    Access Primary: constant number '34.000000'
+  )
+)
+        Access Primary: constant number '24.000000'
+      )
+    )
+
+code:   ' a = {1: 2,  "otto": 4, "sesame": "street" };'
+result: 
+    Operation =(
+      Access Primary: variable 'a'
+      Access Primary: map
+0 -to->
+  NumberKeyValuePair:
+    (1)
+    Primary: constant number '1.000000'
+    (2)
+    Access Primary: constant number '2.000000'
+1 -to->
+  StringKeyValuePair:
+    (1)
+    Primary: constant string 'otto'
+    (2)
+    Access Primary: constant number '4.000000'
+2 -to->
+  StringKeyValuePair:
+    (1)
+    Primary: constant string 'sesame'
+    (2)
+    Access Primary: constant string 'street'
+    )
+

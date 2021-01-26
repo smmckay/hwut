@@ -1,0 +1,57 @@
+space earth : { 
+    space europe.germany.prussia : { 
+        space berlin : { 
+            space otto : { 
+               on A: print "earth.europe.germany.prussia.berlin.otto -> A";
+            }
+            on A:    print "earth.europe.germany.prussia.berlin -> A";
+        }
+        on A:        print "earth.europe.germany.prussia -> A";
+    }
+    on A:            print "earth -> A";
+}
+
+on FREEZE_OTTO: { 
+    print "Freezing:   earth.europe.germany.prussia.berlin.otto";     
+    freeze earth.europe.germany.prussia.berlin.otto;     
+} 
+on UNFREEZE_OTTO: { 
+    print "UnFreezing: earth.europe.germany.prussia.berlin.otto";     
+    unfreeze earth.europe.germany.prussia.berlin.otto;     
+}
+on FREEZE_PRUSSIA: { 
+    print "Freezing:   earth.europe.germany.prussia";     
+    freeze earth.europe.germany.prussia;     
+} 
+on UNFREEZE_PRUSSIA_SHALLOW: { 
+    print "UnFreezing: earth.europe.germany.prussia";     
+    unfreeze earth.europe.germany.prussia shallow;     
+}
+on FREEZE_GERMANY: { 
+    print "Freezing:   earth.europe.germany.prussia.berlin";     
+    freeze earth.europe.germany.prussia.berlin;     
+} 
+on UNFREEZE_GERMANY_SHALLOW: { 
+    print "UnFreezing: earth.europe.germany.prussia.berlin";     
+    unfreeze earth.europe.germany.prussia.berlin shallow;     
+}
+on FREEZE_EUROPE: { 
+    print "Freezing:   earth.europe";     
+    freeze earth.europe;     
+} 
+on UNFREEZE_EUROPE_SHALLOW: { 
+    print "UnFreezing: earth.europe";     
+    unfreeze earth.europe shallow;     
+}
+on FREEZE_EARTH: { 
+    print "Freezing:   earth";     
+    freeze earth;     
+} 
+on UNFREEZE_EARTH_SHALLOW: { 
+    print "UnFreezing: earth";     
+    unfreeze earth shallow;     
+}
+
+on FREEZE_ELFRIEDE, UNFREEZE_ELFRIEDE:
+    print "Do not care!";
+

@@ -1,0 +1,30 @@
+Map.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Map.tlr:1: rule awake. rule 'on'
+rules/Map.tlr:4: rule awake. rule 'on'
+rules/Map.tlr:5: rule awake. rule 'on'
+rules/Map.tlr:6: rule awake. rule 'on'
+rules/Map.tlr:8: rule awake. rule 'on'
+# 5 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+         : a = (MAP: {})
+0.000000: X
+        : <constant> = (STRING: Spagethi)
+        : << X detected >>
+0.000001: Y
+        : <constant> = (STRING: Pommes Frites)
+        : << Y detected >>
+0.000002: Z
+        : <constant> = (STRING: Spaetzle)
+        : << Z detected >>
+0.000003: PRINT
+        : << {Drei: Spaetzle, Eins: Spagethi, Zwei: Pommes Frites} >>
+        : << Spagethi >>
+        : << Pommes Frites >>
+        : << Spaetzle >>
+# 4 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

@@ -1,0 +1,60 @@
+code:   '  x = x + 1'
+result: 
+    Operation =(
+      Access Primary: variable 'x'
+      Operation +(
+        Access Primary: variable 'x'
+        Access Primary: constant number '1.000000'
+      )
+    )
+
+code:   '  x = "hello world"'
+result: 
+    Operation =(
+      Access Primary: variable 'x'
+      Access Primary: constant string 'hello world'
+    )
+
+code:   '  x = (time0 - time1 - SHUTDOWN.time )'
+result: 
+    Operation =(
+      Access Primary: variable 'x'
+      Access Operation -(
+  Operation -(
+    Access Primary: variable 'time0'
+    Access Primary: variable 'time1'
+  )
+  Access Primary: event 'SHUTDOWN'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+)
+    )
+
+code:   '  x'
+result: 
+    Condition:
+      Operation $verdict-conversion(
+        Access Primary: variable 'x'
+      )
+
+code:   '  x = y * z'
+result: 
+    Operation =(
+      Access Primary: variable 'x'
+      Operation *(
+        Access Primary: variable 'y'
+        Access Primary: variable 'z'
+      )
+    )
+
+code:   '  x = y % z'
+result: 
+    Operation =(
+      Access Primary: variable 'x'
+      Operation %(
+        Access Primary: variable 'y'
+        Access Primary: variable 'z'
+      )
+    )
+

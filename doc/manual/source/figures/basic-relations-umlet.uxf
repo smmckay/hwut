@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><umlet_diagram><help_text>//Uncomment the following line to change the fontsize:
+//fontsize=14
+
+//Welcome to UMLet!
+
+// *Double-click on UML elements to add them to the diagram.
+// *Edit element properties by modifying the text in this panel.
+// *Edit the files in the 'palettes' directory to store your own element palettes.
+// *Press Del or Backspace to remove elements from the diagram.
+// *Hold down Ctrl key to select multiple elements.
+// *Press c to copy the UML diagram to the system clipboard.
+// * This text will be stored with each diagram. Feel free to use the area for notes.
+</help_text><element><type>com.umlet.element.base.Class</type><coordinates><x>20</x><y>150</y><w>150</w><h>40</h></coordinates><panel_attributes>_test-application_
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>530</x><y>260</y><w>150</w><h>40</h></coordinates><panel_attributes>_test-application_
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>390</x><y>246</y><w>160</w><h>71</h></coordinates><panel_attributes>lt=&lt;-
+0..n
+&lt;&lt;creates&gt;&gt;</panel_attributes><additional_attributes>140;34;20;34</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>390</x><y>170</y><w>220</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+0..n
+calls</panel_attributes><additional_attributes>200;90;20;20</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>150</x><y>136</y><w>150</w><h>54</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n
+calls</panel_attributes><additional_attributes>20;34;130;34</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>280</x><y>260</y><w>130</w><h>40</h></coordinates><panel_attributes>_Makefile_
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>280</x><y>150</y><w>130</w><h>40</h></coordinates><panel_attributes>_hwut_
+</panel_attributes><additional_attributes></additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>318</x><y>170</y><w>64</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+0..1
+</panel_attributes><additional_attributes>32;90;32;20</additional_attributes></element></umlet_diagram>

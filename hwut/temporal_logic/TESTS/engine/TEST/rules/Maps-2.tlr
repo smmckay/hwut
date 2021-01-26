@@ -1,0 +1,38 @@
+on $INIT: {
+   a = [ 1, 2, 3, 10, 11, 23 ];
+   b = { "Spaetzle": "Nudeln", "Pommes Frites": "Kartoffel", "Reis": "Huelsenfrucht" };
+}
+
+on PRINT: { 
+   print "--------------------";
+   print a;
+   print ".size()";
+   print a.size();
+   print ".has()";
+   print a.has(10);
+   print a.has(1000);
+   print ".key()";
+   print a.key(10);
+   print a.key(1000);
+   print ".delete()";
+   a.delete(1);
+   a.delete(2);
+   a.delete(2);
+   a.delete(0);
+   print a;
+   print "--------------------";
+   print b;
+   print ".size()";
+   print b.size();
+   print ".has()";
+   print b.has("Spaetzle");
+   print b.has("Maetzle");
+   print ".key()";
+   print b.key("Nudeln");
+   print b.key("Duck");
+   print ".delete()";
+   b.delete("Spaetzle");
+   b.delete("Reis");
+   print b;
+}
+

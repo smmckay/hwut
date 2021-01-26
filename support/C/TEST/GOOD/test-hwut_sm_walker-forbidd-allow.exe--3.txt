@@ -1,0 +1,80 @@
+-- forbid and allow --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 1 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 1 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 2 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 2 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 1 2 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 1 2 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 1 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 1 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 2 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 2 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 1 2 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal
+-- forbid and allow 0 1 2 3 --
+state[0].my_do_event
+state[1].my_do_event
+state[2].my_do_event
+state[3].my_do_terminal

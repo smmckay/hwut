@@ -1,0 +1,29 @@
+TEST: {;}
+|||| potpourri
+    file_name: test-parse-hwut-info.py;
+    hwut_info_time: 1407844639;
+|||| potpourri
+TEST: {A;}
+|||| potpourri
+    file_name: test-parse-hwut-info.py;
+    title: A;
+    hwut_info_time: 1407844639;
+|||| potpourri
+TEST: {:;}
+|||| potpourri
+    file_name: test-parse-hwut-info.py;
+    hwut_info_time: 1407844639;
+|||| potpourri
+TEST: {A:;}
+|||| potpourri
+    file_name: test-parse-hwut-info.py;
+    title_group: A;
+    hwut_info_time: 1407844639;
+|||| potpourri
+TEST: {A:B;}
+|||| potpourri
+    file_name: test-parse-hwut-info.py;
+    title: B;
+    title_group: A;
+    hwut_info_time: 1407844639;
+|||| potpourri

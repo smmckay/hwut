@@ -1,0 +1,13 @@
+on $INIT: a = [];
+
+on X: { print "X detected"; a[1] = "Spagethi"; }
+on Y: { print "Y detected"; a[2] = "Pommes Frites"; }
+on Z: { print "Z detected"; a[4] = "Spaetzle"; }
+
+on PRINT: { 
+   print a;
+   print a[1];
+   print a[2];
+   print a[4];
+}
+

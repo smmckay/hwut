@@ -1,0 +1,16 @@
+(*) Impose 'true' and be 'true'
+state[0].my_do_condition 1: 1
+state[1].my_do_condition 2: 1
+state[2].my_do_condition 3: 1
+state[3].my_do_terminal
+(*) Impose 'false' and be 'false'
+state[0].my_do_condition 1: 0
+state[0].my_do_terminal
+(*) Impose 'any' and be 'true'
+state[0].my_do_condition 1: 1
+state[1].my_do_condition 2: 1
+state[2].my_do_condition 3: 1
+state[3].my_do_terminal
+(*) Impose 'any' and be 'false'
+state[0].my_do_condition 1: 0
+state[0].my_do_terminal

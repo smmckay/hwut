@@ -1,0 +1,197 @@
+code:   '  $a = SHUTDOWN.time'
+result:
+    Expression:
+      'a'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary:
+            Event: SHUTDOWN.time
+
+pruned =
+    Expression:
+      'a'
+      assignment-op: '='
+      NumericPrimary:
+        Event: SHUTDOWN.time
+
+code:   '  $b = ($x * 1) + ($x / 2)'
+result:
+    Expression:
+      'b'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary:
+            BRACKET
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: variable 'x'
+                MULTIPLY
+                NumericExpr:
+                  NumericPrimary: constant number '1.000000'
+        PLUS
+        NumericTerm:
+          NumericExpr:
+            NumericPrimary:
+              BRACKET
+              NumericTerm:
+                NumericExpr:
+                  NumericPrimary: variable 'x'
+                  DIVIDE
+                  NumericExpr:
+                    NumericPrimary: constant number '2.000000'
+
+pruned =
+    Expression:
+      'b'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary: variable 'x'
+          MULTIPLY
+          NumericPrimary: constant number '1.000000'
+        PLUS
+        NumericExpr:
+          NumericPrimary: variable 'x'
+          DIVIDE
+          NumericPrimary: constant number '2.000000'
+
+code:   '  $c = (($x * 1) - ($x * (2)))'
+result:
+    Expression:
+      'c'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary:
+            BRACKET
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary:
+                  BRACKET
+                  NumericTerm:
+                    NumericExpr:
+                      NumericPrimary: variable 'x'
+                      MULTIPLY
+                      NumericExpr:
+                        NumericPrimary: constant number '1.000000'
+              MINUS
+              NumericTerm:
+                NumericExpr:
+                  NumericPrimary:
+                    BRACKET
+                    NumericTerm:
+                      NumericExpr:
+                        NumericPrimary: variable 'x'
+                        MULTIPLY
+                        NumericExpr:
+                          NumericPrimary:
+                            BRACKET
+                            NumericTerm:
+                              NumericExpr:
+                                NumericPrimary: constant number '2.000000'
+
+pruned =
+    Expression:
+      'c'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary: variable 'x'
+          MULTIPLY
+          NumericPrimary: constant number '1.000000'
+        MINUS
+        NumericExpr:
+          NumericPrimary: variable 'x'
+          MULTIPLY
+          NumericPrimary: constant number '2.000000'
+
+code:   '  $d = X.count * ((Y.time) + Z.count)'
+result:
+    Expression:
+      'd'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary:
+            Event: X.count
+          MULTIPLY
+          NumericExpr:
+            NumericPrimary:
+              BRACKET
+              NumericTerm:
+                NumericExpr:
+                  NumericPrimary:
+                    BRACKET
+                    NumericTerm:
+                      NumericExpr:
+                        NumericPrimary:
+                          Event: Y.time
+                PLUS
+                NumericTerm:
+                  NumericExpr:
+                    NumericPrimary:
+                      Event: Z.count
+
+pruned =
+    Expression:
+      'd'
+      assignment-op: '='
+      NumericExpr:
+        NumericPrimary:
+          Event: X.count
+        MULTIPLY
+        NumericTerm:
+          NumericPrimary:
+            Event: Y.time
+          PLUS
+          NumericPrimary:
+            Event: Z.count
+
+code:   '  $e = ($x - 1) * $y + $x - 1'
+result:
+    Expression:
+      'e'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericPrimary:
+            BRACKET
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: variable 'x'
+              MINUS
+              NumericTerm:
+                NumericExpr:
+                  NumericPrimary: constant number '1.000000'
+          MULTIPLY
+          NumericExpr:
+            NumericPrimary: variable 'y'
+        PLUS
+        NumericTerm:
+          NumericExpr:
+            NumericPrimary: variable 'x'
+          MINUS
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary: constant number '1.000000'
+
+pruned =
+    Expression:
+      'e'
+      assignment-op: '='
+      NumericTerm:
+        NumericExpr:
+          NumericTerm:
+            NumericPrimary: variable 'x'
+            MINUS
+            NumericPrimary: constant number '1.000000'
+          MULTIPLY
+          NumericPrimary: variable 'y'
+        PLUS
+        NumericTerm:
+          NumericPrimary: variable 'x'
+          MINUS
+          NumericPrimary: constant number '1.000000'
+

@@ -1,0 +1,30 @@
+Max. Depth: 3
+
+do_init:    { user_data: ((0xbf9d4c48)); }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_terminal: { user_data: ((0xbf9d4c48)); name: Init; }
+
+Max. Depth: 4
+
+do_init:    { user_data: ((0xbf9d4c48)); }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_terminal: { user_data: ((0xbf9d4c48)); name: Init; }
+
+Max. Depth: 5
+
+do_init:    { user_data: ((0xbf9d4c48)); }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_terminal: { user_data: ((0xbf9d4c48)); name: Init; }
+
+Max. Depth: 6
+
+do_init:    { user_data: ((0xbf9d4c48)); }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_event:    { user_data: ((0xbf9d4c48)); name: Init; event_id: 66; }
+do_terminal: { user_data: ((0xbf9d4c48)); name: Init; }
+

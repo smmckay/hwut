@@ -1,0 +1,33 @@
+--------------------------------------------------------------------------------
+file:            nonsense.c
+total:           { line: 0.5; branch: 0.5; }
+sub_coverage_db: {'never': { line: 0.0; branch: 0.0; }, 'nonsense': { line: 1.0; branch: 1.0; }}
+test_id_list_by_function_db: {'nonsense': [('', { line: 1.0; branch: 1.0; })]}
+
+file:            2/check.c
+total:           { line: 1.0; branch: 1.0; }
+sub_coverage_db: {'main': { line: 1.0; branch: None; }}
+test_id_list_by_function_db: {'main': [('', { line: 1.0; branch: None; })]}
+
+file:            1/check.c
+total:           { line: 1.0; branch: 1.0; }
+sub_coverage_db: {'main': { line: 1.0; branch: None; }}
+test_id_list_by_function_db: {'main': [('', { line: 1.0; branch: None; })]}
+
+--------------------------------------------------------------------------------
+file:            data/lcov/1/check.c
+total:           { line: 1.0; branch: 1.0; }
+sub_coverage_db: {'main': { line: 1.0; branch: None; }}
+test_id_list_by_function_db: {'main': [('UnitTest1', { line: 1.0; branch: None; })]}
+
+file:            data/lcov/2/check.c
+total:           { line: 1.0; branch: 1.0; }
+sub_coverage_db: {'main': { line: 1.0; branch: None; }}
+test_id_list_by_function_db: {'main': [('UnitTest2', { line: 1.0; branch: None; })]}
+
+file:            data/lcov/nonsense.c
+total:           { line: 0.5; branch: 0.5; }
+sub_coverage_db: {'never': { line: 0.0; branch: 0.0; }, 'nonsense': { line: 1.0; branch: 1.0; }}
+test_id_list_by_function_db: {'nonsense': [('UnitTest1', { line: 0.8; branch: 0.5; }), ('UnitTest2', { line: 1.0; branch: 0.5; })]}
+
+--------------------------------------------------------------------------------

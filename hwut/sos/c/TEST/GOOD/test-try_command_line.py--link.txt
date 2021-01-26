@@ -1,0 +1,97 @@
+ObjectFileList:  ['((./tmpAk_Tx4.o)), ', '((./tmpzvj5aW.o)), ']
+LibraryList:     []
+LibraryDirList:  []
+AddFlagList:     []
+=> Verdict:      False
+   Output: {
+   ## ./tmpAk_Tx4.o: In function `main':
+   ## main.c:(.text+0xf): undefined reference to `mini1'
+   ## main.c:(.text+0x16): undefined reference to `mini2'
+   ## ./tmpzvj5aW.o: In function `mini0':
+   ## mini0.c:(.text+0x7): undefined reference to `mini1'
+   ## collect2: error: ld returned 1 exit status
+   ## 
+   }
+ObjectFileList:  ['((./tmpAk_Tx4.o)), ', '((./tmpzvj5aW.o)), ', '((./tmpKEEbkk.o)), ', '((./tmp0M5L87.o)), ']
+LibraryList:     []
+LibraryDirList:  []
+AddFlagList:     []
+=> Verdict:      True
+   Output: {
+   ## 
+   }
+.----------------------
+Built libTmp.a: True
+'----------------------
+ObjectFileList:  ['((./tmpAk_Tx4.o)), ']
+LibraryList:     ['-lTmp']
+LibraryDirList:  ['.']
+AddFlagList:     []
+=> Verdict:      True
+   Output: {
+   ## 
+   }
+.----------------------
+Move 'libTmp.a' to 'data/': True
+'----------------------
+ObjectFileList:  ['((./tmpAk_Tx4.o)), ']
+LibraryList:     ['-lTmp']
+LibraryDirList:  ['data/']
+AddFlagList:     []
+=> Verdict:      True
+   Output: {
+   ## 
+   }
+   'nm' -->    Output: {
+   ## 0804a01c B __bss_start
+   ## 0804a01c b completed.6590
+   ## 0804a014 D __data_start
+   ## 0804a014 W data_start
+   ## 08048330 t deregister_tm_clones
+   ## 080483a0 t __do_global_dtors_aux
+   ## 08049f0c t __do_global_dtors_aux_fini_array_entry
+   ## 0804a018 D __dso_handle
+   ## 08049f14 d _DYNAMIC
+   ## 0804a01c D _edata
+   ## 0804a020 B _end
+   ## 080484b4 T _fini
+   ## 080484c8 R _fp_hw
+   ## 080483c0 t frame_dummy
+   ## 08049f08 t __frame_dummy_init_array_entry
+   ## 08048624 r __FRAME_END__
+   ## 0804a000 d _GLOBAL_OFFSET_TABLE_
+   ##          w __gmon_start__
+   ## 08048294 T _init
+   ## 08049f0c t __init_array_end
+   ## 08049f08 t __init_array_start
+   ## 080484cc R _IO_stdin_used
+   ##          w _ITM_deregisterTMCloneTable
+   ##          w _ITM_registerTMCloneTable
+   ## 08049f10 d __JCR_END__
+   ## 08049f10 d __JCR_LIST__
+   ##          w _Jv_RegisterClasses
+   ## 080484b0 T __libc_csu_fini
+   ## 08048440 T __libc_csu_init
+   ##          U __libc_start_main@@GLIBC_2.0
+   ## 080483ed T main
+   ## 0804840e T mini0
+   ## 0804841b T mini1
+   ## 08048428 T mini2
+   ## 08048360 t register_tm_clones
+   ## 080482f0 T _start
+   ## 0804a01c D __TMC_END__
+   ## 08048320 T __x86.get_pc_thunk.bx
+   ## 
+   }
+ObjectFileList:  ['((./tmpAk_Tx4.o)), ']
+LibraryList:     ['-lTmp']
+LibraryDirList:  ['data/']
+AddFlagList:     ['-s']
+=> Verdict:      True
+   Output: {
+   ## 
+   }
+   'nm' -->    Output: {
+   ## 
+   }
+<terminated>

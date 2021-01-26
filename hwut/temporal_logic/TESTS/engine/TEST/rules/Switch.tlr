@@ -1,0 +1,15 @@
+on LETTER: {
+    switch LETTER.name: {
+        == "Otto":     print "There was an Otto.";
+        == "Heinz":    print "There was a Heinz.";
+        == "Elfriede": print "There was an Elfriede.";
+        else:          print "There was an unknown person.";
+   }
+
+   switch LETTER.time(): {
+        <  0:     print "Time was below zero.";
+        == 33:    print "Time was exactly 33.";
+        >  100:   print "Time was beyond one hundred.";
+        else:     print "Time was any number in between 0 and 100.";
+   }
+}

@@ -1,0 +1,10 @@
+# Rules to test Temporary Logic 
+from START to END : not ERROR;
+
+# No error shall occur from START to START + 10 sec
+from START: 
+    if ERROR : ERROR.time() - START.time() > 10.0;
+
+# A segmentation fault shall never occur
+not SEGMENTATION_FAULT;
+

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1052.3622"
+   height="744.09448"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docname="temporal-logic.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:docbase="C:\home\fschaef9\cygwin\download\trunk\doc\figures"
+   version="1.0">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path5653"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4396919"
+     inkscape:cx="478.74023"
+     inkscape:cy="380.64004"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     gridspacingx="2mm"
+     gridspacingy="2mm"
+     gridanglex="8.4666669mm"
+     gridanglez="8.4666669mm"
+     grid_units="mm"
+     inkscape:object-points="true"
+     inkscape:object-bbox="true"
+     inkscape:object-nodes="true"
+     objecttolerance="10000"
+     inkscape:grid-points="true"
+     gridtolerance="10000"
+     inkscape:guide-bbox="true"
+     inkscape:guide-points="true"
+     guidetolerance="10000"
+     inkscape:window-width="1600"
+     inkscape:window-height="1144"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     width="1052.3622px"
+     height="744.09448px" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       id="rect2356"
+       width="333.30576"
+       height="298.20233"
+       x="650.06799"
+       y="162.42758"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.9493522;stroke-opacity:1" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text2282"
+       y="172.67191"
+       x="668.13434"
+       style="font-size:10.18844032px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Courier New"
+       xml:space="preserve"
+       transform="scale(0.9815045,1.0188441)"><tspan
+         y="172.67191"
+         x="668.13434"
+         id="tspan2284"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 0.003: <tspan
+   style="fill:#800000"
+   id="tspan2504">POWER_ON</tspan>;</tspan><tspan
+         y="185.40746"
+         x="668.13434"
+         id="tspan2286"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 0.121: <tspan
+   style="fill:#800000"
+   id="tspan2506">BOOT_PROCESS</tspan>(state=&quot;init&quot;);</tspan><tspan
+         y="198.14301"
+         x="668.13434"
+         id="tspan2288"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 0.419: <tspan
+   style="fill:#800000"
+   id="tspan2508">READING_MASTER_BOOT_RECORD</tspan>;</tspan><tspan
+         y="210.87856"
+         x="668.13434"
+         id="tspan2290"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 0.441: <tspan
+   style="fill:#800000"
+   id="tspan2530">MOUNT_RAMDISK</tspan>(size=64);  # [kB]</tspan><tspan
+         y="223.61411"
+         x="668.13434"
+         id="tspan2292"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 0.448: <tspan
+   style="fill:#800000"
+   id="tspan2514">MOUNT_HARD_DRIVE</tspan>(partition=0);</tspan><tspan
+         y="236.34966"
+         x="668.13434"
+         id="tspan2294"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; ....</tspan><tspan
+         y="249.08521"
+         x="668.13434"
+         id="tspan2296"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 1.314: <tspan
+   style="fill:#800000"
+   id="tspan2516">INIT_NETWORK</tspan>(&quot;255.255.255.0&quot;, dhcp=&quot;yes&quot;);</tspan><tspan
+         y="261.82076"
+         x="668.13434"
+         id="tspan2298"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 1.712: <tspan
+   style="fill:#800000"
+   id="tspan2518">APACHE_SERVER</tspan>;</tspan><tspan
+         y="274.55631"
+         x="668.13434"
+         id="tspan2300"
+         sodipodi:role="line">....</tspan><tspan
+         y="287.29186"
+         x="668.13434"
+         id="tspan2302"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 6.212: <tspan
+   style="fill:#800000"
+   id="tspan2520">BOOT_PROCESS</tspan>(state=&quot;terminated&quot;);</tspan><tspan
+         y="300.02741"
+         x="668.13434"
+         id="tspan2304"
+         sodipodi:role="line">....</tspan><tspan
+         y="312.76296"
+         x="668.13434"
+         id="tspan2306"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 7.412: <tspan
+   style="fill:#800000"
+   id="tspan2522">USER_SHELL</tspan>;</tspan><tspan
+         y="325.49851"
+         x="668.13434"
+         id="tspan2308"
+         sodipodi:role="line">....</tspan><tspan
+         y="338.23406"
+         x="668.13434"
+         id="tspan2310"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; &quot;./drivers/dri/&quot;:31: <tspan
+   style="fill:#800000"
+   id="tspan2524">__ERROR</tspan>(res=&quot;1024x800&quot;);</tspan><tspan
+         y="350.96961"
+         x="668.13434"
+         id="tspan2312"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; &quot;./drivers/dri/&quot;:34: <tspan
+   style="fill:#800000"
+   id="tspan2526">__ERROR</tspan>(res=&quot;800x600&quot;);</tspan><tspan
+         y="363.70516"
+         x="668.13434"
+         id="tspan2314"
+         sodipodi:role="line">....</tspan><tspan
+         y="376.44071"
+         x="668.13434"
+         id="tspan2316"
+         sodipodi:role="line">&gt;&gt;&gt;&gt; 1203.0000: <tspan
+   style="fill:#800000"
+   id="tspan2528">LOGIN</tspan>(user=&quot;Hans Otto&quot;, sys=&quot;kde&quot;);</tspan><tspan
+         y="389.17626"
+         x="668.13434"
+         id="tspan2318"
+         sodipodi:role="line">.....</tspan></text>
+    <rect
+       y="162.4662"
+       x="35.433071"
+       height="300.16376"
+       width="305.35309"
+       id="rect3533"
+       style="fill:#ffffff;stroke:#000000;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Courier New"
+       x="42.406136"
+       y="176.93909"
+       id="text2160"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3365"
+         x="42.406136"
+         y="176.93909"
+         style="fill:#aa0000"># boot process needs to start at latest 200 ms </tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="189.43909"
+         style="fill:#aa0000"
+         id="tspan2532"># after power on.</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="201.93909"
+         id="tspan2440"><tspan
+   style="fill:#005500"
+   id="tspan2478">if</tspan> BOOT_PROCESS.state == &quot;init&quot; <tspan
+   style="fill:#005500"
+   id="tspan2484">then</tspan></tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="214.43909"
+         id="tspan2438">    BOOT_PROCESS.time - POWER_ON.time &lt; 0.200;</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="226.93909"
+         id="tspan2442" /><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="239.43909"
+         id="tspan2444"
+         style="fill:#aa0000"># network shall be initialized with dhcp</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="251.93909"
+         id="tspan2446"><tspan
+   style="fill:#005500"
+   id="tspan2480">if</tspan> INIT_NETWORK <tspan
+   style="fill:#005500"
+   id="tspan2486">then</tspan> INIT_NETWORK.dhcp == &quot;yes&quot;;</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="264.43909"
+         id="tspan2448" /><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="276.93909"
+         id="tspan2450"
+         style="fill:#aa0000"># there shall be no user shell before apache </tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="289.43909"
+         style="fill:#aa0000"
+         id="tspan2534"># server is running.</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="301.93909"
+         id="tspan2452"><tspan
+   style="fill:#0000d4"
+   id="tspan2492">to</tspan> APACHE_SERVER : <tspan
+   style="fill:#0000aa"
+   id="tspan2500">not</tspan> USER_SHELL;</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="314.43909"
+         id="tspan2454" /><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="326.93909"
+         id="tspan2456"
+         style="fill:#aa0000"># the hard drive must be mounted after the ram-</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="339.43909"
+         id="tspan2458"
+         style="fill:#aa0000"># disk and before the network is initialized.</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="351.93909"
+         id="tspan2460"><tspan
+   style="fill:#005500"
+   id="tspan2488">if</tspan> MOUNT_HARD_DRIVE <tspan
+   style="fill:#005500"
+   id="tspan2490">then</tspan> {</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="364.43909"
+         id="tspan2464">    MOUNT_RAMDISK.count;</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="376.93909"
+         id="tspan2466"><tspan
+   style="fill:#0000aa"
+   id="tspan2502">    not</tspan> INIT_NETWORK.count;</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="389.43909"
+         id="tspan2468">}</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="401.93909"
+         id="tspan2470" /><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="414.43909"
+         id="tspan2472"
+         style="fill:#aa0000"># there shall be no access to /etc/passwd while </tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="426.93909"
+         id="tspan2474"
+         style="fill:#aa0000"># the X server is initiliazing ...</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="439.43909"
+         id="tspan2476"><tspan
+   style="fill:#0000d4"
+   id="tspan2494">from</tspan> X_INIT <tspan
+   style="fill:#0000d4"
+   id="tspan2496">to</tspan> X_STARTED : <tspan
+   style="fill:#0000d4"
+   id="tspan2498">not</tspan> LOGIN;</tspan><tspan
+         sodipodi:role="line"
+         x="42.406136"
+         y="451.93909"
+         id="tspan2462" /></text>
+    <text
+       id="text3535"
+       y="155.2355"
+       x="35.198479"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial"
+       xml:space="preserve"
+       sodipodi:linespacing="125%"><tspan
+         y="155.2355"
+         x="35.198479"
+         id="tspan3537"
+         sodipodi:role="line">rules for system state</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial"
+       x="649.79529"
+       y="155.73228"
+       id="text3327"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3329"
+         x="649.79529"
+         y="155.73228">test application output</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
+       id="rect2560"
+       width="141.73228"
+       height="318.89764"
+       x="425.5433"
+       y="149.9055"
+       ry="27.01333" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="432.50732"
+       y="172.82092"
+       id="text2250"><tspan
+         sodipodi:role="line"
+         id="tspan2252"
+         x="432.50732"
+         y="172.82092">BOOT_PROCESS: </tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="187.82092"
+         id="tspan2256">      .state = &quot;terminated&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="202.82092"
+         id="tspan2258">      .count = 2</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="217.82092"
+         id="tspan2260">      .time = 0.121</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="232.82092"
+         id="tspan2254">...</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="247.82092"
+         id="tspan2270">APACHE_SERVER:</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="262.82092"
+         id="tspan2262">      .count = 1</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="277.82092"
+         id="tspan2264">      .time = 1.712</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="292.82092"
+         id="tspan2266">...</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="307.82092"
+         id="tspan2268">LOGIN:</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="322.82092"
+         id="tspan2272">      .user = &quot;Hans Otto&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="337.82092"
+         id="tspan2274">      .sys = &quot;kde&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="352.82092"
+         id="tspan2276">      .count = 1</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="367.82092"
+         id="tspan2278">      .time = 1203.0</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="382.82092"
+         id="tspan2552">...</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="397.82092"
+         id="tspan2544">$0 = 123.123</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="412.82092"
+         id="tspan2550">$1 = 1439.213</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="427.82092"
+         id="tspan2554">my_x = &quot;off&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="442.82092"
+         id="tspan2556">my_y = 31234</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="457.82092"
+         id="tspan2558">...</tspan><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="472.82092"
+         id="tspan2548" /><tspan
+         sodipodi:role="line"
+         x="432.50732"
+         y="487.82092"
+         id="tspan2546" /></text>
+    <rect
+       style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect2280"
+       width="0"
+       height="7.0866141"
+       x="304.7244"
+       y="439.37009" />
+    <text
+       sodipodi:linespacing="125%"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial"
+       x="489.57126"
+       y="123.4073"
+       id="text4508"><tspan
+         sodipodi:role="line"
+         x="491.51266"
+         y="123.4073"
+         id="tspan3498">shadow </tspan><tspan
+         sodipodi:role="line"
+         x="489.57126"
+         y="140.9073"
+         id="tspan3502">system state</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 650.06799,176.52318 L 566.75655,176.52318"
+       id="path4512"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5687"
+       d="M 650.06799,188.52318 L 566.75655,188.52318"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 650.06799,200.52318 L 566.75655,200.52318"
+       id="path5689"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5691"
+       d="M 650.06799,214.52318 L 566.75655,214.52318"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 650.06799,226.52318 L 566.75655,226.52318"
+       id="path5693"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 650.06799,252.52318 L 566.75655,252.52318"
+       id="path5697"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5699"
+       d="M 650.06799,264.52318 L 566.75655,264.52318"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 650.06799,294.52318 L 566.75655,294.52318"
+       id="path5701"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5703"
+       d="M 650.06799,318.52318 L 566.75655,318.52318"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 650.06799,344.52318 L 566.75655,344.52318"
+       id="path5705"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       id="path5707"
+       d="M 650.06799,356.52318 L 566.75655,356.52318"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 650.06799,382.52318 L 566.75655,382.52318"
+       id="path5709"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#b3b3b3;fill-rule:evenodd;stroke:#000000;stroke-width:1.2073189px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 418.00658,238.39989 L 382.67717,238.39989 L 382.67717,176.24055 L 347.34775,310.91913 L 382.67717,445.59773 L 382.67717,383.43837 L 418.00658,383.43837"
+       id="path5713" />
+  </g>
+</svg>

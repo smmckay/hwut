@@ -1,0 +1,36 @@
+{
+title: Sleep 0.1 \[sec];
+file_name: 10ms_a.sh;
+hwut_info_time: 1438093479L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; OK; 0.105508; 0; ]
+]
+}
+{
+title: Sleep 0.31 \[sec];
+file_name: 10ms_b.sh;
+hwut_info_time: 1438093479L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; OK; 0.316410; 0; ]
+]
+}
+{
+title: Sleep 2 \[sec];
+file_name: 1700ms_a.sh;
+hwut_info_time: 1438093479L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; OK; 2.005296; 0; ]
+]
+}
+{
+title: Sleep 5.1 \[sec];
+file_name: 1700ms_b.sh;
+hwut_info_time: 1438093479L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; OK; 1.672722; 0; ]
+]
+}

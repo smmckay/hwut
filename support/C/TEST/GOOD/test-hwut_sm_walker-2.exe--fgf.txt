@@ -1,0 +1,4 @@
+do_init:    { user_data: ((0xbf8383ec)); }
+condition:   { user_data: ((0xbf8383ec)); name: Init; condition_id: 2; result: FAIL; }
+do_terminal: { user_data: ((0xbf8383ec)); name: Init; }
+

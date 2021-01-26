@@ -1,0 +1,40 @@
+code:   '  x < 1'
+result: 
+    Operation <(
+      Access Primary: variable 'x'
+      Access Primary: constant number '1.000000'
+    )
+
+code:   '  x < 4 * (1 + x) '
+result: 
+    Operation <(
+      Access Primary: variable 'x'
+      Operation *(
+        Access Primary: constant number '4.000000'
+        Access Operation +(
+  Access Primary: constant number '1.000000'
+  Access Primary: variable 'x'
+)
+      )
+    )
+
+code:   '  y + 1 - 3'
+result: 
+    Operation $verdict-conversion(
+      Operation -(
+        Operation +(
+          Access Primary: variable 'y'
+          Access Primary: constant number '1.000000'
+        )
+        Access Primary: constant number '3.000000'
+      )
+    )
+
+code:   '  SHUTDOWN'
+result: 
+    Operation $verdict-conversion(
+      Operation $verdict-event-occured(
+        Primary: event 'SHUTDOWN'
+      )
+    )
+

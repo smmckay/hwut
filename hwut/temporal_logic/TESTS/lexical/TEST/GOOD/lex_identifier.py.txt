@@ -1,0 +1,10 @@
+code:   'hello world'
+result: 'hello'
+code:   '_aber hallo'
+result: '_aber'
+code:   '  _aber hallo'
+result: '_aber'
+code:   '  :_aber hallo'
+result: None
+code:   '  921_aber hallo'
+result: None

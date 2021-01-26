@@ -1,0 +1,17 @@
+# An implicit statement that is triggered whenever a condition gets true
+on BUTTON, MYFUNC: {
+   if BUTTON.count() == 2 or MYFUNC.count() == 5: {
+      send HELLO_WORLD;
+      if not 1 + 1 == 1: print "1 + 1 != 1";
+      1 + 1 == 1;
+   }
+}
+
+on BYE: {
+   if END.count() == 1: print "Bye"; else: print "Hm!";
+   if not 1 + 1 == 1: print "1 + 1 != 1";
+   1 + 1 == 1;
+}
+
+on HELLO_WORLD:
+   print "Hello World";

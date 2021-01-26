@@ -1,0 +1,11 @@
+Source File: ['some.c', 'main.c']
+Verdict:     True
+MissingRefs: {
+
+}
+Let the application greet:
+
+
+hello world!
+
+

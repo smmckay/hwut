@@ -1,0 +1,49 @@
+rm -f test-hwut_unit.exe test-hwut_cursor.exe test-hwut_bitfield.exe test-hwut_bitfield-iterator.exe test-hwut_bitfield-iterator2.exe test-hwut_sm_walker.exe test-hwut_sm_walker-2.exe test-hwut_sm_walker-3.exe test-hwut_sm_walker-4.exe test-hwut_sm_walker-5.exe test-hwut_sm_walker-6.exe test-hwut_sm_walker-forbidd-allow.exe test-hwut_sm_walker-inconsistent-condition.exe test-hwut_sm_walker-condition-norms.exe test-hwut_sm_walker-condition-norms-negative.exe test-hwut_sm_walker-coverage.exe test-hwut_sm_walker-print.exe
+rm -f test-hwut_unit.o test-hwut_cursor.o test-hwut_bitfield.o test-hwut_bitfield-iterator.o test-hwut_bitfield-iterator2.o test-hwut_sm_walker.o test-hwut_sm_walker-2.o test-hwut_sm_walker-3.o test-hwut_sm_walker-4.o test-hwut_sm_walker-5.o test-hwut_sm_walker-6.o test-hwut_sm_walker-forbidd-allow.o test-hwut_sm_walker-inconsistent-condition.o test-hwut_sm_walker-condition-norms.o test-hwut_sm_walker-condition-norms-negative.o test-hwut_sm_walker-coverage.o test-hwut_sm_walker-print.o
+rm -f test-hwut_unit.E test-hwut_cursor.E test-hwut_bitfield.E test-hwut_bitfield-iterator.E test-hwut_bitfield-iterator2.E test-hwut_sm_walker.E test-hwut_sm_walker-2.E test-hwut_sm_walker-3.E test-hwut_sm_walker-4.E test-hwut_sm_walker-5.E test-hwut_sm_walker-6.E test-hwut_sm_walker-forbidd-allow.E test-hwut_sm_walker-inconsistent-condition.E test-hwut_sm_walker-condition-norms.E test-hwut_sm_walker-condition-norms-negative.E test-hwut_sm_walker-coverage.E test-hwut_sm_walker-print.E
+rm -f hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o
+rm -rf ./obj/*
+rm -f *.exe
+rm -f *.orig *.bak *.stackdump 
+rm -f *.gc*
+rm -f *.info
+rm -f *~
+rm -f BitFiterator*
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_unit.c -o test-hwut_unit.o -I.. -DHWUT_OPTION_CONTINUE_ON_FAIL
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c ../hwut_sm_walker.c -o hwut_sm_walker.o -I..
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c ../hwut_bitfield.c -o hwut_bitfield.o -I..
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c ../hwut_cursor.c -o hwut_cursor.o -I..
+gcc -ggdb test-hwut_unit.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_unit.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_cursor.c -o test-hwut_cursor.o -I..
+gcc -ggdb test-hwut_cursor.o hwut_sm_walker.o hwut_bitfield.o  -lgcov -o test-hwut_cursor.exe
+                                                                   <terminated>
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  test-hwut_bitfield.c hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o BitFieldIterator.c -o test-hwut_bitfield.exe 
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_bitfield-iterator.c -o test-hwut_bitfield-iterator.o -I..
+gcc -ggdb test-hwut_bitfield-iterator.o hwut_sm_walker.o  hwut_cursor.o -lgcov -o test-hwut_bitfield-iterator.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_bitfield-iterator2.c -o test-hwut_bitfield-iterator2.o -I..
+gcc -ggdb test-hwut_bitfield-iterator2.o hwut_sm_walker.o  hwut_cursor.o -lgcov -o test-hwut_bitfield-iterator2.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker.c -o test-hwut_sm_walker.o -I..
+gcc -ggdb test-hwut_sm_walker.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-2.c -o test-hwut_sm_walker-2.o -I..
+gcc -ggdb test-hwut_sm_walker-2.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-2.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-3.c -o test-hwut_sm_walker-3.o -I..
+gcc -ggdb test-hwut_sm_walker-3.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-3.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-4.c -o test-hwut_sm_walker-4.o -I..
+gcc -ggdb test-hwut_sm_walker-4.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-4.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-5.c -o test-hwut_sm_walker-5.o -I..
+gcc -ggdb test-hwut_sm_walker-5.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-5.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-6.c -o test-hwut_sm_walker-6.o -I..
+gcc -ggdb test-hwut_sm_walker-6.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-6.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-forbidd-allow.c -o test-hwut_sm_walker-forbidd-allow.o -I..
+gcc -ggdb test-hwut_sm_walker-forbidd-allow.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-forbidd-allow.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-inconsistent-condition.c -o test-hwut_sm_walker-inconsistent-condition.o -I..
+gcc -ggdb test-hwut_sm_walker-inconsistent-condition.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-inconsistent-condition.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-condition-norms.c -o test-hwut_sm_walker-condition-norms.o -I..
+gcc -ggdb test-hwut_sm_walker-condition-norms.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-condition-norms.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-condition-norms-negative.c -o test-hwut_sm_walker-condition-norms-negative.o -I..
+gcc -ggdb test-hwut_sm_walker-condition-norms-negative.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-condition-norms-negative.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-coverage.c -o test-hwut_sm_walker-coverage.o -I..
+gcc -ggdb test-hwut_sm_walker-coverage.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-coverage.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_sm_walker-print.c -o test-hwut_sm_walker-print.o -I..
+gcc -ggdb test-hwut_sm_walker-print.o hwut_sm_walker.o hwut_bitfield.o hwut_cursor.o -lgcov -o test-hwut_sm_walker-print.exe
+rm test-hwut_sm_walker-3.o test-hwut_sm_walker-inconsistent-condition.o test-hwut_sm_walker-5.o test-hwut_bitfield-iterator2.o test-hwut_sm_walker-4.o test-hwut_sm_walker-6.o test-hwut_sm_walker-forbidd-allow.o test-hwut_sm_walker-coverage.o test-hwut_bitfield-iterator.o test-hwut_sm_walker-condition-norms.o test-hwut_sm_walker.o test-hwut_sm_walker-condition-norms-negative.o test-hwut_sm_walker-2.o test-hwut_sm_walker-print.o

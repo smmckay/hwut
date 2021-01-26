@@ -1,0 +1,12 @@
+on Murks : {
+    print Murks.count();
+    if   Murks.count() == 1:  send FIRST;
+    elif Murks.count() == 2:  send SECOND;
+    elif Murks.count() == 3:  send THIRD;
+    else:                     send ELSE; 
+}
+
+on FIRST:  print "One";
+on SECOND: print "Two";
+on THIRD:  print "Three";
+on ELSE:   print "Greater than three";

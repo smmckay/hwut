@@ -1,0 +1,16 @@
+RE: ['x:[0-9]+:', '([a-z]+)']
+Test: 0
+    A:       [x:12:(murks)]
+    B:       [x:43:(gogo)]
+    verdict: True
+<end>
+Test: 1
+    A:       [x:12: (murks)]
+    B:       [x:43:(gogo)]
+    verdict: False
+<end>
+Test: 2
+    A:       [(murks)x:12:]
+    B:       [x:43:(gogo)]
+    verdict: False
+<end>

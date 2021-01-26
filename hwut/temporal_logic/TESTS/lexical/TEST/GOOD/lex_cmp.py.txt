@@ -1,0 +1,12 @@
+code:   | >|
+result: |>|
+code:   | <|
+result: |<|
+code:   |>=|
+result: |>=|
+code:   |<=|
+result: |<=|
+code:   | ==|
+result: |==|
+code:   |   !=|
+result: |!=|

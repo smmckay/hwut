@@ -1,0 +1,48 @@
+
+test-print_hello.c,118
+main(int argc, char** argv)main37,1325
+test(int N)test58,1791
+setup(void)setup69,1889
+print(void)print74,1919
+
+tmpCVrtV6.c,55
+int main(int argc, char** argv) { return 0; }main1,0
+
+tmpt33jii.c,55
+int main(int argc, char** argv) { return 0; }main1,0
+
+source_directory/count.c,77
+void print_hello(void)print_hello6,65
+static void count(void)count11,123
+
+source_directory/2/two.c,37
+int two(void) { return 2; }two3,16
+
+source_directory/3/three.c,41
+int three(void) { return 3; }three3,18
+
+source_directory/1/one.c,37
+int one(void) { return 1; }one2,15
+
+source_directory/1/.c,37
+int one(void) { return 1; }one2,15
+
+test-print.c,118
+main(int argc, char** argv)main37,1313
+test(int N)test58,1762
+setup(void)setup69,1854
+print(void)print74,1884
+
+test-count-static.c,118
+main(int argc, char** argv)main38,1349
+test(int N)test59,1803
+setup(void)setup70,1895
+print(void)print75,1925
+
+empty.c,0
+
+tmpgTgiDD.c,55
+int main(int argc, char** argv) { return 0; }main1,0
+
+tmplIhBjD.c,55
+int main(int argc, char** argv) { return 0; }main1,0

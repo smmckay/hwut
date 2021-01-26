@@ -1,0 +1,4 @@
+         s __gcov_init
+         v __gcov_merge_add
+00000096 A _GLOBAL__sub_I_65535_0_nonsense
+         l puts

@@ -1,0 +1,29 @@
+{
+title: bad;
+file_name: bad.sh;
+hwut_info_time: 1435333035L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; FAIL; 0.003770; 0; ]
+]
+}
+{
+title: both;
+file_name: both.sh;
+hwut_info_time: 1435333035L;
+interpreter_list: [ bash; ]
+same_f: True;
+result_list: [
+  [ good; OK; 0.053011; 0; ]
+  [ bad; FAIL; 0.004090; 0; ]
+]
+}
+{
+title: good;
+file_name: good.sh;
+hwut_info_time: 1435333034L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; OK; 0.049510; 0; ]
+]
+}

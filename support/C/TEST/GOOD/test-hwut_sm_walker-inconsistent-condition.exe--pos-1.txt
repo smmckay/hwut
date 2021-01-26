@@ -1,0 +1,16 @@
+do_init:    { user_data: ((0xbfaf8704)); }
+Condition: 1: 1;
+Condition: 2: 1;
+Condition: 0: 1;
+
+do_init:    { user_data: ((0xbfaf8704)); }
+Condition: 1: 0;
+[[BEGIN]]--.
+ .---------'
+.
+ .'
+ 0
+
+Inconsistent state machine behavior! Starting with 'do_init()' followed
+by the same sequence of events, a condition differs.
+'first' is now 'false'; earlier on same path it was different.

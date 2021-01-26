@@ -1,0 +1,2 @@
+
+int good() { return good(); }

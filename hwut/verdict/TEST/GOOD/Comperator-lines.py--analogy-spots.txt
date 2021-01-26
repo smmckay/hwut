@@ -1,0 +1,91 @@
+Test: 0
+(0) A:       [((otto))]
+    B:       [((fritz))]
+    verdict: True
+(1) A:       [((otto))]
+    B:       [((fritz))]
+    verdict: True
+analogy_db: (1)
+   otto       => fritz
+<end>
+Test: 1
+(0) A:       [((otto))]
+    B:       [((fritz))]
+    verdict: True
+(1) A:       [((otto))]
+    B:       [((otto))]
+    verdict: False
+analogy_db: (1)
+   otto       => fritz
+<end>
+Test: 2
+(0) A:       [((otto))((otto))]
+    B:       [((fritz))((fritz))]
+    verdict: True
+analogy_db: (1)
+   otto       => fritz
+<end>
+Test: 3
+(0) A:       [((otto))((otto))]
+    B:       [((fritz))((otto))]
+    verdict: False
+analogy_db: (0)
+<end>
+Test: 4
+(0) A:       [Einst wandelte ((Heidlinde)) mit Ihrem Ehegatten ((Otto))\n]
+    B:       [Einst wandelte ((Frieda)) mit Ihrem Ehegatten ((Kunibert))\n]
+    verdict: True
+(1) A:       [durch die sonnigen Gaerten von ((Pforzheim)). Da kam ein\n]
+    B:       [durch die sonnigen Gaerten von ((Muenster)). Da kam ein\n]
+    verdict: True
+(2) A:       [Drache und frass ((Otto)) und ((Heidlinde)) und die ganze\n]
+    B:       [Drache und frass ((Kunibert)) und ((Frieda)) und die ganze\n]
+    verdict: True
+(3) A:       [Stadt ((Pforzheim)) schaute zu.]
+    B:       [Stadt ((Muenster)) schaute zu.]
+    verdict: True
+analogy_db: (3)
+   Pforzheim  => Muenster
+   Otto       => Kunibert
+   Heidlinde  => Frieda
+<end>
+Test: 5
+(0) A:       [Hugo ((otto))]
+    B:       [Otto ((maxi))]
+    verdict: False
+(1) A:       [((otto))]
+    B:       [((maxi))]
+    verdict: True
+analogy_db: (1)
+   otto       => maxi
+<end>
+Test: 6
+(0) A:       [((otto)) Hugo]
+    B:       [((maxi)) Franz]
+    verdict: False
+(1) A:       [((otto))]
+    B:       [((maxi))]
+    verdict: True
+analogy_db: (1)
+   otto       => maxi
+<end>
+Test: 7
+(0) A:       [((otto))]
+    B:       [((maxi))]
+    verdict: True
+(1) A:       [Olli ((otto))]
+    B:       [Hugo ((maxi))]
+    verdict: False
+analogy_db: (1)
+   otto       => maxi
+<end>
+Test: 8
+(0) A:       [((otto))]
+    B:       [((maxi))]
+    verdict: True
+(1) A:       [((otto)) Olli]
+    B:       [((maxi)) Hugo]
+    verdict: False
+analogy_db: (1)
+   otto       => maxi
+<end>

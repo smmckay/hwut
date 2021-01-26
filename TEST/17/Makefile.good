@@ -1,0 +1,7 @@
+
+
+hello.py:
+	cp hello-before.py hello.py
+
+hwut-info:
+	@echo hello.py

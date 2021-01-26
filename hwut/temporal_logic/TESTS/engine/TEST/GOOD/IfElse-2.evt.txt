@@ -1,0 +1,35 @@
+IfElse-2.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/IfElse-2.tlr:1: rule awake. rule 'on'
+# 1 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.000000: A
+0.100000: A
+0.200000: A
+0.300000: A
+0.500000: A
+rules/IfElse-2.tlr:1: rule broken
+0.500000:  by A.
+0.700000:              A
+rules/IfElse-2.tlr:1: rule broken
+0.700000:  by A.
+0.800000:              A
+rules/IfElse-2.tlr:1: rule broken
+0.800000:  by A.
+0.900000:              A
+rules/IfElse-2.tlr:1: rule broken
+0.900000:  by A.
+1.000000:              A
+rules/IfElse-2.tlr:1: rule broken
+1.000000:  by A.
+1.100000:              A
+1.200000: A
+1.300000: A
+1.400000: A
+# 13 statements found. Result = [FAIL]
+_______________________________________________________________________________
+result = FAIL
+

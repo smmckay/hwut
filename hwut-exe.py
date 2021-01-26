@@ -1,154 +1,86 @@
 #! /usr/bin/env python
 #
-# PURPOSE: Runs all test scripts and reports results.
+# SPDX license identifier: LGPL-2.1
 #
-# (C) 2006, 2007 Frank-Rene Schaefer
+# Copyright (C) Frank-Rene Schaefer, private.
+# Copyright (C) Frank-Rene Schaefer, 
+#               Visteon Innovation&Technology GmbH, 
+#               Kerpen, Germany.
+#
+# This file is part of "HWUT -- The hello worldler's unit test".
+#
+#                  http://hwut.sourceforge.net
+#
+# This file is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this file; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA 02110-1301 USA
+#
+# For further information see http://www.genivi.org/. 
+#------------------------------------------------------------------------------
+#
+# PURPOSE: Entry point for HWUT.
+#
+# The command line is separated into two parts:
+# 
+#    1. The arguments until the first 'minused' argument.
+#    2. The remaining arguments.
+#
+# The LEADING NO-MINUS arguments, they hold the following meaning:
+#
+#    $1 -- command (test, accept, info, time-info, ...)
+#    $2 -- application pattern (e.g. "test*.py")
+#    $3 -- choice pattern (e.g. "choice?")
+#
+# The following arguments follow the usual command line option flag schemes.
+#
+# (C) Frank-Rene Schaefer
+#
 # ABSOLUTELY NO WARRANTY
 ################################################################################
 import sys
 import os
 
-if os.environ.has_key("HWUT_PATH"):
-    sys.path.insert(0, os.environ["HWUT_PATH"])
-else:
+if not os.environ.has_key("HWUT_PATH"):
     print "error: Environment variable 'HWUT_PATH' is not defined'"
     print "error: Let it point to the directory where hwut is installed."
     sys.exit(-1)
+sys.path.insert(0, os.environ["HWUT_PATH"])
 
-from hwut.GetPot    import GetPot
-from hwut.classes   import TestApplicationDB
-#
-import hwut.help       as help
-import hwut.auxiliary  as aux
-import hwut.directory  as directory
-import hwut.io         as io
-import hwut.common     as common
-import hwut.core       as core
-from hwut.strategies.accept     import AcceptStrategy
-from hwut.strategies.clean      import CleanStrategy
-from hwut.strategies.difference import DifferenceDisplayStrategy
-from hwut.strategies.info       import InfoStrategy
-from hwut.strategies.test       import TestExecutionStrategy
-# TODO: from hwut.strategies.zip        import ZipStrategy
+try: 
+    # If a calling application pipes and breaks the pipe, then an exception
+    # is triggerred. This exception needs to be caught--but only on platforms
+    # which actually support it.
+    from signal import signal, SIGPIPE, SIG_DFL
+    signal(SIGPIPE, SIG_DFL)
+except:
+    pass
 
-
-class Setup:
-    def __init__(self, cl):
-        self.program_name  = get_next_nominus(cl)
-        self.choice        = get_next_nominus(cl)
-        self.execution_f            = cl.search("-e", "--exec")
-        self.failed_only_f          = cl.search("--fail")
-        self.compression_f          = cl.search("--compress")
-
-        if cl.search("--no-grant"): self.grant = "NONE"  # "no grant" overrides "grant" for safety
-        elif cl.search("--grant"):  self.grant = "ALL"
-        else:                       self.grant = "INTERACTIVE"
-
-        if   cl.search("--clean"):        self.make_target = "clean"
-        elif cl.search("--mostly-clean"): self.make_target = "mostlyclean"
-        elif cl.search("--make"):         self.make_target = get_next_nominus(cl)
-        else:                             self.make_target = ""
-        
-
-def execute_test(cl):
-    setup = Setup(cl)
-
-    # enable the search for executable and makeable files
-    common.application_db.set_active_mode_f()
-
-    core.run(setup, TestExecutionStrategy(setup))
-
-def accept(cl):
-    setup = Setup(cl)
-    core.run(setup, AcceptStrategy(setup))
-
-def difference(cl, DiffProgramName):
-    # call this function first, to make sure we grab the next argument
-    diff_program_name = get_next_nominus(cl)
-
-    # resolve abreviations:
-    try:
-        diff_program_name = {
-                "d":        "diff",
-                "diff":     "diff",
-                "v":        "vimdiff",
-                "vimdiff":  "vimdiff",
-                "gv":       "gvimdiff",
-                "gvimdiff": "gvimdiff",
-                "tk":       "tkdiff",
-                "tkdiff":   "tkdiff",
-                }[diff_program_name]
-    except:
-        io.on_unknown_diff_program(diff_program_name)
-
-    setup = Setup(cl)
-    setup.diff_program_name = diff_program_name
-
-    core.run(setup, DifferenceDisplayStrategy(setup))
-
-def clean(cl, CleanMakeTarget):
-    setup = Setup(cl)
-    assert setup.make_clean_target in ["clean", "mostlyclean"]
-    core.run(setup, CleanStrategy(setup))
-
-def info(cl):
-    setup = Setup(cl)
-    core.run(setup, InfoStrategy(setup))
-
-def __check_unrecognized_options(cl):
-    ufos = cl.unidentified_options("-v", "--version",
-                                   "-h", "--help",
-                                   "-w", "--terminal-width",
-                                   #
-                                   "d",  "diff", 
-                                   "c",  "clean", 
-                                   "mc", "mostly-clean", 
-                                   "a",  "accept", 
-                                   "i",  "info",
-                                   #
-                                   "-e", "--exec", 
-                                   "--make",
-                                   "--grant", "--no-grant",   # avoid interaction 'yes', 'no', 'all' ...
-                                   "--fail")
-    if ufos != []:
-        print "Error: unidentified command line option(s):"
-        print ufos
-        sys.exit(-1)
-
-def get_next_nominus(cl):
-    cl.search_failed_f = False  # otherwise the 'next()' command wont work
-    #                                # in case no flag was tested before
-    txt = cl.next("")
-    if len(txt) > 1 and txt[0] == "-": return ""
-    else:                              return txt
-
+import hwut.common       as common
+import hwut.command_line as cl
+import hwut.io.messages  as io
+    
 if __name__ == "__main__":    
-    cl = GetPot(sys.argv)
+    try:
+        bye_str        = "<terminated>"
+        cl.prepare()
+        command, setup = cl.get_setup(sys.argv)
+        common.setup   = setup
+        command(setup)
+    except KeyboardInterrupt:
+        print
+        io.print_bye_bye()
+        bye_str        = "<aborted>"
 
-    # -- store the directore from where HWUT was called.
-    io.__home_directory = os.getcwd()
-    io.__terminal_width = cl.follow(80, "-w", "--terminal-width")
-
-    # -- initialize the database
-    common.application_db = TestApplicationDB()
-
-    # -- comment on any ufo
-    __check_unrecognized_options(cl)
-
-    if   cl.search("-v", "--version"):   help.print_version()
-    elif cl.search("-h", "--help"):      help.do()
-    #
-    elif cl[1] in ["i", "info"]:         cl.search(cl[1]); info(cl)
-    elif cl[1] in ["d", "diff"]:         cl.search(cl[1]); difference(cl, "diff")
-    elif cl[1] in ["c", "clean"]:        cl.search(cl[1]); clean(cl, "clean")
-    elif cl[1] in ["m", "mostly-clean"]: cl.search(cl[1]); clean(cl, "mostyclean")
-    elif cl[1] in ["a", "accept"]:       cl.search(cl[1]); accept(cl)
-    #
-    # NOTE: The explicit 'test' service was introduct in order to make sure that
-    #       files with name 'accept', 'info' etc. can also be tested.
-    elif cl[1] in ["t", "test"]:         cl.search(cl[1]); execute_test(cl)
-    else:                                execute_test(cl)
-
-
-    print "<terminated>"
+print " " * (common.terminal_width() - len(bye_str) - 1) + bye_str
 

@@ -1,0 +1,203 @@
+____________________________________________________________________
+code:   '  from SHUTDOWN to RESET : not RETRY;'
+result: 
+    Rule:
+      TimeSpan:
+        FROM
+        Operation $verdict-conversion(
+          Operation $verdict-event-occured(
+            Primary: event 'SHUTDOWN'
+          )
+        )
+        TO
+        Operation $verdict-conversion(
+          Operation $verdict-event-occured(
+            Primary: event 'RESET'
+          )
+        )
+      REQUIRES
+      Condition:
+        Operation $verdict-inversion(
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'RETRY'
+            )
+          )
+        )
+
+____________________________________________________________________
+code:   ' from X.count >= 3 to (X or Z): not ERROR;'
+result: 
+    Rule:
+      TimeSpan:
+        FROM
+        Operation >=(
+          Access Primary: event 'X'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+          Access Primary: constant number '3.000000'
+        )
+        TO
+        Operation or(
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'X'
+            )
+          )
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'Z'
+            )
+          )
+        )
+      REQUIRES
+      Condition:
+        Operation $verdict-inversion(
+          Operation $verdict-conversion(
+            Operation $verdict-event-occured(
+              Primary: event 'ERROR'
+            )
+          )
+        )
+
+____________________________________________________________________
+code:   '  X.time - Y.time > 12;'
+result: 
+    Rule:
+      Condition:
+        Operation >(
+          Operation -(
+            Access Primary: event 'X'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+            Access Primary: event 'Y'
+: Operation $event-adornment(
+  Primary: constant string 'time'
+)
+          )
+          Access Primary: constant number '12.000000'
+        )
+
+____________________________________________________________________
+code:   '  on X, Y : send X(12.09);'
+result: 
+    Rule: On 'X', 'Y'
+      =>
+      Operation $send(
+        Event: X
+                [0] =
+                 Access Primary: constant number '12.090000'
+      )
+
+____________________________________________________________________
+code:   '
+        if START.event == "harmless" : RESET.version == 0.815;
+        else:                          RESET.version == 0.816; 
+'
+result: 
+    Rule:
+      Control IfElse:
+        IF:
+        Operation ==(
+          Access Primary: event 'START'
+: Operation $event-adornment(
+  Primary: constant string 'event'
+)
+          Access Primary: constant string 'harmless'
+        )
+        THEN:
+        Condition:
+          Operation ==(
+            Access Primary: event 'RESET'
+: Operation $event-adornment(
+  Primary: constant string 'version'
+)
+            Access Primary: constant number '0.815000'
+          )
+        ELSE:
+        Condition:
+          Operation ==(
+            Access Primary: event 'RESET'
+: Operation $event-adornment(
+  Primary: constant string 'version'
+)
+            Access Primary: constant number '0.816000'
+          )
+
+____________________________________________________________________
+code:   '
+        if       START.event == "harmless" : { RESET.version == 0.815; not STOP; }
+        else: if START.event == "useless"  : RESET.version == 0.816;
+        else: if START.count < 2           : RESET.version == 0.51;
+'
+result: 
+    Rule:
+      Control IfElse:
+        IF:
+        Operation ==(
+          Access Primary: event 'START'
+: Operation $event-adornment(
+  Primary: constant string 'event'
+)
+          Access Primary: constant string 'harmless'
+        )
+        THEN:
+        Rule_List:
+          BRACKET
+          Condition:
+            Operation ==(
+              Access Primary: event 'RESET'
+: Operation $event-adornment(
+  Primary: constant string 'version'
+)
+              Access Primary: constant number '0.815000'
+            )
+          Condition:
+            Operation $verdict-inversion(
+              Operation $verdict-conversion(
+                Operation $verdict-event-occured(
+                  Primary: event 'STOP'
+                )
+              )
+            )
+        ELSE:
+        Control IfElse:
+          IF:
+          Operation ==(
+            Access Primary: event 'START'
+: Operation $event-adornment(
+  Primary: constant string 'event'
+)
+            Access Primary: constant string 'useless'
+          )
+          THEN:
+          Condition:
+            Operation ==(
+              Access Primary: event 'RESET'
+: Operation $event-adornment(
+  Primary: constant string 'version'
+)
+              Access Primary: constant number '0.816000'
+            )
+          ELSE:
+          Control IfElse:
+            IF:
+            Operation <(
+              Access Primary: event 'START'
+: Operation $event-adornment(
+  Primary: constant string 'count'
+)
+              Access Primary: constant number '2.000000'
+            )
+            THEN:
+            Condition:
+              Operation ==(
+                Access Primary: event 'RESET'
+: Operation $event-adornment(
+  Primary: constant string 'version'
+)
+                Access Primary: constant number '0.510000'
+              )
+

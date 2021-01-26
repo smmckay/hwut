@@ -1,0 +1,51 @@
+code:   '  $x < 1 and (3 + 1) * 2 > $x + 1 and RESET'
+result: 
+    ConditionExpression:
+      ConditionPrimary:
+        NumericTerm:
+          NumericExpr:
+            NumericPrimary: variable 'x'
+        cmp: '<'
+        NumericTerm:
+          NumericExpr:
+            NumericPrimary: constant number '1.000000'
+      AND
+      ConditionExpression:
+        ConditionPrimary:
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary:
+                NumericTerm:
+                  NumericExpr:
+                    NumericPrimary: constant number '3.000000'
+                  Plus
+                  NumericTerm:
+                    NumericExpr:
+                      NumericPrimary: constant number '1.000000'
+              Multiply
+              NumericExpr:
+                NumericPrimary: constant number '2.000000'
+          cmp: '>'
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary: variable 'x'
+            Plus
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: constant number '1.000000'
+        AND
+        ConditionExpression:
+          ConditionPrimary: event 'RESET' occured?
+
+code:   '  $x < 4 '
+result: 
+    ConditionExpression:
+      ConditionPrimary:
+        NumericTerm:
+          NumericExpr:
+            NumericPrimary: variable 'x'
+        cmp: '<'
+        NumericTerm:
+          NumericExpr:
+            NumericPrimary: constant number '4.000000'
+

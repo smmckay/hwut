@@ -1,0 +1,18 @@
+code:   | otto|
+result: |otto|
+code:   | $01|
+result: |$1|
+code:   | $10|
+result: |$10|
+code:   |   $!=|
+result: Error
+code:   | $10|
+result: |$10|
+code:   | $time|
+result: |$time|
+code:   | $time_alert|
+result: |$time_alert|
+code:   | $1001!|
+result: |$1001|
+code:   | a!|
+result: |a|

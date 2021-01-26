@@ -1,0 +1,10 @@
+state[0].my_do_event
+state[1].my_do_event
+[[BEGIN]]--.
+ .---------'
+ 0 -->-- 1 -->--( Event1 )--.
+ .--------------------------'
+ 2
+
+Forbidden state '2' has been entered.
+Comment: "state two bad!"

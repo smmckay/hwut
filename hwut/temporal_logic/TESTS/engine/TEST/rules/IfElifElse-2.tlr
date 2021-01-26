@@ -1,0 +1,19 @@
+on Start: old_count = 0;
+
+on Murks : {
+    print Murks.count();
+    if     Murks.count() == 1 : {
+       print "One";
+       # send FIRST;
+    } elif Murks.count() == 2: {
+       print "Two";
+       # send SECOND;
+    } elif Murks.count() == 3: {
+       print "Three";
+       # send THIRD;
+    } else: {
+       print "Greater then three";
+       # send FORTH;
+       # print old_count;
+    }
+}

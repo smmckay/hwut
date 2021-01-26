@@ -1,0 +1,31 @@
+Warning: Using sos/sols while 'ctags' has not been installed or not
+Warning: specified in environment variable HWUT_CTAGS_APP.
+Here:                data/directory_tree/1/10/100/1000
+IncludeDirs:         ['.']
+RootDirListIncludes: ['.']
+Error: unable to compile 'some.c'
+Error: missing headers:
+Error:   "a.h"
+Error:   "b.h"
+Error:   "c.h"
+Verdict:             False
+New IncludeDirs:     []
+Not Compiled:        ['some.c']
+SourceToObjectDb: {
+        main.c -> ((./tmpBAL8cs.o))
+}
+
+Warning: Using sos/sols while 'ctags' has not been installed or not
+Warning: specified in environment variable HWUT_CTAGS_APP.
+Here:                data/directory_tree/1/10/100/1000
+IncludeDirs:         ['.']
+RootDirListIncludes: ['../../../../2/10/100/1000', '../1001', '../../../12/100']
+Error: unable to compile 'some.c'
+Error: missing headers:
+Error:   "some.h"
+Verdict:             False
+New IncludeDirs:     ['../../../../2/10/100/1000', '../../../12/100', '../1001']
+Not Compiled:        ['some.c']
+SourceToObjectDb: {
+        main.c -> ((./tmp4piD0f.o))
+}

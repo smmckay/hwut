@@ -1,0 +1,6 @@
+
+on Y: { print "Y detected"; }
+
+import "rules/ImportedImported.tlr" as more;
+
+

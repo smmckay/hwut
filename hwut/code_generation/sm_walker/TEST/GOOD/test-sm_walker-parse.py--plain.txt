@@ -1,0 +1,35 @@
+Input: {
+        first ----( ONE )----- second
+        third ----( TWO )----- forth
+    
+--------------------------------------------------------------------------------}
+-> .name:              test_sm_walker;
+.user_data_type:    uint128_t;
+.max_path_length:   256;
+.max_loop_n:        1;
+.state_list: [
+  {
+    .name: first;
+    .transition_list: [
+      { condition: None; event: ONE; target_state: second; }
+    ]
+  }
+  {
+    .name: second;
+    .transition_list: [
+    ]
+  }
+  {
+    .name: forth;
+    .transition_list: [
+    ]
+  }
+  {
+    .name: third;
+    .transition_list: [
+      { condition: None; event: TWO; target_state: forth; }
+    ]
+  }
+]
+
+__________________________________________________________________

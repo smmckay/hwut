@@ -1,0 +1,40 @@
+Match-2
+_______________________________________________________________________________
+# start parsing rules.
+rules/Match-2.tlr:2: rule awake. rule 'on'
+rules/Match-2.tlr:7: rule awake. rule 'on'
+rules/Match-2.tlr:8: rule awake. rule 'on'
+rules/Match-2.tlr:10: rule awake. rule 'on'
+rules/Match-2.tlr:11: rule awake. rule 'on'
+# 5 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+100.000000: LETTER(author='Otto', content='Captain')
+          : << 100.0 >>
+          : << Otto >>
+101.000000: LETTER(author='Heinz', content='What')
+          : << 101.0 >>
+          : << Heinz >>
+102.000000: LETTER(author='Otto', content='Captain')
+          : << 102.0 >>
+          : << Otto >>
+103.000000: LETTER(author='Adolf', content='What')
+          : << 103.0 >>
+          : << Adolf >>
+rules/Match-2.tlr:11: rule broken.
+events/Match-2.evt:4: at this point.
+104.000000: LETTER(author='Otto', content='Nonsense')
+          : << 104.0 >>
+          : << Otto >>
+rules/Match-2.tlr:10: rule broken.
+events/Match-2.evt:5: at this point.
+105.000000: LETTER(author='Heinz', content='Oh')
+          : << 105.0 >>
+          : << Heinz >>
+106.000000: LETTER(author='Karl', content='No')
+          : << 106.0 >>
+          : << Karl >>
+# 0 statements found. Result = [FAIL]
+_______________________________________________________________________________
+result = FAIL

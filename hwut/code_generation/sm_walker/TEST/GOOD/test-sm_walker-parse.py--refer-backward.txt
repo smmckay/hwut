@@ -1,0 +1,52 @@
+Input: {
+        third ----( TWO )----- forth
+          '-------( ONE )-------'
+    
+--------------------------------------------------------------------------------}
+-> .name:              test_sm_walker;
+.user_data_type:    uint128_t;
+.max_path_length:   256;
+.max_loop_n:        1;
+.state_list: [
+  {
+    .name: third;
+    .transition_list: [
+      { condition: None; event: TWO; target_state: forth; }
+      { condition: None; event: ONE; target_state: forth; }
+    ]
+  }
+  {
+    .name: forth;
+    .transition_list: [
+    ]
+  }
+]
+
+__________________________________________________________________
+Input: {
+        third --| Z |--( THREE )----- forth
+          '-----| X |--( ONE )-------'
+          '-----| Y |--( TWO )----'
+    
+--------------------------------------------------------------------------------}
+-> .name:              test_sm_walker;
+.user_data_type:    uint128_t;
+.max_path_length:   256;
+.max_loop_n:        1;
+.state_list: [
+  {
+    .name: third;
+    .transition_list: [
+      { condition: Z; event: THREE; target_state: forth; }
+      { condition: X; event: ONE; target_state: forth; }
+      { condition: Y; event: TWO; target_state: forth; }
+    ]
+  }
+  {
+    .name: forth;
+    .transition_list: [
+    ]
+  }
+]
+
+__________________________________________________________________

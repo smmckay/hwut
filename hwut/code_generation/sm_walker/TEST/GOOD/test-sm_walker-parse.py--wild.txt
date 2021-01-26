@@ -1,0 +1,141 @@
+Input: {
+          .-------( ONE )---- she
+          .-------( TWO )------'
+         he ------( THREE )----'
+    
+--------------------------------------------------------------------------------}
+-> .name:            test_sm_walker;
+.user_data_type:  uint128_t;
+.max_path_length: 256;
+.max_loop_n:      1;
+.state_list: [
+  {
+    .name: he;
+    .transition_list: [
+      { condition: None; event: THREE; target_state: she; }
+      { condition: None; event: TWO; target_state: she; }
+      { condition: None; event: ONE; target_state: she; }
+    ]
+  }
+  {
+    .name: she;
+    .transition_list: [
+    ]
+  }
+]
+
+__________________________________________________________________
+Input: {
+          he------( ONE )------.
+           '------( TWO )------.
+           '------( THREE )----she
+    
+--------------------------------------------------------------------------------}
+-> .name:            test_sm_walker;
+.user_data_type:  uint128_t;
+.max_path_length: 256;
+.max_loop_n:      1;
+.state_list: [
+  {
+    .name: he;
+    .transition_list: [
+      { condition: None; event: THREE; target_state: she; }
+      { condition: None; event: TWO; target_state: she; }
+      { condition: None; event: ONE; target_state: she; }
+    ]
+  }
+  {
+    .name: she;
+    .transition_list: [
+    ]
+  }
+]
+
+__________________________________________________________________
+Input: {
+          he -|X|-(TWO)- she
+    
+--------------------------------------------------------------------------------}
+-> .name:            test_sm_walker;
+.user_data_type:  uint128_t;
+.max_path_length: 256;
+.max_loop_n:      1;
+.state_list: [
+  {
+    .name: he;
+    .transition_list: [
+      { condition: X; event: TWO; target_state: she; }
+    ]
+  }
+  {
+    .name: she;
+    .transition_list: [
+    ]
+  }
+]
+
+__________________________________________________________________
+Input: {
+          he-( ONE )-.
+           '-( TWO )- she
+    
+--------------------------------------------------------------------------------}
+-> .name:            test_sm_walker;
+.user_data_type:  uint128_t;
+.max_path_length: 256;
+.max_loop_n:      1;
+.state_list: [
+  {
+    .name: he;
+    .transition_list: [
+      { condition: None; event: TWO; target_state: she; }
+      { condition: None; event: ONE; target_state: she; }
+    ]
+  }
+  {
+    .name: she;
+    .transition_list: [
+    ]
+  }
+]
+
+__________________________________________________________________
+Input: {
+          he-( ONE )-| posto |-.
+           '-( TWO )-| posta |- she
+    
+--------------------------------------------------------------------------------}
+-> .name:            test_sm_walker;
+.user_data_type:  uint128_t;
+.max_path_length: 256;
+.max_loop_n:      1;
+.state_list: [
+  {
+    .name: he;
+    .transition_list: [
+      { condition: None; event: TWO; target_state: he_post0; }
+      { condition: None; event: ONE; target_state: he_post1; }
+    ]
+  }
+  {
+    .name: she;
+    .transition_list: [
+    ]
+  }
+  {
+    .name: he_post0;
+    .transition_list: [
+      { condition: posta; event: None; target_state: she; }
+      { condition: -posta; event: None; target_state: he; }
+    ]
+  }
+  {
+    .name: he_post1;
+    .transition_list: [
+      { condition: posto; event: None; target_state: she; }
+      { condition: -posto; event: None; target_state: he; }
+    ]
+  }
+]
+
+__________________________________________________________________

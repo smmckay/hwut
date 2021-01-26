@@ -1,0 +1,27 @@
+IfElifElse.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/IfElifElse.tlr:1: rule awake. rule 'on'
+# 1 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.100000: Murks
+rules/IfElifElse.tlr:1: rule broken
+0.100000:  by Murks.
+0.200000:                Murks
+rules/IfElifElse.tlr:1: rule broken
+0.200000:  by Murks.
+0.300000:                Murks
+rules/IfElifElse.tlr:1: rule broken
+0.300000:  by Murks.
+0.400000:                Murks
+rules/IfElifElse.tlr:1: rule broken
+0.400000:  by Murks.
+0.500000:                Murks
+rules/IfElifElse.tlr:1: rule broken
+0.500000:  by Murks.
+#                5 statements found. Result = [FAIL]
+_______________________________________________________________________________
+result = FAIL
+

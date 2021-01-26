@@ -1,0 +1,23 @@
+# (1) from the time where X occurs the third time until
+#     the occurency of Y or Z there shall be no ERROR
+from X.count >= 3 to (X or Z): not ERROR;
+
+# (2) from the first READY signal on there shall be no SEGMENTATION_FAULT
+from READ: not SEGMENTATION_FAULT;
+
+# (3) no endless loops ever
+not ENDLESS_LOOP;
+
+# (4) from START to END the number of function calls per second shall be
+#     less than 3
+if START and END then 
+    FUNCTION_CALL.count / (END.time - START.time) < 3.0;
+end
+
+
+
+
+
+
+   
+

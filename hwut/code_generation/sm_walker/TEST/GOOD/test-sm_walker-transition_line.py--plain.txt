@@ -1,0 +1,18 @@
+Input: { me ---| always |---( happyness )--- you }
+-> { .from: me; .to: you; .condition: always; .event: happyness; }
+__________________________________________________________________
+Input: {me---|always|---(happyness)---you}
+-> { .from: me; .to: you; .condition: always; .event: happyness; }
+__________________________________________________________________
+Input: {me--|always|--(happyness)--you}
+-> { .from: me; .to: you; .condition: always; .event: happyness; }
+__________________________________________________________________
+Input: { me ---( happyness )--- you }
+-> { .from: me; .to: you; .condition: None; .event: happyness; }
+__________________________________________________________________
+Input: {me---(happyness)---you}
+-> { .from: me; .to: you; .condition: None; .event: happyness; }
+__________________________________________________________________
+Input: {me--(happyness)--you}
+-> { .from: me; .to: you; .condition: None; .event: happyness; }
+__________________________________________________________________

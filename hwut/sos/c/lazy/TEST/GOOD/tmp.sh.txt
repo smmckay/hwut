@@ -1,0 +1,15 @@
+||||
+gcc -c  source_directory/1/one.c -o one.o
+gcc -c  source_directory/2/two.c -o two.o
+gcc -c  source_directory/3/three.c -o three.o
+gcc -c -Iinclude_directory  source_directory/count.c -o count.o
+gcc -c -Iinclude_directory  -I../../../../../../../../c/HWUT/support/C -Isource_directory  test-print_hello.c -o test-print_hello.o
+gcc one.o two.o three.o  count.o test-print_hello.o  -o test-print_hello.exe
+gcc -c -Iinclude_directory  -I../../../../../../../../c/HWUT/support/C -Isource_directory  test-count-static.c -o test-count-static.o
+gcc one.o two.o three.o  test-count-static.o  -o test-count-static.exe
+rm -f test-print_hello.exe
+rm -f test-count-static.exe
+rm -f one.o two.o three.o  test-count-static.o
+rm -f one.o two.o three.o  count.o test-print_hello.o
+# OPTIONAL: rm -f *~ *.bak *.info *.orig core stackdump *.tmp tmp.* *.gc*
+||||

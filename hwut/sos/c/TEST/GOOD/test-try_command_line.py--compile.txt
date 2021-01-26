@@ -1,0 +1,66 @@
+________________________________________________________________________________
+SourceFile:     does-not-exist.c;
+IncludeDirList: [];
+AddFlagList:    [];
+
+=> Verdict:     False
+   OutputFile:  <missing>
+   Output: {
+   ## gcc: error: does-not-exist.c: No such file or directory
+   ## gcc: fatal error: no input files
+   ## compilation terminated.
+   ## 
+   }
+________________________________________________________________________________
+SourceFile:     data/nonsense.c;
+IncludeDirList: [];
+AddFlagList:    [];
+
+=> Verdict:    True
+   OutputFile: <exists>
+   Output: {
+   ## 
+   }
+________________________________________________________________________________
+SourceFile:     data/nonsense.c;
+IncludeDirList: ['./data'];
+AddFlagList:    [];
+
+=> Verdict:    True
+   OutputFile: <exists>
+   Output: {
+   ## 
+   }
+________________________________________________________________________________
+SourceFile:     data/nonsense.c;
+IncludeDirList: ['./data'];
+AddFlagList:    ['-Wall'];
+
+=> Verdict:    True
+   OutputFile: <exists>
+
+   Output: {
+   ##
+   }
+   ## data/meaningful.c:2:18: fatal error: bobo.h: No such file or directory
+   ##  #include <bobo.h>
+   ##                   ^
+   ## compilation terminated.
+   ## 
+________________________________________________________________________________
+SourceFile:     data/meaningful.c;
+IncludeDirList: ['./data'];
+AddFlagList:    ['-Wall'];
+
+=> Verdict:    False
+   OutputFile: <missing>
+   Output: {
+   ## data/meaningful.c:2:18: fatal error: bobo.h: No such file or directory
+   ##  #include <bobo.h>
+   ##                   ^
+   ## compilation terminated.
+   ## 
+   }
+<terminated>
+
+

@@ -1,0 +1,53 @@
+
+main2.c,39
+main(int argv, char** argc)main7,104
+
+nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+main.c,39
+main(int argv, char** argc)main7,104
+
+A/AB/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+A/AB/ABC/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+A/AB/ABC/ABCD/letter.c,23
+letter1()letter14,25
+
+A/AB/ABC/ABCD/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+A/AB/ABC/ABCD/common_file_name.c,23
+letter0()letter04,25
+
+A/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+hwut-crash-on-call.c,257
+static void self_crash_on_call_print(const char* N) {self_crash_on_call_print27,1215
+void undefined_function_so_crash_on_call(void) { self_crash_on_call_print("undefined_function_so_crash_on_call"); exit(-1); }undefined_function_so_crash_on_call30,1323
+
+1/12/123/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+1/12/123/1234/12345/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+1/12/123/1234/12345/number.c,62
+number0()number011,302
+nevercalled(void)nevercalled23,615
+
+1/12/123/1234/12345/common_file_name.c,23
+number1()number14,25
+
+1/12/123/1234/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+1/12/nonsense.c,47
+int unused() { return blabber(); }unused4,55
+
+1/nonsense.c,47
+int unused() { return blabber(); }unused4,55

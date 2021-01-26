@@ -1,0 +1,16 @@
+on $INIT:
+    complicated_conditions = function (): {
+        if A.nationality == "german": {
+           if   A.name == "Otto":   A.family == "Walkes"      or A.family == "Bismarck";
+           elif A.name == "Franz":  A.family == "Beckenbauer" or A.family == "Strauss";
+           else:                    A.name   != "Heino";
+        } elif A.nationality == "french": { 
+           if   A.name == "Louis":  A.family == "XIV"    or A.family == "XVI"; 
+           elif A.name == "Jaque":  A.family == "Brelle" or A.family == "Chiraque";
+           else:                    A.family != "Berlusconi";
+        }
+    };
+
+if NAME_CHECK.count() != 0: {
+   complicated_conditions();
+}

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="C:\home\fschaef9\cygwin\download\trunk\hwut\temporal_logic\doc\figures"
+   sodipodi:docname="SleepAwakeNumb.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;">
+      <path
+         id="path3207"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path3201"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.0180159"
+     inkscape:cx="378.35533"
+     inkscape:cy="481.51116"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1600"
+     inkscape:window-height="1151"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     showgrid="true"
+     gridspacingx="1mm"
+     gridspacingy="1mm"
+     gridanglex="8.4666669mm"
+     gridanglez="8.4666669mm"
+     grid_units="mm"
+     inkscape:grid-points="true"
+     gridtolerance="10000" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.46694216;fill:#0000ff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect6528"
+       width="17.716536"
+       height="0"
+       x="248.03149"
+       y="432.28345" />
+    <g
+       id="g2879">
+      <path
+         sodipodi:nodetypes="csc"
+         id="path2238"
+         d="M 434.31835,468.23415 C 434.31835,468.23415 480.38134,433.68691 529.98764,432.80108 C 579.59394,431.91525 632.74355,464.69085 632.74355,464.69085"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="csc"
+         id="path2240"
+         d="M 627.75837,499.69683 C 627.75837,499.69683 581.69539,534.24407 532.08909,535.1299 C 482.48279,536.01573 429.33318,503.24013 429.33318,503.24013"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+      <path
+         transform="translate(282.03516,-10.4018)"
+         d="M 159.02783 494.29132 A 35.012085 26.364311 0 1 1  89.003662,494.29132 A 35.012085 26.364311 0 1 1  159.02783 494.29132 z"
+         sodipodi:ry="26.364311"
+         sodipodi:rx="35.012085"
+         sodipodi:cy="494.29132"
+         sodipodi:cx="124.01575"
+         id="path2242"
+         style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <flowRoot
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+         transform="translate(313.65247,-100.819)"
+         id="flowRoot2244"
+         xml:space="preserve"><flowRegion
+           id="flowRegion2246"><rect
+             style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+             y="578.89215"
+             x="72.690414"
+             height="40.274422"
+             width="117.87635"
+             id="rect2248" /></flowRegion><flowPara
+           id="flowPara2250">Frozen</flowPara></flowRoot>      <path
+         transform="translate(530.91705,-10.15622)"
+         d="M 159.02783 494.29132 A 35.012085 26.364311 0 1 1  89.003662,494.29132 A 35.012085 26.364311 0 1 1  159.02783 494.29132 z"
+         sodipodi:ry="26.364311"
+         sodipodi:rx="35.012085"
+         sodipodi:cy="494.29132"
+         sodipodi:cx="124.01575"
+         id="path2252"
+         style="opacity:1;fill:#aad400;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <flowRoot
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+         transform="translate(568.12713,-161.44842)"
+         id="flowRoot2254"
+         xml:space="preserve"><flowRegion
+           id="flowRegion2256"><rect
+             style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+             y="639.79492"
+             x="72.690414"
+             height="44.203632"
+             width="85.460358"
+             id="rect2258" /></flowRegion><flowPara
+           id="flowPara2260">Alive</flowPara></flowRoot>      <flowRoot
+         transform="translate(299.67268,-10.11229)"
+         id="flowRoot2262"
+         xml:space="preserve"><flowRegion
+           id="flowRegion2264"><rect
+             y="470.34769"
+             x="174.60435"
+             height="51.325329"
+             width="126.22593"
+             id="rect2266" /></flowRegion><flowPara
+           style="font-weight:bold"
+           id="flowPara2268">Commands</flowPara><flowPara
+           style="font-weight:bold"
+           id="flowPara2276">'freeze' <flowSpan
+   id="flowSpan2470"
+   style="font-weight:normal">and</flowSpan> 'unfreeze'</flowPara><flowPara
+           id="flowPara2472"
+           style="font-weight:bold"><flowSpan
+   id="flowSpan2476"
+   style="font-weight:normal">influence</flowSpan> vitality</flowPara></flowRoot>    </g>
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2434"
+       sodipodi:cx="124.01575"
+       sodipodi:cy="494.29132"
+       sodipodi:rx="60.017433"
+       sodipodi:ry="27.7535"
+       d="M 184.03318 494.29132 A 60.017433 27.7535 0 1 1  63.998314,494.29132 A 60.017433 27.7535 0 1 1  184.03318 494.29132 z"
+       transform="translate(-63.438345,396.3458)" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2436"
+       transform="translate(-21.968495,293.66494)"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"><flowRegion
+         id="flowRegion2438"><rect
+           id="rect2440"
+           width="117.87635"
+           height="40.274422"
+           x="72.690414"
+           y="578.89215"
+           style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial" /></flowRegion><flowPara
+         id="flowPara2442">Off</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2444"
+       transform="translate(-435.67455,416.87365)"><flowRegion
+         id="flowRegion2446"><rect
+           id="rect2448"
+           width="225.21584"
+           height="46.405365"
+           x="448.01251"
+           y="474.46075" /></flowRegion><flowPara
+         id="flowPara2450"
+         style="font-weight:bold">Asleep <flowSpan
+   style="font-weight:normal"
+   id="flowSpan2835">or</flowSpan> Frozen </flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 109.62259,875.19683 C 109.62259,875.19683 155.68558,840.64959 205.29188,839.76376 C 254.89818,838.87793 308.04779,871.65353 308.04779,871.65353"
+       id="path2278"
+       sodipodi:nodetypes="csc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1"
+       d="M 303.06261,906.65951 C 303.06261,906.65951 256.99963,941.20675 207.39333,942.09258 C 157.78703,942.97841 104.63742,910.20281 104.63742,910.20281"
+       id="path2280"
+       sodipodi:nodetypes="csc" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2362"
+       transform="translate(-30.381775,401.44565)"
+       style="text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle"><flowRegion
+         id="flowRegion2364"><rect
+           id="rect2366"
+           width="126.22593"
+           height="51.325329"
+           x="174.60435"
+           y="470.34769"
+           style="text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle" /></flowRegion><flowPara
+         id="flowPara2376"
+         style="font-weight:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle">Transitions depend</flowPara><flowPara
+         style="font-weight:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle"
+         id="flowPara2386">on internal mode changes </flowPara><flowPara
+         style="font-weight:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle"
+         id="flowPara2390" /></flowRoot>    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#aad400;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2402"
+       sodipodi:cx="124.01575"
+       sodipodi:cy="494.29132"
+       sodipodi:rx="60.017433"
+       sodipodi:ry="27.7535"
+       d="M 184.03318 494.29132 A 60.017433 27.7535 0 1 1  63.998314,494.29132 A 60.017433 27.7535 0 1 1  184.03318 494.29132 z"
+       transform="translate(229.4278,396.3458)" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2404"
+       transform="translate(270.89765,293.66494)"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"><flowRegion
+         id="flowRegion2406"><rect
+           id="rect2408"
+           width="117.87635"
+           height="40.274422"
+           x="72.690414"
+           y="578.89215"
+           style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial" /></flowRegion><flowPara
+         id="flowPara2410">On</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2412"
+       transform="translate(-141.0418,417.98693)"><flowRegion
+         id="flowRegion2414"><rect
+           id="rect2416"
+           width="225.21584"
+           height="46.405365"
+           x="448.01251"
+           y="474.46075" /></flowRegion><flowPara
+         id="flowPara2422"
+         style="font-weight:bold">Alive<flowSpan
+   style="font-weight:normal"
+   id="flowSpan2426"> and </flowSpan>Awake</flowPara></flowRoot>    <g
+       id="g2901"
+       transform="translate(0,-8.49187)">
+      <path
+         sodipodi:nodetypes="csc"
+         id="path11608"
+         d="M 28.877079,476.86406 C 28.877079,476.86406 74.940069,442.31682 124.54637,441.43099 C 174.15267,440.54516 227.30228,473.32076 227.30228,473.32076"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="csc"
+         id="path12579"
+         d="M 222.3171,508.32674 C 222.3171,508.32674 176.25412,542.87398 126.64782,543.75981 C 77.041519,544.64564 23.891909,511.87004 23.891909,511.87004"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-opacity:1" />
+      <path
+         transform="translate(-123.40611,-1.7718793)"
+         d="M 159.02783 494.29132 A 35.012085 26.364311 0 1 1  89.003662,494.29132 A 35.012085 26.364311 0 1 1  159.02783 494.29132 z"
+         sodipodi:ry="26.364311"
+         sodipodi:rx="35.012085"
+         sodipodi:cy="494.29132"
+         sodipodi:cx="124.01575"
+         id="path10593"
+         style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <flowRoot
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+         transform="translate(-87.467512,-91.943507)"
+         id="flowRoot11564"
+         xml:space="preserve"><flowRegion
+           id="flowRegion11566"><rect
+             style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+             y="578.89215"
+             x="72.690414"
+             height="40.274422"
+             width="117.87635"
+             id="rect11568" /></flowRegion><flowPara
+           id="flowPara11570">Sleep</flowPara></flowRoot>      <path
+         transform="translate(125.47578,-1.5263037)"
+         d="M 159.02783 494.29132 A 35.012085 26.364311 0 1 1  89.003662,494.29132 A 35.012085 26.364311 0 1 1  159.02783 494.29132 z"
+         sodipodi:ry="26.364311"
+         sodipodi:rx="35.012085"
+         sodipodi:cy="494.29132"
+         sodipodi:cx="124.01575"
+         id="path11590"
+         style="opacity:1;fill:#aad400;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <flowRoot
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+         transform="translate(159.04133,-152.81851)"
+         id="flowRoot11572"
+         xml:space="preserve"><flowRegion
+           id="flowRegion11574"><rect
+             style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+             y="639.79492"
+             x="72.690414"
+             height="44.203632"
+             width="85.460358"
+             id="rect11576" /></flowRegion><flowPara
+           id="flowPara11578">Awake</flowPara></flowRoot>      <flowRoot
+         transform="translate(-105.76859,-1.4823669)"
+         id="flowRoot12581"
+         xml:space="preserve"><flowRegion
+           id="flowRegion12583"><rect
+             y="470.34769"
+             x="174.60435"
+             height="51.325329"
+             width="126.22593"
+             id="rect12585" /></flowRegion><flowPara
+           style="font-weight:bold"
+           id="flowPara12587">Events<flowSpan
+   id="flowSpan13574"
+   style="font-weight:normal"> feed</flowSpan></flowPara><flowPara
+           id="flowPara12589"><flowSpan
+   id="flowSpan12601"
+   style="font-weight:bold">conditions</flowSpan> causing</flowPara><flowPara
+           style="font-weight:bold"
+           id="flowPara12591">awakeness changes</flowPara></flowRoot>      <path
+         sodipodi:nodetypes="ccccc"
+         id="path2806"
+         d="M 127.33993,428.58898 L 162.773,446.30552 L 127.33993,464.02206 L 91.906851,446.30552 L 127.33993,428.58898"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <flowRoot
+         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+         transform="translate(34.21014,-199.23406)"
+         id="flowRoot2808"
+         xml:space="preserve"><flowRegion
+           id="flowRegion2810"><rect
+             style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"
+             y="639.79492"
+             x="72.690414"
+             height="44.203632"
+             width="85.460358"
+             id="rect2812" /></flowRegion><flowPara
+           id="flowPara2814">Alive ?</flowPara></flowRoot>      <g
+         transform="translate(0.3472965,0)"
+         id="g2826">
+        <path
+           style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M 123.0069,520.89266 L 158.43997,538.6092 L 123.0069,556.32574 L 87.573828,538.6092 L 123.0069,520.89266"
+           id="path2816"
+           sodipodi:nodetypes="ccccc" />
+        <flowRoot
+           xml:space="preserve"
+           id="flowRoot2818"
+           transform="translate(30.919008,-106.93038)"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial"><flowRegion
+             id="flowRegion2820"><rect
+               id="rect2822"
+               width="85.460358"
+               height="44.203632"
+               x="72.690414"
+               y="639.79492"
+               style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Arial" /></flowRegion><flowPara
+             id="flowPara2824">Alive ?</flowPara></flowRoot>      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Californian FB"
+       x="318.89764"
+       y="956.37915"
+       id="text2837"><tspan
+         sodipodi:role="line"
+         x="318.89764"
+         y="956.37915"
+         id="tspan2841"
+         style="font-family:Arial">Rules are active.</tspan><tspan
+         sodipodi:role="line"
+         x="318.89764"
+         y="971.37915"
+         id="tspan2847"
+         style="font-family:Arial">Conditions are <tspan
+   style="font-weight:bold;font-family:Arial"
+   id="tspan2877">required to hold.</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Californian FB"
+       x="0"
+       y="956.37915"
+       id="text2849"><tspan
+         sodipodi:role="line"
+         id="tspan2851"
+         x="0"
+         y="956.37915"
+         style="font-family:Arial">Rules are inactive. </tspan><tspan
+         sodipodi:role="line"
+         x="0"
+         y="971.37915"
+         id="tspan2855"
+         style="font-family:Arial">Conditions <tspan
+   style="font-weight:bold;font-family:Arial"
+   id="tspan2865">do not need to hold</tspan>.</tspan></text>
+  </g>
+</svg>

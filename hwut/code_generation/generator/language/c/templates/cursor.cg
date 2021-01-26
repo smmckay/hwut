@@ -1,0 +1,165 @@
+#ifndef INCLUDE_GUARD_HWUT_CURSOR_H
+#define INCLUDE_GUARD_HWUT_CURSOR_H
+/* vim:setlocal ft=c: 
+ *
+ * This file implements a 'me' in C. The setting of the me represents
+ * a parameter setting. Provided are functions to initialize and increment 
+ * the multi-dimensional me. Additionally, functions to map from and to
+ * a numeric key are provided. 
+ *
+ * To map from a me to a setting, a specific setting_map is required. E.g.
+ * a setting map:
+ *
+ *                 0: "otto", "fritz", "frank", "marvin"
+ *                 1: 1.25,   2.5
+ *                 2: 3.14,   0.815 
+ *
+ * interprets the me [ [3] [1] [0] ] as:
+ *
+ *                 0: "marvin"  (element 3 of '0')
+ *                 1: 2.5       (element 1 of '1')
+ *                 2: 3.14      (element 0 of '2')
+ * 
+ * Thus, walking through the cursors space means walking through all permu-
+ * tations of the given settings map.
+ *
+ * (C) Frank-Rene Schaefer.                                                  */
+#include "assert.h"
+
+typedef long hwut_cursor_index_t;
+typedef long hwut_cursor_key_t;
+
+
+typedef struct {
+    /* A cursor consisting of indices of multiple dimensions. The setting of
+     *
+     *                        index[i] = k 
+     * 
+     * tells that the parameter 'i' has to be set to its k's value. A setting
+     *
+     *                        index_dim[i] = q          
+     *
+     * tells that the index for parameter 'i' (the 'k' from above) can only be
+     * lesser than 'q'. 'q' is the dimension of parameter 'i'.               */
+    hwut_cursor_index_t*       index;
+    const hwut_cursor_index_t* index_dim;
+	int                        index_n;
+} hwut_cursor_t;
+
+static void              hwut_cursor_init(hwut_cursor_t*             me, 
+                                          int                        N, 
+                                          hwut_cursor_index_t*       indexArray, 
+                                          const hwut_cursor_index_t* indexDimArray);
+static int               hwut_cursor_next(hwut_cursor_t* me);
+static hwut_cursor_key_t hwut_cursor_to_key(hwut_cursor_t* me);
+static int               hwut_cursor_from_key(hwut_cursor_t*    me, 
+                                              hwut_cursor_key_t key);
+
+#if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
+#include "stdio.h"
+static void              hwut_cursor_print(hwut_cursor_t* me);
+static void              hwut_cursor_print_dimensions(hwut_cursor_t* me);
+#endif
+
+#define INCLUDE_GUARD_HWUT_CURSOR_H
+
+static void              
+hwut_cursor_init(hwut_cursor_t*             me, 
+                 int                        N, 
+                 hwut_cursor_index_t*       indexArray, 
+                 const hwut_cursor_index_t* indexDimArray)
+{
+    int i = 0;
+    assert(N > 0);
+
+	me->index_n   = N;
+	me->index     = indexArray;
+	me->index_dim = indexDimArray;
+
+    for(i=0; i < N ; ++i) {
+        me->index[i] = 0;
+        assert(me->index_dim[i] != 0);
+    }
+}
+
+static int 
+hwut_cursor_next(hwut_cursor_t* me)
+/* Increments the setting of the 'me'. 
+ *
+ * RETURNS: 1 if the found setting is valid. 
+ *          0 if the end of the possible setting has been found.             */
+{
+    int i = me->index_n - 1;
+    while( 1 + 1 == 2 ) {
+        me->index[i] += 1;
+        if( me->index[i] < me->index_dim[i]) {
+            return 1;          /* Found permutation.                         */
+        }
+        else if( i == 0 ) {
+            return 0;          /* No further permunation available.          */
+        }
+        me->index[i] = 0;
+        i -= 1;
+    }
+    return 1;                      
+}
+
+static hwut_cursor_key_t
+hwut_cursor_to_key(hwut_cursor_t* me) 
+/* RETURNS: A numeric value, i.e. a 'key' which represents a particular setting.
+ *          The 'setting' is represented by the 'index[]' array of the me.
+ *                                                                           
+ * This function is the inverse of 'hwut_cursor_from_key()'.                 */
+{
+    long   result = 0;
+    int    i      = 0;
+
+    for(i=0; ;) {
+        result += me->index[i];
+        ++i;
+        if( i == me->index_n ) {
+            break;
+        }
+        result *= me->index_dim[i];
+    }
+    return result;
+}
+
+static int
+hwut_cursor_from_key(hwut_cursor_t* me, hwut_cursor_key_t key) 
+/* Sets the me's indicies corresponding a numeric 'key'. 
+ * RETURNS: 1 -- if this was possible.        
+ *          0 -- if this was not possible.
+ * This function is the inverse of 'hwut_cursor_to_key()'.                   */
+{
+    long   remainder = 1;
+    int    i         = 0;
+
+    for(i=me->index_n - 1; i >=0 ; --i) {
+        remainder    = key % me->index_dim[i];
+        me->index[i] = remainder; 
+        key          = (key - remainder) / me->index_dim[i];
+    }
+    return key;
+}
+
+
+#if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
+static void
+hwut_cursor_print(hwut_cursor_t* me)
+{
+	int i=0;
+	for(i=0; i < me->index_n; ++i) {
+		printf("[%i]", me->index[i]);
+	}
+}
+
+static void
+hwut_cursor_print_dimensions(hwut_cursor_t* me)
+{
+	int i=0;
+	for(i=0; i < me->index_n; ++i) {
+         printf("[%i]", me->index_dim[i]);
+    }
+}
+#endif

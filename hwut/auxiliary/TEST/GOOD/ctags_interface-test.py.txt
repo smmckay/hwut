@@ -1,0 +1,50 @@
+one_global: {
+    data/ctags/A/B/C/one.c
+}
+one_implemented_function: {
+    data/ctags/A/B/C/one.c
+}
+one_something: {
+    data/ctags/A/B/C/one.c
+}
+one_something_else: {
+    data/ctags/A/B/C/one.c
+}
+one_static: {
+    data/ctags/A/B/C/one.c
+}
+three_global: {
+    data/ctags/three.c
+}
+three_implemented_function: {
+    data/ctags/three.c
+}
+three_something: {
+    data/ctags/three.c
+}
+three_something_else: {
+    data/ctags/three.c
+}
+three_static: {
+    data/ctags/three.c
+}
+two_global: {
+    data/ctags/1/2/3/two.c
+}
+two_implemented_function: {
+    data/ctags/1/2/3/two.c
+}
+two_something: {
+    data/ctags/1/2/3/two.c
+}
+two_something_else: {
+    data/ctags/1/2/3/two.c
+}
+two_static: {
+    data/ctags/1/2/3/two.c
+}
+zz_all: {
+    data/ctags/1/2/3/two.c
+    data/ctags/A/B/C/one.c
+    data/ctags/three.c
+}

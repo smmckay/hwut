@@ -1,138 +1,138 @@
-import hwut.io        as io
-import hwut.common    as common
-import hwut.make      as make
-import hwut.auxiliary as aux
-import hwut.directory as directory
+# SPDX license identifier: LGPL-2.1
+#
+# Copyright (C) Frank-Rene Schaefer, private.
+# Copyright (C) Frank-Rene Schaefer, 
+#               Visteon Innovation&Technology GmbH, 
+#               Kerpen, Germany.
+#
+# This file is part of "HWUT -- The hello worldler's unit test".
+#
+#                  http://hwut.sourceforge.net
+#
+# This file is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this file; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA 02110-1301 USA
+#
+# For further information see http://www.genivi.org/. 
+#------------------------------------------------------------------------------
+import hwut.io.messages           as io
+import hwut.common                as common
+import hwut.auxiliary.make        as make
+import hwut.auxiliary.path        as aux
+import hwut.auxiliary.file_system as fs
+#
+from   hwut.test_db.selector import TestSelector
+from   hwut.remote.core      import RemoteExecuter
+from   hwut.strategies.core  import NullStrategy
+from   hwut.strategies.test  import TestExecutionStrategy
 #
 import os
 import sys
 
-def run(setup, strategy):
-    if setup.program_name != "": do(setup.program_name, setup.choice, strategy)
-    else:                        do_directory_tree(strategy)
+
+def run(setup, Strategy):
+    """Runs a 'Strategy' starting from he current directory. After all is done
+    this function lets the process return to the directory where it started.
+
+    EXITS 0 -- i.e. with success.
+    """
+    common.call_directory = os.getcwd()
+
+    selector = TestSelector(setup.test_reference_table, 
+                            setup.test_directory_pattern, 
+                            setup.test_application_name, 
+                            setup.choice, 
+                            setup.failed_only_f,
+                            setup.make_failed_only_f,
+                            setup.good_only_f)
+
+    handle_directory_tree(Strategy, selector)
+
+    common.change_directory(common.call_directory)
     sys.exit(0)
 
-def do(ProgramName, ChoiceSpecification, Strategy):
+def handle_directory_tree(Strategy, Selector):
+    """Determine all TEST related directories and apply the 'Strategy'.
+       -- Find all TEST directories. 
+       -- call 'handle_directory()' for each directory found. 
     """
-    """
-    assert type(ProgramName) == str and ProgramName != ""
-    assert type(ChoiceSpecification) == str
-    __assert_strategy(Strategy)
 
-    ProgramName = aux.strip_dot_slash(ProgramName)
-
-    # -- read content of cache file for current directory into the application_db
-    test_list = common.application_db.get_test_execution_sequence([ProgramName], 
-                                                                  SpecificChoice=ChoiceSpecification)
-    if test_list == []:
-        io.on_file_does_not_exist(ProgramName)
-        return
-    elif test_list == None:
-        io.on_application_does_not_exist_in_database(ProgramName)
+    # (*) Get list of TEST sub directories.
+    directory_list = fs.get_TEST_directories()
+    if not directory_list:
+        io.no_hwut_related_directories_found()
         return
 
-    result = do_list(test_list, Strategy)
+    # (*) Sort the directories under concern nicely
+    directory_list.sort(key=__directory_sort_key)
 
-    # -- print result
-    io.print_summary([ ["./", result] ])
+    origin_dir = os.getcwd()
 
+    # (*) Iterate over TEST directories.
+    Strategy.start_directory_tree(directory_list)
+    for directory in Selector.admissible_directories(directory_list):
+        common.set_home_directory(directory)
+        handle_directory(directory, Strategy, Selector)
+
+    common.set_home_directory(origin_dir)
     Strategy.end_directory_tree()
 
-def do_list(TestExecutionSequence, Strategy): 
-    """This is the mother of all HWUT related functionality. All tests
-       pass by this function. It executes a list of files (or all) in
-       the current directory. 
+def handle_directory(Directory, Strategy, Selector):
+    """Execute a Strategy in the current directory on the given TestSequence.
+
+       -- initialize testing in this directory
+       -- execute all 'tests' in this directory with the given Strategy.
+       -- finalize testing in this directory.
+    
+    RETURNS: -- Whatsoever 'Strategy' returns from '.end_directory()'
+             -- None, if there is no test that has been done.
     """
-    assert type(TestExecutionSequence) == list
-    assert map(lambda element: element.__class__.__name__, TestExecutionSequence) \
-           == [ "test_info" ] * len(TestExecutionSequence)
-    __assert_strategy(Strategy)
+    def iterable(TestSequence):
+        """YIELDS: [0] Boolean  -- True, if a new group started, False else.
+                   [1] TestInfo 
+        """
+        prev_group = None
+        for test in TestSequence:
+            if Strategy.break_up_requested(): break
+            group = test.description.group()
+            yield prev_group != group, test 
+            prev_group = group
 
-    Directory = os.getcwd()
+    backup_dir = common.change_directory(Directory)
 
-    aux.ensure_directory_structure()
+    # (*) Initialize testing in the current directory
+    result        = None
+    test_sequence = Strategy.start_directory(Directory, Selector) 
+    if test_sequence is not None: 
+        # (*) Execute the test sequence
+        for new_group_f, test in iterable(test_sequence):
+            if new_group_f: io.on_test_group_start(test)
+            io.on_test_start(test)
+            Strategy.do(test) 
 
-    io.on_directory_enter(Directory, Strategy.get_referred_date())
-
-    # NOTE: If TestExecutionSequence != [], then the common.application_db must have
-    #       been initialized, otherwise no test sequence could have been extracted.
-    if TestExecutionSequence == []:
-        TestExecutionSequence = common.application_db.get_test_execution_sequence()
-
-    io.on_test_sequence_start()
-
-    Strategy.start_directory(Directory)
-
-    current_group = None
-    for element in TestExecutionSequence:    
-        if Strategy.break_up_requested(): break
-
-        if current_group != element.group: 
-            current_group = element.group
-            io.on_test_group_start(element)
-
-        io.on_test_start(element)
-        if element.last_result == "OK" and Strategy.handle_only_failed_experiments():
-            io.on_test_is_good_already(element)
-            continue
-        else:
-            result = Strategy.do(element) 
-            io.on_test_end(element, result)
-
-    if Strategy.xml_database_write_permission(): 
-        common.application_db.write()
-
-    result = Strategy.end_directory()
-
-    # -- call 'make' for a special target when leaving the directory
-    make.simply_this(Strategy.get_make_target_on_leave_directory())
-
+        # (*) Terminate testing in the current directory
+        result = Strategy.end_directory()
+    
+    common.change_directory(backup_dir)
     return result
 
-def do_directory_tree(Strategy):
-    __assert_strategy(Strategy)
+def __directory_sort_key(Dir):
+    """Comparator for sorting directories in a way so that it is visually
+    appealing. That is, directories with the same starting directories appear
+    one after the other. Smaller paths come before longer paths. With this 
+    setup, printed directories look very much like 'trees'.
+    """
+    path_list = aux.split_path(Dir)
+    return len(path_list), path_list
 
-    # -- get list of subdirectories that contain test applications, sort them.
-    def __sort(DirA, DirB):
-        directory_path_list_A = DirA.split("/")
-        directory_path_list_B = DirB.split("/")
-
-        LA = len(directory_path_list_A)
-        LB = len(directory_path_list_B)
-        for i in range(min(LA, LB)):
-            cmp_result = cmp(directory_path_list_A[i], directory_path_list_B[i])
-            if cmp_result != 0: return cmp_result
-        else:
-            return cmp(LA, LB)
-
-    hwut_related_directory_list = aux.get_TEST_directories()
-    hwut_related_directory_list.sort(__sort)
-
-    # -- iterate over the list of directories that contain test applications
-    Strategy.start_directory_tree(hwut_related_directory_list)
-
-    result_list = []
-    for dir in hwut_related_directory_list:
-        # -- enter the concerned directory
-        os.chdir(io.__home_directory)  # need first to go home, since 'dir'
-        os.chdir(dir)                  # is relative to 'home directory', i.e.
-
-        # -- run all tests of directory
-        result = do_list([], Strategy)
-
-        # -- if there is a result, append it to the list
-        if result != None: result_list.append([dir, result])
-
-    # -- print result
-    io.print_summary(result_list)
-
-    Strategy.end_directory_tree()
-
-def __assert_strategy(Strategy):
-    assert "do"                             in dir(Strategy)
-    assert "break_up_requested"             in dir(Strategy)
-    assert "handle_only_failed_experiments" in dir(Strategy)
-    assert "end_directory"                  in dir(Strategy)
-    assert "start_directory"                in dir(Strategy)
-    assert "end_directory_tree"             in dir(Strategy)
-    assert "start_directory_tree"           in dir(Strategy)

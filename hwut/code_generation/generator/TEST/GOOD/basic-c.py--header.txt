@@ -1,0 +1,231 @@
+(1a) Impossible: len(GeneratorName) == 0
+     header_do() --> None
+
+(1b) Impossible: len(ParameterList) == 0
+     header_do() --> None
+
+(2)  Normal Case 1:
+
+___________________________________________________________________
+    Lines:    70
+    Open $-s: 0 (must be ZERO!)
+#if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
+#   include <stdio.h>
+#else
+    typedef int FILE; /* Required to implement the dummy 'print' functions.  */
+#endif
+
+#if ! defined(HWUT_OPTION_ALLOC_FORBIDDEN)
+#   include <malloc.h>
+#endif
+
+#include <hwut_cursor.h>   /* Use: -I<<HWUT_PATH>>/support/c                  */
+
+/* The 'hwut_cursor_t' is a type which is kept inside the generator. It
+ * is pasted along the generated code. To avoid exposing it in detail, 
+ * a forward decleration is used here.                                       */
+struct x_t_tag;
+
+typedef struct x_section_t_tag {
+    hwut_cursor_key_t  key_offset;
+
+    void (*init)(struct x_t_tag* it);
+    int  (*implement)(struct x_t_tag* it); 
+    int  (*is_admissible)(struct x_t_tag* it); 
+} x_section_t;
+
+
+
+typedef struct x_t_tag {
+    /* Internal iterator data _______________________________________________*/
+    struct { 
+        /* Cursor and section                                                */
+        hwut_cursor_t          cursor;
+        const x_section_t*     section;
+
+        void   (*print)(FILE*, struct x_t_tag*);
+
+        /* Allocate memory for the index array of the cursor directly along  
+         * with the memory of the iterator.                                  */
+        hwut_cursor_index_t    __memory_index_array[2];
+        
+    } hwut;
+
+    /* Parameter settings ___________________________________________________*/
+    int   x;
+    float y;
+
+} x_t;
+
+/* API ______________________________________________________________________*/
+
+extern void              x_init(x_t* me);
+
+extern int               x_next(x_t* it);
+
+/* Each setting can be associated with a unique scalar key. The transformation
+ * from key to setting and from setting to key is done with the subsequent 
+ * functions.
+ * 
+ * The total number of iterations is equal to 'max. key + 1'.                */
+extern hwut_cursor_key_t x_key_max(); 
+extern hwut_cursor_key_t x_key_get(x_t* it);
+extern int               x_key_set(x_t* it, hwut_cursor_key_t key);
+extern int               x_is_admissible(x_t* it);
+
+/* Print functions for convenience                                           */
+/* (No <stdio.h>, then 'FILE*' is 'int*' and functions are dummies.)         */
+extern void x_print(FILE* fh, x_t* it);
+extern void x_print_table_header(FILE* fh, const char* Separator);
+extern void x_print_table_line(FILE* fh, x_t* it, const char* Separator);
+extern void x_print_table(FILE* fh, const char* Separator);
+
+___________________________________________________________________
+#if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
+#   include <stdio.h>
+#else
+    typedef int FILE; /* Required to implement the dummy 'print' functions.  */
+#endif
+
+#if ! defined(HWUT_OPTION_ALLOC_FORBIDDEN)
+#   include <malloc.h>
+#endif
+
+#include <hwut_cursor.h>   /* Use: -I<<HWUT_PATH>>/support/c                  */
+
+/* The 'hwut_cursor_t' is a type which is kept inside the generator. It
+ * is pasted along the generated code. To avoid exposing it in detail, 
+ * a forward decleration is used here.                                       */
+struct x_t_tag;
+
+typedef struct x_section_t_tag {
+    hwut_cursor_key_t  key_offset;
+
+    void (*init)(struct x_t_tag* it);
+    int  (*implement)(struct x_t_tag* it); 
+    int  (*is_admissible)(struct x_t_tag* it); 
+} x_section_t;
+
+
+
+typedef struct x_t_tag {
+    /* Internal iterator data _______________________________________________*/
+    struct { 
+        /* Cursor and section                                                */
+        hwut_cursor_t          cursor;
+        const x_section_t*     section;
+
+        void   (*print)(FILE*, struct x_t_tag*);
+
+        /* Allocate memory for the index array of the cursor directly along  
+         * with the memory of the iterator.                                  */
+        hwut_cursor_index_t    __memory_index_array[2];
+        
+    } hwut;
+
+    /* Parameter settings ___________________________________________________*/
+    int   x;
+    float y;
+
+} x_t;
+
+/* API ______________________________________________________________________*/
+
+extern void              x_init(x_t* me);
+
+extern int               x_next(x_t* it);
+
+/* Each setting can be associated with a unique scalar key. The transformation
+ * from key to setting and from setting to key is done with the subsequent 
+ * functions.
+ * 
+ * The total number of iterations is equal to 'max. key + 1'.                */
+extern hwut_cursor_key_t x_key_max(); 
+extern hwut_cursor_key_t x_key_get(x_t* it);
+extern int               x_key_set(x_t* it, hwut_cursor_key_t key);
+extern int               x_is_admissible(x_t* it);
+
+/* Print functions for convenience                                           */
+/* (No <stdio.h>, then 'FILE*' is 'int*' and functions are dummies.)         */
+extern void x_print(FILE* fh, x_t* it);
+extern void x_print_table_header(FILE* fh, const char* Separator);
+extern void x_print_table_line(FILE* fh, x_t* it, const char* Separator);
+extern void x_print_table(FILE* fh, const char* Separator);
+
+___________________________________________________________________
+(3)  Normal Case 2:
+
+___________________________________________________________________
+    Lines:    69
+    Open $-s: 0 (must be ZERO!)
+#if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
+#   include <stdio.h>
+#else
+    typedef int FILE; /* Required to implement the dummy 'print' functions.  */
+#endif
+
+#if ! defined(HWUT_OPTION_ALLOC_FORBIDDEN)
+#   include <malloc.h>
+#endif
+
+#include <hwut_cursor.h>   /* Use: -I<<HWUT_PATH>>/support/c                  */
+
+/* The 'hwut_cursor_t' is a type which is kept inside the generator. It
+ * is pasted along the generated code. To avoid exposing it in detail, 
+ * a forward decleration is used here.                                       */
+struct fritz_the_fisher_t_tag;
+
+typedef struct fritz_the_fisher_section_t_tag {
+    hwut_cursor_key_t  key_offset;
+
+    void (*init)(struct fritz_the_fisher_t_tag* it);
+    int  (*implement)(struct fritz_the_fisher_t_tag* it); 
+    int  (*is_admissible)(struct fritz_the_fisher_t_tag* it); 
+} fritz_the_fisher_section_t;
+
+
+
+typedef struct fritz_the_fisher_t_tag {
+    /* Internal iterator data _______________________________________________*/
+    struct { 
+        /* Cursor and section                                                */
+        hwut_cursor_t                     cursor;
+        const fritz_the_fisher_section_t* section;
+
+        void   (*print)(FILE*, struct fritz_the_fisher_t_tag*);
+
+        /* Allocate memory for the index array of the cursor directly along  
+         * with the memory of the iterator.                                  */
+        hwut_cursor_index_t    __memory_index_array[1];
+        
+    } hwut;
+
+    /* Parameter settings ___________________________________________________*/
+    const char*            str;
+
+} fritz_the_fisher_t;
+
+/* API ______________________________________________________________________*/
+
+extern void                         fritz_the_fisher_init(fritz_the_fisher_t* me);
+
+extern int                          fritz_the_fisher_next(fritz_the_fisher_t* it);
+
+/* Each setting can be associated with a unique scalar key. The transformation
+ * from key to setting and from setting to key is done with the subsequent 
+ * functions.
+ * 
+ * The total number of iterations is equal to 'max. key + 1'.                */
+extern hwut_cursor_key_t            fritz_the_fisher_key_max(); 
+extern hwut_cursor_key_t            fritz_the_fisher_key_get(fritz_the_fisher_t* it);
+extern int                          fritz_the_fisher_key_set(fritz_the_fisher_t* it, hwut_cursor_key_t key);
+extern int                          fritz_the_fisher_is_admissible(fritz_the_fisher_t* it);
+
+/* Print functions for convenience                                           */
+/* (No <stdio.h>, then 'FILE*' is 'int*' and functions are dummies.)         */
+extern void fritz_the_fisher_print(FILE* fh, fritz_the_fisher_t* it);
+extern void fritz_the_fisher_print_table_header(FILE* fh, const char* Separator);
+extern void fritz_the_fisher_print_table_line(FILE* fh, fritz_the_fisher_t* it, const char* Separator);
+extern void fritz_the_fisher_print_table(FILE* fh, const char* Separator);
+
+___________________________________________________________________

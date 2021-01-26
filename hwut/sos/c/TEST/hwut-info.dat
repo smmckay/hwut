@@ -1,0 +1,7 @@
+Testing SOS-Functionality--Auto-Setup of Compilations
+-------------------------------------
+python *.py
+--not __init__.py
+--not helper.py
+-------------------------------------
+

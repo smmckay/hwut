@@ -1,0 +1,79 @@
+
+---// straight //----------------------------
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FalseSet: set([])
+TrueDb:
+?a*:
+   name:             ?a*;
+   interpreter_seq:  [];
+   stdout_post_proc: None;
+   stderr_post_proc: None;
+   make_f:           False;
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FalseSet: set([])
+TrueDb:
+?b*:
+   name:             ?b*;
+   interpreter_seq:  ['sh'];
+   stdout_post_proc: None;
+   stderr_post_proc: None;
+   make_f:           False;
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FalseSet: set([])
+TrueDb:
+?c*:
+   name:             ?c*;
+   interpreter_seq:  ['sh', 'interpreter.sh'];
+   stdout_post_proc: None;
+   stderr_post_proc: None;
+   make_f:           False;
+
+
+---// not //---------------------------------
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FalseSet: set(['?a*'])
+TrueDb:
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FalseSet: set(['dest', '?b*'])
+TrueDb:
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FalseSet: set(['dest', '?c*', 'cest'])
+TrueDb:
+
+---// wild //--------------------------------
+
+DIR:                   True
+HWUT_INFO_FILE_NAME:   True
+FalseSet: set(['A', 'C', 'B'])
+TrueDb:
+?c*:
+   name:             ?c*;
+   interpreter_seq:  ['sh', 'interpreter.sh'];
+   stdout_post_proc: None;
+   stderr_post_proc: None;
+   make_f:           False;
+
+?b*:
+   name:             ?b*;
+   interpreter_seq:  ['sh'];
+   stdout_post_proc: None;
+   stderr_post_proc: None;
+   make_f:           False;
+
+?a*:
+   name:             ?a*;
+   interpreter_seq:  [];
+   stdout_post_proc: None;
+   stderr_post_proc: None;
+   make_f:           False;
+

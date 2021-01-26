@@ -1,0 +1,2 @@
+state[0].my_do_condition 1: 0
+state[0].my_do_terminal

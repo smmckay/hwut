@@ -1,0 +1,5 @@
+match "at\s+(\d{2})h(\d{2})\s+([A-Z][a-z]+)\s+said\s+(\"[^\"]+\")" : { 
+    $time = $1 * 60 + $2;
+    Announcement(Who=$3, What=$4);
+}
+

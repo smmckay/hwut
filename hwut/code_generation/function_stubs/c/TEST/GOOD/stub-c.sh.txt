@@ -1,0 +1,12 @@
+                                                                                                                                          <terminated>
+hwut_stub.h: lines, words, bytes
+
+ 104  367 4753 hwut_stub.h
+
+hwut_stub.c: lines, words, bytes
+
+  474  1184 14576 hwut_stub.c
+
+Compiling (no output is good output)
+
+a.o

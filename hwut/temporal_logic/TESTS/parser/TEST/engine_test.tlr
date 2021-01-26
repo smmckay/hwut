@@ -1,0 +1,28 @@
+(fset 'compile-temporary-logic
+   [escape ?x ?c ?o ?m ?p ?i ?l ?e return backspace backspace backspace backspace backspace backspace backspace backspace ?c ?a ?t ?  ?O ?U ?T ?/ ?e ?n ?g ?i ?n ?_ backspace ?e ?_ ?t ?e ?s ?t ?. ?p ?y ?. ?p backspace ?t ?x ?t return ?\C-x ?o down down down up up up down down down down down])
+
+# Rules to test Temporary Logic 
+from START to END : not ERROR;
+
+# No error shall occur from START to START + 10 sec
+from START: 
+    if ERROR then ERROR.time - START.time > 10.0;
+
+# A segmentation fault shall never occur
+not SEGMENTATION_FAULT;
+
+# There shall never be more than 5 calls / second to method 'MYFUNC'
+# from the time that the user pushed the button the second time to
+# the time that he pushes it the third time.
+#
+if BUTTON and BUTTON.count == 2 then { 
+    $base_count = MYFUNC.count;
+    $base_time  = $1;
+}
+
+if BUTTON and BUTTON.count == 3 then {
+    ((MYFUNC.count - $base_count) / ($1 - $base_time)) < 5;
+}
+
+# An implicit statement that is triggered whenever a condition gets true
+BUTTON.count == 2 or MYFUNC.count == 5 or END => HELLO_WORLD;

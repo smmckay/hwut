@@ -1,0 +1,100 @@
+IN:     ""
+RESULT: [None]
+LEXEME: ""
+NEXT:   ""
+----------------------------
+IN:     " "
+RESULT: [None]
+LEXEME: " "
+NEXT:   ""
+----------------------------
+IN:     "\t"
+RESULT: [None]
+LEXEME: "\t"
+NEXT:   ""
+----------------------------
+IN:     "\n"
+RESULT: [None]
+LEXEME: "\n"
+NEXT:   ""
+----------------------------
+IN:     "  "
+RESULT: [None]
+LEXEME: "  "
+NEXT:   ""
+----------------------------
+IN:     "\t "
+RESULT: [None]
+LEXEME: "\t "
+NEXT:   ""
+----------------------------
+IN:     "\n "
+RESULT: [None]
+LEXEME: "\n "
+NEXT:   ""
+----------------------------
+IN:     "  "
+RESULT: [None]
+LEXEME: "  "
+NEXT:   ""
+----------------------------
+IN:     " \t"
+RESULT: [None]
+LEXEME: " \t"
+NEXT:   ""
+----------------------------
+IN:     " \n"
+RESULT: [None]
+LEXEME: " \n"
+NEXT:   ""
+----------------------------
+IN:     "+"
+RESULT: [None]
+LEXEME: ""
+NEXT:   "+"
+----------------------------
+IN:     " -"
+RESULT: [None]
+LEXEME: " "
+NEXT:   "-"
+----------------------------
+IN:     "\ta"
+RESULT: [None]
+LEXEME: "\t"
+NEXT:   "a"
+----------------------------
+IN:     "\nb"
+RESULT: [None]
+LEXEME: "\n"
+NEXT:   "b"
+----------------------------
+IN:     "  c"
+RESULT: [None]
+LEXEME: "  "
+NEXT:   "c"
+----------------------------
+IN:     "\t d"
+RESULT: [None]
+LEXEME: "\t "
+NEXT:   "d"
+----------------------------
+IN:     "\n e"
+RESULT: [None]
+LEXEME: "\n "
+NEXT:   "e"
+----------------------------
+IN:     "  f"
+RESULT: [None]
+LEXEME: "  "
+NEXT:   "f"
+----------------------------
+IN:     " \tg"
+RESULT: [None]
+LEXEME: " \t"
+NEXT:   "g"
+----------------------------
+IN:     " \nh"
+RESULT: [None]
+LEXEME: " \n"
+NEXT:   "h"
+----------------------------

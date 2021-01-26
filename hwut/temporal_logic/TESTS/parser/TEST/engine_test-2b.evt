@@ -1,0 +1,16 @@
+0.1: NOTHING_SPECIAL;
+0.2: MYFUNC;
+0.3: BUTTON;
+0.4: MYFUNC;
+0.5: MYFUNC;
+1.0: BUTTON;
+log $base_count + 1;
+1.1: MYFUNC;
+1.2: MYFUNC;
+1.3: MYFUNC;
+1.4: MYFUNC;
+2.0: SOMETHING;
+log MYFUNC.count - $base_count;
+log $1 - $base_time;
+2.0: BUTTON;
+log $base_count;

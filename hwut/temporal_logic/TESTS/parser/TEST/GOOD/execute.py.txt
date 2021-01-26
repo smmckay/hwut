@@ -1,0 +1,191 @@
+1.000000:   RESET(0.815);
+1.000001: RESET(=0.815)
+2.000001:   SHUTDOWN;
+2.000002: SHUTDOWN
+3.000002:   SHUTDOWN(error_n=1);
+3.000003: SHUTDOWN(error_n=1.0)
+4.000003:   START(a=1, b=2, c=3);
+4.000004: START(a=1.0, b=2.0, c=3.0)
+________________________________________________________________________
+         -- attributes:
+             !=: (FUNCTION: )
+             $delete: (FUNCTION: )
+             $element-access: (FUNCTION: )
+             $event-adornment: (FUNCTION: )
+             $freeze: (FUNCTION: )
+             $has: (FUNCTION: )
+             $key: (FUNCTION: )
+             $member-count: (FUNCTION: )
+             $member-time: (FUNCTION: )
+             $member-time-in-state: (FUNCTION: )
+             $number: (FUNCTION: )
+             $pop: (FUNCTION: )
+             $pop_front: (FUNCTION: )
+             $push: (FUNCTION: )
+             $push_front: (FUNCTION: )
+             $replace: (FUNCTION: )
+             $send: (FUNCTION: )
+             $size: (FUNCTION: )
+             $split: (FUNCTION: )
+             $strip: (FUNCTION: )
+             $time: 4.000004
+             $unfreeze: (FUNCTION: )
+             $unfreeze-shallow: (FUNCTION: )
+             $variable-access: (FUNCTION: )
+             $verdict-conversion: (FUNCTION: )
+             $verdict-event-occured: (FUNCTION: )
+             $verdict-inversion: (FUNCTION: )
+             %: (FUNCTION: )
+             &: (FUNCTION: )
+             *: (FUNCTION: )
+             **: (FUNCTION: )
+             +: (FUNCTION: )
+             +=: (FUNCTION: )
+             -: (FUNCTION: )
+             -=: (FUNCTION: )
+             /: (FUNCTION: )
+             <: (FUNCTION: )
+             <<: (FUNCTION: )
+             <=: (FUNCTION: )
+             =: (FUNCTION: )
+             ==: (FUNCTION: )
+             >: (FUNCTION: )
+             >=: (FUNCTION: )
+             >>: (FUNCTION: )
+             ^: (FUNCTION: )
+             acos: (FUNCTION: )
+             and: (FUNCTION: )
+             asin: (FUNCTION: )
+             atan: (FUNCTION: )
+             atan2: (FUNCTION: )
+             cos: (FUNCTION: )
+             cosh: (FUNCTION: )
+             exp: (FUNCTION: )
+             log: (FUNCTION: )
+             log10: (FUNCTION: )
+             max: (FUNCTION: )
+             min: (FUNCTION: )
+             or: (FUNCTION: )
+             pow: (FUNCTION: )
+             sin: (FUNCTION: )
+             sinh: (FUNCTION: )
+             sqrt: (FUNCTION: )
+             tan: (FUNCTION: )
+             tanh: (FUNCTION: )
+             |: (FUNCTION: )
+         
+         -- events:
+         1.000001: [#1] RESET((NUMBER: 0.815), )
+         3.000003: [#2] SHUTDOWN((NUMBER: 1.0), )
+         4.000004: [#1] START((NUMBER: 1.0), (NUMBER: 2.0), (NUMBER: 3.0), )
+         
+         -- time: 4.000004000000001, file=, line-n=0
+
+________________________________________________________________________
+
+-- SHUTDOWN.time() > 0.999;
+:1: rule awake. rule 'on'
+   result: (NUMBER: True)
+
+-- SHUTDOWN.time() < 1;
+:1: rule awake. rule 'on'
+   result: (NUMBER: False)
+
+-- if RESET : RESET[0] == 0.815; 
+:1: rule awake. rule 'on'
+   result: (BOOL: True)
+
+-- if RESET : if START : RESET[0] == 0.815; 
+:1: rule awake. rule 'on'
+   result: (BOOL: True)
+
+________________________________________________________________________
+5.000004:   START;
+5.000005: START
+6.000005:   RESET(version=0.816);
+6.000006: RESET(version=0.816)
+________________________________________________________________________
+         -- attributes:
+             !=: (FUNCTION: )
+             $delete: (FUNCTION: )
+             $element-access: (FUNCTION: )
+             $event-adornment: (FUNCTION: )
+             $freeze: (FUNCTION: )
+             $has: (FUNCTION: )
+             $key: (FUNCTION: )
+             $member-count: (FUNCTION: )
+             $member-time: (FUNCTION: )
+             $member-time-in-state: (FUNCTION: )
+             $number: (FUNCTION: )
+             $pop: (FUNCTION: )
+             $pop_front: (FUNCTION: )
+             $push: (FUNCTION: )
+             $push_front: (FUNCTION: )
+             $replace: (FUNCTION: )
+             $send: (FUNCTION: )
+             $size: (FUNCTION: )
+             $split: (FUNCTION: )
+             $strip: (FUNCTION: )
+             $time: 6.000006
+             $unfreeze: (FUNCTION: )
+             $unfreeze-shallow: (FUNCTION: )
+             $variable-access: (FUNCTION: )
+             $verdict-conversion: (FUNCTION: )
+             $verdict-event-occured: (FUNCTION: )
+             $verdict-inversion: (FUNCTION: )
+             %: (FUNCTION: )
+             &: (FUNCTION: )
+             *: (FUNCTION: )
+             **: (FUNCTION: )
+             +: (FUNCTION: )
+             +=: (FUNCTION: )
+             -: (FUNCTION: )
+             -=: (FUNCTION: )
+             /: (FUNCTION: )
+             <: (FUNCTION: )
+             <<: (FUNCTION: )
+             <=: (FUNCTION: )
+             =: (FUNCTION: )
+             ==: (FUNCTION: )
+             >: (FUNCTION: )
+             >=: (FUNCTION: )
+             >>: (FUNCTION: )
+             ^: (FUNCTION: )
+             acos: (FUNCTION: )
+             and: (FUNCTION: )
+             asin: (FUNCTION: )
+             atan: (FUNCTION: )
+             atan2: (FUNCTION: )
+             cos: (FUNCTION: )
+             cosh: (FUNCTION: )
+             exp: (FUNCTION: )
+             log: (FUNCTION: )
+             log10: (FUNCTION: )
+             max: (FUNCTION: )
+             min: (FUNCTION: )
+             or: (FUNCTION: )
+             pow: (FUNCTION: )
+             sin: (FUNCTION: )
+             sinh: (FUNCTION: )
+             sqrt: (FUNCTION: )
+             tan: (FUNCTION: )
+             tanh: (FUNCTION: )
+             |: (FUNCTION: )
+         
+         -- events:
+         6.000006: [#2] RESET((NUMBER: 0.816), )
+         3.000003: [#2] SHUTDOWN((NUMBER: 1.0), )
+         5.000005: [#2] START()
+         
+         -- time: 6.000006000000001, file=, line-n=0
+
+________________________________________________________________________
+
+-- if RESET : if START.count() != 0 : RESET.version == 0.815; 
+:1: rule awake. rule 'on'
+   result: (NUMBER: False)
+
+-- if RESET : if START.count() != 0 : RESET.version == 0.816; 
+:1: rule awake. rule 'on'
+   result: (NUMBER: True)
+

@@ -1,0 +1,12 @@
+code:   '  
+"hello-world.c":23:21.001:  { START; BLOB; SPLISH("3x", correct_n=3); }
+21.002:                     END(0.0, 10);
+SOMETHING("const", "expression"); 
+'
+result: 
+
+hello-world.c:23.0: 21.001000: START
+hello-world.c:23.0: 21.001000: BLOB
+hello-world.c:23.0: 21.001000: SPLISH [0]  = (STRING: 3x) [1] correct_n = (NUMBER: 3.0)
+21.002000: END [0]  = (NUMBER: 0.0) [1]  = (NUMBER: 10.0)
+None SOMETHING [0]  = (STRING: const) [1]  = (STRING: expression)

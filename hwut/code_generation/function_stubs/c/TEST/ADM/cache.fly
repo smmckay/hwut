@@ -1,0 +1,10 @@
+{
+title: C;
+title_group: HWUT Stub Festival;
+file_name: stub-c.sh;
+hwut_info_time: 1426088715L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ ; OK; 0.666219; -1131767220; ]
+]
+}

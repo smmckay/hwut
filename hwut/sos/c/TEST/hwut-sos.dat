@@ -1,0 +1,14 @@
+# Missing header:
+#
+# main.c (line 2)
+#   '---> 1/12/123/1234/12345/number.h (line 1)
+#           '---> extra.h ?
+# 
+# Delete all but one, or enter new:
+
+I: main.c <-- ../../../mot_decoder/src
+I: main.c <-- ../../../data_decoder/src
+
+# Missing reference:  'printf'
+# (See 'references.dot' for details)
+#

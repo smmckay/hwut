@@ -1,0 +1,50 @@
+#ifndef INCLUDE_GUARD_SM_WALKER_$$NAME$$_H
+#define INCLUDE_GUARD_SM_WALKER_$$NAME$$_H
+
+#include <hwut_sm_walker.h>  /* Use: -I<<HWUT_PATH>>/support/C               */
+
+/* Event Definitions ________________________________________________________*/
+$$EVENT_DEFS$$
+
+/* Condition Definitions ____________________________________________________*/
+$$CONDITION_DEFS$$
+
+/* State Declarations _______________________________________________________
+ * (Use those to compare expected states with current states)                */
+typedef enum {
+$$STATE_ID_DEFS$$} $$NAME$$_state_id_t;
+
+typedef struct $$NAME$$_t_tag {
+    /* Inheritance __________________________________________________________*/
+    hwut_sm_walker_t    base;
+
+    /* The user's unit under test ___________________________________________*/
+    $$USER_DATA_TYPE$$* subject;
+
+    /* Memory for the 'aux' component of the walker _________________________*/
+    struct { 
+        hwut_sm_condition_coverage_t  condition_coverage[$$CONDITION_N$$]; 
+        hwut_sm_condition_norm_t      condition_norm[$$CONDITION_N$$];
+        const char*                   condition_norm_comment[$$CONDITION_N$$];
+
+        hwut_state_coverage_t         state_coverage[$$STATE_N$$]; 
+        hwut_state_forbidden_t        state_forbidden[$$STATE_N$$];
+        const char*                   state_forbidden_comment[$$STATE_N$$];
+    } memory;
+
+    /* User data related callbacks __________________________________________*/
+    void   (*do_init)(struct $$NAME$$_t_tag* me);
+    void   (*do_terminal)(struct $$NAME$$_t_tag* me, hwut_sm_state_t* state_p);
+} $$NAME$$_t;
+
+/* API ______________________________________________________________________*/
+void
+$$NAME$$_execute($$NAME$$_t* me,
+$$SPACE$$         $$USER_DATA_TYPE$$* the_subject,
+$$SPACE$$         void   (*do_init)($$NAME$$_t* me),
+$$SPACE$$         void   (*do_terminal)($$NAME$$_t* me, hwut_sm_state_t*));
+int
+$$NAME$$_state_is_real(const hwut_sm_state_t* State);
+
+#endif /* INCLUDE_GUARD_SM_WALKER_$$NAME$$_H */
+

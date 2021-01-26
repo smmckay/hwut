@@ -1,0 +1,22 @@
+on $INIT: {
+   a = {};
+   a["Wilhelm"] = { "family": "Tell",    "childs": ["Walter", "Wolfgang"] };
+   a["Alfons"]  = { "family": "Svenson", "childs": ["Michel", "Ida"] };
+}
+
+on PRINT: { 
+   print "--------------------";
+   print a;
+   print a["Wilhelm"]; 
+   print a["Alfons"]; 
+   print a["Wilhelm"]["childs"];
+   print a["Alfons"]["childs"];
+  
+   for x in a["Wilhelm"]["childs"]: {
+        print x;
+   } 
+   for x in a["Alfons"]: {
+        print x, ": ", a["Alfons"][x];
+   } 
+}
+

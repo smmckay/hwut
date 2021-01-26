@@ -1,0 +1,194 @@
+#include "$$FILESTEM$$.h"
+
+$$SECTION_DECLARATIONS$$
+
+static int   $$G$$_implement($$G$$_t* it);
+
+static const $$G$$_section_t  $$G$$_section_array[$$SECTION_N$$] = { 
+$$SECTION_ARRAY$$ 
+};
+static const $$G$$_section_t* $$G$$_section_array_begin = &$$G$$_section_array[0];
+static const $$G$$_section_t* $$G$$_section_array_end   = &$$G$$_section_array[$$SECTION_N$$];
+
+$$THE_ARRAYS$$
+
+void
+$$G$$_init($$G$$_t* it)
+/* Use provided memory to construct an object of type $$G$$_t.
+ *                                                                           */
+{
+    it->hwut.print   = $$G$$_print;
+    it->hwut.section = (void*)0;
+}
+
+static int
+$$G$$_intern_next($$G$$_t* it)
+{
+    if( it->hwut.section == (void*)0 ) {
+        /* The very first 'next'.                                            */
+        it->hwut.section = $$G$$_section_array_begin;
+        if( it->hwut.section == $$G$$_section_array_end ) {
+            return 0;
+        }
+        it->hwut.section->init(it);
+        return 1;
+    }
+    else if( hwut_cursor_next(&it->hwut.cursor) ) { 
+        return 1;
+    }
+    /* Try to step into the next generator section.                          */
+    ++(it->hwut.section);
+    if( it->hwut.section == $$G$$_section_array_end ) {
+        return 0;
+    }
+    it->hwut.section->init(it);
+    return 1;
+}
+
+int
+$$G$$_next($$G$$_t* it)
+/* Set iterator to next admissible setting. The internal cursor will point 
+ * to the next setting (which is not necessarily admissible).
+ *
+ * RETURNS: 0 if no further iterator is present.
+ *          1 if the found setting is the next and valid.                    */
+{
+    if( it->hwut.section == $$G$$_section_array_end ) {
+        return 0;
+    }
+
+    /* Increment the iterator until something admissible is found.           */
+    while( 1 + 1 == 2 ) {
+        if( ! $$G$$_intern_next(it) ) {
+            return 0;
+        }
+        if( $$G$$_implement(it) ) {
+            return 1;
+        }
+    }
+}
+
+static int
+$$G$$_implement($$G$$_t* it)
+/* Sets the concrete values for iterator members according to current setting
+ * of .cursor. 
+ *
+ * RETURNS: 0 if implementation was successful.
+ *          1 if implementation failed.                                      */
+{
+    /* 'implement' returns 0, if implementation impossible.                  */
+    if( ! it->hwut.section->implement(it) ) {
+        return 0;
+    }
+    /* Check additional constraints.                                         */
+    return it->hwut.section->is_admissible(it);
+}
+
+hwut_cursor_key_t 
+$$G$$_key_max()
+/* RETURNS: the maximum value of the iterator key.                           */
+{
+    return (hwut_cursor_key_t)$$KEY_MAX$$;
+}
+
+hwut_cursor_key_t 
+$$G$$_key_get($$G$$_t* it)
+/* This function is the inverse of '$$G$$_set(key)'.                 
+ *
+ * RETURNS: A numeric value, i.e. a 'key' which represents the iterator.     */
+{
+    return   it->hwut.section->key_offset 
+           + hwut_cursor_to_key(&it->hwut.cursor);
+}
+
+int              
+$$G$$_key_set($$G$$_t* it, hwut_cursor_key_t key)
+/* This function is the inverse of '$$G$$_get()'.                 
+ *
+ * Sets the iterator corresponding a numeric 'key'. In contrary to 'next'
+ * it is possible to set inadmissible iterator settings using this function. 
+ *
+ * RETURNS: 0 -- if setting could not be implemented or was inadmissible.
+ *          1 -- if setting is ok.                                           */
+{
+    const $$G$$_section_t* section_p = $$G$$_section_array_begin;
+    
+    /* Find the section to which the key belongs.                            */
+    while( section_p->key_offset > key && section_p != $$G$$_section_array_end ) {
+        ++section_p;
+    }
+
+    if( section_p != $$G$$_section_array_begin ) {
+        --section_p;
+    } 
+
+    if( section_p != it->hwut.section ) {
+        it->hwut.section = section_p;
+        it->hwut.section->init(it);
+    }
+
+    /* Cursor's key = key - key offset of current section.                     
+     *
+     * NOTE: Constant line iteration is a special case where the cursor has 
+     *       only one dimension of the size = setting number.                */
+    hwut_cursor_from_key(&it->hwut.cursor, 
+                         key - it->hwut.section->key_offset);
+
+    return $$G$$_implement(it);
+}
+
+#if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
+void              
+$$G$$_print(FILE* fh, $$G$$_t* it)
+{
+    int i;
+    (void)i;
+$$PRINT$$
+}
+
+void              
+$$G$$_print_table_header(FILE* fh, const char* Separator)
+{
+$$PRINT_TABLE_HEADER$$
+}
+
+void              
+$$G$$_print_table_line(FILE* fh, $$G$$_t* it, const char* Separator)
+{
+    int i;
+    (void)i;
+$$PRINT_TABLE_LINE$$
+}
+
+void              
+$$G$$_print_table(FILE* fh, const char* Separator)
+{
+    $$G$$_t $Z$it;
+
+    $$G$$_init(&it);
+
+    $$G$$_print_table_header(fh, Separator);
+
+    while( $$G$$_next(&it) ) {
+        $$G$$_print_table_line(fh, &it, Separator);
+    }
+}
+#else
+void              
+$$G$$_print(FILE* fh, $$G$$_t* it)
+{ (void)it; (void)fh; /* Dummy, <stdio.h> forbidden. */ }
+
+void              
+$$G$$_print_table_header(FILE* fh, const char* Separator)
+{ (void)fh; (void)Separator; /* Dummy, <stdio.h> forbidden. */ }
+
+void              
+$$G$$_print_table_line(FILE* fh, $$G$$_t* it, const char* Separator)
+{ (void)it; (void)fh; (void)Separator; /* Dummy, <stdio.h> forbidden. */ }
+
+void              
+$$G$$_print_table(FILE* fh, const char* Separator)
+{ (void)fh; (void)Separator; /* Dummy, <stdio.h> forbidden. */ }
+#endif
+
+$$SECTION_FUNCTIONS$$

@@ -1,0 +1,12 @@
+{
+title: Temporal Logic Tests;
+title_group: TheDude;
+file_name: test.pl;
+hwut_info_time: 1413447731L;
+interpreter_list: [ perl; ]
+temporal_logic_f: True;
+temporal_logic_rule_list: [ dude.tlr; ]
+result_list: [
+  [ ; OK; 0.006857; None; ]
+]
+}

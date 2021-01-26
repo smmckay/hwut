@@ -1,0 +1,76 @@
+code:   '  SHUTDOWN'
+result: 
+    Condition:
+      ConditionExpression:
+        ConditionPrimary: event 'SHUTDOWN' occured?
+
+code:   '  $x < 1 and $x == 2'
+result: 
+    Condition:
+      ConditionExpression:
+        ConditionPrimary:
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary: variable 'x'
+          cmp: '<'
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary: constant number '1.000000'
+        AND
+        ConditionExpression:
+          ConditionPrimary:
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: variable 'x'
+            cmp: '=='
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: constant number '2.000000'
+
+code:   '  X or Y and Z'
+result: 
+    Condition:
+      ConditionExpression:
+        ConditionPrimary: event 'X' occured?
+      OR
+      Condition:
+        ConditionExpression:
+          ConditionPrimary: event 'Y' occured?
+          AND
+          ConditionExpression:
+            ConditionPrimary: event 'Z' occured?
+
+code:   '  $x < 1 or $x == 2 and $x == 1'
+result: 
+    Condition:
+      ConditionExpression:
+        ConditionPrimary:
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary: variable 'x'
+          cmp: '<'
+          NumericTerm:
+            NumericExpr:
+              NumericPrimary: constant number '1.000000'
+      OR
+      Condition:
+        ConditionExpression:
+          ConditionPrimary:
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: variable 'x'
+            cmp: '=='
+            NumericTerm:
+              NumericExpr:
+                NumericPrimary: constant number '2.000000'
+          AND
+          ConditionExpression:
+            ConditionPrimary:
+              NumericTerm:
+                NumericExpr:
+                  NumericPrimary: variable 'x'
+              cmp: '=='
+              NumericTerm:
+                NumericExpr:
+                  NumericPrimary: constant number '1.000000'
+

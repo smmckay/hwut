@@ -1,0 +1,26 @@
+Switch.evt
+_______________________________________________________________________________
+# start parsing rules.
+rules/Switch.tlr:1: rule awake. rule 'on'
+# 1 rule(s) parsed.
+_______________________________________________________________________________
+# start checking incoming statements/events.
+-0.000001: $INIT
+0.000000: LETTER(name=Otto)
+        : << There was an Otto. >>
+        : << Time was any number in between 0 and 100. >>
+0.000000: LETTER(name=Otto)
+        : << There was an Otto. >>
+        : << Time was any number in between 0 and 100. >>
+33.000000: LETTER(name=Heinz)
+         : << There was a Heinz. >>
+         : << Time was exactly 33. >>
+100.000000: LETTER(name=Elfriede)
+          : << There was an Elfriede. >>
+          : << Time was any number in between 0 and 100. >>
+100.100000: LETTER(name=Albert)
+          : << There was an unknown person. >>
+          : << Time was beyond one hundred. >>
+# 5 statements found. Result = [OK]
+_______________________________________________________________________________
+result = OK

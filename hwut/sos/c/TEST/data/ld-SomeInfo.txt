@@ -1,0 +1,53 @@
+rm -f test-hwut_unit.exe test-hwut_cursor.exe test-hwut_bitfield.exe test-hwut_bitfield-iterator.exe test-hwut_bitfield-iterator2.exe test-hwut_sm_walker.exe test-hwut_sm_walker-2.exe test-hwut_sm_walker-3.exe test-hwut_sm_walker-4.exe test-hwut_sm_walker-5.exe test-hwut_sm_walker-6.exe test-hwut_sm_walker-forbidd-allow.exe test-hwut_sm_walker-inconsistent-condition.exe test-hwut_sm_walker-condition-norms.exe test-hwut_sm_walker-condition-norms-negative.exe test-hwut_sm_walker-coverage.exe test-hwut_sm_walker-print.exe
+rm -f test-hwut_unit.o test-hwut_cursor.o test-hwut_bitfield.o test-hwut_bitfield-iterator.o test-hwut_bitfield-iterator2.o test-hwut_sm_walker.o test-hwut_sm_walker-2.o test-hwut_sm_walker-3.o test-hwut_sm_walker-4.o test-hwut_sm_walker-5.o test-hwut_sm_walker-6.o test-hwut_sm_walker-forbidd-allow.o test-hwut_sm_walker-inconsistent-condition.o test-hwut_sm_walker-condition-norms.o test-hwut_sm_walker-condition-norms-negative.o test-hwut_sm_walker-coverage.o test-hwut_sm_walker-print.o
+rm -f test-hwut_unit.E test-hwut_cursor.E test-hwut_bitfield.E test-hwut_bitfield-iterator.E test-hwut_bitfield-iterator2.E test-hwut_sm_walker.E test-hwut_sm_walker-2.E test-hwut_sm_walker-3.E test-hwut_sm_walker-4.E test-hwut_sm_walker-5.E test-hwut_sm_walker-6.E test-hwut_sm_walker-forbidd-allow.E test-hwut_sm_walker-inconsistent-condition.E test-hwut_sm_walker-condition-norms.E test-hwut_sm_walker-condition-norms-negative.E test-hwut_sm_walker-coverage.E test-hwut_sm_walker-print.E
+rm -f hwut_sm_walker.o hwut_bitfield.o
+rm -rf ./obj/*
+rm -f *.exe
+rm -f *.orig *.bak *.stackdump 
+rm -f *.gc*
+rm -f *.info
+rm -f *~
+rm -f BitFiterator*
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_unit.c -o test-hwut_unit.o -I.. -DHWUT_OPTION_CONTINUE_ON_FAIL
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c ../hwut_sm_walker.c -o hwut_sm_walker.o -I..
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c ../hwut_bitfield.c -o hwut_bitfield.o -I..
+gcc -ggdb test-hwut_unit.o hwut_sm_walker.o hwut_bitfield.o -lgcov -o test-hwut_unit.exe
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  -c test-hwut_cursor.c -o test-hwut_cursor.o -I..
+gcc -ggdb test-hwut_cursor.o hwut_sm_walker.o hwut_bitfield.o -lgcov -o test-hwut_cursor.exe
+                                                                   <terminated>
+gcc -Wall -Werror -I.. -fprofile-arcs -ftest-coverage  -ggdb  test-hwut_bitfield.c hwut_sm_walker.o hwut_bitfield.o BitFieldIterator.c -o test-hwut_bitfield.exe 
+/tmp/ccvE08B9.o: In function `Error_intern_next':
+nonsense.c:38: undefined reference to `hwut_cursor_next'
+/tmp/ccvE08B9.o: In function `Error_key_get':
+meaningful.c:93: undefined reference to `hwut_cursor_to_key'
+/tmp/ccvE08B9.o: In function `Error_key_set':
+nonsense.c:125: undefined reference to `hwut_cursor_from_key'
+/tmp/ccvE08B9.o: In function `Error_0_init':
+nonsense.c:218: undefined reference to `hwut_cursor_init'
+/tmp/ccvE08B9.o: In function `Three_intern_next':
+meaningful.c:282: undefined reference to `hwut_cursor_next'
+/tmp/ccvE08B9.o: In function `Three_key_get':
+nonsense.c:337: undefined reference to `hwut_cursor_to_key'
+/tmp/ccvE08B9.o: In function `Three_key_set':
+nonsense.c:369: undefined reference to `hwut_cursor_from_key'
+/tmp/ccvE08B9.o: In function `Three_0_init':
+meaningful.c:442: undefined reference to `hwut_cursor_init'
+/tmp/ccvE08B9.o: In function `Two_intern_next':
+meaningful.c:542: undefined reference to `hwut_cursor_next'
+/tmp/ccvE08B9.o: In function `Two_key_get':
+nonsense.c:597: undefined reference to `hwut_cursor_to_key'
+/tmp/ccvE08B9.o: In function `Two_key_set':
+nonsense.c:629: undefined reference to `hwut_cursor_from_key'
+/tmp/ccvE08B9.o: In function `Two_0_init':
+nonsense.c:700: undefined reference to `hwut_cursor_init'
+/tmp/ccvE08B9.o: In function `One_intern_next':
+meaningful.c:786: undefined reference to `hwut_cursor_next'
+/tmp/ccvE08B9.o: In function `One_key_get':
+meaningful.c:841: undefined reference to `hwut_cursor_to_key'
+/tmp/ccvE08B9.o: In function `One_key_set':
+nonsense.c:873: undefined reference to `hwut_cursor_from_key'
+/tmp/ccvE08B9.o: In function `One_0_init':
+meaningful.c:942: undefined reference to `hwut_cursor_init'
+collect2: error: ld returned 1 exit status
+make: *** [test-hwut_bitfield.exe] Error 1

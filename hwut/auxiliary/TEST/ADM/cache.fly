@@ -1,0 +1,30 @@
+{
+title: Find references and build database;
+title_group: ctags;
+file_name: ctags_interface-test.py;
+hwut_info_time: 1438160108L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.147375; 0; ]
+]
+}
+{
+title: close_directory_iterable;
+title_group: path;
+file_name: path-close_directory_iterable.py;
+hwut_info_time: 1438167508L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.111426; 0; ]
+]
+}
+{
+title: recursive_subdirectory_iterable;
+title_group: path;
+file_name: path-recursive_subdirectory_iterable.py;
+hwut_info_time: 1438000332L;
+interpreter_list: [ python; ]
+result_list: [
+  [ ; OK; 0.121306; 0; ]
+]
+}

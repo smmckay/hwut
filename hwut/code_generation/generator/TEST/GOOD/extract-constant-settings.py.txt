@@ -1,0 +1,233 @@
+0 Generators ___________________________________________________________
+________________________________________________________________________
+Before:
+After:
+________________________________________________________________________
+Before:
+(0) 
+After:
+(0) 
+    
+1 Generator which is constant __________________________________________
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; 
+After:
+(0) 0, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; 
+After:
+(0) 0, 1, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+After:
+(0) 0, 1, 2, 
+    
+1 Generator which is not constant ______________________________________
+  (Check that all non-constant parameter types can appear at any position)
+________________________________________________________________________
+Before:
+(0) [1] y0: (INTEGER)[0, 0, 0]; 
+After:
+(0) [1] y0: (INTEGER)[0, 0, 0]; 
+________________________________________________________________________
+Before:
+(0) [2] z0: (FLOAT) |0:10|step 2; 
+After:
+(0) [2] z0: (FLOAT) |0:10|step 2; 
+________________________________________________________________________
+Before:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [66] rizzo: (INTEGER)18193; 
+________________________________________________________________________
+Before:
+(0) [1] y0: (INTEGER)[0, 0, 0]; [0] x1: (INTEGER)1; 
+After:
+(0) [1] y0: (INTEGER)[0, 0, 0]; [0] x1: (INTEGER)1; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [1] y1: (INTEGER)[-1, 0, 1]; 
+After:
+(0) [0] x0: (INTEGER)0; [1] y1: (INTEGER)[-1, 0, 1]; 
+________________________________________________________________________
+Before:
+(0) [2] z0: (FLOAT) |0:10|step 2; [0] x1: (INTEGER)1; 
+After:
+(0) [2] z0: (FLOAT) |0:10|step 2; [0] x1: (INTEGER)1; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [2] z1: (FLOAT) |10:20|step 2; 
+After:
+(0) [0] x0: (INTEGER)0; [2] z1: (FLOAT) |10:20|step 2; 
+________________________________________________________________________
+Before:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [0] x1: (INTEGER)1; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [0] x1: (INTEGER)1; [66] rizzo: (INTEGER)18193; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [66] rizzo: (INTEGER)18193; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [1] y2: (INTEGER)[-2, 0, 2]; 
+After:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [1] y2: (INTEGER)[-2, 0, 2]; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [1] y1: (INTEGER)[-1, 0, 1]; [0] x2: (INTEGER)2; 
+After:
+(0) [0] x0: (INTEGER)0; [1] y1: (INTEGER)[-1, 0, 1]; [0] x2: (INTEGER)2; 
+________________________________________________________________________
+Before:
+(0) [1] y0: (INTEGER)[0, 0, 0]; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+After:
+(0) [1] y0: (INTEGER)[0, 0, 0]; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [2] z2: (FLOAT) |20:30|step 2; 
+After:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [2] z2: (FLOAT) |20:30|step 2; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [2] z1: (FLOAT) |10:20|step 2; [0] x2: (INTEGER)2; 
+After:
+(0) [0] x0: (INTEGER)0; [2] z1: (FLOAT) |10:20|step 2; [0] x2: (INTEGER)2; 
+________________________________________________________________________
+Before:
+(0) [2] z0: (FLOAT) |0:10|step 2; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+After:
+(0) [2] z0: (FLOAT) |0:10|step 2; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [3] fr2: (FLOAT) |rizzo-4:rizzo+4|step 0.5; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [3] fr2: (FLOAT) |rizzo-4:rizzo+4|step 0.5; [66] rizzo: (INTEGER)18193; 
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+________________________________________________________________________
+Before:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+2 Generators
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+After:
+(0) 0, 1, 2, 
+    3, 4, 5, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [2] z5: (FLOAT) |50:60|step 2; 
+After:
+(0) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [2] z5: (FLOAT) |50:60|step 2; 
+(1) 0, 1, 2, 
+    
+________________________________________________________________________
+Before:
+(0) [2] z0: (FLOAT) |0:10|step 2; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+After:
+(0) [2] z0: (FLOAT) |0:10|step 2; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) 3, 4, 5, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+(1) [3] fr3: (FLOAT) |rizzo-5:rizzo+5|step 0.5; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+(1) [3] fr3: (FLOAT) |rizzo-5:rizzo+5|step 0.5; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; [66] rizzo: (INTEGER)18193; 
+3 Generators
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [0] x8: (INTEGER)8; 
+After:
+(0) 0, 1, 2, 
+    3, 4, 5, 
+    6, 7, 8, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [2] z8: (FLOAT) |80:90|step 2; 
+After:
+(0) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [2] z8: (FLOAT) |80:90|step 2; 
+(1) 0, 1, 2, 
+    3, 4, 5, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [0] x8: (INTEGER)8; 
+After:
+(0) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(1) 0, 1, 2, 
+    6, 7, 8, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; 
+(1) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [3] fr7: (FLOAT) |rizzo-9:rizzo+9|step 0.5; [0] x8: (INTEGER)8; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(1) [0] x6: (INTEGER)6; [3] fr7: (FLOAT) |rizzo-9:rizzo+9|step 0.5; [0] x8: (INTEGER)8; [66] rizzo: (INTEGER)18193; 
+(2) 0, 1, 2, 
+    
+________________________________________________________________________
+Before:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+(1) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [0] x8: (INTEGER)8; 
+After:
+(0) [3] fr0: (FLOAT) |rizzo-2:rizzo+2|step 0.5; [0] x1: (INTEGER)1; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+(1) 3, 4, 5, 
+    6, 7, 8, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [2] z1: (FLOAT) |10:20|step 2; [0] x2: (INTEGER)2; 
+(1) [0] x3: (INTEGER)3; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [2] z8: (FLOAT) |80:90|step 2; 
+After:
+(0) [0] x0: (INTEGER)0; [2] z1: (FLOAT) |10:20|step 2; [0] x2: (INTEGER)2; 
+(1) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [2] z8: (FLOAT) |80:90|step 2; 
+(2) 3, 4, 5, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [1] y2: (INTEGER)[-2, 0, 2]; 
+(1) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [0] x7: (INTEGER)7; [0] x8: (INTEGER)8; 
+After:
+(0) [0] x0: (INTEGER)0; [0] x1: (INTEGER)1; [1] y2: (INTEGER)[-2, 0, 2]; 
+(1) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) 6, 7, 8, 
+    
+________________________________________________________________________
+Before:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+(1) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [3] fr7: (FLOAT) |rizzo-9:rizzo+9|step 0.5; [0] x8: (INTEGER)8; [66] rizzo: (INTEGER)18193; 
+After:
+(0) [0] x0: (INTEGER)0; [3] fr1: (FLOAT) |rizzo-3:rizzo+3|step 0.5; [0] x2: (INTEGER)2; [66] rizzo: (INTEGER)18193; 
+(1) [2] z3: (FLOAT) |30:40|step 2; [0] x4: (INTEGER)4; [0] x5: (INTEGER)5; 
+(2) [0] x6: (INTEGER)6; [3] fr7: (FLOAT) |rizzo-9:rizzo+9|step 0.5; [0] x8: (INTEGER)8; [66] rizzo: (INTEGER)18193; 

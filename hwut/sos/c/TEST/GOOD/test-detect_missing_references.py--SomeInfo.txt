@@ -1,0 +1,26 @@
+Database:
+    hwut_cursor_init   BY {
+        meaningful.c: One_0_init
+        meaningful.c: Three_0_init
+        nonsense.c: Two_0_init
+        nonsense.c: Error_0_init
+    }
+    hwut_cursor_from_key   BY {
+        nonsense.c: Three_key_set
+        nonsense.c: One_key_set
+        nonsense.c: Two_key_set
+        nonsense.c: Error_key_set
+    }
+    hwut_cursor_to_key   BY {
+        meaningful.c: One_key_get
+        nonsense.c: Three_key_get
+        meaningful.c: Error_key_get
+        nonsense.c: Two_key_get
+    }
+    hwut_cursor_next   BY {
+        meaningful.c: Three_intern_next
+        meaningful.c: Two_intern_next
+        meaningful.c: One_intern_next
+        nonsense.c: Error_intern_next
+    }
+<terminated>

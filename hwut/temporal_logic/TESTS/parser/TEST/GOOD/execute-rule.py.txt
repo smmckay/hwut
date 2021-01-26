@@ -1,0 +1,54 @@
+0.000000:   RESET(0.815)
+1.000000:   SHUTDOWN
+2.000000:   SHUTDOWN(error_n=1)
+3.000000:   START(a=1, b=2, c=3)
+________________________________________________________________________
+              -- attributes:
+              
+              -- events:
+                 RESET (time = 0.000000, count = 1.000000)
+                    [0] = 0.815
+                 SHUTDOWN (time = 2.000000, count = 2.000000)
+                    [0] error_n = 1.0
+                 START (time = 3.000000, count = 1.000000)
+                    [0] a = 1.0
+                    [1] b = 2.0
+                    [2] c = 3.0
+              
+              -- time: 3.0, file=, line-n=0
+________________________________________________________________________
+
+-- SHUTDOWN.time > 1
+   result: True
+
+-- SHUTDOWN.time < 1
+   result: False
+
+-- if RESET then RESET[0] == 0.815
+   result: True
+
+-- if RESET then if START then RESET[0] == 0.815
+   result: True
+
+________________________________________________________________________
+4.000000:   START
+5.000000:   RESET(version=0.816)
+________________________________________________________________________
+              -- attributes:
+              
+              -- events:
+                 RESET (time = 5.000000, count = 2.000000)
+                    [0] version = 0.816
+                 SHUTDOWN (time = 2.000000, count = 2.000000)
+                    [0] error_n = 1.0
+                 START (time = 4.000000, count = 2.000000)
+              
+              -- time: 5.0, file=, line-n=0
+________________________________________________________________________
+
+-- if RESET then if START then RESET.version == 0.815
+   result: False
+
+-- if RESET then if START then RESET.version == 0.816
+   result: True
+

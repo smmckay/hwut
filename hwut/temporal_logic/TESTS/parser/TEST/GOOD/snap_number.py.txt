@@ -1,0 +1,10 @@
+code:   'hello world'
+result: None
+code:   '0.123_aber hallo'
+result: 0.123
+code:   '0.212.312_aber hallo'
+result: 0.212
+code:   '2123.212.1:_aber hallo'
+result: 2123.212
+code:   '.921_aber hallo'
+result: 0.921
