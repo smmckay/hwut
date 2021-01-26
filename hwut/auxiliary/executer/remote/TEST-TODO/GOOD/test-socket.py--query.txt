@@ -1,0 +1,6 @@
+
+--( Query for remote application list )--
+    test0
+    test1
+
+<terminated>

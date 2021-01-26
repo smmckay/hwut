@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.io.messages           as io
 import hwut.common                as common
@@ -33,7 +32,6 @@ import hwut.auxiliary.path        as aux
 import hwut.auxiliary.file_system as fs
 #
 from   hwut.test_db.selector import TestSelector
-from   hwut.remote.core      import RemoteExecuter
 from   hwut.strategies.core  import NullStrategy
 from   hwut.strategies.test  import TestExecutionStrategy
 #
@@ -78,11 +76,11 @@ def handle_directory_tree(Strategy, Selector):
     directory_list.sort(key=__directory_sort_key)
 
     origin_dir = os.getcwd()
+    common.set_home_directory(origin_dir)
 
     # (*) Iterate over TEST directories.
     Strategy.start_directory_tree(directory_list)
     for directory in Selector.admissible_directories(directory_list):
-        common.set_home_directory(directory)
         handle_directory(directory, Strategy, Selector)
 
     common.set_home_directory(origin_dir)

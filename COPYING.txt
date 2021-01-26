@@ -1,0 +1,4 @@
+All software in the HWUT project is provided under the terms of LPGPL-2.1
+license.  As an exception to that all example code in the "./demo"
+subdirectory is provided under the MIT license.  Each individual file includes
+a header referring to the license applicable to the code therein.

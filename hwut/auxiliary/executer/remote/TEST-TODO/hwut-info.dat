@@ -1,0 +1,16 @@
+Testing the HWUT Remote Feature
+---------------------------------------------------------------
+python *.py
+
+---------------------------------------------------------------
+
+--remote-config {
+     id:                       mySocketConfig;
+     type:                     socket;
+     start:                    command to initiate the remote process; 
+     port_where_hwut_listens:  37773;
+     ip_where_hwut_resides:    localhost;
+}
+
+--remote mySocketConfig test0 test1
+

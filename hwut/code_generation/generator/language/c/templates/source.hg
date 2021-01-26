@@ -1,3 +1,5 @@
+/* This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else

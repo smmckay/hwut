@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.sos.c.smart_compile       as     smart_compile
 import hwut.sos.c.smart_link          as     smart_link

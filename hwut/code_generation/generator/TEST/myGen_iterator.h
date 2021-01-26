@@ -2,6 +2,8 @@
 #define INCLUDE_GUAGE_HWUT_GENERATOR_myGen_iterator_h
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -75,6 +77,8 @@ extern void myGen4_print_table(FILE* fh, const char* Separator);
 
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -159,6 +163,8 @@ extern void myGen2_print_table(FILE* fh, const char* Separator);
 
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -232,6 +238,8 @@ extern void myGen3_print_table(FILE* fh, const char* Separator);
 
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else

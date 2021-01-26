@@ -24,28 +24,27 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 # PURPOSE: The file 'hwut-info.dat' in each test directory is the primary
 #          source of information about the test applications in the directory
 #          and how they are supposed to be executed. 
 #
-#   .------------------------.           .-----------------------.
-#   | File names reported by |           | File names in current |
-#   | > make hwut-info       |           | directory.            |
-#   '------------------------'           '-----------------------'
-#              |                                     |
-#              |                                match against
-#              |                             possitive patterns
-#              |                                     |
-#              '---------------.   .-----------------'
-#                              |   |
-#                        exclude file names
-#                       mentioned as '--not' 
-#                                |
-#                 .-------------------------------.
-#                 | Set of test application names |
-#                 '-------------------------------'
+# .------------------------.    .-----------------------.    .-------------------.
+# | File names reported by |    | File names in current |    | Remotely executed |
+# | > make hwut-info       |    | directory.            |    |       Tests       |
+# '------------------------'    '-----------------------'    '-------------------'
+#            |                              |                          |
+#            |                         match against                   |
+#            |                      possitive patterns                 |
+#            |                              |                          |
+#            '---------------. .------------'                          |
+#                            | |     .---------------------------------'
+#                      exclude file names
+#                     mentioned as '--not' 
+#                              |
+#               .-------------------------------.
+#               | Set of test application names |
+#               '-------------------------------'
 # 
 # This file contains functions to access the content of this hwut-info.dat and 
 # to filter content of the current directory. As a special feature it may 
@@ -95,6 +94,8 @@ from   hwut.common                import HWUT_INFO_FILE_NAME
 from   hwut.coverage.selector     import CoverageSelector
 import hwut.auxiliary.make        as     make
 import hwut.auxiliary.file_system as     fs
+import hwut.auxiliary.executer.remote.parse_config as parse_remote_config 
+import hwut.auxiliary.executer.remote.base         as remote 
 
 import os
 import sys
@@ -143,14 +144,17 @@ class TestExecutionInfo(object):
            to generate the test application.  
     """
     __slots__ = ("name", "interpreter_sequence", 
-                 "stdout_post_processor", "stderr_post_processor", "make_f")
+                 "stdout_post_processor", "stderr_post_processor", "make_f", 
+                 "remote_config_id")
     def __init__(self, Name, InterpreterSequence, 
-                 StdoutPostProcessor, StderrPostProcessor):
+                 StdoutPostProcessor, StderrPostProcessor, 
+                 RemoteConfigId):
         self.name                  = Name
         self.interpreter_sequence  = InterpreterSequence
         self.stdout_post_processor = StdoutPostProcessor
         self.stderr_post_processor = StderrPostProcessor
         self.make_f                = False
+        self.remote_config_id      = RemoteConfigId
 
     def set_make_f(self):
         self.make_f = True
@@ -204,26 +208,35 @@ def do():
 
 def __setup_by_hwut_info_and_Makefile(fh):
     """Extracts test application information from the 'hwut-info.dat' file and
-    the Makefile if it is there. The interpretation of the Makefile happens 
-    through 
+    the Makefile if it is there. 
+    
+    -- Interpretation of Makefile by: 
 
            do_pattern_section() --> _filter() --> get_candidates()
+                                --> make.get_makeable_application_list()
 
-    where 'get_candidates()' collects the names of all files present in the
-    directory plus the application names received by 'make hwut-info'.
+       where 'get_candidates()' collects the names of all files present in the
+       directory plus the application names received by 'make hwut-info'.
+
+    -- Remote execution setup and query by:
+
+           do_pattern_section() --> _filter() --> get_candidates()
+                                --> remote.get_remote_application_list()
+
     """
     # Parse the three sections of 'hwut-info.dat'
     while 1 + 1 == 2:
         # Title
-        title, verdict    = do_text_section(fh)
+        title, verdict     = do_text_section(fh)
         if not verdict: break
 
         # Patterns and Anti-Patterns
-        basic_db, verdict, coverage_selector = do_pattern_section(fh)
+        basic_db, verdict, \
+        coverage_selector  = do_pattern_section(fh)
         if not verdict: break
 
         # Comment
-        comment, verdict  = do_text_section(fh)
+        comment, verdict   = do_text_section(fh)
 
         return title.strip(), basic_db, comment, coverage_selector
 
@@ -306,9 +319,9 @@ def do_pattern_section(fh):
 
     NOTE: There is another source of test file specifications: 'Makefiles'
     """
-    true_db, false_set, coverage_selector = _parse(fh)
+    true_db, false_set, remote_config_db, coverage_selector = _parse(fh)
 
-    return _filter(true_db, false_set), True, coverage_selector
+    return _filter(true_db, false_set, remote_config_db), True, coverage_selector
 
 def _parse(fh):
     """RETURNS:
@@ -322,7 +335,13 @@ def _parse(fh):
        [1] false_set: A set of file name patterns for files which are not
                       subject to testing.
 
-       None, None is returned if no 'hwut-info.dat' files has been found.
+       [2] remote configuration database: 
+            
+                    config-id --> RemoteConfiguration
+
+       [3] coverage_selector
+
+       None, None, None, None is returned if no 'hwut-info.dat' files has been found.
 
     Lines starting with '##' are considered command lines.
     """
@@ -337,6 +356,7 @@ def _parse(fh):
             if line is None: break
             
             line = expand_environment_variables(line)
+
             # Error in variable expansion --> next line
             if line is None: continue
 
@@ -352,6 +372,7 @@ def _parse(fh):
                     4, text -- application specification
                     5, text -- coverage not: path-pattern + function-pattern
                     6, text -- coverage:     path-pattern + function-pattern
+                    7, text -- remote:       type':' name ';' '{' list-of( name ':' value ';') '}'
         """
         line = fh.readline()
         if not line: return None, None
@@ -365,6 +386,7 @@ def _parse(fh):
         elif line.find("|")     == 0:           return 3, line[len("|"):].strip()
         elif line.find("--coverage-not") == 0:  return 5, line[len("--coverage-not"):].strip()  # FIRST
         elif line.find("--coverage") == 0:      return 6, line[len("--coverage"):].strip()      # SECOND (NOT vice versa)
+        elif line.find("--remote") == 0:        return 7, line[len("--remote"):].strip()        # SECOND (NOT vice versa)
         # elif line.find("--build") == 0:   return 6, line[len("--build"):].strip()
         # elif line.find("--define") == 0:  return 7, line[len("--define"):].strip()
         elif line.find("--") == 0:              
@@ -397,14 +419,15 @@ def _parse(fh):
         stdout_post_proc, stderr_post_proc = snap_post_processors(fh)            
 
         return file_name_pattern, TestExecutionInfo(file_name_pattern, interpreter_sequence, 
-                                                    stdout_post_proc, stderr_post_proc)
+                                                    stdout_post_proc, stderr_post_proc, None)
 
     true_db = {}
     false_set = set()
 
     # All patterns of directories are considered relative to the directory where the 
     # 'hwut-info.dat' file was located.
-    coverage_selector = CoverageSelector()
+    coverage_selector       = CoverageSelector()
+    remote_configuration_db = {}
 
     while 1 + 1 == 2:
         line_type, line = snap_line(fh)
@@ -423,14 +446,20 @@ def _parse(fh):
         elif line_type == 6:
             path_pattern, function_pattern = get_coverage_selector_patterns(line)
             coverage_selector.add_positive(path_pattern, function_pattern)
+        elif line_type == 7:
+            config = parse_remote_config.do(line)
+            if config is not None:
+                remote_configuration_db[config.id] = config
+
         # elif line_type == 6:
         #    build_target_pattern, \
         #    build_dependency_list, \
         #    build_commands       = get_build_rule(line)
 
-    return true_db, false_set, coverage_selector
+    if not remote_configuration_db: remote_configuration_db = None
+    return true_db, false_set, remote_configuration_db, coverage_selector
 
-def _filter(TrueDb, FalseSet):
+def _filter(TrueDb, FalseSet, RemoteConfigurationDb=None):
     """Find all finds in the current directory which may be subject to testing
     according to the 'hwut-info.dat' file. 
 
@@ -457,7 +486,7 @@ def _filter(TrueDb, FalseSet):
             if fnmatch.fnmatch(FileName, pattern): return True
         return False
 
-    def get_TestExecutionInfo(FileName, MakeF):
+    def get_TestExecutionInfo(FileName, MakeF, RemoteConfigId):
         """RETURNS: TestExecutionInfo, if FileName matches something in 'TrueDb'. 
                     None, else.
 
@@ -478,40 +507,65 @@ def _filter(TrueDb, FalseSet):
         # -- No match => if make-able generate entry anyway.
         if test_app is None:
             if not MakeF: return None
-            test_app = TestExecutionInfo(FileName, [], None, None)
+            test_app = TestExecutionInfo(FileName, [], None, None, RemoteConfigId)
 
         if MakeF: test_app.set_make_f()
         return test_app
 
     # map: pattern --> TestExecutionInfo
     basic_db = {}
-    for file_name, make_f in get_candidates(MakeOnlyF=not TrueDb):
-        test_app = get_TestExecutionInfo(file_name, make_f)
+    iterable = get_candidates(MakeOnlyF=not TrueDb, 
+                              RemoteConfigurationDb=RemoteConfigurationDb)
+
+    for file_name, make_f, remote_config_id in iterable:
+        test_app = get_TestExecutionInfo(file_name, make_f, remote_config_id)
         if test_app is None: continue
         basic_db[file_name] = test_app
 
     return basic_db
 
-def get_candidates(MakeOnlyF):
-    """RETURNS: list of pairs (file_name, make_f)
+def get_candidates(MakeOnlyF, RemoteConfigurationDb):
+    """RETURNS: list of tuples (file_name, make_f, remote_config_id)
+
+        make_f           = True,  if application is made by 'make'/Makefile.
+                           False, else.
+
+        remote_config_id = None, if application is NOT remotely located.
+                           else, if application lives on the site reached by 
+                                 remote_config_id.
 
     The file names listed are all files in the current directory plus the files
     which are reported by the Makefile ("make hwut-info"). The second element 
     in the result tuples tells wether the file is 'maked' or just is there.
     """
-    # 1st: check for makeable applications
+    # .---.
+    # | 1 | Makeable applications
+    # '---'
     makeable_set = set(make.get_makeable_application_list())
     file_name_list = [
-        (file_name, True) for file_name in makeable_set
+        (file_name, True, None) for file_name in makeable_set
     ]
 
-    # 2nd: add other files from the directory
-    if not MakeOnlyF:
-        file_name_list.extend(
-            (file_name, False) 
-            for file_name in fs.get_file_name_list_in_directory()
-            if file_name not in makeable_set
-        )
+    if MakeOnlyF: return file_name_list
+
+    # .---.
+    # | 2 | Other files from the directory
+    # '---'
+    file_name_list.extend(
+        (file_name, False, None) 
+        for file_name in fs.get_file_name_list_in_directory()
+        if file_name not in makeable_set
+    )
+
+    # .---.
+    # | 3 | Remotely-located test applications
+    # '---'
+    file_name_list.extend(
+        (app, False, remote_config_id) 
+        for remote_config_id, app in remote.get_remote_application_list(RemoteConfigurationDb)
+    )
+
+    file_name_list.sort()
     return file_name_list
     
 def auto_generate(TrueDb, FalseSet):

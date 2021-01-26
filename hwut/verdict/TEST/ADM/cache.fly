@@ -1,105 +1,105 @@
 {
 title: Satisfy Alternatives;
 file_name: test-satisfy.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ ; OK; 0.061635; None; ]
+  [ ; OK; 0.011692; None; ]
 ]
 }
 {
 title: StreamDiffView;
 file_name: test-StreamDiffView.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 shrink_empty_lines_f: False;
 shrink_space_f: False;
 potpourri_f: False;
 result_list: [
-  [ line; OK; 0.076500; 0; ]
-  [ lines; OK; 0.064750; 0; ]
-  [ potpourri; OK; 0.062493; 0; ]
-  [ potpourri-2; OK; 0.070033; 0; ]
-  [ potpourri-bad; OK; 0.064836; 0; ]
+  [ line; OK; 0.012473; -374574287; ]
+  [ lines; OK; 0.019830; 1900904446; ]
+  [ potpourri; OK; 0.025894; 0; ]
+  [ potpourri-2; OK; 0.024610; 0; ]
+  [ potpourri-bad; OK; 0.018463; 0; ]
 ]
 }
 {
 title: Happy Patterns;
 title_group: Comperator;
 file_name: Comperator-happy_pattern.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ one; OK; 0.062715; 0; ]
-  [ two; OK; 0.071046; 0; ]
+  [ one; OK; 0.017035; 0; ]
+  [ two; OK; 0.022680; 0; ]
 ]
 }
 {
 title: Lines;
 title_group: Comperator;
 file_name: Comperator-lines.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ plain; OK; 0.083162; 0; ]
-  [ messy-analogy-spots; OK; 0.088519; 0; ]
-  [ analogy-spots; OK; 0.088626; 0; ]
-  [ analogy-spots-2; OK; 0.105507; 0; ]
+  [ plain; OK; 0.025031; 0; ]
+  [ messy-analogy-spots; OK; 0.025402; 0; ]
+  [ analogy-spots; OK; 0.014551; 0; ]
+  [ analogy-spots-2; OK; 0.026063; 0; ]
 ]
 }
 {
 title: Potpourri;
 title_group: Comperator;
 file_name: Comperator-potpourri.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ one; OK; 0.095053; 0; ]
-  [ two; OK; 0.098110; 0; ]
-  [ three; OK; 0.087050; 0; ]
+  [ one; OK; 0.014354; 0; ]
+  [ two; OK; 0.024622; 0; ]
+  [ three; OK; 0.026287; 0; ]
 ]
 }
 {
 title: Potpourri 2 (line blocks);
 title_group: Comperator;
 file_name: Comperator-potpourri-2.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ ; OK; 0.080523; None; ]
+  [ ; OK; 0.024026; None; ]
 ]
 }
 {
 title: get_next_chunk;
 title_group: StreamResult;
 file_name: ResultStream-get_next_chunk.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ lines; OK; 0.067648; 0; ]
-  [ chunks; OK; 0.087222; 0; ]
-  [ mixed; OK; 0.071171; 0; ]
+  [ lines; OK; 0.026925; 0; ]
+  [ chunks; OK; 0.017068; 0; ]
+  [ mixed; OK; 0.025122; 0; ]
 ]
 }
 {
 title: Fit;
 title_group: Whitespace;
 file_name: test-whitespace_fit.py;
-hwut_info_time: 1438000351L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ single; OK; 0.066530; 0; ]
-  [ two; OK; 0.068327; 0; ]
-  [ three; OK; 0.074599; 0; ]
+  [ single; OK; 0.027759; 0; ]
+  [ two; OK; 0.020989; 0; ]
+  [ three; OK; 0.026848; 0; ]
 ]
 }
 {
 title: Iterable;
 title_group: Whitespace;
 file_name: test-whitespace_iterable.py;
-hwut_info_time: 1438000352L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ ; OK; 0.065623; None; ]
+  [ ; OK; 0.018217; None; ]
 ]
 }

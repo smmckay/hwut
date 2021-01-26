@@ -1,11 +1,11 @@
 {
 title: Parse --hwut-info response;
 file_name: test-parse-hwut-info.py;
-hwut_info_time: 1438000350L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 happy_pattern_list: [ \[0-9L]+; ]
 result_list: [
-  [ title; OK; 0.144909; 0; ]
-  [ choices; OK; 0.147680; 0; ]
+  [ title; OK; 0.040952; 0; ]
+  [ choices; OK; 0.030827; 0; ]
 ]
 }

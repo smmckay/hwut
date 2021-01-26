@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.auxiliary.path as path
 import hwut.io.messages    as io
@@ -74,7 +73,7 @@ def raise_write_protection(Dir):
         if os.path.isfile(file) == False: continue
         try:    io.on_raise_write_protection(Dir, file)
         except: error_n += 1
-        fs.chmod(Dir + "/" + file, stat.S_IREAD)
+        chmod(Dir + "/" + file, stat.S_IREAD)
 
     if error_n:
         print "Error: failed to raise write protection for files in"
@@ -160,12 +159,12 @@ def open_or_die(FileName, Mode, NoteF=True):
            "To be compatible with windows, all files should be opened in binary mode!"
     try: 
         #if os.access(FileName, os.F_OK) and "w" in Mode:
-        #    fs.chmod(FileName, stat.S_IWRITE)
+        #    chmod(FileName, stat.S_IWRITE)
         return open(FileName, Mode)
     except:
         if NoteF:
             print "Cannot open file '%s'" % FileName
-        #fs.chmod(common.HWUT_DATABASE_FILE, stat.S_IWRITE)
+        #chmod(common.HWUT_DATABASE_FILE, stat.S_IWRITE)
         #try:    fh = open(common.HWUT_DATABASE_FILE, "wb"); fh.write(txt)
         #except: io.on_file_access_error(common.HWUT_DATABASE_FILE)
         #return

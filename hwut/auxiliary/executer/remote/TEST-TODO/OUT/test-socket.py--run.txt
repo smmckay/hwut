@@ -1,0 +1,37 @@
+
+--( test0 A )--
+[start] Error: Hwut cannot initiate remote test agent through 'mySocket'.
+Error: Failed to execute './pseudo/remote/location/remotey.exe'
+Error: HWUT cannot remote connect with configuration 'mySocket'
+[end]
+
+--( test0 B )--
+[start] Error: Hwut cannot initiate remote test agent through 'mySocket'.
+Error: Failed to execute './pseudo/remote/location/remotey.exe'
+Error: HWUT cannot remote connect with configuration 'mySocket'
+[end]
+
+--( test1  )--
+[start] Error: Hwut cannot initiate remote test agent through 'mySocket'.
+Error: Failed to execute './pseudo/remote/location/remotey.exe'
+Error: HWUT cannot remote connect with configuration 'mySocket'
+[end]
+
+--( test0 C )--
+[start] Error: Hwut cannot initiate remote test agent through 'mySocket'.
+Error: Failed to execute './pseudo/remote/location/remotey.exe'
+Error: HWUT cannot remote connect with configuration 'mySocket'
+[end]
+
+--( test2 A )--
+[start] Error: Hwut cannot initiate remote test agent through 'mySocket'.
+Error: Failed to execute './pseudo/remote/location/remotey.exe'
+Error: HWUT cannot remote connect with configuration 'mySocket'
+[end]
+
+--( test1 A )--
+[start] Error: Hwut cannot initiate remote test agent through 'mySocket'.
+Error: Failed to execute './pseudo/remote/location/remotey.exe'
+Error: HWUT cannot remote connect with configuration 'mySocket'
+[end]
+<terminated>

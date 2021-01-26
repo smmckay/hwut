@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.common      as common
 from   hwut.common      import __safe_path as __safe_path
@@ -46,49 +45,60 @@ def ensure_dot_slash(Filename):
     if len(Filename) > 2 and Filename[:2] != "./": return "./" + Filename
     else:                                          return Filename
 
-def get_protocol_file_name(Entry, Choice, OutputF=False):
+def get_protocol_file_name(Entry, Choice, OutputF=False, Extension=".txt"):
     """Get the name of the protocol file that corresponds to a test application 
        and a specific choice. The protocol file name in the output directory **does**
        contain always the choice. In the GOOD directory, it is possible that
        all choices produce the **same** output. Then, the protocol file name does not
        contain the choice.
     """
-    safe_choice = Choice.replace("/", "-slash-")
-    safe_choice = safe_choice.replace("\\", "-backslash-")
-    safe_choice = safe_choice.replace(":", "-colon-")
-    safe_choice = safe_choice.replace("#", "-hash-")
-    safe_choice = safe_choice.replace(";", "-semi-colon-")
-    safe_choice = safe_choice.replace(" ", "-space-")
-    safe_choice = safe_choice.replace("\t", "-tabulator-")
-    safe_choice = safe_choice.replace("\n", "-newline-")
-    safe_choice = safe_choice.replace("\r", "-retour-")
+    def get_choice_str(Output, Choice):
+        safe_choice = Choice.replace("/", "-slash-")
+        safe_choice = safe_choice.replace("\\", "-backslash-")
+        safe_choice = safe_choice.replace(":", "-colon-")
+        safe_choice = safe_choice.replace("#", "-hash-")
+        safe_choice = safe_choice.replace(";", "-semi-colon-")
+        safe_choice = safe_choice.replace(" ", "-space-")
+        safe_choice = safe_choice.replace("\t", "-tabulator-")
+        safe_choice = safe_choice.replace("\n", "-newline-")
+        safe_choice = safe_choice.replace("\r", "-retour-")
 
-    arg_str = ""
-    if OutputF and safe_choice != "":            
-        # ./OUT files differ always by choice
-        arg_str = "--" + safe_choice
-    elif safe_choice != "" and not Entry.all_choices_same_result_f(): 
-        # ./GOOD files may be the same for all choices, see 'else:'
-        arg_str = "--" + safe_choice
-    else:
-        # If all choices produce the same result then the GOOD files do not contain
-        # the choice in the filename.
-        pass
+        if OutputF and safe_choice != "":            
+            # ./OUT files ALWAYS DIFFER by choice
+            return "--" + safe_choice
+        elif safe_choice != "" and not Entry.all_choices_same_result_f(): 
+            # ./GOOD files may be the same for all choices, see 'else:'
+            return "--" + safe_choice
+        else:
+            # If all choices produce the same result then the GOOD files do not 
+            # contain the choice in the filename.
+            return ""
 
-    candidate = Entry.file_name() + arg_str + ".txt"
-    a_code = ord('a'); z_code = ord('z')
-    A_code = ord('A'); Z_code = ord('Z')
+    candidate = "%s%s%s" % (Entry.file_name(), get_choice_str(OutputF, Choice), 
+                            Extension)
 
-    final = []
-    for letter in candidate:
-        code = ord(letter)
-        if   code >= a_code and code <= z_code: final.append(letter)   # do not rely on isalpa(), since that may be local
-        elif code >= A_code and code <= Z_code: final.append(letter)
-        elif letter.isdigit():                  final.append(letter)
-        elif letter in [".", "-", "_"]:         final.append(letter)
-        else:                                   final.append("0x%2X" % code) 
+    return safe_string(candidate)
 
-    return "".join(final)
+
+a_code = ord('a'); z_code = ord('z')
+A_code = ord('A'); Z_code = ord('Z')
+
+def safe_string(Txt):
+    global a_code
+    global z_code
+    global A_code
+    global Z_code
+
+    def translate(L):
+        code = ord(L)
+        if   code >= a_code and code <= z_code: return L   # do not rely on isalpa(), since that may be local
+        elif code >= A_code and code <= Z_code: return L
+        elif L.isdigit():                       return L
+        elif L in [".", "-", "_"]:              return L
+        else:                                   return "0x%2X" % code 
+
+    return "".join(translate(letter) for letter in Txt)
+
 
 def split_path(Path):
     """Split the path according to the corresponding operating system."""

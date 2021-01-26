@@ -1,0 +1,7 @@
+Remote Execution
+-------------------------------------------------------------
+
+# Remote location will report tests to be executed.
+--remote socket: Sockey; start: ./my-remote-location/remotey.exe; 
+
+-------------------------------------------------------------

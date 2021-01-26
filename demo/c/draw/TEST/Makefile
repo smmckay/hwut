@@ -1,3 +1,6 @@
+# (C) Frank-Rene Schaefer, private.
+#     Frank-Rene Schaefer, Visteon Innovation and Technology, Kerpen.
+#______________________________________________________________________________
 # (*) COMPILER SETUP
 INCLUDE_PATH = -I../headers
 

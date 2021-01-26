@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 from   hwut.sos.c.assembler       import Assembler
 from   hwut.sos.c.filesystem_db   import FileSystemDb

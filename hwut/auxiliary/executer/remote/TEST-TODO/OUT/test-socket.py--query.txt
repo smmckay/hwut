@@ -1,0 +1,8 @@
+
+Error: Hwut cannot initiate remote test agent through 'mySocket'.
+Error: Failed to execute './pseudo/remote/location/remotey.exe'
+Error: HWUT cannot remote connect with configuration 'mySocket'
+--( Query for remote application list )--
+   None
+
+<terminated>

@@ -1,60 +1,60 @@
 {
 title: The whole chain;
-build_time: 0.8693990707397461;
+build_time: 0.2222590446472168;
 file_name: total-sm_walker.exe;
-hwut_info_time: 1438256811L;
+hwut_info_time: 1460379105L;
 make_dependent_f: True;
 result_list: [
-  [ 1; OK; 0.002139; 0; ]
-  [ 2; OK; 0.004900; 0; ]
-  [ 3; OK; 0.007167; 0; ]
-  [ 4; OK; 0.007417; 0; ]
-  [ 5; OK; 0.012165; 0; ]
+  [ 1; OK; 0.001923; 0; ]
+  [ 2; OK; 0.001947; 0; ]
+  [ 3; OK; 0.001965; 0; ]
+  [ 4; OK; 0.001894; 0; ]
+  [ 5; OK; 0.002007; 0; ]
 ]
 }
 {
 title: Parse Complete Sm-Walker;
 title_group: Parser;
 file_name: test-sm_walker-parse.py;
-hwut_info_time: 1438000336L;
+hwut_info_time: 1459774780L;
 interpreter_list: [ python; ]
 result_list: [
-  [ plain; OK; 0.162497; 0; ]
-  [ refer-backward; OK; 0.144536; 0; ]
-  [ refer-forward; OK; 0.143228; 0; ]
-  [ wild; OK; 0.142758; 0; ]
+  [ plain; OK; 0.040489; 0; ]
+  [ refer-backward; OK; 0.039974; 0; ]
+  [ refer-forward; OK; 0.029559; 0; ]
+  [ wild; OK; 0.039124; 0; ]
 ]
 }
 {
 title: Parse Sm-Walker Event/Condition Specification;
 title_group: Parser;
 file_name: test-sm_walker-event-condition-specification.py;
-hwut_info_time: 1438000336L;
+hwut_info_time: 1459774780L;
 interpreter_list: [ python; ]
 result_list: [
-  [ dash-line; OK; 0.146616; 0; ]
-  [ content; OK; 0.140601; 0; ]
+  [ dash-line; OK; 0.025453; 0; ]
+  [ content; OK; 0.049898; 0; ]
 ]
 }
 {
 title: Parse Sm-Walker Line;
 title_group: Parser;
 file_name: test-sm_walker-transition_line.py;
-hwut_info_time: 1438000336L;
+hwut_info_time: 1459774780L;
 interpreter_list: [ python; ]
 result_list: [
-  [ plain; OK; 0.152455; 0; ]
-  [ refer-backward; OK; 0.147876; 0; ]
-  [ refer-forward; OK; 0.137183; 0; ]
+  [ plain; OK; 0.051858; 0; ]
+  [ refer-backward; OK; 0.045729; 0; ]
+  [ refer-forward; OK; 0.031806; 0; ]
 ]
 }
 {
 title: C source code basic tests;
 title_group: State Machine Walker;
 file_name: basic-c-sm_walker.py;
-hwut_info_time: 1438000336L;
+hwut_info_time: 1459774780L;
 interpreter_list: [ python; ]
 result_list: [
-  [ ; OK; 0.789446; None; ]
+  [ ; OK; 0.153084; None; ]
 ]
 }

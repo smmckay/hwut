@@ -1,0 +1,20 @@
+{
+title: Parse connection configuration of '--remote' tag;
+file_name: test-parse_config.py;
+hwut_info_time: 1454502793L;
+interpreter_list: [ python; ]
+result_list: [
+  [ socket; OK; 0.024314; -1226636911; ]
+]
+}
+{
+title: Socket Interface;
+title_group: Remote Execution (module test);
+file_name: test-socket.py;
+hwut_info_time: 1454502793L;
+interpreter_list: [ python; ]
+result_list: [
+  [ run; FAIL; 0.129232; 1580303759; ]
+  [ query; FAIL; 0.117353; 1410941630; ]
+]
+}

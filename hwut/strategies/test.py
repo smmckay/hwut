@@ -24,14 +24,13 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 from   hwut.strategies.core       import CoreStrategy
 
 import hwut.auxiliary.file_system as fs
 import hwut.coverage.lcov         as lcov
 import hwut.auxiliary.make        as make
-from   hwut.auxiliary.executer    import ErrorType
+from   hwut.auxiliary.executer.core    import ErrorType
 import hwut.common                as common
 import hwut.io.messages           as io
 import hwut.io.csv                as csv
@@ -57,8 +56,15 @@ class TestExecutionStrategy(CoreStrategy):
     def do(self, TestInfo):
         assert self._current_dir != os.devnull
 
-        verdict = self.get_verdict(TestInfo)
-        self.on_verdict(TestInfo, verdict)
+        verdict = self.verdict_get(TestInfo)
+        if verdict == "OK":
+            verdict, \
+            extra_file_verdict_db = comparison.do_extra_output_file_list(TestInfo, 
+                                                                         verdict)
+        else:
+            extra_file_verdict_db = {}
+
+        self.on_verdict(TestInfo, verdict, extra_file_verdict_db)
 
         self.coverage_analysis_on_test_done(TestInfo)
 
@@ -86,12 +92,14 @@ class TestExecutionStrategy(CoreStrategy):
     def _end_directory_tree(self):
         self.coverage_analysis_on_directory_tree_done()
 
-    def get_verdict(self, TestInfo):
+    def verdict_get(self, TestInfo):
         if TestInfo.description.is_present() == False: 
             fs.try_remove(TestInfo.OUT_FileName())
 
             if TestInfo.description.make_dependent_f(): return "MAKE FAILED"
             else:                                       return "FAIL"
+
+        fs.try_remove_files(TestInfo.extra_output_file_list())
 
         fh_output, error_type = TestInfo.execute()
         
@@ -105,8 +113,8 @@ class TestExecutionStrategy(CoreStrategy):
             return self.temporal_logic(fh_output, TestInfo)
         else:                             
             return self.traditional(fh_output, TestInfo)
-    
-    def on_verdict(self, TestInfo, Verdict):
+
+    def on_verdict(self, TestInfo, Verdict, ExtraFileVerdictDb):
         if   Verdict == "OK": 
             self._good_n += 1
         elif Verdict == "NO GOOD FILE":
@@ -118,7 +126,9 @@ class TestExecutionStrategy(CoreStrategy):
         self._result_db.append((self._current_dir, 
                                 TestInfo.description, 
                                 deepcopy(TestInfo.result())))
-        io.on_test_end(TestInfo, Verdict)
+        io.on_test_end(TestInfo, Verdict, ExtraFileVerdictDb)
+
+        return Verdict
 
     def determine_directory_verdict(self):
         if self._total_n == 0:
@@ -157,7 +167,7 @@ class TestExecutionStrategy(CoreStrategy):
             if sub_result != "OK": return sub_result
             log_fh.close()
         return "OK" # Nothing went wrong => Oll Korrekt
-                
+
     def coverage_analysis_on_test_done(self, TestInfo):
         if "lcov" in self.setup.coverage_support_set:
             self.lcov_manager.on_test_done(TestInfo, self.coverage_selector)

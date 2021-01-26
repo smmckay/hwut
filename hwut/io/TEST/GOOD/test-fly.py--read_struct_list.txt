@@ -1,0 +1,46 @@
+IN:     "{"
+RESULT: [None]
+LEXEME: ""
+NEXT:   "{"
+----------------------------
+IN:     "{}"
+RESULT: [{}]
+LEXEME: "{}"
+NEXT:   ""
+----------------------------
+IN:     "{ x: }"
+RESULT: [None]
+LEXEME: ""
+NEXT:   "{"
+----------------------------
+IN:     "{ x: []"
+RESULT: [None]
+LEXEME: ""
+NEXT:   "{"
+----------------------------
+Error: in '.fly' file--missing string.
+IN:     "{ x: [ a;"
+RESULT: [None]
+LEXEME: ""
+NEXT:   "{"
+----------------------------
+IN:     "{ x: [ a; ]"
+RESULT: [None]
+LEXEME: ""
+NEXT:   "{"
+----------------------------
+IN:     "{ x: [ a; ] }"
+RESULT: [{'x': ['a']}]
+LEXEME: "{ x: [ a; ] }"
+NEXT:   ""
+----------------------------
+IN:     "{ x: [ a; ]    y: [ b; ]    }"
+RESULT: [{'y': ['b'], 'x': ['a']}]
+LEXEME: "{ x: [ a; ]    y: [ b; ]    }"
+NEXT:   ""
+----------------------------
+IN:     "{ x: [ a; b; ] y: [ c; d; ] }"
+RESULT: [{'y': ['c', 'd'], 'x': ['a', 'b']}]
+LEXEME: "{ x: [ a; b; ] y: [ c; d; ] }"
+NEXT:   ""
+----------------------------

@@ -23,7 +23,9 @@
  * Thus, walking through the cursors space means walking through all permu-
  * tations of the given settings map.
  *
- * (C) Frank-Rene Schaefer.                                                  */
+ * (C) Frank-Rene Schaefer.                                                  
+ *     This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 #include "assert.h"
 
 typedef long hwut_cursor_index_t;

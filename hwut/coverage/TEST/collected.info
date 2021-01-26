@@ -53,8 +53,8 @@ TN:UnitTest2
 SF:/home/fschaef/prj/hwut/hwut/auxiliary/TEST/data/lcov/nonsense.c
 FN:3,nonsense
 FN:12,never
-FNDA:0,never
 FNDA:1,nonsense
+FNDA:0,never
 FNF:2
 FNH:1
 BRDA:5,0,0,1

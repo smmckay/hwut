@@ -1,24 +1,26 @@
 {
 title: Mini Fly Code Writer;
 file_name: test-fly-write.py;
-hwut_info_time: 1438000339L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ write_list; OK; 0.066267; 0; ]
-  [ write_list_list; OK; 0.105595; 0; ]
-  [ write_string_trivial; OK; 0.106189; 0; ]
+  [ write_list; OK; 0.017490; 0; ]
+  [ write_list_list; OK; 0.020521; 0; ]
+  [ write_string_trivial; OK; 0.019550; 0; ]
+  [ write_struct_list; OK; 0.022025; -1875807277; ]
 ]
 }
 {
 title: Mini Fly Parser;
 file_name: test-fly.py;
-hwut_info_time: 1438000339L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ skip_whitespace; OK; 0.066086; 0; ]
-  [ read_label; OK; 0.114641; 0; ]
-  [ read_string_trivial; OK; 0.068016; 0; ]
-  [ read_list; OK; 0.118728; 0; ]
-  [ read_list_list; OK; 0.088252; 0; ]
+  [ skip_whitespace; OK; 0.014496; 0; ]
+  [ read_label; OK; 0.027314; 0; ]
+  [ read_string_trivial; OK; 0.026663; 0; ]
+  [ read_list; OK; 0.019861; 0; ]
+  [ read_list_list; OK; 0.019965; 0; ]
+  [ read_struct_list; OK; 0.023779; 1196759422; ]
 ]
 }

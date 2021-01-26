@@ -7,8 +7,10 @@
 (2)  Normal Case 1:
 
 ___________________________________________________________________
-    Lines:    70
+    Lines:    72
     Open $-s: 0 (must be ZERO!)
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -81,6 +83,8 @@ extern void x_print_table_line(FILE* fh, x_t* it, const char* Separator);
 extern void x_print_table(FILE* fh, const char* Separator);
 
 ___________________________________________________________________
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -156,8 +160,10 @@ ___________________________________________________________________
 (3)  Normal Case 2:
 
 ___________________________________________________________________
-    Lines:    69
+    Lines:    71
     Open $-s: 0 (must be ZERO!)
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else

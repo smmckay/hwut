@@ -14,6 +14,8 @@ In a first subsection, it is discussed how HWUT determines the list of test
 applications inside a TEST directory. The second section discusses the 
 interaction of HWUT with a test application. 
 
+TODO: Mention TIME-OUT and OVERSIZE and the command line responses that control it!
+
 
 .. toctree::
    :maxdepth: 3

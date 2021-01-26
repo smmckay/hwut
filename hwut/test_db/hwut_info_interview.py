@@ -25,11 +25,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.auxiliary.file_system        as     fs
 import hwut.auxiliary.path               as     aux
-import hwut.auxiliary.executer           as     executer
+import hwut.auxiliary.executer.core           as     executer
 import hwut.io.messages                  as     io
 from   hwut.test_db.description          import TestDescription, E_Attr
 

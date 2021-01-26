@@ -24,12 +24,15 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
-from   hwut.temporal_logic.parser.lexical_analysis import __read_integer
+from   hwut.temporal_logic.parser.lexical_analysis import read_integer
 from   hwut.test_db.attributes.core                import E_Attr
 from   hwut.test_db.result                         import TestResult
 import hwut.common                                 as     common
+
+import sys
+from   StringIO    import StringIO
+from   collections import defaultdict
 
 def __comma_separated_list(Line, MinN=None):
     item_list = Line.split(",")
@@ -90,6 +93,49 @@ def on_HAPPY(descr, line):
     if regex is None: return
     descr[E_Attr.OUT_CMP_HAPPY_PATTERN_LIST].append((regex, pattern_str))
 
+def on_EXTRA_FILES_global(descr, line):
+    """EXTRA_FILES:    ... list of extra files for all choices;
+    """
+    on_EXTRA_FILES_general(descr, ",,all,,", line)
+
+def on_EXTRA_FILES(descr, line):
+    """EXTRA_FILES(A): ... list of extra files for choice A;
+
+    Opening '(' has been eaten, already.
+    """
+    # Parse EXTRA_FILES option
+    #
+    idx = line.find(")") 
+    if idx == -1: 
+        print "Error: missing closing ')' for EXTRA_FILES choice specification."
+        sys.exit(-1)
+
+    choice = line[:idx]
+    line   = line[idx+1:]
+
+    if not line or line[0] != ":":
+        print "Error: missing ':' after EXTRA_FILES option."
+        sys.exit(-1)
+
+    line = line[1:]
+
+    on_EXTRA_FILES_general(descr, choice, line)
+
+def on_EXTRA_FILES_general(descr, choice, line):
+    file_list = [f.strip() for f in line.split(",")]
+
+    if descr[E_Attr.OUT_EXTRA_OUTPUT_FILE_LIST] is None:
+        descr[E_Attr.OUT_EXTRA_OUTPUT_FILE_LIST] = {}
+
+    entry = descr[E_Attr.OUT_EXTRA_OUTPUT_FILE_LIST].get(choice)
+    if entry is None: entry = []
+
+    for file_name in file_list: 
+        if file_name not in entry:
+            entry.append(file_name)
+
+    descr[E_Attr.OUT_EXTRA_OUTPUT_FILE_LIST][choice] = entry
+
 handler_db = {
     "CHOICES:":              on_CHOICES,
     "SAME":                  on_SAME,
@@ -104,6 +150,8 @@ handler_db = {
     "SIZE-LIMIT:":           on_SIZE_LIMIT,
     "ANALOGY:":              on_ANALOGY,
     "HAPPY:":                on_HAPPY,
+    "EXTRA_FILES":           on_EXTRA_FILES,
+    "EXTRA_FILES:":          on_EXTRA_FILES_global,
 }
 
 unit_db = { 
@@ -136,7 +184,7 @@ def get_size_limit_kb(NumberStr):
         if index != L-2: continue
         value_str = NumberStr[:index].strip()
         fh        = StringIO(value_str)
-        integer   = __read_integer(fh)
+        integer   = read_integer(fh)
         if integer is None:
             print "Error: integer required for 'SIZE-LIMIT: <int> UNIT;'"
             return None

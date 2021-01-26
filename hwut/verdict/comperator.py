@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 """PURPOSE: 
 
@@ -129,11 +128,15 @@ class Comperator:
                text[:i0] + text[i1 + len(cls.es_close):]
 
     @classmethod
+    def analogy_string(cls, Str):
+        return "%s%s%s" % (cls.es_open, Str, cls.es_close)
+
+    @classmethod
     def analogy_db_replace(cls, Line):
         line = Line
         for equivalent, original in sorted(cls.analogy_db.iteritems(), 
                                            key=lambda x: len(x[0])):
-            line = line.replace(equivalent, original)
+            line = line.replace(cls.analogy_string(equivalent), cls.analogy_string(original))
         return line
         
     @classmethod
@@ -141,7 +144,7 @@ class Comperator:
         line = Line
         for equivalent, original in sorted(cls.analogy_db.iteritems(), 
                                            key=lambda x: len(x[0])):
-            line = line.replace(original, equivalent)
+            line = line.replace(cls.analogy_string(equivalent), cls.analogy_string(original))
         return line
         
     @classmethod

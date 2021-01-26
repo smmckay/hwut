@@ -1,3 +1,5 @@
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "myGen_iterator.h"
 
 extern void   myGen4_0_init(myGen4_t* it);
@@ -430,6 +432,8 @@ myGen4_4_is_admissible(myGen4_t* it)
     return 1;
 }                      
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "myGen_iterator.h"
 
 extern void   myGen2_0_init(myGen2_t* it);
@@ -886,6 +890,8 @@ myGen2_4_is_admissible(myGen2_t* it)
     return 1;
 }                      
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "myGen_iterator.h"
 
 extern void   myGen3_0_init(myGen3_t* it);
@@ -1275,6 +1281,8 @@ myGen3_3_is_admissible(myGen3_t* it)
     return 1;
 }                      
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "myGen_iterator.h"
 
 extern void   myGen1_0_init(myGen1_t* it);

@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.code_generation.generator.parser.generator  as     generator
 from   hwut.code_generation.generator.parser.parameter  import skip_whitespace_in_line, \

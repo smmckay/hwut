@@ -24,11 +24,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.common            as     common
 from   hwut.common            import color
 import hwut.auxiliary.table   as     table
+import hwut.io.colorize_map   as     colorize_map
 import hwut.auxiliary.path    as     path
 
 import os
@@ -318,6 +318,8 @@ def print_summary(Directory_vs_Result_Pairs, DirsWithMissingGOODFiles=[]):
         txt.append((fail_n_str, "%i" % total_n, verdict_str, dir_str))
         prev_dir = dir
 
+    # Print table
+    #
     max_l = table.max_cell_widths(txt)
     print "    " + table.get_row(txt[0], max_l, Pad=" ")
     print 
@@ -325,6 +327,8 @@ def print_summary(Directory_vs_Result_Pairs, DirsWithMissingGOODFiles=[]):
         print "    " + table.get_row(line, max_l, Pad=" ")
     print
 
+    # Print Big Result
+    #
     print_line_separator()
     if total_verdict.strip() == "[FAIL]":
         txt = art_space_str
@@ -350,15 +354,28 @@ def print_summary(Directory_vs_Result_Pairs, DirsWithMissingGOODFiles=[]):
             txt = __concatenate_art_strings(txt, art_exclamation_mark_str)
 
     # Take out empty lines
-    new_txt = "".join("%s\n" % line for line in txt.splitlines() if line.strip())
-    print new_txt,
+    txt = ["%s\n" % line for line in txt.splitlines() if line.strip()]
 
     if total_test_n == 0: 
         ok_ratio = 1.0
     else:
         ok_ratio = float(total_test_n - total_fail_n) / float(total_test_n)
-    right_aligned_colored("(%i tests)" % total_test_n, 
-                          GreenRatio=ok_ratio)
+
+    if True:
+        txt.append("%s\n" % right_aligned_colored("(%i tests)" % total_test_n, 
+                                                 GreenRatio=ok_ratio))
+        print "".join(txt)
+    else:
+        txt.append("%s\n" % right_aligned("(%i tests)" % total_test_n)) 
+
+        size_x = max(len(line) for line in txt) #common.terminal_width()
+        # size_x = max(size_x, common.terminal_width())
+        txt    = ["%s%s" % (line, "-" * (size_x - len(line))) for line in txt]
+        for line in txt:
+            print line,
+
+        print colorize_map.do(txt, 1.0 - ok_ratio),
+
     print_double_line_separator()
     sys.stdout.flush()
 
@@ -373,13 +390,13 @@ def right_aligned_colored(Text, GreenRatio):
     padding_str = "%s" % (" " * padding_n)
 
     green_n     = len(padding_str) * GreenRatio
-    print "%s%s%s%s%s%s" % (         \
-          color().Back.GREEN,          \
-          padding_str[:int(green_n)],\
-          color().Back.RED,            \
-          padding_str[int(green_n):],\
-          color().Style.RESET_ALL,     \
-          Text)
+    return "%s%s%s%s%s%s" % (           \
+           color().Back.GREEN,          \
+           padding_str[:int(green_n)],  \
+           color().Back.RED,            \
+           padding_str[int(green_n):],  \
+           color().Style.RESET_ALL,     \
+           Text)
 
 
 def print_time_summary(Directory_vs_TimeResult_Pairs):
@@ -485,7 +502,10 @@ def on_no_test_application_found(Selector, Dir):
         else:
             txt += "   No test not found!\n"
     else:
-        txt += "   Test '%s' not found!\n" % Program
+        if Choice:
+            txt += "   Test '%s', choice '%s' not found!\n" % (Program, Choice)
+        else:
+            txt += "   Test '%s' not found!\n" % Program
         if FailedOnlyF:
             txt += "   Maybe, the application did not fail. You specified '--fail'."
 
@@ -557,8 +577,24 @@ def __get_application_call_description(TestInfo, AlternativeLabel="", SuppressAp
 
     return "        %s " % Label, len(Label)
 
-def on_test_end(TestInfo, Result):
+def on_test_end(TestInfo, Result, ExtraFileVerdictDb=None):
     __print_about_experiment_end(TestInfo, Result)
+    if ExtraFileVerdictDb is not None:
+        LastI = len(ExtraFileVerdictDb) - 1
+        for i, info in enumerate(sorted(ExtraFileVerdictDb.iteritems())):
+            extra_file_name, verdict = info
+            extra_file_comparison_verdict(TestInfo, extra_file_name, verdict, i==LastI)
+    sys.stdout.flush()
+
+def extra_file_comparison_verdict(TestInfo, FileName, CmpVerdict, LastF):
+    Program = TestInfo.description.file_name()
+    if   LastF: c = "'"
+    else:       c = ":"
+
+    file_description_str = "%s-(file)- %s " % (c, FileName)
+    Title                = "        %s %s" % (" " * len(Program), file_description_str)
+    txt                  = __print(Title, CmpVerdict)
+    sys.stdout.write(txt)
     sys.stdout.flush()
 
 def on_update_program_entry_info(Filename):
@@ -610,19 +646,30 @@ def on_make_only_this_end(MakeTarget, SuccessF):
     if SuccessF: result = get_label_for_verdict("MADE")
     else:        result = get_label_for_verdict("MAKE FAILED")
 
-    L            = max(0, common.terminal_width() - 9)
-    MakeTargetL = len(MakeTarget)
-    ResultL     = len(result)
-    txt = ""
-    if MakeTargetL + ResultL < L: 
-        txt += "." * (L - MakeTargetL - ResultL)
-    txt += "%s" % result
-    print txt
+    __on_end("make: %s" % MakeTarget, result)
+
+def on_query_remote_application_list(RemoteConfigId):
+    print "query remote: %s" % RemoteConfigId,   # ',' means that there's stuff to be appended.
     sys.stdout.flush()
+
+def on_query_remote_application_list_end(RemoteConfigId, RemoteAppN):
+    result = "%s[%i APPS]%s" % (color().Back.GREEN, RemoteAppN, color().Style.RESET_ALL)
+    __on_end("query remote: %s" % RemoteConfigId, result)
 
 def on_make_bunch_of_test_programs(Bunch):
     for program in Bunch:
         print "make: %s" % program
+    sys.stdout.flush()
+
+def __on_end(LeftLabel, RightLabel):
+    L      = max(0, common.terminal_width())
+    LeftL  = len(LeftLabel)
+    RightL = len(RightLabel)
+    txt    = " "
+    if LeftL + RightL + 1 < L: 
+        txt += "." * (L - LeftL - RightL)
+    txt += "%s" % RightLabel
+    print txt
     sys.stdout.flush()
 
 def on_makefile_does_not_contain_target_hwut_info(Directory):
@@ -875,7 +922,10 @@ def error_on_try_to_execute(CommandLine):
     pass
 
 def horizontal_size(ArtText):
-    return max(color().plain_length(line) for line in ArtText.splitlines())
+    if type(ArtText) == list:
+        return max(color().plain_length(line) for line in ArtText)
+    else:
+        return max(color().plain_length(line) for line in ArtText.splitlines())
 
 def on_first_keyboard_interrupt():
     global art_flash
@@ -1223,6 +1273,16 @@ art_single_fail_str = \
  |_|  |_|_| |_| |___| """
 
 
+art_flowers_str = \
+"""                            wWWWw             _            
+     @@@@   @@@@         vVVVv (_ _)     _     _(_)_    .----.  
+    @@()@@ @@()@@ wWWWw  (_ _)   Y     _(_)_  (_)@(_) .'o O  o'.
+     @@@@   @@@@  (_ _)    Y    \|/   (_)@(_)   (_)\  '-.-..-.-'
+       \     /      Y     \|/    |/    /(_)        |      ::
+       |/   \|     \|/    \|/   \|   \/           \|/   \/::\//  """
+
+
+
 def frame_text(Txt, Color, Color2):
     L = len(Txt) + 2
     txt =     ["%s%s%s|%s\n"   % (Color, (" " * L), Color2, color().Style.RESET_ALL)]
@@ -1230,12 +1290,14 @@ def frame_text(Txt, Color, Color2):
     txt.append("%s%s%s|%s\n"   % (Color, (" " * L), Color2, color().Style.RESET_ALL))
     return "".join(txt), len(Txt) + 3
 
+def justify_horizonal_length(Text):
+    Hf = horizontal_size(Text)
+    return ["%s%s" % (line, " " * (Hf - color().plain_length(line))) for line in Text]
+
 def __concatenate_art_strings(First, Second):
     first  = First.splitlines()
     second = Second.splitlines()
 
-    Hf = horizontal_size(First)
-    Hs = horizontal_size(Second)
     Vf = len(first)
     Vs = len(second)
     V  = max(Vf, Vs)
@@ -1245,8 +1307,8 @@ def __concatenate_art_strings(First, Second):
     elif Vs < V: second.extend([""] * (V - Vs))
 
     # Horizontal Padding 
-    first  = ["%s%s" % (line, " "*(Hf-color().plain_length(line))) for line in first]
-    second = ["%s%s" % (line, " "*(Hs-color().plain_length(line))) for line in second]
+    first  = justify_horizonal_length(first) 
+    second = justify_horizonal_length(second) 
 
     return "".join(
         "%s%s\n" % (x, y) for x, y in izip(first, second)

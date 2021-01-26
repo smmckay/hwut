@@ -24,9 +24,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.auxiliary.path as path
+
 from   collections import defaultdict
 import os
 import fnmatch
@@ -292,6 +292,7 @@ class CoverageDB(dict):
 
         for file_name, entry in sorted(self.iteritems(), key=itemgetter(0)):
             line_cov, branch_cov, ok_n, fail_n = get_info(entry)
-            yield os.path.basename(file_name), "%i" % line_cov, "%i" % branch_cov, "%i" % ok_n, "%i" % fail_n
+            file_name = path.relative_to_home_pretty(file_name)
+            yield file_name, "%i" % line_cov, "%i" % branch_cov, "%i" % ok_n, "%i" % fail_n
     
 

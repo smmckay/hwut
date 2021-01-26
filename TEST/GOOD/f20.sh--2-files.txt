@@ -1,0 +1,92 @@
+
+Test: f20
+
+> hwut a 2files.py --grant
+
+-------------------------------------------------------------------------------
+ * Hello World
+        2files.py ........................................[COPIED TO GOOD]
+                  :-(file)- OUTPUT-1.txt .................[COPIED TO GOOD]
+                  '-(file)- OUTPUT-2.txt .................[COPIED TO GOOD]
+===============================================================================
+
+Test: f20
+
+> hwut a SAME-2files.py --grant
+
+-------------------------------------------------------------------------------
+ * Hello World
+        SAME-2files.py A .................................[COPIED TO GOOD]
+                       :-(file)- OUTPUT-1.txt ............[COPIED TO GOOD]
+                       :-(file)- OUTPUT-2.txt ............[COPIED TO GOOD]
+                       '-(file)- OUTPUT-A.txt ............[COPIED TO GOOD]
+                       B .................................[COPIED TO GOOD]
+                       :-(file)- OUTPUT-1.txt ............[COPIED TO GOOD]
+                       :-(file)- OUTPUT-2.txt ............[COPIED TO GOOD]
+                       '-(file)- OUTPUT-B.txt ............[COPIED TO GOOD]
+===============================================================================
+
+Files in GOOD/
+||||
+ 1  2 12 f20/GOOD/2files.py--file--OUTPUT-2.txt
+ 1  2 12 f20/GOOD/2files.py.txt
+ 1  2 12 f20/GOOD/SAME-2files.py.txt
+ 1  2  5 f20/GOOD/SAME-2files.py--file--OUTPUT-A.txt
+ 1  2  9 f20/GOOD/2files.py--file--OUTPUT-1.txt
+ 0  1  2 f20/GOOD/SAME-2files.py--file--OUTPUT-1.txt
+ 0  1  5 f20/GOOD/SAME-2files.py--file--OUTPUT-2.txt
+ 1  2  8 f20/GOOD/SAME-2files.py--file--OUTPUT-B.txt
+ 6 14 65 total
+||||
+
+
+Test: f20
+
+> hwut test
+
+-------------------------------------------------------------------------------
+ * Hello World
+        2files.py ....................................................[OK]
+                  :-(file)- OUTPUT-1.txt .............................[OK]
+                  '-(file)- OUTPUT-2.txt .............................[OK]
+ * Hello World
+        SAME-2files.py A .............................................[OK]
+                       :-(file)- OUTPUT-1.txt ........................[OK]
+                       :-(file)- OUTPUT-2.txt ........................[OK]
+                       '-(file)- OUTPUT-A.txt ........................[OK]
+                       B .............................................[OK]
+                       :-(file)- OUTPUT-1.txt ........................[OK]
+                       :-(file)- OUTPUT-2.txt ........................[OK]
+                       '-(file)- OUTPUT-B.txt ........................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+
+
+Test: f20
+
+> hwut test
+
+-------------------------------------------------------------------------------
+ * Hello World
+        2files.py ..................................................[FAIL]
+                  :-(file)- OUTPUT-1.txt ...........................[FAIL]
+                  '-(file)- OUTPUT-2.txt .............................[OK]
+ * Hello World
+        SAME-2files.py A ...........................................[FAIL]
+                       :-(file)- OUTPUT-1.txt ......................[FAIL]
+                       :-(file)- OUTPUT-2.txt ........................[OK]
+                       '-(file)- OUTPUT-A.txt ........................[OK]
+                       B ...........................................[FAIL]
+                       :-(file)- OUTPUT-1.txt ......................[FAIL]
+                       :-(file)- OUTPUT-2.txt ........................[OK]
+                       '-(file)- OUTPUT-B.txt ........................[OK]
+                                                           ___   _    _   _    
+                                                          |  _| / \  | | | |   
+                                                          | |_|/ - \ | | | |_  
+                                                          |_|  |_|_| |_| |___| 
+-------------------------------------------------------------------------------
+
+<Test Done>

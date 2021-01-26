@@ -1,7 +1,7 @@
 Regression Tests on fixed bugs
 -----------
 bash *.sh
---not hwut_call.sh hwut_greet.sh
+--not hwut_call.sh hwut_greet.sh f-remote-*.sh
 -----------
 BRIEF:
 

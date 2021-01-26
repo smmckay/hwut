@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.common                  as     common
 import hwut.auxiliary.path          as     path
@@ -137,7 +136,7 @@ def write_compiler_definition(fh):
         "#    -Wimplicit         -- warn on implicit declarations\n"
         "#    -pedantic          -- be pedantic\n"
         "#    -Werror            -- raise all warnings as errors\n"
-        "#    --coverage         -- for coverage analysis (lcov, gcov etc.)\n"
+        "#    -coverage          -- for coverage analysis (lcov, gcov etc.)\n"
         "#    -std=c99           -- for C99 compliance\n"
         "#    -fno-inline        -- avoid inlining, implement seperate functions\n"
         "#    -fsanitize=address -- fast memory error detector\n"
@@ -149,7 +148,7 @@ def write_linker_definition(fh):
         "LD := gcc\n"
         "# Useful additional flags:\n"
         "#    -ggdb              -- gdb-debugger information embedded\n"
-        "#    --coverage         -- for coverage analysis (lcov, gcov etc.) \n" 
+        "#    -coverage          -- for coverage analysis (lcov, gcov etc.) \n" 
         "#    -fsanitize=address -- fast memory error detector\n"
     )
 

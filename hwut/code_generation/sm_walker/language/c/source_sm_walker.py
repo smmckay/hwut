@@ -24,14 +24,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
-from hwut.code_generation.sm_walker.sm_walker import State, \
-                                                     StateTransition, \
-                                                     StateMachineWalker, \
-                                                     condition_interpret
-from collections import namedtuple
-from operator    import itemgetter
+from   hwut.code_generation.sm_walker.sm_walker import State, \
+                                                       StateTransition, \
+                                                       StateMachineWalker, \
+                                                       condition_interpret
+import hwut.common as common
+from   collections import namedtuple
+from   operator    import itemgetter
 
 def do(SmWalkerList):
     """Generate source code (.c files) for a given list of state machine walkers.
@@ -251,12 +251,13 @@ def do_execute(walker):
     condition_n         = len(ConditionCaseDb)
     if not condition_n: condition_n = 1
 
-    txt = txt_execute.replace("$$NAME$$",        Name) 
-    txt = txt.replace("$$MAX_PATH_SIZE$$",       "%i" % PathMaxLength)
-    txt = txt.replace("$$MAX_LOOP_N$$",          "%i" % MaxLoopN)
-    txt = txt.replace("$$INIT_STATE_INDEX$$",    "%i" % InitStateIndex)
-    txt = txt.replace("$$USER_DATA_TYPE$$",      UserDataType)
-    txt = txt.replace("$$SPACE$$",               " " * len(Name))
+    txt = txt_execute.replace("$$NAME$$",     Name) 
+    txt = txt.replace("$$HWUT_VERSION$$",     "%s" % common.HWUT_VERSION)
+    txt = txt.replace("$$MAX_PATH_SIZE$$",    "%i" % PathMaxLength)
+    txt = txt.replace("$$MAX_LOOP_N$$",       "%i" % MaxLoopN)
+    txt = txt.replace("$$INIT_STATE_INDEX$$", "%i" % InitStateIndex)
+    txt = txt.replace("$$USER_DATA_TYPE$$",   UserDataType)
+    txt = txt.replace("$$SPACE$$",            " " * len(Name))
 
     joker_check       = get_event_joker_code(Name, EventCaseDb)
     at_begin, content = get_case_list(Name, "EventId", EventCaseDb)

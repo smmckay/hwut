@@ -1,276 +1,276 @@
 {
 title: Macros from 'hwut_unit.h';
-build_time: 0.2744011878967285;
+build_time: 0.07244205474853516;
 file_name: test-hwut_unit.exe;
-hwut_info_time: 1438256798L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 happy_pattern_list: [ :\[0-9]+:; ]
 result_list: [
-  [ ; OK; 0.005312; -1356164090; ]
+  [ ; OK; 0.001895; -1356164090; ]
 ]
 }
 {
 title: Iterator's cursor API;
 title_group: Generator;
-build_time: 0.32918691635131836;
+build_time: 0.07710599899291992;
 file_name: test-hwut_cursor.exe;
-hwut_info_time: 1438256797L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ ; OK; 0.003446; None; ]
+  [ ; OK; 0.001692; None; ]
 ]
 }
 {
 title: 1 step;
 title_group: State Machine Walker;
-build_time: 0.4019169807434082;
+build_time: 0.07476210594177246;
 file_name: test-hwut_sm_walker.exe;
-hwut_info_time: 1438256803L;
+hwut_info_time: 1460379103L;
 make_dependent_f: True;
 result_list: [
-  [ without-condition; OK; 0.010805; 0; ]
-  [ condition-fail; OK; 0.008176; 0; ]
-  [ condition-good; OK; 0.008230; 0; ]
-  [ first-good; OK; 0.007993; 0; ]
-  [ second-good; OK; 0.004697; 0; ]
-  [ third-good; OK; 0.007396; 0; ]
-  [ X-without-condition; OK; 0.010573; 0; ]
-  [ X-condition-fail; OK; 0.006180; 0; ]
-  [ X-condition-good; OK; 0.004138; 0; ]
-  [ X-first-good; OK; 0.011987; 0; ]
-  [ X-second-good; OK; 0.006924; 0; ]
-  [ X-third-good; OK; 0.005119; 0; ]
-  [ Y-without-condition; OK; 0.013123; 0; ]
-  [ Y-condition-fail; OK; 0.008979; 0; ]
-  [ Y-condition-good; OK; 0.006727; 0; ]
-  [ Y-first-good; OK; 0.008276; 0; ]
-  [ Y-second-good; OK; 0.006304; 0; ]
-  [ Y-third-good; OK; 0.010180; 0; ]
+  [ without-condition; OK; 0.007620; 0; ]
+  [ condition-fail; OK; 0.003103; 0; ]
+  [ condition-good; OK; 0.002270; 0; ]
+  [ first-good; OK; 0.003779; 0; ]
+  [ second-good; OK; 0.002676; 0; ]
+  [ third-good; OK; 0.002216; 0; ]
+  [ X-without-condition; OK; 0.001598; 0; ]
+  [ X-condition-fail; OK; 0.001667; 0; ]
+  [ X-condition-good; OK; 0.002076; 0; ]
+  [ X-first-good; OK; 0.001615; 0; ]
+  [ X-second-good; OK; 0.001909; 0; ]
+  [ X-third-good; OK; 0.001847; 0; ]
+  [ Y-without-condition; OK; 0.007120; 0; ]
+  [ Y-condition-fail; OK; 0.001955; 0; ]
+  [ Y-condition-good; OK; 0.006756; 0; ]
+  [ Y-first-good; OK; 0.002700; 0; ]
+  [ Y-second-good; OK; 0.002094; 0; ]
+  [ Y-third-good; OK; 0.002063; 0; ]
 ]
 }
 {
 title: 4 states in line;
 title_group: State Machine Walker;
-build_time: 0.26685309410095215;
+build_time: 0.06343698501586914;
 file_name: test-hwut_sm_walker-2.exe;
-hwut_info_time: 1438256800L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ nnn; OK; 0.010998; 0; ]
-  [ nng; OK; 0.006867; 0; ]
-  [ nnf; OK; 0.005115; 0; ]
-  [ ngn; OK; 0.003654; 0; ]
-  [ ngg; OK; 0.003764; 0; ]
-  [ ngf; OK; 0.007489; 0; ]
-  [ nfn; OK; 0.008073; 0; ]
-  [ nfg; OK; 0.009303; 0; ]
-  [ nff; OK; 0.006452; 0; ]
-  [ gnn; OK; 0.006313; 0; ]
-  [ gng; OK; 0.010598; 0; ]
-  [ gnf; OK; 0.009427; 0; ]
-  [ ggn; OK; 0.010990; 0; ]
-  [ ggg; OK; 0.006605; 0; ]
-  [ ggf; OK; 0.006647; 0; ]
-  [ gfn; OK; 0.011307; 0; ]
-  [ gfg; OK; 0.011803; 0; ]
-  [ gff; OK; 0.006373; 0; ]
-  [ fnn; OK; 0.008071; 0; ]
-  [ fng; OK; 0.005526; 0; ]
-  [ fnf; OK; 0.008239; 0; ]
-  [ fgn; OK; 0.009648; 0; ]
-  [ fgg; OK; 0.006124; 0; ]
-  [ fgf; OK; 0.009961; 0; ]
-  [ ffn; OK; 0.006704; 0; ]
-  [ ffg; OK; 0.003440; 0; ]
-  [ fff; OK; 0.005806; 0; ]
+  [ nnn; OK; 0.002553; 0; ]
+  [ nng; OK; 0.002384; 0; ]
+  [ nnf; OK; 0.006040; 0; ]
+  [ ngn; OK; 0.009637; 0; ]
+  [ ngg; OK; 0.002121; 0; ]
+  [ ngf; OK; 0.002304; 0; ]
+  [ nfn; OK; 0.004563; 0; ]
+  [ nfg; OK; 0.002862; 0; ]
+  [ nff; OK; 0.004280; 0; ]
+  [ gnn; OK; 0.005563; 0; ]
+  [ gng; OK; 0.002152; 0; ]
+  [ gnf; OK; 0.001711; 0; ]
+  [ ggn; OK; 0.001878; 0; ]
+  [ ggg; OK; 0.002638; 0; ]
+  [ ggf; OK; 0.007879; 0; ]
+  [ gfn; OK; 0.008750; 0; ]
+  [ gfg; OK; 0.002116; 0; ]
+  [ gff; OK; 0.002294; 0; ]
+  [ fnn; OK; 0.004620; 0; ]
+  [ fng; OK; 0.002454; 0; ]
+  [ fnf; OK; 0.002954; 0; ]
+  [ fgn; OK; 0.002314; 0; ]
+  [ fgg; OK; 0.008859; 0; ]
+  [ fgf; OK; 0.002161; 0; ]
+  [ ffn; OK; 0.002204; 0; ]
+  [ ffg; OK; 0.008126; 0; ]
+  [ fff; OK; 0.002672; 0; ]
 ]
 }
 {
 title: Callbacks Deactivated;
 title_group: State Machine Walker;
-build_time: 0.2642948627471924;
+build_time: 0.06272101402282715;
 file_name: test-hwut_sm_walker-6.exe;
-hwut_info_time: 1438256797L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ ; OK; 0.009373; None; ]
+  [ ; OK; 0.002696; None; ]
 ]
 }
 {
 title: Condition Norms (negative conditions);
 title_group: State Machine Walker;
-build_time: 0.39051103591918945;
+build_time: 0.08423209190368652;
 file_name: test-hwut_sm_walker-condition-norms-negative.exe;
-hwut_info_time: 1438256801L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ 1; OK; 0.008059; 0; ]
-  [ 2a; OK; 0.009317; 0; ]
-  [ 2b; OK; 0.003532; 0; ]
-  [ 2c; OK; 0.005425; 0; ]
-  [ 2d; OK; 0.018787; 0; ]
-  [ 2e; OK; 0.012103; 0; ]
-  [ 2f; OK; 0.004989; 0; ]
+  [ 1; OK; 0.002217; 0; ]
+  [ 2a; OK; 0.003531; 0; ]
+  [ 2b; OK; 0.003307; 0; ]
+  [ 2c; OK; 0.003136; 0; ]
+  [ 2d; OK; 0.002131; 0; ]
+  [ 2e; OK; 0.002154; 0; ]
+  [ 2f; OK; 0.005757; 0; ]
 ]
 }
 {
 title: Condition Norms (positive conditions);
 title_group: State Machine Walker;
-build_time: 0.308729887008667;
+build_time: 0.08688902854919434;
 file_name: test-hwut_sm_walker-condition-norms.exe;
-hwut_info_time: 1438256800L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ 1; OK; 0.007881; 0; ]
-  [ 2a; OK; 0.003049; 0; ]
-  [ 2b; OK; 0.006542; 0; ]
-  [ 2c; OK; 0.004260; 0; ]
-  [ 2d; OK; 0.014169; 0; ]
-  [ 2e; OK; 0.008800; 0; ]
-  [ 2f; OK; 0.006291; 0; ]
-  [ 3a; OK; 0.003080; 0; ]
-  [ 3b; OK; 0.008527; 0; ]
-  [ 3c; OK; 0.007879; 0; ]
-  [ 3d; OK; 0.008700; 0; ]
-  [ 3e; OK; 0.008259; 0; ]
-  [ 3f; OK; 0.004029; 0; ]
+  [ 1; OK; 0.003254; 0; ]
+  [ 2a; OK; 0.006478; 0; ]
+  [ 2b; OK; 0.005362; 0; ]
+  [ 2c; OK; 0.002397; 0; ]
+  [ 2d; OK; 0.002232; 0; ]
+  [ 2e; OK; 0.010283; 0; ]
+  [ 2f; OK; 0.006523; 0; ]
+  [ 3a; OK; 0.001742; 0; ]
+  [ 3b; OK; 0.002866; 0; ]
+  [ 3c; OK; 0.007361; 0; ]
+  [ 3d; OK; 0.003090; 0; ]
+  [ 3e; OK; 0.004863; 0; ]
+  [ 3f; OK; 0.004122; 0; ]
 ]
 }
 {
 title: Detect inconsistent conditions;
 title_group: State Machine Walker;
-build_time: 0.3492090702056885;
+build_time: 0.05854511260986328;
 file_name: test-hwut_sm_walker-inconsistent-condition.exe;
-hwut_info_time: 1438256802L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ pos-1; OK; 0.005803; 0; ]
-  [ pos-2; OK; 0.002588; 0; ]
-  [ neg-1; OK; 0.005753; 0; ]
-  [ neg-2; OK; 0.009969; 0; ]
+  [ pos-1; OK; 0.012287; 0; ]
+  [ pos-2; OK; 0.004891; 0; ]
+  [ neg-1; OK; 0.003109; 0; ]
+  [ neg-2; OK; 0.003607; 0; ]
 ]
 }
 {
 title: Forbid and allow states;
 title_group: State Machine Walker;
-build_time: 0.4592859745025635;
+build_time: 0.08170890808105469;
 file_name: test-hwut_sm_walker-forbidd-allow.exe;
-hwut_info_time: 1438256801L;
+hwut_info_time: 1460379103L;
 make_dependent_f: True;
 result_list: [
-  [ 1a; OK; 0.003238; 0; ]
-  [ 1b; OK; 0.005485; 0; ]
-  [ 1c; OK; 0.012052; 0; ]
-  [ 1d; OK; 0.016099; 0; ]
-  [ 2; OK; 0.004827; 0; ]
-  [ 3; OK; 0.007171; 0; ]
+  [ 1a; OK; 0.004564; 0; ]
+  [ 1b; OK; 0.004151; 0; ]
+  [ 1c; OK; 0.002860; 0; ]
+  [ 1d; OK; 0.008141; 0; ]
+  [ 2; OK; 0.003441; 0; ]
+  [ 3; OK; 0.004478; 0; ]
 ]
 }
 {
 title: Forks;
 title_group: State Machine Walker;
-build_time: 0.24413084983825684;
+build_time: 0.07154607772827148;
 file_name: test-hwut_sm_walker-5.exe;
-hwut_info_time: 1438256802L;
+hwut_info_time: 1460379103L;
 make_dependent_f: True;
 result_list: [
-  [ 0-open; OK; 0.006191; 0; ]
-  [ 0-closed; OK; 0.004260; 0; ]
-  [ 1-open; OK; 0.015884; 0; ]
-  [ 1-closed; OK; 0.005406; 0; ]
+  [ 0-open; OK; 0.005973; 0; ]
+  [ 0-closed; OK; 0.005539; 0; ]
+  [ 1-open; OK; 0.002656; 0; ]
+  [ 1-closed; OK; 0.002160; 0; ]
 ]
 }
 {
 title: Loops;
 title_group: State Machine Walker;
-build_time: 1.0351059436798096;
+build_time: 0.239516019821167;
 file_name: test-hwut_sm_walker-3.exe;
-hwut_info_time: 1438256797L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ loop; OK; 0.008329; 0; ]
-  [ s-loop; OK; 0.002944; 0; ]
-  [ loop-s; OK; 0.005778; 0; ]
-  [ loop2; OK; 0.007499; 0; ]
-  [ butterfly; OK; 0.007896; 0; ]
-  [ s-butterfly; OK; 0.002964; 0; ]
-  [ butterfly-s; OK; 0.004118; 0; ]
-  [ butterfly2; OK; 0.007269; 0; ]
+  [ loop; OK; 0.005938; 0; ]
+  [ s-loop; OK; 0.001940; 0; ]
+  [ loop-s; OK; 0.002362; 0; ]
+  [ loop2; OK; 0.001649; 0; ]
+  [ butterfly; OK; 0.003386; 0; ]
+  [ s-butterfly; OK; 0.001639; 0; ]
+  [ butterfly-s; OK; 0.003157; 0; ]
+  [ butterfly2; OK; 0.009905; 0; ]
 ]
 }
 {
 title: Max. number of path elements;
 title_group: State Machine Walker;
-build_time: 0.2902390956878662;
+build_time: 0.06879401206970215;
 file_name: test-hwut_sm_walker-4.exe;
-hwut_info_time: 1438256800L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ linear; OK; 0.010550; 0; ]
-  [ loop; OK; 0.011445; 0; ]
+  [ linear; OK; 0.004400; 0; ]
+  [ loop; OK; 0.002887; 0; ]
 ]
 }
 {
 title: State and Condition Coverage;
 title_group: State Machine Walker;
-build_time: 0.28582096099853516;
+build_time: 0.07129192352294922;
 file_name: test-hwut_sm_walker-coverage.exe;
-hwut_info_time: 1438256802L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ ; OK; 0.007428; None; ]
+  [ ; OK; 0.002238; None; ]
 ]
 }
 {
 title: print;
 title_group: State Machine Walker;
-build_time: 0.3407249450683594;
+build_time: 0.06377506256103516;
 file_name: test-hwut_sm_walker-print.exe;
-hwut_info_time: 1438256802L;
+hwut_info_time: 1460379103L;
 make_dependent_f: True;
 result_list: [
-  [ pretty; OK; 0.012709; 0; ]
-  [ plain; OK; 0.003021; 0; ]
+  [ pretty; OK; 0.002367; 0; ]
+  [ plain; OK; 0.002085; 0; ]
 ]
 }
 {
 title: bitfield encode / decode;
 title_group: hwut_bitfield;
-build_time: 1.2210230827331543;
+build_time: 0.21056914329528809;
 file_name: test-hwut_bitfield.exe;
-hwut_info_time: 1438256799L;
+hwut_info_time: 1460379103L;
 make_dependent_f: True;
 result_list: [
-  [ 1; OK; 0.008449; 0; ]
-  [ 2; OK; 0.007214; 0; ]
-  [ 3; OK; 0.011642; 0; ]
-  [ error; OK; 0.011510; 0; ]
+  [ 1; OK; 0.003847; 0; ]
+  [ 2; OK; 0.002510; 0; ]
+  [ 3; OK; 0.009238; 0; ]
+  [ error; OK; 0.002266; 0; ]
 ]
 }
 {
 title: iterator append/pop;
 title_group: hwut_bitfield;
-build_time: 0.397230863571167;
+build_time: 0.08974814414978027;
 file_name: test-hwut_bitfield-iterator2.exe;
-hwut_info_time: 1438256798L;
+hwut_info_time: 1460379103L;
 make_dependent_f: True;
 result_list: [
-  [ 1; OK; 0.006290; 0; ]
-  [ 2; OK; 0.008939; 0; ]
-  [ 3; OK; 0.006599; 0; ]
-  [ 4; OK; 0.004670; 0; ]
+  [ 1; OK; 0.003116; 0; ]
+  [ 2; OK; 0.002416; 0; ]
+  [ 3; OK; 0.009366; 0; ]
+  [ 4; OK; 0.003232; 0; ]
 ]
 }
 {
 title: iterator append/pop small;
 title_group: hwut_bitfield;
-build_time: 0.3471951484680176;
+build_time: 0.09230804443359375;
 file_name: test-hwut_bitfield-iterator.exe;
-hwut_info_time: 1438256798L;
+hwut_info_time: 1460379102L;
 make_dependent_f: True;
 result_list: [
-  [ 1; OK; 0.008330; 0; ]
-  [ 2; OK; 0.006001; 0; ]
-  [ 3; OK; 0.003036; 0; ]
+  [ 1; OK; 0.002622; 0; ]
+  [ 2; OK; 0.002624; 0; ]
+  [ 3; OK; 0.007616; 0; ]
 ]
 }

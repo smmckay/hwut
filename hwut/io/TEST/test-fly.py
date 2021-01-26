@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 #! /usr/bin/env python
 import sys
@@ -39,7 +38,7 @@ import hwut.io.mini_fly as fly
 if "--hwut-info" in sys.argv:
     print "Mini Fly Parser;"
     print "CHOICES: skip_whitespace, read_label, read_string_trivial, " \
-                   "read_list, read_list_list;"   
+                   "read_list, read_list_list, read_struct_list;"   
     sys.exit(0)
 
 choice = sys.argv[1]
@@ -50,6 +49,7 @@ function = {
     "read_string_trivial": fly.read_string_trivial,
     "read_list":           fly.read_list,
     "read_list_list":      fly.read_list_list,
+    "read_struct_list":    fly.read_struct_list,
 }[choice]
 
 def pretty(Txt):
@@ -147,3 +147,14 @@ elif choice == "read_list_list":
     test("[[;][;]]", 1)
     test("[[a;][a;]]", 1)
     test("[[a;b;][a;b;]]", 2)
+
+elif choice == "read_struct_list":
+    test("{")
+    test("{}")
+    test("{ x: }")
+    test("{ x: []")
+    test("{ x: [ a;")
+    test("{ x: [ a; ]")
+    test("{ x: [ a; ] }")
+    test("{ x: [ a; ]    y: [ b; ]    }")
+    test("{ x: [ a; b; ] y: [ c; d; ] }")

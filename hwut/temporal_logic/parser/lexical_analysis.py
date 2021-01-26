@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 from hwut.temporal_logic.classes.statement_element import SourceCodeOrigin, Fork, reject
 from hwut.temporal_logic.classes.primary           import Primary_String, \
@@ -85,7 +84,7 @@ def integer(sh):
     if tmp == "-": sign = -1
     else:          sh.seek(-1, 1); sign = 1
 
-    number = __read_integer(sh)
+    number = read_integer(sh)
 
     if number is None: return reject(sh, pos, "integer")
     else:              return Primary_ConstantNumber(sign * number)
@@ -273,7 +272,7 @@ def origin(sh, StartPosition):
     sh.seek(current_position)
     return SourceCodeOrigin(__current_file_name, line_n)
 
-def __read_integer(fh):
+def read_integer(fh):
     """Read an integer in decimal, hex, octal, binary, or roman notation. 
 
     This code is based on 'read_integer' from the open-source project 'Quex'.

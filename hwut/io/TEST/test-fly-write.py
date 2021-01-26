@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 #! /usr/bin/env python
 import sys
@@ -38,7 +37,7 @@ import hwut.io.mini_fly as fly
 
 if "--hwut-info" in sys.argv:
     print "Mini Fly Code Writer;"
-    print "CHOICES: write_list, write_list_list, write_string_trivial;"
+    print "CHOICES: write_list, write_list_list, write_string_trivial, write_struct_list;"
     sys.exit(0)
 
 choice = sys.argv[1]
@@ -47,6 +46,7 @@ function = {
     "write_string_trivial":  fly.write_string_trivial,
     "write_list":            fly.write_list,
     "write_list_list":       fly.write_list_list,
+    "write_struct_list":     fly.write_struct_list,
 }[choice]
 
 def pretty(Txt):
@@ -122,3 +122,10 @@ elif choice == "write_list_list":
     test([[],         [],       ])
     test([[":"],      [":"],    ])
     test([[":", ":"], [":", ":"]])
+
+elif choice == "write_struct_list":
+    test({                                 })
+    test({ "a": []                         })
+    test({ "a": [],         "b": [],       })
+    test({ "a": ["x"],      "b": ["1"],    })
+    test({ "a": ["y", "z"], "b": ["2", "3"]})

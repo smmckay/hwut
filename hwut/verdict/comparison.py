@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import os
 import sys
@@ -105,3 +104,29 @@ def do_plain(fh_a, fh_b):
         elif len(chunk_a) == 0:  return True   # Both reached end of stream.
 
             
+def do_extra_output_file_list(TestInfo, TestVerdict):
+    """A test may specify extra files which are output and need to be 
+    compared. Those files are compared binarily.
+    """
+    def binary_comparison(FileName):
+        try:    out_fh = open(FileName, "rb")
+        except: return "NOT FOUND" 
+        try:    good_fh = open(TestInfo.GOOD_ExtraFileName(FileName), "rb")
+        except: return "NO GOOD FILE" 
+
+        verdict_f = (out_fh.read() == good_fh.read())
+
+        out_fh.close()
+        good_fh.close()
+        if not verdict_f: return "FAIL"
+        else:             return "OK"
+
+    total_verdict = TestVerdict
+    verdict_db    = {}
+    for file_name in TestInfo.extra_output_file_list():
+        verdict = binary_comparison(file_name)
+        verdict_db[file_name] = verdict
+        if verdict != "OK": total_verdict = "FAIL"
+
+    return total_verdict, verdict_db
+                

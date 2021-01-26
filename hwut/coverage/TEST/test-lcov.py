@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import sys
 import os
@@ -33,7 +32,7 @@ import shutil
 sys.path.insert(0, os.environ["HWUT_PATH"])
 
 import hwut.coverage.lcov         as lcov
-import hwut.auxiliary.executer    as executer
+import hwut.auxiliary.executer.core    as executer
 import hwut.auxiliary.path        as path
 import hwut.auxiliary.file_system as fs
 

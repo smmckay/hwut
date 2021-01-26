@@ -1,0 +1,34 @@
+{
+title: Hello World;
+file_name: SAME-2files.py;
+hwut_info_time: 1460379062L;
+interpreter_list: [ python; ]
+same_f: True;
+extra_output_file_list: {
+A: [ OUTPUT-A.txt; ]
+B: [ OUTPUT-B.txt; ]
+,,all,,: [ OUTPUT-2.txt; OUTPUT-1.txt; ]
+
+}
+
+result_list: [
+  [ A; FAIL; 0.010404; 0; ]
+  [ B; FAIL; 0.010988; 0; ]
+]
+}
+{
+title: Hello World;
+file_name: 2files.py;
+hwut_info_time: 1460379062L;
+interpreter_list: [ python; ]
+extra_output_file_list: {
+A: [ OUTPUT-A.txt; ]
+B: [ OUTPUT-B.txt; ]
+,,all,,: [ OUTPUT-2.txt; OUTPUT-1.txt; ]
+
+}
+
+result_list: [
+  [ ; FAIL; 0.011306; 0; ]
+]
+}

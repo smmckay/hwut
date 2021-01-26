@@ -3,7 +3,7 @@ RM := rm
 LD := gcc
 # Useful additional flags:
 #    -ggdb              -- gdb-debugger information embedded
-#    --coverage         -- for coverage analysis (lcov, gcov etc.) 
+#    -coverage          -- for coverage analysis (lcov, gcov etc.) 
 #    -fsanitize=address -- fast memory error detector
 
 CC := gcc -c
@@ -13,7 +13,7 @@ CC := gcc -c
 #    -Wimplicit         -- warn on implicit declarations
 #    -pedantic          -- be pedantic
 #    -Werror            -- raise all warnings as errors
-#    --coverage         -- for coverage analysis (lcov, gcov etc.)
+#    -coverage          -- for coverage analysis (lcov, gcov etc.)
 #    -std=c99           -- for C99 compliance
 #    -fno-inline        -- avoid inlining, implement seperate functions
 #    -fsanitize=address -- fast memory error detector

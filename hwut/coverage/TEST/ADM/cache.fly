@@ -1,11 +1,11 @@
 {
 title: LCOV Coverage Analyzer - Related Functionality;
 file_name: test-lcov.py;
-hwut_info_time: 1438004528L;
+hwut_info_time: 1459774782L;
 interpreter_list: [ python; ]
 result_list: [
-  [ parse; OK; 0.136689; 0; ]
-  [ save; OK; 0.896164; 0; ]
-  [ collect; OK; 0.326771; 0; ]
+  [ parse; OK; 0.025693; 0; ]
+  [ save; OK; 0.228922; 0; ]
+  [ collect; OK; 0.087469; 0; ]
 ]
 }

@@ -24,9 +24,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
-HWUT_VERSION = '0.27.3' 
+HWUT_VERSION = '0.27.4' # 16y03m21d
 
 import os
 import ctypes
@@ -165,6 +164,7 @@ history = None  # to be initialized in hwut-exe.py
 __interface = None
 
 def get_default_terminal_width():
+    if not sys.stdout.isatty(): return 80
     width, heigth = _get_terminal_size()
     return get_environment_variable("HWUT_TERMINAL_WIDTH", width)
 
@@ -264,8 +264,10 @@ class Setup:
         self.test_reference_table_file_out = self.follow("", "--out")
 
 
-        global no_color
         self.no_color_f = self.search("--no-color")
+        if not sys.stdout.isatty(): self.no_color_f = True
+
+        global no_color
         if self.no_color_f: set_color(no_color)
         else:               color().init()
 

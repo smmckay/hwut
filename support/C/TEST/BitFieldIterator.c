@@ -1,3 +1,5 @@
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "BitFieldIterator.h"
 
 extern void   Error_0_init(Error_t* it);
@@ -257,6 +259,8 @@ Error_0_is_admissible(Error_t* it)
     return 1;
 }                      
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "BitFieldIterator.h"
 
 extern void   Three_0_init(Three_t* it);
@@ -532,6 +536,8 @@ Three_0_is_admissible(Three_t* it)
     return 1;
 }                      
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "BitFieldIterator.h"
 
 extern void   Two_0_init(Two_t* it);
@@ -791,6 +797,8 @@ Two_0_is_admissible(Two_t* it)
     return 1;
 }                      
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #include "BitFieldIterator.h"
 
 extern void   One_0_init(One_t* it);

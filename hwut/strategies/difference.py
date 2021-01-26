@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import os
 import stat
@@ -119,7 +118,8 @@ class DifferenceDisplayStrategy(AcceptStrategy):
         fs.try_remove(good_before)
 
         # -- copy protocol files of all specified choices
-        io.on_test_end(TestInfo, AcceptStrategy._do(self, TestInfo, manual_change_f))
+        verdict, extra_file_verdict_db = AcceptStrategy._do(self, TestInfo, manual_change_f)
+        io.on_test_end(TestInfo, verdict, extra_file_verdict_db)
 
     def generate_tmp_display(self, TestInfo):
         """Considering the HWUT way of looking at things, this function generates

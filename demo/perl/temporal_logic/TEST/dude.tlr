@@ -1,3 +1,6 @@
+# (C) Frank-Rene Schaefer, private.
+#     Frank-Rene Schaefer, Visteon Innovation and Technology, Kerpen.
+#___________________________________________________________________________
 state_machine HOME, WORK, BED;
 
 once true: print "INIT";

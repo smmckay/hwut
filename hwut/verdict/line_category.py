@@ -24,9 +24,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
-DEBUG_fh = open("tmp.log", "wb")
+# DEBUG_fh = open("tmp.log", "wb")
 
 def do(Line, PotpourriF, ShrinkEmptyLinesF):
     """Verdict: 0 -- empty line or comment
@@ -35,7 +34,7 @@ def do(Line, PotpourriF, ShrinkEmptyLinesF):
                 3 -- normal line
     """
     if not Line: return None, None # end of file
-    DEBUG_fh.write("# [%s] %s" % (Line, ShrinkEmptyLinesF))
+    # DEBUG_fh.write("# [%s] %s" % (Line, ShrinkEmptyLinesF))
 
     line = Line.strip()
     L    = len(line)

@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 # Implementation of a small subset of the 'fly' language.
 #
@@ -154,19 +153,48 @@ def read_list_list(fh, N):
         result.append(x)
     return result
 
+def read_struct_list(fh):
+    """RETURNS: Dictionary where each value is a list of strings.
+       
+    EXAMPLE: '{ name1: [ x; y; z; ] name2: [ a; b; c ] }'
+    """
+    pos = fh.tell()
+    if not is_struct_begin(fh): return None
+
+    result = {}
+    while not is_struct_end(fh):
+        label = read_label(fh)
+        if label is None: fh.seek(pos); return None
+
+        value_list = read_list(fh)
+        if value_list is None: fh.seek(pos); return None
+
+        result[label] = value_list
+
+    return result
+
 def write_list(ValueList):
     return "".join([
-                "[ ", 
-                "".join("%s " % write_string_trivial(x) for x in ValueList),
-                "]"
+        "[ ", 
+        "".join("%s " % write_string_trivial(x) for x in ValueList),
+        "]"
     ])
         
 def write_list_list(ListList, N):
     return "".join([
-                "[\n", 
-                "".join("  %s\n" % write_list(x) for x in ListList),
-                "]"
+        "[\n", 
+        "".join("  %s\n" % write_list(x) for x in ListList),
+        "]"
     ])
+
+def write_struct_list(DictList):
+    txt = [ "{\n" ]
+    txt.extend(
+        "%s: %s\n" % (key, write_list(value_list))
+        for key, value_list in DictList.iteritems()
+    )
+    txt.append("\n}\n")
+    return "".join(txt)
         
 def write_string_trivial(Value):
     if   Value is None:                         Value = "None"

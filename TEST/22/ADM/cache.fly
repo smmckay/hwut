@@ -41,9 +41,9 @@ result_list: [
 {
 title: Also this;
 file_name: also.sh;
-hwut_info_time: 1415353154L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ ; NO GOOD FILE; 0.003151; 0; ]
+  [ ; NO GOOD FILE; 0.002813; 0; ]
 ]
 }

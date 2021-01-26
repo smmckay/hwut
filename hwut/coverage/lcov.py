@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 # PURPOSE: 
 #
@@ -85,7 +84,7 @@ from   hwut.coverage.selector  import CoverageSelector
 from   hwut.coverage.core      import Coverage, \
                                       CoverageDB, \
                                       CoverageDB_Entry
-import hwut.auxiliary.executer as     executer
+import hwut.auxiliary.executer.core as     executer
 
 import sys
 import os

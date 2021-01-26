@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 # coding: utf-8
 import hwut.auxiliary.make               as     make
@@ -87,10 +86,11 @@ class TestDescription(dict):
         return result
 
     def absorb_TextExecutionInfo(self, TEI):
-        self[E_Attr.CALL_INTERPRETER_LIST]      = TEI.interpreter_sequence
-        self[E_Attr.CALL_STDOUT_POST_PROCESSOR] = TEI.stdout_post_processor
-        self[E_Attr.CALL_STDERR_POST_PROCESSOR] = TEI.stderr_post_processor
-        self[E_Attr.APP_MAKE_DEPENDENT_F]       = TEI.make_f
+        self[E_Attr.CALL_INTERPRETER_LIST]        = TEI.interpreter_sequence
+        self[E_Attr.CALL_STDOUT_POST_PROCESSOR]   = TEI.stdout_post_processor
+        self[E_Attr.CALL_STDERR_POST_PROCESSOR]   = TEI.stderr_post_processor
+        self[E_Attr.CALL_REMOTE_CONFIGURATION_ID] = TEI.remote_config_id
+        self[E_Attr.APP_MAKE_DEPENDENT_F]         = TEI.make_f
 
     def absorb_TestDescription(self, TD):
         prev_result_list = self.result_list()
@@ -114,7 +114,9 @@ class TestDescription(dict):
     def file_name(self):                     return self[E_Attr.APP_FILE_NAME]
     def group(self):                         return self[E_Attr.APP_TITLE_GROUP]
     def interpreter_list(self):              return self[E_Attr.CALL_INTERPRETER_LIST]
+    def extra_output_file_list_db(self):     return self[E_Attr.OUT_EXTRA_OUTPUT_FILE_LIST]
     def make_dependent_f(self):              return self[E_Attr.APP_MAKE_DEPENDENT_F]
+    def remote_config_id(self):              return self[E_Attr.CALL_REMOTE_CONFIGURATION_ID]
     def make_time_sec(self):                 return self[E_Attr.APP_BUILD_TIME_SEC]
     def potpourri_f(self):                   return self[E_Attr.OUT_CMP_POTPOURRI_F]
     def shrink_empty_lines_f(self):          return self[E_Attr.OUT_SHRINK_EMPTY_LINES_F] 
@@ -338,6 +340,7 @@ class TestDescription(dict):
         return title_line, remainder
 
     def _interview_attributes_extract(self, AppName, RemainderStr):
+        if RemainderStr is None: return
         self[E_Attr.APP_HWUT_INFO_REQUEST_TIME] = long(os.stat(AppName).st_mtime)
 
         # Find 'CHOICES', 'SAME', and other options.
@@ -346,8 +349,11 @@ class TestDescription(dict):
             fields   = raw_line.split()
             if not len(fields): continue
 
-            key_word = fields[0]
-            line     = raw_line[len(key_word)+1:].strip()
+            key_word  = fields[0]
+            bracket_i = key_word.find("(")
+            if bracket_i != -1: key_word = key_word[:bracket_i]
+
+            line = raw_line[len(key_word)+1:].strip()
 
             handler = interview.handler_db.get(key_word)
             if handler is None:

@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 from   hwut.test_db.result          import TestResult
 from   hwut.test_db.attributes.core import E_Attr, E_AType
@@ -78,9 +77,19 @@ def fly_float_parse(fh):
 
 def fly_integer_parse(fh):
     value_str = fly.read_string_trivial(fh)
-    if value_str == "None": return None
-    try:                    return long(value_str)
-    except:                 return 0
+
+    if value_str == "None": 
+        return None
+
+    if value_str.startswith("0x"):
+        try:                    return long(value_str, 16)
+        except:                 return 0
+    elif value_str.startswith("0o"):
+        try:                    return long(value_str, 8)
+        except:                 return 0
+    else:
+        try:                    return long(value_str)
+        except:                 return 0
 
 def bool_parse(fh):
     value_str = fly.read_string_trivial(fh)
@@ -88,6 +97,7 @@ def bool_parse(fh):
 
 parser_db = {
     E_AType.REGEX_LIST:  fly_regex_list_parse,
+    E_AType.DICT_LIST:   fly.read_struct_list,
     E_AType.RESULT_LIST: fly_result_list_parse,
     E_AType.LIST:        fly.read_list,
     E_AType.BOOL:        fly_bool_parse,
@@ -98,6 +108,7 @@ parser_db = {
 
 writer_db = {
     E_AType.REGEX_LIST:  fly_regex_list_write,
+    E_AType.DICT_LIST:   fly.write_struct_list,
     E_AType.RESULT_LIST: fly_result_list_write,
     E_AType.LIST:        fly.write_list,
     E_AType.BOOL:        fly.write_string_trivial,

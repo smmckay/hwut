@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 from hwut.code_generation.function_stubs.c.core          import ObjectSpec
 from hwut.code_generation.generator.language.c.auxiliary import get_integer_code
@@ -426,7 +425,6 @@ class TrivialExpression:
                 self.parameter_ref = p
                 return
         print "Error: Parameter '%s' does not exist in expression." % self.identifier
-        assert False
         sys.exit()
 
     def is_add(self):

@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 from hwut.temporal_logic.classes.statement_element import SyntaxNode, SourceCodeOrigin
 from hwut.temporal_logic.classes.object            import Object

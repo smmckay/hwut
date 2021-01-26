@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 #! /usr/bin/env python
 import os
@@ -86,7 +85,7 @@ def clean(TmpDirName):
 def test_parse(Content):
     setup("tmp.parse", Content)
     fh = open(HWUT_INFO_FILE_NAME, "rb")
-    true_db, false_set, coverage_selector = hwut_info._parse(fh)
+    true_db, false_set, remote_db, coverage_selector = hwut_info._parse(fh)
     print "FalseSet:", false_set
     print "TrueDb:"
     for key, value in true_db.iteritems():

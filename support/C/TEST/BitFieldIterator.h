@@ -2,6 +2,8 @@
 #define INCLUDE_GUAGE_HWUT_GENERATOR_BitFieldIterator_h
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -79,6 +81,8 @@ extern void Error_print_table(FILE* fh, const char* Separator);
 
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -153,6 +157,8 @@ extern void Three_print_table(FILE* fh, const char* Separator);
 
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else
@@ -226,6 +232,8 @@ extern void Two_print_table(FILE* fh, const char* Separator);
 
 #include <stdint.h>
 
+/* This file has been generated with HWUT 0.27.4.
+ *___________________________________________________________________________*/
 #if ! defined(HWUT_OPTION_STDIO_FORBIDDEN)
 #   include <stdio.h>
 #else

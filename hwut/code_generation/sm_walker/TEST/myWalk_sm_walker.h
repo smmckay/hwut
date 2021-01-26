@@ -8,6 +8,8 @@ typedef struct {
 
 #ifndef INCLUDE_GUARD_SM_WALKER_myWalk4_H
 #define INCLUDE_GUARD_SM_WALKER_myWalk4_H
+/* This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 
 #include <hwut_sm_walker.h>  /* Use: -I<<HWUT_PATH>>/support/C               */
 
@@ -68,6 +70,8 @@ myWalk4_state_is_real(const hwut_sm_state_t* State);
 
 #ifndef INCLUDE_GUARD_SM_WALKER_myWalk5_H
 #define INCLUDE_GUARD_SM_WALKER_myWalk5_H
+/* This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 
 #include <hwut_sm_walker.h>  /* Use: -I<<HWUT_PATH>>/support/C               */
 
@@ -131,6 +135,8 @@ myWalk5_state_is_real(const hwut_sm_state_t* State);
 
 #ifndef INCLUDE_GUARD_SM_WALKER_myWalk1_H
 #define INCLUDE_GUARD_SM_WALKER_myWalk1_H
+/* This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 
 #include <hwut_sm_walker.h>  /* Use: -I<<HWUT_PATH>>/support/C               */
 
@@ -188,6 +194,8 @@ myWalk1_state_is_real(const hwut_sm_state_t* State);
 
 #ifndef INCLUDE_GUARD_SM_WALKER_myWalk2_H
 #define INCLUDE_GUARD_SM_WALKER_myWalk2_H
+/* This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 
 #include <hwut_sm_walker.h>  /* Use: -I<<HWUT_PATH>>/support/C               */
 
@@ -246,6 +254,8 @@ myWalk2_state_is_real(const hwut_sm_state_t* State);
 
 #ifndef INCLUDE_GUARD_SM_WALKER_myWalk3_H
 #define INCLUDE_GUARD_SM_WALKER_myWalk3_H
+/* This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 
 #include <hwut_sm_walker.h>  /* Use: -I<<HWUT_PATH>>/support/C               */
 

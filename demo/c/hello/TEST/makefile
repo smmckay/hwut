@@ -1,3 +1,6 @@
+# (C) Frank-Rene Schaefer, private.
+#     Frank-Rene Schaefer, Visteon Innovation and Technology, Kerpen.
+#______________________________________________________________________________
 FILES = my-file.exe  my-file-2.exe  my-file-3.exe
 
 # CC = C:\MinGW\bin\gcc.exe

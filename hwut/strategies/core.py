@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import hwut.auxiliary.file_system as     fs
 import hwut.auxiliary.path        as     aux
@@ -98,6 +97,9 @@ class CoreStrategy:
         """
         self._current_dir = Dir
 
+        #
+        # Find all tests that are relevant in this directory
+        #
         tei_db = hwut_info.get_TestExecutionInfoDb(TestSelector)
         if tei_db is None: return None
         self._test_db = TestDB.from_cache()

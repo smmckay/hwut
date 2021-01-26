@@ -1,3 +1,30 @@
+/*  SPDX license identifier: LGPL-2.1
+ * 
+ *  Copyright (C) Frank-Rene Schaefer, private.
+ *  Copyright (C) Frank-Rene Schaefer, 
+ *                Visteon Innovation&Technology GmbH, 
+ *                Kerpen, Germany.
+ * 
+ *  This file is part of "HWUT -- The hello worldler's unit test".
+ * 
+ *                   http://hwut.sourceforge.net
+ * 
+ *  This file is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License as published by the Free Software Foundation; either
+ *  version 2.1 of the License, or (at your option) any later version.
+ * 
+ *  This file is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ *  Lesser General Public License for more details.
+ * 
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this file; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ *  Boston, MA 02110-1301 USA
+ * 
+ * --------------------------------------------------------------------------*/
 #ifndef INCLUDE_GUARD_HWUT_UNIT
 #define INCLUDE_GUARD_HWUT_UNIT
 
@@ -171,6 +198,21 @@
             if( CONDITION ) { hwut_report_ok(#CONDITION);                         hwut_flush(); }      \
             else            { hwut_report_walk_fail(&(walker)->base, #CONDITION); hwut_on_failure(); } \
         } while(0)
+
+/* A pseudo-random generator that produces the SAME values on all platforms
+ * as long as the 'SEED' variable is of size 2**31.
+ *
+ * GENERATES: Numbers from 0 ... 2,147,483,659
+ *
+ * NOTE: The magic numbers 13, 251, and 2147483659 are the largest primes
+ *       before 2**4, 2**8 and 2**31.
+ *
+ * The 'hwut_random_next()' works with integer variables that may carray at
+ * least the positive value of '2**31 - 11' (the largest prime < 2**31).
+ *
+ * (C) Frank-Rene Schaefer                                                   */
+#define hwut_random_next(SEED) ((SEED * 251 + 13) % 2147483659)
+
 
 #endif  /* INCLUDE_GUARD_HWUT_UNIT */
 

@@ -1,6 +1,9 @@
 Iterators
 =========
 
+TODO: Mention 'hwut_random_next()' which generates a deterministic sequence
+      of random numbers platform independently. Numbers = 0 .. 2**31 - 11.
+
 An iterator is a description which allows to define a larger sets of tests.
 Instead of defining every combination of a parameter setting manually, 
 generators provide iterators over permutation sets. For that HWUT generates

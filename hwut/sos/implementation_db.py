@@ -24,11 +24,12 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
-from collections import defaultdict, namedtuple
+import hwut.io.select as     select
 
-from copy import copy
+from   collections    import defaultdict, namedtuple
+from   copy           import copy
+import os
 
 ImplementationFile = namedtuple("ImplementationFile", 
                                 ("file_name", "implentation_type"))
@@ -259,7 +260,7 @@ class Chosen:
         #    return previous
 
         if Reference in self.__crash_on_call_stubs:
-            return Reference, base.ImplementationType.CRASH_ON_CALL
+            return Reference, ImplementationType.CRASH_ON_CALL
 
         # (1) Is there a file that has been chosen before?
         chosen_before = FileSet.intersection(self.__file_db.iterkeys())
@@ -291,7 +292,7 @@ class Chosen:
         # Crash-on-call stub required.
         if file_index == -1:
             self.__crash_on_call_stubs.add(Reference)
-            return Reference, base.ImplementationType.CRASH_ON_CALL
+            return Reference, ImplementationType.CRASH_ON_CALL
 
         # File determined to implement reference
         file_name         = file_list[file_index]

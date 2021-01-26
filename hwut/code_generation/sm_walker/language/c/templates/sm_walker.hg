@@ -1,5 +1,7 @@
 #ifndef INCLUDE_GUARD_SM_WALKER_$$NAME$$_H
 #define INCLUDE_GUARD_SM_WALKER_$$NAME$$_H
+/* This file has been generated with HWUT $$HWUT_VERSION$$.
+ *___________________________________________________________________________*/
 
 #include <hwut_sm_walker.h>  /* Use: -I<<HWUT_PATH>>/support/C               */
 

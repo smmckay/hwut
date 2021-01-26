@@ -24,15 +24,15 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
-import hwut.auxiliary.path        as     aux
-import hwut.auxiliary.file_system as     fs
-import hwut.auxiliary.executer    as     executer
-import hwut.auxiliary.make        as     make
-import hwut.remote.core           as     remote
-import hwut.io.messages           as     io
-import hwut.common                as     common
+import hwut.auxiliary.path                          as     aux
+import hwut.auxiliary.file_system                   as     fs
+import hwut.auxiliary.make                          as     make
+import hwut.auxiliary.executer.core                 as     executer
+from   hwut.auxiliary.executer.executer_system_call import ExecuterSystemCall
+#from   hwut.auxiliary.executer.remote               import ExecuterRemote
+import hwut.io.messages                             as     io
+import hwut.common                                  as     common
 
 import time
 import binascii
@@ -84,6 +84,18 @@ class Test:
     def choice(self):
         return self.description.result_list()[self.__choice_index].choice
 
+    def extra_output_file_list(self):
+        db = self.description.extra_output_file_list_db()
+        if not db: return []
+
+        for_all    = db.get(",,all,,")
+        for_choice = db.get(self.choice())
+
+        result = set()
+        if for_all    is not None: result.update(for_all)
+        if for_choice is not None: result.update(for_choice)
+        return list(result)
+
     def result(self):
         return self.description.result_list()[self.__choice_index]
 
@@ -95,6 +107,12 @@ class Test:
 
     def GOOD_FileName(self):
         return "GOOD/%s" % self.__GOOD_file_name
+
+    def GOOD_ExtraFileName(self, FileName):
+        file_stem = aux.get_protocol_file_name(self.description, 
+                                               self.choice(), OutputF=False,
+                                               Extension="") 
+        return "GOOD/%s--file--%s" % (file_stem, aux.safe_string(FileName))
 
     def GOOD_tmp_FileName(self):
         return "GOOD/%s.tmp" % self.__GOOD_file_name
@@ -125,7 +143,7 @@ class Test:
 
     def execute(self):
         """RETURNS: [0] -- Filehandle to access standard output of test.
-                    [1] -- ErrorType as defined in 'hwut.auxiliary.executer'.
+                    [1] -- ErrorType as defined in 'hwut.auxiliary.executer.core'.
         """
         if     self.description.make_dependent_f() \
            and self.description.is_present() == False:
@@ -140,7 +158,7 @@ class Test:
         ])
 
         stdout_fh = self.OUT_FileHandle(Mode="wb") 
-        execution_unit = None
+        # execution_unit = None
         # execution_unit = { 
         #    "TCP":    remote_executer.tcp,
         #    "UART":   remote_executer.uart,
@@ -157,11 +175,16 @@ class Test:
            and self.result().time_to_execute_sec is not None:
             timeout_sec = max(1.0, self.result().time_to_execute_sec * 3)
 
+        # if self.description.remote_config_id() is not None: executer_class = ExecuterRemote
+        executer_class = ExecuterSystemCall
+
         time_start = time.time() # [sec]
+
         error_type = executer.do(cmd_line, stdout_fh=stdout_fh,
-                                 TimeOut_sec   = timeout_sec,
-                                 SizeLimit_Kb  = self.description.size_limit_kb(),
-                                 ExecutionUnit = execution_unit)
+                                 TimeOut_sec        = timeout_sec,
+                                 SizeLimit_Kb       = self.description.size_limit_kb(),
+                                 executer_generator = executer_class)
+
         time_end   = time.time() # [sec]
 
         # Close writeable file; re-open file to be readable.

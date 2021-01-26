@@ -1,0 +1,33 @@
+id:               'my-1st';
+ip_adr_to_listen: '';
+port_to_listen:   18193=0x4711;
+script_to_start:  'None';
+open:             False;
+
+id:               'my-2nd';
+
+
+ip_adr_to_listen: '192.168.23.24';
+port_to_listen:   18193=0x4711;
+script_to_start:  'None';
+open:             False;
+
+id:               'my-3rd';
+ip_adr_to_listen: 'www.hwut.online';
+
+
+port_to_listen:   37773=0x938D;
+script_to_start:  'None';
+open:             False;
+id:               'my-4th';
+ip_adr_to_listen: 'localhost';
+port_to_listen:   37773=0x938D;
+
+
+script_to_start:  'bash start-remote.sh';
+open:             False;
+
+
+
+
+

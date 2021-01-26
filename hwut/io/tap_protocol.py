@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 """PURPOSE: 
 
@@ -33,6 +32,7 @@ Write test output in the 'TAP' protocol format.
 (C) Frank-Rene Schaefer
 """
 import hwut.auxiliary.file_system as fs
+import hwut.auxiliary.path        as path
 
 def do(ResultDb, FileName, SubTestsF):
     if SubTestsF:
@@ -51,12 +51,12 @@ def do(ResultDb, FileName, SubTestsF):
         else:                          continue
         if result.choice: choice = "(%s)" % result.choice
         else:             choice = result.choice
-        if description.title(): title = description.title()
-        else:                   title = description.file_name()
 
-        key = (title, choice)
+        file_name = path.relative_to_home_pretty("%s/%s" % (directory, description.file_name()))
+
+        key = (file_name, choice)
         if key not in done_set:
-            fh.write("%s %i - %s %s\n" % (verdict_str, i, title, choice))
+            fh.write("%s %i - %s %s\n" % (verdict_str, i, file_name, choice))
         else:
             done_set.add(key)
     

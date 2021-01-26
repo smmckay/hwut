@@ -1,0 +1,46 @@
+
+--( test0 A )--
+[start]Today is very boring,
+it’s a very boring day,
+there is nothing much to look at,
+there is nothing much to say,
+there’s a peacock on my sneakers,
+there’s a penguin on my head,
+there’s a dormouse on my doorstep,
+I am going back to bed.
+[end]
+
+--( test0 B )--
+[start]Today is very boring,
+it is boring through and through,
+there is absolutely nothing
+that I think I want to do,
+I see giants riding rhinos,
+and an ogre with a sword,
+there’s a dragon blowing smoke rings,
+I am positively bored.
+[end]
+
+--( test1  )--
+[start]Today is very boring,
+I can hardly help by yawn,
+there’s a flying saucer landing
+in the middle of my lawn,
+a volcano just erupted
+less than half a mile away,
+and I think I felt an earthquake,
+it’s a very boring day.
+[end]
+
+--( test0 C )--
+[start] Error: Remote agent did not recognize application choice pair.
+[end]
+
+--( test2 A )--
+[start] Error: Remote agent did not recognize application choice pair.
+[end]
+
+--( test1 A )--
+[start] Error: Remote agent did not recognize application choice pair.
+[end]
+<terminated>

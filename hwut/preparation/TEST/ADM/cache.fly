@@ -1,12 +1,12 @@
 {
 title: Parsing hwut-info.dat.;
 file_name: test-hwut_info.py;
-hwut_info_time: 1438000339L;
+hwut_info_time: 1459774781L;
 interpreter_list: [ python; ]
 result_list: [
-  [ access; OK; 0.150811; 0; ]
-  [ parse; OK; 0.147338; 0; ]
-  [ filter; OK; 0.141511; 0; ]
-  [ auto-generate; OK; 0.131507; 0; ]
+  [ access; OK; 0.035555; 0; ]
+  [ parse; OK; 0.035286; 0; ]
+  [ filter; OK; 0.042219; 0; ]
+  [ auto-generate; OK; 0.048417; 0; ]
 ]
 }

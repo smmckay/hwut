@@ -24,10 +24,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
-from   hwut.common                              import HWUT_PATH
-import hwut.auxiliary.file_system               as fs
+from   hwut.common                              import HWUT_PATH, HWUT_VERSION
+import hwut.auxiliary.file_system               as     fs
 from   hwut.code_generation.generator.parameter import E_ValueType
 from   hwut.code_generation.generator.generator import get_max_array_length_db
 
@@ -56,6 +55,7 @@ def do(GeneratorName, SectionList, ArrayDb):
     template_file_name = HWUT_PATH + "/hwut/code_generation/generator/language/c/templates/source.hg"
 
     txt = fs.read_or_die(template_file_name)
+    txt = txt.replace("$$HWUT_VERSION$$", "%s" % HWUT_VERSION)
     txt = txt.replace("$$ARRAY_DEF$$", array_txt)
     txt = txt.replace("$$MEMBERS$$",   member_str)
     txt = txt.replace("$$MAX_INDEX_NUMBER$$", "%i" % max_index_number)

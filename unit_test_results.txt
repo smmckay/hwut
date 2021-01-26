@@ -1,0 +1,699 @@
+===============================================================================
+                                                                               
+                        Regression Tests on fixed bugs                         
+                                                                               
+TEST                                                                 <no date>
+-------------------------------------------------------------------------------
+
+ * Misc:
+
+    no module shall use 'os.path.relpath'
+        no-relpath.sh ................................................[OK]
+
+ * fschaef:
+
+    Bug 17 - Make CHOICES reduction
+        17.sh ........................................................[OK]
+    Bug 20 - Dysfunctional: hwut --fail
+        20.sh normal-info ............................................[OK]
+              touched ................................................[OK]
+              untouched ..............................................[OK]
+    Bug f20 - EXTRA_FILES
+        f20.sh 1-file ................................................[OK]
+               2-files ...............................................[OK]
+    Feature 22 - Futile make commands
+        22.sh ........................................................[OK]
+    Feature f15 - Time Out Detection
+        f15.sh .......................................................[OK]
+    Feature f16 - Oversized Output Detection
+        f16.sh .......................................................[OK]
+
+ * stephanhengefel:
+
+    Bug 13 - Dysfunctional: hwut make clean
+        13.sh local ..................................................[OK]
+              recursive ..............................................[OK]
+    Bug 15 - False Possitive
+        15.sh ........................................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                           Test on Auxiliary Modules                           
+                                                                               
+hwut/auxiliary/TEST                                                  <no date>
+-------------------------------------------------------------------------------
+
+ * ctags:
+
+    Find references and build database
+        ctags_interface-test.py ......................................[OK]
+
+ * path:
+
+    close_directory_iterable
+        path-close_directory_iterable.py .............................[OK]
+    recursive_subdirectory_iterable
+        path-recursive_subdirectory_iterable.py ......................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                               Auxiliary Modules                               
+                                                                               
+hwut/coverage/TEST                                                   <no date>
+-------------------------------------------------------------------------------
+ * LCOV Coverage Analyzer - Related Functionality
+        test-lcov.py collect .........................................[OK]
+                     parse ...........................................[OK]
+                     save ............................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                              Basic Input Output                               
+                                                                               
+hwut/io/TEST                                                         <no date>
+-------------------------------------------------------------------------------
+ * Mini Fly Code Writer
+        test-fly-write.py write_list .................................[OK]
+                          write_list_list ............................[OK]
+                          write_string_trivial .......................[OK]
+                          write_struct_list ..........................[OK]
+ * Mini Fly Parser
+        test-fly.py read_label .......................................[OK]
+                    read_list ........................................[OK]
+                    read_list_list ...................................[OK]
+                    read_string_trivial ..............................[OK]
+                    read_struct_list .................................[OK]
+                    skip_whitespace ..................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                            Parsing 'hwut-info.dat'                            
+                                                                               
+hwut/preparation/TEST                                                <no date>
+-------------------------------------------------------------------------------
+ * Parsing hwut-info.dat.
+        test-hwut_info.py access .....................................[OK]
+                          auto-generate ..............................[OK]
+                          filter .....................................[OK]
+                          parse ......................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                       Interpretation of 'hwut-info.dat'                       
+                                                                               
+hwut/test_db/TEST                                                    <no date>
+-------------------------------------------------------------------------------
+ * Parse --hwut-info response
+        test-parse-hwut-info.py choices ..............................[OK]
+                                title ................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+              Comparison, Stream, and Verdict related Procedures               
+                                                                               
+hwut/verdict/TEST                                                    <no date>
+-------------------------------------------------------------------------------
+ * Satisfy Alternatives
+        test-satisfy.py ..............................................[OK]
+ * StreamDiffView
+        test-StreamDiffView.py line ..................................[OK]
+                               lines .................................[OK]
+                               potpourri .............................[OK]
+                               potpourri-2 ...........................[OK]
+                               potpourri-bad .........................[OK]
+
+ * Comperator:
+
+    Happy Patterns
+        Comperator-happy_pattern.py one ..............................[OK]
+                                    two ..............................[OK]
+    Lines
+        Comperator-lines.py analogy-spots ............................[OK]
+                            analogy-spots-2 ..........................[OK]
+                            messy-analogy-spots ......................[OK]
+                            plain ....................................[OK]
+    Potpourri
+        Comperator-potpourri.py one ..................................[OK]
+                                three ................................[OK]
+                                two ..................................[OK]
+    Potpourri 2 (line blocks)
+        Comperator-potpourri-2.py ....................................[OK]
+
+ * StreamResult:
+
+    get_next_chunk
+        ResultStream-get_next_chunk.py chunks ........................[OK]
+                                       lines .........................[OK]
+                                       mixed .........................[OK]
+
+ * Whitespace:
+
+    Fit
+        test-whitespace_fit.py single ................................[OK]
+                               three .................................[OK]
+                               two ...................................[OK]
+    Iterable
+        test-whitespace_iterable.py ..................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                          HWUT Support Modules for C                           
+                                                                               
+support/C/TEST                                                       <no date>
+-------------------------------------------------------------------------------
+ * Macros from 'hwut_unit.h'
+        test-hwut_unit.exe ...........................................[OK]
+
+ * Generator:
+
+    Iterator's cursor API
+        test-hwut_cursor.exe .........................................[OK]
+
+ * State Machine Walker:
+
+    1 step
+        test-hwut_sm_walker.exe X-condition-fail .....................[OK]
+                                X-condition-good .....................[OK]
+                                X-first-good .........................[OK]
+                                X-second-good ........................[OK]
+                                X-third-good .........................[OK]
+                                X-without-condition ..................[OK]
+                                Y-condition-fail .....................[OK]
+                                Y-condition-good .....................[OK]
+                                Y-first-good .........................[OK]
+                                Y-second-good ........................[OK]
+                                Y-third-good .........................[OK]
+                                Y-without-condition ..................[OK]
+                                condition-fail .......................[OK]
+                                condition-good .......................[OK]
+                                first-good ...........................[OK]
+                                second-good ..........................[OK]
+                                third-good ...........................[OK]
+                                without-condition ....................[OK]
+    4 states in line
+        test-hwut_sm_walker-2.exe fff ................................[OK]
+                                  ffg ................................[OK]
+                                  ffn ................................[OK]
+                                  fgf ................................[OK]
+                                  fgg ................................[OK]
+                                  fgn ................................[OK]
+                                  fnf ................................[OK]
+                                  fng ................................[OK]
+                                  fnn ................................[OK]
+                                  gff ................................[OK]
+                                  gfg ................................[OK]
+                                  gfn ................................[OK]
+                                  ggf ................................[OK]
+                                  ggg ................................[OK]
+                                  ggn ................................[OK]
+                                  gnf ................................[OK]
+                                  gng ................................[OK]
+                                  gnn ................................[OK]
+                                  nff ................................[OK]
+                                  nfg ................................[OK]
+                                  nfn ................................[OK]
+                                  ngf ................................[OK]
+                                  ngg ................................[OK]
+                                  ngn ................................[OK]
+                                  nnf ................................[OK]
+                                  nng ................................[OK]
+                                  nnn ................................[OK]
+    Callbacks Deactivated
+        test-hwut_sm_walker-6.exe ....................................[OK]
+    Condition Norms (negative conditions)
+        test-hwut_sm_walker-condition-norms-negative.exe 1 ...........[OK]
+                                                         2a ..........[OK]
+                                                         2b ..........[OK]
+                                                         2c ..........[OK]
+                                                         2d ..........[OK]
+                                                         2e ..........[OK]
+                                                         2f ..........[OK]
+    Condition Norms (positive conditions)
+        test-hwut_sm_walker-condition-norms.exe 1 ....................[OK]
+                                                2a ...................[OK]
+                                                2b ...................[OK]
+                                                2c ...................[OK]
+                                                2d ...................[OK]
+                                                2e ...................[OK]
+                                                2f ...................[OK]
+                                                3a ...................[OK]
+                                                3b ...................[OK]
+                                                3c ...................[OK]
+                                                3d ...................[OK]
+                                                3e ...................[OK]
+                                                3f ...................[OK]
+    Detect inconsistent conditions
+        test-hwut_sm_walker-inconsistent-condition.exe neg-1 .........[OK]
+                                                       neg-2 .........[OK]
+                                                       pos-1 .........[OK]
+                                                       pos-2 .........[OK]
+    Forbid and allow states
+        test-hwut_sm_walker-forbidd-allow.exe 1a .....................[OK]
+                                              1b .....................[OK]
+                                              1c .....................[OK]
+                                              1d .....................[OK]
+                                              2 ......................[OK]
+                                              3 ......................[OK]
+    Forks
+        test-hwut_sm_walker-5.exe 0-closed ...........................[OK]
+                                  0-open .............................[OK]
+                                  1-closed ...........................[OK]
+                                  1-open .............................[OK]
+    Loops
+        test-hwut_sm_walker-3.exe butterfly ..........................[OK]
+                                  butterfly-s ........................[OK]
+                                  butterfly2 .........................[OK]
+                                  loop ...............................[OK]
+                                  loop-s .............................[OK]
+                                  loop2 ..............................[OK]
+                                  s-butterfly ........................[OK]
+                                  s-loop .............................[OK]
+    Max. number of path elements
+        test-hwut_sm_walker-4.exe linear .............................[OK]
+                                  loop ...............................[OK]
+    State and Condition Coverage
+        test-hwut_sm_walker-coverage.exe .............................[OK]
+    print
+        test-hwut_sm_walker-print.exe plain ..........................[OK]
+                                      pretty .........................[OK]
+
+ * hwut_bitfield:
+
+    bitfield encode / decode
+        test-hwut_bitfield.exe 1 .....................................[OK]
+                               2 .....................................[OK]
+                               3 .....................................[OK]
+                               error .................................[OK]
+    iterator append/pop
+        test-hwut_bitfield-iterator2.exe 1 ...........................[OK]
+                                         2 ...........................[OK]
+                                         3 ...........................[OK]
+                                         4 ...........................[OK]
+    iterator append/pop small
+        test-hwut_bitfield-iterator.exe 1 ............................[OK]
+                                        2 ............................[OK]
+                                        3 ............................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                      <no file 'hwut-info.dat', no title>                      
+                                                                               
+demo/c/draw/TEST                                                     <no date>
+-------------------------------------------------------------------------------
+
+ * Box:
+
+    Exceed Borders
+        box-2.exe BOTTOM .............................................[OK]
+                  LEFT ...............................................[OK]
+                  OUT ................................................[OK]
+                  RIGHT ..............................................[OK]
+                  TOP ................................................[OK]
+    Simple
+        box.exe ......................................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                      <no file 'hwut-info.dat', no title>                      
+                                                                               
+demo/c/hello/TEST                                                    <no date>
+-------------------------------------------------------------------------------
+ * Bonjour le Monde
+        my-file-3.exe ................................................[OK]
+ * Hallo Welt
+        my-file-2.exe ................................................[OK]
+ * hello world
+        my-file.exe ..................................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                        Temporal logic example in Perl                         
+                                                                               
+demo/perl/temporal_logic/TEST                                        <no date>
+-------------------------------------------------------------------------------
+
+ * TheDude:
+
+    Temporal Logic Tests
+        test.pl ......................................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                              Testing Generators                               
+                                                                               
+hwut/code_generation/generator/TEST                                  <no date>
+-------------------------------------------------------------------------------
+ * DependencyDb
+        test-dependency_db.py circularity ............................[OK]
+                              init ...................................[OK]
+                              sequence ...............................[OK]
+ * The whole chain
+        total.exe constant ...........................................[OK]
+                  focus ..............................................[OK]
+                  range ..............................................[OK]
+                  selection ..........................................[OK]
+
+ * Generator:
+
+    C source code basic tests
+        basic-c.py header ............................................[OK]
+                   source ............................................[OK]
+    Extract constant settings
+        extract-constant-settings.py .................................[OK]
+
+ * Parser:
+
+    Parameter* classes
+        test-parse_parameter.py constant .............................[OK]
+                                focus ................................[OK]
+                                range ................................[OK]
+                                selection ............................[OK]
+    Parse Generator Header
+        test-parse_header.py .........................................[OK]
+    Parse Generator Line
+        test-parse_line.py ...........................................[OK]
+    The parser function.
+        total-parser.py ..............................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+              State machine walker tests based on generated code               
+                                                                               
+hwut/code_generation/sm_walker/TEST                                  <no date>
+-------------------------------------------------------------------------------
+ * The whole chain
+        total-sm_walker.exe 1 ........................................[OK]
+                            2 ........................................[OK]
+                            3 ........................................[OK]
+                            4 ........................................[OK]
+                            5 ........................................[OK]
+
+ * Parser:
+
+    Parse Complete Sm-Walker
+        test-sm_walker-parse.py plain ................................[OK]
+                                refer-backward .......................[OK]
+                                refer-forward ........................[OK]
+                                wild .................................[OK]
+    Parse Sm-Walker Event/Condition Specification
+        test-sm_walker-event-condition-specification.py content ......[OK]
+                                                        dash-line ....[OK]
+    Parse Sm-Walker Line
+        test-sm_walker-transition_line.py plain ......................[OK]
+                                          refer-backward .............[OK]
+                                          refer-forward ..............[OK]
+
+ * State Machine Walker:
+
+    C source code basic tests
+        basic-c-sm_walker.py .........................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+             Testing SOS-Functionality--Auto-Setup of Compilations             
+                                                                               
+hwut/sos/c/TEST                                                      <no date>
+-------------------------------------------------------------------------------
+
+ * C:
+
+    Collect files in hint directories
+        test-find_directory.py .......................................[OK]
+    Compile User Sources
+        test-compile_user_sources.py fail ............................[OK]
+                                     good ............................[OK]
+    DeclarationDb
+        test-DeclarationDb.py with-ctags .............................[OK]
+                              without-ctags ..........................[OK]
+    ImplementationDb
+        test-ImplementationDb.py NoSources ...........................[OK]
+                                 Sources .............................[OK]
+    Try compiling, linking, nm
+        test-try_command_line.py compile .............................[OK]
+                                 link ................................[OK]
+                                 nm ..................................[OK]
+                                 preprocess ..........................[OK]
+    compile_source_list
+        test-compile_sources.py fail .................................[OK]
+                                good .................................[OK]
+    detect_implemented_references
+        test-detect_implemented_references.py Empty ..................[OK]
+                                              NoInfo .................[OK]
+                                              SomeInfo ...............[OK]
+    detect_missing_include_headers
+        test-detect_missing_include_headers.py Empty .................[OK]
+                                               NoInfo ................[OK]
+                                               SomeInfo ..............[OK]
+    detect_missing_references
+        test-detect_missing_references.py Empty ......................[OK]
+                                          NoInfo .....................[OK]
+                                          SomeInfo ...................[OK]
+    do
+        test-do.py ctags .............................................[OK]
+                   without-ctags .....................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                       Testing Function Stub Generation                        
+                                                                               
+hwut/code_generation/function_stubs/c/TEST                           <no date>
+-------------------------------------------------------------------------------
+
+ * HWUT Stub Festival:
+
+    C
+        stub-c.sh ....................................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                    Testing the Safe-our-Lazy-Souls feature                    
+                                                                               
+hwut/sos/c/lazy/TEST                                                 <no date>
+-------------------------------------------------------------------------------
+ * Generate Test Suite
+        all.py .......................................................[OK]
+ * Write Tests
+        write_test.py Empty ..........................................[OK]
+                      Non-Empty ......................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                             Temporal Logic Engine                             
+                                                                               
+hwut/temporal_logic/TESTS/engine/TEST                                <no date>
+-------------------------------------------------------------------------------
+ * ForIn
+        ForIn.evt ....................................................[OK]
+ * Freeze
+        Freeze.evt ...................................................[OK]
+ * Freeze-2
+        Freeze-2.evt .................................................[OK]
+ * Freeze-3
+        Freeze-3.evt .................................................[OK]
+ * Freeze-4
+        Freeze-4.evt .................................................[OK]
+ * FromTo
+        FromTo.evt ...................................................[OK]
+ * FunctionActive
+        FunctionActive.evt ...........................................[OK]
+ * FunctionPassive
+        FunctionPassive.evt ..........................................[OK]
+ * IfElifElse
+        IfElifElse.evt ...............................................[OK]
+ * IfElifElse-2
+        IfElifElse-2.evt .............................................[OK]
+ * IfElifElse-3
+        IfElifElse-3.evt .............................................[OK]
+ * IfElse
+        IfElse.evt ...................................................[OK]
+ * IfElse-2
+        IfElse-2.evt .................................................[OK]
+ * Import
+        Import.evt ...................................................[OK]
+ * Import-2
+        Import-2.evt .................................................[OK]
+ * List
+        List.evt .....................................................[OK]
+ * Map
+        Map.evt ......................................................[OK]
+ * Maps-2
+        Maps-2.evt ...................................................[OK]
+ * Maps-3
+        Maps-3.evt ...................................................[OK]
+ * OnTrigger
+        OnTrigger.evt ................................................[OK]
+ * OnTrigger-2
+        OnTrigger-2.evt ..............................................[OK]
+ * OnTrigger-Condition
+        OnTrigger-Condition.evt ......................................[OK]
+ * Switch
+        Switch.evt ...................................................[OK]
+ * state_machine
+        state_machine.evt ............................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                               Lexical Analysis                                
+                                                                               
+hwut/temporal_logic/TESTS/lexical/TEST                               <no date>
+-------------------------------------------------------------------------------
+
+ * Lexical Analysis:
+
+    comparison operator (cmp)
+        lex_cmp.py ...................................................[OK]
+    number
+        lex_number.py ................................................[OK]
+    string
+        lex_identifier.py ............................................[OK]
+    string
+        lex_string.py ................................................[OK]
+    variable name
+        lex_variable_name.py .........................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+                                                                               
+                             Temporal Logic Parser                             
+                                                                               
+hwut/temporal_logic/TESTS/parser/TEST                                <no date>
+-------------------------------------------------------------------------------
+ * Snap Expression
+        snap_expression.py ...........................................[OK]
+ * Snap Identifier
+        snap_identifier.py ...........................................[OK]
+ * Snap Number
+        snap_number.py ...............................................[OK]
+ * Snap Term
+        snap_numeric_term.py .........................................[OK]
+
+ * Execution:
+
+    Rules and Events
+        execute.py ...................................................[OK]
+
+ * Syntax:
+
+    Snap Assignment
+        snap_assignment.py ...........................................[OK]
+    Snap Condition
+        snap_condition.py ............................................[OK]
+    Snap Condition Expression
+        snap_condition_expr.py .......................................[OK]
+    Snap Condition Primary: Avoiding Recursion
+        snap_condition_primary-1.py ..................................[OK]
+    Snap Condition Primary: Recursion
+        snap_condition_primary-2.py ..................................[OK]
+    Snap Event
+        snap_event.py ................................................[OK]
+    Snap Function Definition
+        snap_function_def.py .........................................[OK]
+    Snap Rule
+        snap_rule.py .................................................[OK]
+    Snap Rule II
+        snap_rule-2.py ...............................................[OK]
+    Snap RuleList
+        snap_rule_list.py ............................................[OK]
+    Snap StatementList
+        snap_statement_list.py .......................................[OK]
+    Snap TimeSpan
+        snap_time_span.py ............................................[OK]
+
+ * Syntax Pruning:
+
+    Conditions
+        prune-condition.py ...........................................[OK]
+    Numeric Expressions
+        prune-event.py ...............................................[OK]
+                                                                    ___  _  _  
+                                                                   / _ \| |/ ) 
+                                                                  ( (_) | _ <  
+                                                                   \___/|_|\_) 
+===============================================================================
+
+SUMMARY:
+
+    Fails: N:  Verdict: Directory:                                 
+
+           13      [OK] TEST                                       
+           6       [OK] demo/c/draw/TEST                           
+           3       [OK] ....../hello/TEST                          
+           1       [OK] ..../perl/temporal_logic/TEST              
+           3       [OK] hwut/auxiliary/TEST                        
+           1       [OK] ..../code_generation/function_stubs/c/TEST 
+           17      [OK] ..................../generator/TEST        
+           15      [OK] ..................../sm_walker/TEST        
+           3       [OK] ..../coverage/TEST                         
+           10      [OK] ..../io/TEST                               
+           4       [OK] ..../preparation/TEST                      
+           24      [OK] ..../sos/c/TEST                            
+           3       [OK] ........../lazy/TEST                       
+           24      [OK] ..../temporal_logic/TESTS/engine/TEST      
+           5       [OK] ........................./lexical/TEST     
+           19      [OK] ........................./parser/TEST      
+           2       [OK] ..../test_db/TEST                          
+           23      [OK] ..../verdict/TEST                          
+           106     [OK] support/C/TEST                             
+
+-------------------------------------------------------------------------------
+     ___  _ _   _  __                        _      _ 
+    / _ \| | | | |/ /___  _ __ _ __ ___  ___| |_   | |
+   | | | | | | | ' // _ \| '__| '__/ _ \/ __| __|  | |
+   | |_| | | | | . \ (_) | |  | | |  __/ (__| |_   |_|
+    \___/|_|_| |_|\_\___/|_|  |_|  \___|\___|\__|  (_)
+                                                                    (282 tests)
+
+===============================================================================

@@ -71,9 +71,30 @@ when it calls them with the command line argument ``--hwut-info``.
     tells hwut to perform a temporal logic test where the rule files are ``Simple-1.tlr``
     and ``Simple-2.tlr``. 
 
+.. describe:: EXTRA_FILES: list of files;
+
+    If ``EXTRA_FILES`` is specified, hwut considers a list of extra files as being 
+    produced by the test application. Those files are stored also in the GOOD directory. 
+    Each time the test is run not only the standard output is checked. Also, a
+    binary comparison of each mentioned file with its good correspondance is done. 
+    An 'EXTRA_FILES' option followed by a bracketted choice restricts the mentioned
+    files to the given choice.  For example.
+
+        > ./test-z.sh --hwut-info
+        Hello World;
+        CHOICES:           Good, Bad;
+        EXTRA_FILES(Good): file1.txt, file2.txt;
+        EXTRA_FILES(Bad):  error.dat;
+        EXTRA_FILES:       protocol.log;
+
+    In the above example, the files 'file1.txt' and 'file2.txt' are expected only
+    for choice 'Good'. The choice 'Bad' is expected to produce 'error.dat' and the
+    file 'protocol.log' is expected to be produced in any case.
+
 The output that HWUT reads can be produced by simple ``printf()``-statements in C, 
 or ``print``-statements in Python, or ``echo``-statements in a shell, or whatever
 construct a particular programming language uses to print content on the console.
+
 
 
 Tests

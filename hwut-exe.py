@@ -26,7 +26,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 #
 # PURPOSE: Entry point for HWUT.
@@ -52,10 +51,10 @@ import sys
 import os
 
 if not os.environ.has_key("HWUT_PATH"):
-    print "error: Environment variable 'HWUT_PATH' is not defined'"
-    print "error: Let it point to the directory where hwut is installed."
-    sys.exit(-1)
-sys.path.insert(0, os.environ["HWUT_PATH"])
+    print "Warning: Environment variable 'HWUT_PATH' is not defined'"
+    print "Warning: Let it point to the directory where hwut is installed."
+
+sys.path.insert(0, os.path.dirname(sys.argv[0]))
 
 try: 
     # If a calling application pipes and breaks the pipe, then an exception

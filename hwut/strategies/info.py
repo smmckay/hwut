@@ -24,7 +24,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA
 #
-# For further information see http://www.genivi.org/. 
 #------------------------------------------------------------------------------
 import os
 import hwut.io.messages as io
@@ -35,7 +34,7 @@ class InfoStrategy(TestExecutionStrategy):
     def __init__(self, Setup):
         TestExecutionStrategy.__init__(self, Setup)
 
-    def get_verdict(self, TestInfo):
+    def verdict_get(self, TestInfo):
         """Here is the big difference to 'TestExecutionStrategy': The test is
         not executed, but only the result is read out.
         """

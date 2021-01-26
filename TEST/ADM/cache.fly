@@ -2,83 +2,94 @@
 title: no module shall use 'os.path.relpath';
 title_group: Misc;
 file_name: no-relpath.sh;
-hwut_info_time: 1438072627L;
+hwut_info_time: 1454502807L;
 interpreter_list: [ bash; ]
 happy_pattern_list: [ \[0-9]+; ]
 result_list: [
-  [ ; OK; 0.031810; 900378255; ]
+  [ ; OK; 0.018105; 0; ]
 ]
 }
 {
 title: Bug 17 - Make CHOICES reduction;
 title_group: fschaef;
 file_name: 17.sh;
-hwut_info_time: 1413447740L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ ; OK; 0.647117; 0; ]
+  [ ; OK; 0.383278; 0; ]
 ]
 }
 {
 title: Bug 20 - Dysfunctional: hwut --fail;
 title_group: fschaef;
 file_name: 20.sh;
-hwut_info_time: 1421662488L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ untouched; OK; 0.256477; 0; ]
-  [ touched; OK; 0.268308; 1078555788; ]
-  [ normal-info; OK; 0.142956; 0; ]
+  [ untouched; OK; 0.136465; 0; ]
+  [ touched; OK; 0.156641; 0; ]
+  [ normal-info; OK; 0.075163; 0; ]
+]
+}
+{
+title: Bug f20 - EXTRA_FILES;
+title_group: fschaef;
+file_name: f20.sh;
+hwut_info_time: 1460378443L;
+interpreter_list: [ bash; ]
+result_list: [
+  [ 1-file; OK; 0.433273; -2061139112; ]
+  [ 2-files; OK; 0.438245; -768407629; ]
 ]
 }
 {
 title: Feature 22 - Futile make commands;
 title_group: fschaef;
 file_name: 22.sh;
-hwut_info_time: 1415354474L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ ; OK; 0.158964; 0; ]
+  [ ; OK; 0.086638; 0; ]
 ]
 }
 {
 title: Feature f15 - Time Out Detection;
 title_group: fschaef;
 file_name: f15.sh;
-hwut_info_time: 1438159339L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ ; OK; 21.575695; 0; ]
+  [ ; OK; 21.384113; 0; ]
 ]
 }
 {
 title: Feature f16 - Oversized Output Detection;
 title_group: fschaef;
 file_name: f16.sh;
-hwut_info_time: 1421746062L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ ; OK; 25.682442; 0; ]
+  [ ; OK; 14.577022; 0; ]
 ]
 }
 {
 title: Bug 13 - Dysfunctional: hwut make clean;
 title_group: stephanhengefel;
 file_name: 13.sh;
-hwut_info_time: 1438006081L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ recursive; OK; 0.841532; 0; ]
-  [ local; OK; 0.533629; 0; ]
+  [ recursive; OK; 0.232830; 0; ]
+  [ local; OK; 0.127311; 0; ]
 ]
 }
 {
 title: Bug 15 - False Possitive;
 title_group: stephanhengefel;
 file_name: 15.sh;
-hwut_info_time: 1413447739L;
+hwut_info_time: 1454502806L;
 interpreter_list: [ bash; ]
 result_list: [
-  [ ; OK; 1.322241; 0; ]
+  [ ; OK; 0.238752; 0; ]
 ]
 }
