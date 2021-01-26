@@ -1,6 +1,6 @@
 from   hwut.classes   import TestInfoDB
 
-HWUT_VERSION       = "0.3.1"
+HWUT_VERSION       = "0.3.2"
 HWUT_CACHE_FILE    = "CACHE.hwut"
 HWUT_TITLE_FILE    = "TITLE.hwut"
 TEST_DIR_NAME      = "TEST"
