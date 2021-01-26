@@ -26,29 +26,61 @@ class AcceptStrategy(CoreStrategy):
     def __init__(self, Setup):
         assert Setup.grant in ["ALL", "NONE", "INTERACTIVE"]
 
-        self.execution_f     = Setup.execution_f
-        self.interact_f      = Setup.grant != "ALL"
+        self.execution_f      = Setup.execution_f
+        self.interaction_info = Setup.grant
 
-        CoreStrategy.__init__(self, Setup.failed_only_f)
+        self.directory         = "/dev/null/"
+        self.missing_out_files = {}
+
+        self.setup            = Setup
+        CoreStrategy.__init__(self, Setup)
+
+    def start_directory(self, Dir):
+        self.directory              = Dir
+        self.missing_out_files[Dir] = []
         
     def do(self, TestInfoObj):
-        ProgramName = TestInfoObj.program
-        Choice      = TestInfoObj.choice
+        assert TestInfoObj.__class__.__name__ == "test_info"
+        assert self.interaction_info in ["ALL", "NONE", "INTERACTIVE"]
+
+        if self.interaction_info == "NONE": 
+            return "UNTOUCHED"
 
         # -- if requested execute test programs with choice
         if self.execution_f: 
-            TestExecutionStrategy().do(TestInfoObj, CreateOnlyOutputF=True) 
+            TestExecutionStrategy(self.setup).do(TestInfoObj) 
+        elif not aux.is_there_an_OUT_file(TestInfoObj):
+            io.on_OUT_file_missing_cannot_accept(TestInfoObj)
+            self.missing_out_files[self.directory].append(TestInfoObj)
+            return "NO GOOD FILE"
+
+        # -- is there a difference in the first place between OUT and GOOD?
+        result = aux.compare_result(TestInfoObj)
+        if result not in ["NO GOOD FILE", "FAIL"]: return result
+
+        return self._do(TestInfoObj)
+
+    def _do(self, TestInfoObj):
+        """This function is used by a derived class, too."""
 
         # -- copy protocol files of all specified choices
-        interaction_info = aux.copy_to_GOOD(TestInfoObj, self.interact_f)    
-        if   interaction_info == "ALL":  self.interact_f = False
-        elif interaction_info == "NONE": self.__break_up_f = True
+        if self.interaction_info == "INTERACTIVE":
+            user_reply = aux.copy_to_GOOD(TestInfoObj, InteractF=True)    
+        elif self.interaction_info == "ALL":
+            user_reply = aux.copy_to_GOOD(TestInfoObj, InteractF=False)    
+        else:
+            user_reply = "" # nothing to be done
 
-        if interaction_info in ["YES", "ALL"]: return "COPIED TO GOOD"
-        else:                                  return "UNTOUCHED"
+        if user_reply in ["ALL", "NONE"]:  
+            self.interaction_info = user_reply
+
+        if user_reply in ["YES", "ALL"]: return "COPIED TO GOOD"
+        else:                            return "UNTOUCHED"
 
     def end_directory(self):
         return "DONE"
 
+    def end_directory_tree(self):
+        io.print_missing_out_files(self.missing_out_files)
 
 

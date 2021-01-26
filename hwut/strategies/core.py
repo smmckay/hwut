@@ -1,7 +1,8 @@
 import time
 
-class test_info:
+import hwut.auxiliary as aux
 
+class test_info:
     def __init__(self, Entry, ID, Choice, ProgramPresentF):
         assert type(ProgramPresentF) == bool
         assert Choice.__class__.__name__ == "TestApplicationChoice", \
@@ -16,13 +17,18 @@ class test_info:
 
         self.related_entry = Entry
         self.group        = Entry.group
-        self.program      = Entry.file_name
+        self.program      = aux.strip_dot_slash(Entry.file_name)
         self.execution_id = ID
         self.choice       = Choice.name
         self.choice_idx   = choice_name_list.index(self.choice)
         self.last_result  = Entry.choice_list[self.choice_idx].result
         self.present_f    = ProgramPresentF
         self.thread       = None
+
+        arg_str = ""
+        if self.choice != "": arg_str = "--%s" % self.choice
+        self.protocol_file_name = self.program + arg_str + ".txt"
+
 
     def __repr__(self):
         txt  = "PROGRAM: " + self.program + "\n"
@@ -31,9 +37,10 @@ class test_info:
 
 class CoreStrategy:
 
-    def __init__(self, FailedOnlyF):
+    def __init__(self, Setup):
         self.__break_up_f    = False
-        self.__failed_only_f = FailedOnlyF
+        self.__failed_only_f = Setup.failed_only_f
+        self.__make_target   = Setup.make_target
 
     def start_directory_tree(self, DirectoryList):
         pass
@@ -62,3 +69,6 @@ class CoreStrategy:
 
     def get_referred_date(self):
         return time.asctime()
+
+    def get_make_target_on_leave_directory(self):
+        return self.__make_target

@@ -20,7 +20,7 @@ class TestExecutionStrategy(CoreStrategy):
 
         self.failed_test_list        = [] # initialize here, because some other strategies might
         #                                 # use a shortcut with calling start_directory()
-        CoreStrategy.__init__(self, Setup.failed_only_f)
+        CoreStrategy.__init__(self, Setup)
 
     def start_directory(self, Dir):
         self.directory               = Dir
@@ -39,10 +39,10 @@ class TestExecutionStrategy(CoreStrategy):
             return "MAKE FAILED"
 
         # (*) run the test program
-        time_start = time.time()
+        time_start  = time.time()
         test_output = aux.execute_this(aux.ensure_dot_slash(TestProgram), 
                                        [Choice], 
-                                       "./OUT/" + aux.get_protocol_filename(TestProgram, Choice))
+                                       "./OUT/" + element.protocol_file_name)
         time_end = time.time()
         element.related_entry.choice_list[ChoiceIdx].time_to_execute_sec = time_end - time_start
 
@@ -78,3 +78,4 @@ class TestExecutionStrategy(CoreStrategy):
 
     def end_directory_tree(self):
         io.print_missing_good_files(self.missing_good_files)
+

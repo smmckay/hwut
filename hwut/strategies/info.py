@@ -5,7 +5,7 @@ from hwut.strategies.core import CoreStrategy
 class InfoStrategy(CoreStrategy):
     def __init__(self, Setup):
         self.directory = "/dev/null/"
-        CoreStrategy.__init__(self, Setup.failed_only_f)
+        CoreStrategy.__init__(self, Setup)
 
     def start_directory(self, Dir):
         self.directory = Dir

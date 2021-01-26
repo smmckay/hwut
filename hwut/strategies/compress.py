@@ -1,7 +1,9 @@
 import tarfile
 
 class CompressStrategy(CoreStrategy):
-    def __init__(self, CompressionType):
+    def __init__(self, Setup):
+
+        CoreStrategy.__init__(self, Setup)
         pass
 
     def start_directory(self, Dir):

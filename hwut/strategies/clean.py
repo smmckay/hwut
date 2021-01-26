@@ -11,7 +11,7 @@ class CleanStrategy(CoreStrategy):
 
         self.__to_be_deleted_file_list = []
 
-        CoreStrategy.__init__(self, Setup.failed_only_f)
+        CoreStrategy.__init__(self, Setup)
 
     def start_directory(self, Dir):
         """Clean is a special strategy. It does not do any test, but only searches

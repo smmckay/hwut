@@ -12,6 +12,7 @@ from hwut.strategies.core import test_info
 
 TestThread_currently_running_n = -1
 
+
 class TestThread(threading.Thread):
     def __init__(self, TestInfo, CreateOnlyOutputF):
         assert TestInfo.choice == "" or TestInfo.related_entry.choice_list != []
@@ -37,13 +38,38 @@ class TestThread(threading.Thread):
         io.on_test_end(self.test_info, result)
 
 
-def init_home():
-    """Set the home directory. All directories passed to the functions of 
-       this modules are relative to the home directory.
-    """
+def get_executable_application_list(AcceptedExtensionList=[]):
+    ExtensionListOfFilesToBeCompiled = [".c", ".cpp", ".c++", ".p", ".h", 
+                                        ".bak", 
+                                        "~", 
+                                        "makefile", "Makefile", 
+                                        "stackdump"]
 
-def get_executable_application_list():
+    CriticalExtensionList = filter(lambda x: x not in AcceptedExtensionList, 
+                                   ExtensionListOfFilesToBeCompiled)
+
     # -- executable fils in current directory
     executable_file_list = map(aux.strip_dot_slash, aux.find("./", "-perm +ua+x -maxdepth 1"))
 
-    return executable_file_list 
+
+    result                  = []
+    unusual_executable_list = []
+    for file_name in executable_file_list:
+
+        LF = len(file_name)
+        if LF == 0: continue
+
+        for extension in CriticalExtensionList:
+            LE = len(extension)
+	    found_idx = file_name.rfind(extension)
+            if found_idx != -1 and found_idx == LF - LE: 
+		print "##", extension
+                unusual_executable_list.append(file_name)
+                break
+        else:
+            result.append(file_name)
+
+    if unusual_executable_list != []:
+        io.on_found_unusual_executables(unusual_executable_list)
+
+    return result 

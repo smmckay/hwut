@@ -8,7 +8,7 @@ import sys
 
 def this(TestFileList):
 
-    if TestFileList == []:
+    if TestFileList == [] or TestFileList == [""]:
         return [], []
 
     TestFileList.sort()
@@ -17,16 +17,17 @@ def this(TestFileList):
     made_file_list   = []
 
     for file in TestFileList:
-	if os.system("make -q %s" % file) == 0: made_file_list.append(file)
-	else:                                   unmade_file_list.append(file)
+        # "make -q" returns 0 if the target is already up-to-date
+        if os.system("make -q %s" % file) == 0: made_file_list.append(file)
+        else:                                   unmade_file_list.append(file)
 
     # -- delete any file to be made, 
     for file in unmade_file_list:
-	try: 
-	   os.remove(file)
-	   io.on_delete_file_out_of_date(file)
-	except:
-           pass	
+        try: 
+           os.remove(file)
+           io.on_delete_file_out_of_date(file)
+        except:
+           pass 
 
     # -- if the make version is gnu-make, it supports multiple jobs 
     #    (needs to be changed/deleted for non-gnu systems)
@@ -35,7 +36,7 @@ def this(TestFileList):
     L          = len(unmade_file_list)
     JobN       = common.MAX_CPU_NUMBER
     for i in range(L/JobN + 1):
-        bunch = TestFileList[JobN*i:min(JobN*(i+1),L)]
+        bunch = unmade_file_list[JobN*i:min(JobN*(i+1),L)]
         if bunch == []: break
         bunch_list.append(bunch)
 
@@ -49,12 +50,19 @@ def this(TestFileList):
         for file in bunch:
             if os.access(file, (os.F_OK | os.X_OK)):
                 del unmade_file_list[unmade_file_list.index(file)]
-		made_file_list.append(file)
+                made_file_list.append(file)
 
     if unmade_file_list != []: 
         io.on_error_make_failed(unmade_file_list)
 
     return made_file_list, unmade_file_list
+
+def simply_this(MakeTarget):
+    if MakeTarget == "": return
+
+    JobN       = common.MAX_CPU_NUMBER
+    gnu_make_job_str = "--jobs=%s" % JobN
+    aux.execute_this("make", [gnu_make_job_str] + [MakeTarget])
 
 def is_makefile_present():
     makefiles = aux.find("./", "-name [mM]akefile")

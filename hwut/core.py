@@ -1,5 +1,6 @@
 import hwut.io        as io
 import hwut.common    as common
+import hwut.make      as make
 import hwut.auxiliary as aux
 import hwut.directory as directory
 #
@@ -25,8 +26,17 @@ def do(ProgramName, ChoiceSpecification, Strategy):
                                                                   SpecificChoice=ChoiceSpecification)
     if test_list == []:
         io.on_file_does_not_exist(ProgramName)
+        return
+    elif test_list == None:
+        io.on_application_does_not_exist_in_database(ProgramName)
+        return
 
-    do_list(test_list, Strategy)
+    result = do_list(test_list, Strategy)
+
+    # -- print result
+    io.print_summary([ ["./", result] ])
+
+    Strategy.end_directory_tree()
 
 def do_list(TestExecutionSequence, Strategy): 
     """This is the mother of all HWUT related functionality. All tests
@@ -72,14 +82,15 @@ def do_list(TestExecutionSequence, Strategy):
     if Strategy.xml_database_write_permission(): 
         common.application_db.write()
 
-    return Strategy.end_directory()
+    result = Strategy.end_directory()
+
+    # -- call 'make' for a special target when leaving the directory
+    make.simply_this(Strategy.get_make_target_on_leave_directory())
+
+    return result
 
 def do_directory_tree(Strategy):
     __assert_strategy(Strategy)
-
-    # -- store the directore from where HWUT was called.
-    home_directory = os.getcwd()
-    io.__home_directory = home_directory
 
     # -- get list of subdirectories that contain test applications, sort them.
     def __sort(DirA, DirB):
@@ -103,8 +114,8 @@ def do_directory_tree(Strategy):
     result_list = []
     for dir in hwut_related_directory_list:
         # -- enter the concerned directory
-        os.chdir(home_directory)  # need first to go home, since 'dir'
-        os.chdir(dir)             # is relative to 'home directory', i.e.
+        os.chdir(io.__home_directory)  # need first to go home, since 'dir'
+        os.chdir(dir)                  # is relative to 'home directory', i.e.
 
         # -- run all tests of directory
         result = do_list([], Strategy)

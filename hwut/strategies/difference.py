@@ -5,23 +5,23 @@ import hwut.auxiliary as aux
 import hwut.io        as io
 #
 from   hwut.directory       import test_info
-from   hwut.strategies.core import CoreStrategy
-from   hwut.strategies.test import TestExecutionStrategy
+from   hwut.strategies.accept import AcceptStrategy
+from   hwut.strategies.test   import TestExecutionStrategy
 
-class DifferenceDisplayStrategy(CoreStrategy):
+class DifferenceDisplayStrategy(AcceptStrategy):
 
     def __init__(self, Setup):
         assert Setup.grant in ["ALL", "NONE", "INTERACTIVE"]
 
-        self.display_program = Setup.diff_program_name 
-        self.execution_f     = Setup.execution_f
-        self.interact_f      = Setup.grant != "ALL"
-        self.setup           = Setup
+        self.display_program  = Setup.diff_program_name 
+        self.execution_f      = Setup.execution_f
+        self.setup            = Setup
 
-        CoreStrategy.__init__(self, Setup.failed_only_f)
+        AcceptStrategy.__init__(self, Setup)
 
     def do(self, TestInfoObj):
         assert TestInfoObj.__class__.__name__ == "test_info"
+        assert self.interaction_info in ["ALL", "NONE", "INTERACTIVE"]
 
         ProgramName = TestInfoObj.program
         Choice      = TestInfoObj.choice
@@ -30,33 +30,22 @@ class DifferenceDisplayStrategy(CoreStrategy):
         if self.execution_f:
             TestExecutionStrategy(self.setup).do(TestInfoObj) 
 
-
         # -- display only, if:  (1) OUT and GOOD files exist
         #                       (2) content of files differs
         result = aux.compare_result(TestInfoObj)
 
-        if result == "FAIL":
-            protocol_file_name = aux.get_protocol_filename(ProgramName, Choice)
-            out_file  = "OUT/%s"  % protocol_file_name
-            good_file = "GOOD/%s" % protocol_file_name
+        if result == "OK":   return "NO DIFFERENCE"
+        if result != "FAIL": return result
 
-            # -- Show the differences (maybe user changes some stuff)
-            try:    os.system("%s %s %s" % (self.display_program, out_file, good_file))
-            except: io.on_program_is_not_executable(self.display_program, "")
+        out_file  = "OUT/%s"  % TestInfoObj.protocol_file_name
+        good_file = "GOOD/%s" % TestInfoObj.protocol_file_name
 
-            # -- Copy protocol files of all specified choices? Only if files are 
-            #    finally different.
-            interaction_info = aux.copy_to_GOOD(TestInfoObj, self.interact_f)    
-            if   interaction_info == "ALL":  self.interact_f = False
-            elif interaction_info == "NONE": self.__break_up_f = True
+        # -- Show the differences (maybe user changes some stuff)
+        try:    os.system("%s %s %s" % (self.display_program, out_file, good_file))
+        except: io.on_program_is_not_executable(self.display_program, "")
 
-            if interaction_info in ["YES", "ALL"]: result = "COPIED TO GOOD"
-            else:                                  result = "UNTOUCHED"
-
-        elif result == "OK":
-            result = "NO DIFFERENCE"
-        
-        return result
+        # -- copy protocol files of all specified choices
+        return AcceptStrategy._do(self, TestInfoObj)
 
 
 

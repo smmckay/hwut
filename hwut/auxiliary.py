@@ -41,14 +41,6 @@ def execute_this(ApplicationName, OptionList=[], OutputFilename="", ErrorOutputF
     # return string containing standard output from the test program
     return result
 
-def get_protocol_filename(Program, Choice):
-    arg_str = ""
-    if Choice != "": arg_str = "--%s" % Choice
-
-    Program = strip_dot_slash(Program)
-    
-    return Program + arg_str + ".txt"
-
 def find(Dir, OptionStr):
     if OptionStr.find("-type") == -1:     OptionStr = "-type f " + OptionStr
     if OptionStr.find("-mindepth") == -1: OptionStr = "-maxdepth 1 " + OptionStr
@@ -71,7 +63,7 @@ def get_hwut_unrelated_files(Dir):
 
     test_sequence_element_list = common.application_db.get_test_execution_sequence()
 
-    protocol_file_name_list = map(lambda element: get_protocol_filename(element.program, element.choice),
+    protocol_file_name_list = map(lambda element: element.protocol_file_name,
                                   test_sequence_element_list)
 
     expected_in_TEST = map(lambda element: element.programm, test_sequence_element_list)
@@ -142,9 +134,7 @@ def copy_to_GOOD(TestSequenceElement, InteractF=True):
 
        assume Dir = current directory
     """
-    ApplicationName = TestSequenceElement.program
-    Choice          = TestSequenceElement.choice
-    ProtocolFileName = get_protocol_filename(ApplicationName, Choice)
+    ProtocolFileName = TestSequenceElement.protocol_file_name
 
     reply = "YES"
     if InteractF: 
@@ -175,22 +165,21 @@ def copy_to_GOOD(TestSequenceElement, InteractF=True):
 
     return reply
 
-def __get_GOOD_output(TestInfo):
-    TestProgram = TestInfo.program
-    Choice      = TestInfo.choice
+def is_there_an_OUT_file(TestInfo):
+    return os.access("./OUT/" + TestInfo.protocol_file_name, os.F_OK) 
 
-    TestProgramProt = get_protocol_filename(TestProgram, Choice) 
+def __get_GOOD_output(TestInfo):
     try:
-        return open("GOOD/" + TestProgramProt).read()    
+        return open("GOOD/" + TestInfo.protocol_file_name).read()    
     except: 
-        io.on_missing_GOOD_file(TestInfo, TestProgramProt)
-        return ""
+        io.on_missing_GOOD_file(TestInfo)
+        return None
 
 def compare_result(TestInfo, TestOutput=None):
     assert type(TestOutput) == str or TestOutput == None
 
     if TestOutput == None:
-        out_file  = "OUT/%s"  % get_protocol_filename(TestInfo.program, TestInfo.choice)
+        out_file  = "OUT/%s"  % TestInfo.protocol_file_name
         try: 
             TestOutput = open(out_file).read()
         except:
@@ -198,7 +187,7 @@ def compare_result(TestInfo, TestOutput=None):
 
     # (*) compare with expectation
     GoodOutput = __get_GOOD_output(TestInfo)
-    if GoodOutput == "": return "NO GOOD FILE"
+    if GoodOutput == None: return "NO GOOD FILE"
 
     # -- avoid confusion with 'carriage return/line feed' on different
     #    operating systems
