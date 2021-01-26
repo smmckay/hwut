@@ -1,19 +1,13 @@
-from   hwut.classes   import TestInfoDB
-
-HWUT_VERSION       = "0.3.2"
-HWUT_CACHE_FILE    = "CACHE.hwut"
-HWUT_TITLE_FILE    = "TITLE.hwut"
+HWUT_VERSION       = "0.5.1"
 TEST_DIR_NAME      = "TEST"
-HWUT_MAKE_LOG_FILE       = "MAKE.hwut"
-HWUT_MAKE_CLEAN_LOG_FILE = "MAKE_CLEAN.hwut"
+
+HWUT_CACHE_FILE          = "ADM/database.xml"
+HWUT_TITLE_FILE          = "ADM/title.txt"
+HWUT_MAKE_LOG_FILE       = "ADM/make-output.txt"
+HWUT_MAKE_CLEAN_LOG_FILE = "ADM/make-clean-output.txt"
 
 MAX_CPU_NUMBER     = 2
 
-failed_test_list   = []
-info_db            = TestInfoDB()
-missing_good_files = {}  # map: directory --> names of missing GOOD files
+application_db     = None  # to be initialized in hwut-exe.py
 
-# directory from where 'hwut' has been called
-# (all sub directories are relative to this directory)
-home_directory = ""
 

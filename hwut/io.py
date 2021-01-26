@@ -1,10 +1,24 @@
+import os
 import sys
-import time
+
+import hwut.common as common
 
 from   hwut.frs_py.string_handling import trim
+from   hwut.strategies.core        import test_info
+
+__home_directory = ""  # updated by 'core.do_directory_tree()'
+
+def __get_relative_directory(Dir):
+    return "." + Dir.replace(__home_directory, "")
+
+def print_line_separator():
+    sys.stdout.write("--------------------------------------------------------------------------------------\n")
+
+def print_double_line_separator():
+    sys.stdout.write("======================================================================================\n")
 
 def print_ok(Dir):
-    sys.stdout.write("---------------------------------------------------------------------------------\n")
+    print_line_separator()
     print "  ___  _ _   _  __                        _     _" 
     print " / _ \| | | | |/ /___  _ __ _ __ ___  ___| |_  | |"
     print "| | | | | | | ' // _ \| '__| '__/ _ \/ __| __| | |"
@@ -13,98 +27,276 @@ def print_ok(Dir):
     print  
 
 def print_failure(Dir, FailedTestList):
-    sys.stdout.write("---------------------------------------------------------------------------------\n")
+    assert type(FailedTestList) == list
+    assert map(lambda x: x.__class__.__name__, FailedTestList) == ["test_info"] * len(FailedTestList), \
+           "received: " + repr(map(type, FailedTestList))
+    print_line_separator()
     print " _____     _ _                  _" 
     print "|  ___|_ _(_) |_   _ _ __ ___  | |"
     print "| |_ / _` | | | | | | '__/ _ \ | |"
     print "|  _| (_| | | | |_| | | |  __/ |_|"
     print "|_|  \__,_|_|_|\__,_|_|  \___| (_)"
     print
-    for name in FailedTestList:
-    	print "error: " + name
+    for test_element in FailedTestList:
+        print "error: " + test_element.program + " " + test_element.choice
 
-def request_copy_OUT_to_GOOD(Dir, ProtocolFileName):
-
+def request_copy_OUT_to_GOOD(ProtocolFileName):
+    Dir = __get_relative_directory(os.getcwd())
     print 
-    print "Copy:  %s/OUT/%s" % (Dir, ProtocolFileName)
-    print "to:    %s/GOOD/ ?" % Dir
-    print "Note, that this means that it is taken for reference during any later unit test!"
-    print "('yes', 'all', 'no', 'none')"
+    print "     Copy:  %s/OUT/%s" % (Dir, ProtocolFileName)
+    print "     to:    %s/GOOD/ ?" % Dir
+    print "     Note, that this means that it is taken for reference during any later unit test!"
+    print "     ('yes', 'all', 'no', 'none', simply [Return] means 'no')"
+    print "     ",
 
     return trim(sys.stdin.readline()).upper()
 
-def print_summary(ResultDict):
-    """ResultDict = directory --> result (True if all OK, else False)
+def request_accept_all_remaining_test_programs(RemainingTestPrograms):
+    print 
+    print "Remaining Test Programs:"
+    for program_name in RemainingTestPrograms:
+        print "    ", program_name
+    print "Do you want to accept all choices of all remaining test programs?"
+    print "('yes', 'no')"
+    return trim(sys.stdin.readline()).upper()
+
+def request_not_accept_all_remaining_test_programs(RemainingTestPrograms):
+    print 
+    print "Remaining Test Programs:"
+    for program_name in RemainingTestPrograms:
+        print "    ", program_name
+    print "Do you want to drop remaining test programs from consideration?"
+    print "('yes', 'no')"
+    return trim(sys.stdin.readline()).upper()
+
+def request_file_list_deletion(Dir, FilenameList):
+    """Returns a list of indeces or index-ranges indexing the files
+       in the file name list that are to be deleted.
     """
-    if len(ResultDict.keys()) <= 1: return
+    print "Following files are to be deleted:"
+    print
+    print "[index]  filename:"
+    for file_name in FilenameList:
+	print "[%05i]: %s" % (i, file_name)
 
+    print "Specify files to be deleted by their indices. Type 'all' to delete all."
+    print "Example: 5                  deletes file number '5'"
+    print "         5-10               deletes file number 5, 6, 7, 8, 9, and 10."
+    print "         3, 5-8, 24, 27-30  deletes file number 3, 5, 6, 7, 8, 24, 27, 28, 29, 30"
+    print 
+
+    user_response = trim(sys.stdin.readline()).upper()
+    if user_response == "ALL": return range(len(FilenameList))
+
+    response_list = response.split(",")
+    result = []
+    for response in response_list:
+	fields = map(trim, response.split("-"))
+	if fields.isdigit() == False:
+	    io.on_invalid_response(response)
+	    return []
+	if len(fields)   == 1:
+	    result.append(int(fields[0]))
+	elif len(fields) == 2:
+	    result.append(range(int(fields[0]), int(fields[1]) + 1))
+	else:
+	    on_invalid_response(response)
+	    return []
+ 
+    return result
+
+
+def on_invalid_response(Response):
+    print "Error: User response invalid."
+    print "Error: '%s'" % Response
+
+def print_summary(Directory_vs_Result_Pairs):
+    print_double_line_separator()
     print "SUMMARY:"
-    L = max(map(lambda x: len(x), ResultDict.keys()))
-    for dir, result_f in ResultDict.items():
-	if result_f == True: judgement = "[OK]"
-	else:                judgement = "[FAIL]"
-	
-	print dir + "." * (L + 4 - len(dir)) + judgement
+    L = max(30, max(map(lambda x: len(x[0]), Directory_vs_Result_Pairs)))
 
-def on_directory_enter(Dir, HWUT_TITLE_FILE):
+    for dir, result in Directory_vs_Result_Pairs:
+        if   result == "OK":   judgement = "[OK]"
+	elif result == "DONE": judgement = "[DONE]"
+        else:                  judgement = "[FAIL]"
+        
+	if dir == "./": dir = "(this directory)"
+        print dir + " " + "." * (L + 4 - len(dir)) + judgement
+    print_double_line_separator()
+
+def on_directory_enter(Dir, DateStr):
     
-    # -- print title of the tests in the given directory
-    try:
-	fh = open(HWUT_TITLE_FILE)
-	print fh.read()
-	fh.close()
-    except:
-	print "<no file '%s'>" % HWUT_TITLE_FILE
+    print_double_line_separator()
     
     # -- print basic information about the directory
-    print "DIR:  " + Dir
-    print "DATE: " + time.asctime()
+    print "ENTER: " + __get_relative_directory(Dir)
+    print "DATE:  " + DateStr
+    txt = "TITLE: "
 
-def on_directory_terminated(ResultF, Dir, FailedTestList):
-    if ResultF == False: print_failure(Dir, FailedTestList)
-    else:                print_ok(Dir)
+    # -- print title of the tests in the given directory
+    try:
+        fh = open(common.HWUT_TITLE_FILE)
+        txt += fh.read()
+        fh.close()
+    except:
+        txt += "<no file '%s'>" % common.HWUT_TITLE_FILE
+    print txt
 
-    sys.stdout.write("---------------------------------------------------------------------------------\n")
+def on_directory_terminated(Dir):
+    print "EXIT:  " + __get_relative_directory(Dir)
 
-def on_test_group_start(GroupName):
+
+class ParallelizedTestOutputManager:
+    last_reported_id = -1
+    delayed_output   = {}
+    done_id_list     = []
+
+    def init(self):
+        self.last_reported_id = -1
+        self.delayed_output   = {}
+        self.done_id_list     = []
+
+    def register(self, ID, Txt):
+        if self.delayed_output.has_key(ID): self.delayed_output[ID] += Txt
+        else:                               self.delayed_output[ID] = Txt
+
+    def register_test_end(self, ID, Txt):
+        assert self.delayed_output.has_key(ID), \
+               "test '%i' ended before it was even started." % ID
+
+        self.delayed_output[ID] += Txt
+        assert ID not in self.done_id_list
+        self.done_id_list.append(ID)
+        self.conditional_flush()
+
+    def conditional_flush(self):
+        self.done_id_list.sort()
+
+        deletion_list = []
+        for id in self.done_id_list:
+            if id != self.last_reported_id + 1: 
+                break
+            # print out the output that was delayed until it could be printed
+            # in propper sequence
+            sys.stdout.write(self.delayed_output[id])
+            deletion_list.append(id)
+            self.last_reported_id = id
+
+        for id in deletion_list:
+            del self.delayed_output[id]
+            del self.done_id_list[self.done_id_list.index(id)]
+
+output_man = ParallelizedTestOutputManager()
+
+def on_test_sequence_start():
+    print_line_separator()
+    output_man.init()
+
+def on_test_start(TestInfo, DoNotGroupF=False):
+    """GroupElementF = False allows to categorically block a decision wether 
+       to treat the test as part of a group or not.
+    """
+    if DoNotGroupF: GroupedF = False
+    else:           GroupedF = TestInfo.group != ""
+
+    entry = TestInfo.related_entry
+    if TestInfo.choice_idx != 0:
+	output_man.register(TestInfo.execution_id, "")
+    else:
+	if GroupedF: 
+	    output_man.register(TestInfo.execution_id, "    %s\n" % entry.title)
+	else:   
+	    output_man.register(TestInfo.execution_id, " -- %s\n" % entry.title)
+
+def on_test_group_start(TestInfo):
+    GroupName = TestInfo.related_entry.group
     if GroupName != "": 
-	sys.stdout.write("\n -- %s:\n\n" % GroupName)
+        output_man.register(TestInfo.execution_id, "\n -- %s:\n\n" % GroupName)
 
-def on_test_start(GroupedF, entry):
-    if GroupedF != "": sys.stdout.write("    %s\n" % entry.title)
-    else:              sys.stdout.write(" -- %s\n" % entry.title)
+def on_choice_not_available(TestInfo):
+    output_man.register(TestInfo.execution_id, 
+                        "        (program '%s' does not provide choice '%s')" % \
+                        (TestInfo.related_entry.file_name, TestInfo.choice))
 
-def on_test_end(Result, TestProgram, Choice="", FirstF=None):
+def on_missing_GOOD_file(TestInfo, Filename):
+    output_man.register(TestInfo.execution_id, "        (missing 'GOOD/%s')\n" % Filename)
+
+def on_test_is_good_already(TestInfo):
+    on_test_end(TestInfo, "[ALREADY GOOD]")
+
+def __get_title(TestInfo):
+    Program = TestInfo.program
+    Choice  = TestInfo.choice
     if Choice != "":
-	if not FirstF: Label = " " * len(TestProgram) + " " + Choice
-	else:          Label = TestProgram + " " + Choice
-    else:              Label = TestProgram
+        # print test program name only on first choice
+        if TestInfo.choice_idx != 0: Label = " " * len(Program) + " " + Choice
+        else:                        Label = Program + " " + Choice
+    else:                            Label = Program
 
-    sys.stdout.write("    %s " % Label)
-    TitleL = len(Label)
-    if TitleL < 72: sys.stdout.write("." * (63-TitleL))
+    return "        %s " % Label, len(Label)
 
-    if   Result == True:           sys.stdout.write(".........[OK]\n")
-    elif Result == False:          sys.stdout.write(".......[FAIL]\n") 
-    elif Result == "MAKE FAILED":  sys.stdout.write("[MAKE FAILED]\n")
-    else:                          sys.stdout.write(".......[DONE]\n") 
+def on_test_end(TestInfo, Result):
+    L            = 63
+    TestProgram  = TestInfo.related_entry.file_name
+    Choice       = TestInfo.choice
+
+    txt, TitleL = __get_title(TestInfo)
+    if TitleL < 72: txt += "." * (L - TitleL)
+
+    txt += "." * (11 - len(Result)) + "[%s]\n" % Result
+    output_man.register_test_end(TestInfo.execution_id, txt)
 
 def on_update_program_entry_info(Filename):
-    print "// update: call '%s --hwut-info'" % Filename
+    print "Update: call '%s --hwut-info'" % Filename
+
+def on_database_entry_consistency_check_choice_more_than_once(Entry, ChoiceName):
+    print "Inconsistency: Choice '%s' appeared more than once for application '%s'." % \
+	  (ChoiceName, Entry.file_name)
+
+def on_database_entry_consistency_check_empty_choice_in_multiple_choices(Entry):
+    print "Inconsistency: Empty Choice '' appeared together with other choices in '%s'." % \
+	    (Entry.file_name)
+    print "Inconsistency: Choices: ", repr(map(lambda x: x.name, Entry.choice_list))
 
 def on_update_program_entry_info_all_terminated():
     print  # newline after possible "// update:" messages
 
-def on_copied_OUT_to_GOOD(Dir, ProtocolFileName):
-    print "copied: %sOUT/%s to %sGOOD/" % (Dir, ProtocolFileName, Dir) 
+def on_copied_OUT_to_GOOD(Dir, Filename):
+    L = 63 
+    Space    = ("." * (L - len(Filename)))
+    print "     %s " % Filename + Space + "[COPIED TO GOOD]"
+    return
 
-def on_enter_directory_of_missing_good_files(Dir, FileList):
-    print "DIR: " + Dir
-    print "The following files have no entry in their 'GOOD' directories:"
+def print_missing_good_files(DB):
+    """DB = map from directory to list of test sequence elements that do 
+            not have GOOD files to compare their output against.
+    """
+    # -- delete empty entries
+    for directory, element_list in DB.items():
+	if element_list == []: del DB[directory]
+
+    if DB == {}: return
+
+    print "The following tests have no entry in their 'GOOD/' directory:"
     print
-    for file in FileList:
-	print "    " + file
-    print 
+    for directory, element_list in DB.items():
+
+	print "DIR:  " + __get_relative_directory(directory)
+	# -- make sure that the list is sorted by application name,
+	#    then use the 'choice_idx'
+	def __sort(A, B):
+	    result = cmp(A.program, B.program)
+	    if result != 0: return result
+	    else:           return cmp(A.choice_idx, B.choice_idx)
+
+	element_list.sort(__sort)
+	print
+	for element in element_list:
+	    if element.choice_idx == 0:
+		print "    " + element.program + " " + element.choice
+	    else:
+		print "    " + " " * len(element.application) + element.choice
+	print 
 
 def on_raise_write_protection(Dir, Filename):
     sys.stdout.write("set write protection for '%s/%s'\n" % (Dir, Filename)) 
@@ -118,18 +310,15 @@ def on_file_access_error(Filename):
 
 def on_file_does_not_exist(Filename):
     print "error: file '%s'" % Filename
-    print "error: does not exists." 
+    print "error: does not exist." 
 
 def on_error_make_failed(Bunch):
     for program in Bunch:
-	print "error: make failed on '%s'" % program
+        print "error: make failed on '%s'" % program
 
 def on_make_bunch_of_test_programs(Bunch):
     for program in Bunch:
-	print "make: %s" % program
-
-def on_choice_not_available(Choice, TestProgramName):
-    print "error: program '%s' does not provide choice '%s'" % (TestProgramName, Choice)
+        print "make: %s" % program
 
 def on_makefile_does_not_contain_target_hwut_info(Directory):
     print "error: Makefile in directory '%s'" % Directory
@@ -146,3 +335,80 @@ def on_makefile_does_not_contain_target_hwut_info(Directory):
     print "error: Hwut expects if it says 'make hwut-info', then it gets a list of files"
     print "error: that are to be built."
 
+def on_make_clean():
+    print "make: clean"
+
+def on_warning_source_file_has_executable_rights(Filename):
+    """Some files are usually considered source files that are to be compiled.
+       If they have executable rights, it might get confusing.
+    """
+    print "warning: file '%s' has executable rights (normally considered to be a source file)." % Filename
+
+def on_database_not_found(Dir):
+    print "warning: no database file for hwut-information found for directory:"
+    print "warning: %s" % Dir
+
+def on_database_entry_not_available(ApplicationName):
+    print "warning: '%s' in database but no longer available---dismissed." % ApplicationName 
+
+def on_database_entry_not_yet_in_database(ApplicationName):
+    print "note: '%s' not yet in database---added." % ApplicationName 
+
+def on_database_contained_entry_multiple_times(ApplicationName):
+    print "Warning: '%s' appeared multiple times in database---dismissed." % ApplicationName 
+
+def on_xml_database_parsing_error():
+    print "Warning: Parsing error in xml-database of directory '%s'" % __get_relative_directory(os.getcwd())
+    print "Warning: Database of this directory is cleared."
+
+def on_xml_database_entry_consistency_check_failed(Entry):
+    print "Warning: Entry '%s' in xml-database of directory '%s'" % Entry.file_name
+    print "Warning: is inconsistent. Entry is cleared and reset."
+
+def on_file_not_executable_and_not_makeable(file, makeable_file_list):
+    print "error: specified file '%s' is not executable and not 'make'-able." % file
+    print "error: 'make'-able files are:"
+    if makeable_file_list == []:
+	print "error: <none>"
+    else:
+	for file in makeable_file_list:
+	    print "error:    " + file
+    sys.exit(-1)
+
+def on_temporary_file_cannot_be_deleted(Filename):
+    print "         warning: cannot delete temporary file '%s'" % Filename
+
+def on_temporary_file_cannot_be_opened(Filename):
+    print "         error: cannot open temporary file '%s'" % Filename
+    sys.exit(-1)
+
+def on_error_log_file_cannot_be_opened(Filename):
+    print "         error: cannot error log file '%s'" % Filename
+    sys.exit(-1)
+
+def on_program_is_not_executable(ApplicationName, OptionList):
+    sys.stdout.write("\nerror: Program '%s' is not executable (or does not exists)\n" % ApplicationName + \
+                     "error:\n" + \
+                     "error: current directory:    " + os.getcwd() + "\n" + \
+                     "error: command line options: " + repr(OptionList) + "\n" + \
+                     "error:\n" + \
+                     "error: -- Is this a script and you forgot to specify your interpreter?\n" + \
+                     "error:    If so, type '#! /usr/bin/env my_interpreter' in the first line of your file.\n" + \
+                     "error: -- Or, set the PATH variable so that it contains the path to your application!\n")
+    sys.exit(-1)
+
+def xml_missing_attribute(Section, Attribute):
+    print "xml-error: missing attribute '%s' in section '%s'" % (Attribute, Section)
+
+def on_delete_file_out_of_date(Filename):
+    print "Deleted: '%s'. Reason: out of date."
+
+def on_information_required_from_unmade_file(Filename):
+    print "Warning: no information from '%s' accessible. File was not built." % Filename
+
+def on_file_deleted(Filename):
+    print "Deleted: '%s'" % Filename
+
+
+def on_unknown_diff_program(Program):
+    print "Warning: diff program '%s' unknown to hwut."

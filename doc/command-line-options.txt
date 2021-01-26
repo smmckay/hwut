@@ -1,0 +1,81 @@
+The services provided by HWUT are: testing, accepting test results as 'good', displaying
+differences, reviewing information on past tests, and cleaning. The associated command line
+options are:
+
+.Table for services provided by HWUT.
+`------------------------`-------------------------------------------------------
+Call to Service          Service Description
+---------------------------------------------------------------------------------
+`hwut`                    Runs one or more test.
+`hwut diff` _appl_        Use _appl_ to display last test run an 'good' case. 
+`hwut d` _appl_           - same - 
+`hwut accept`             Accepts last test output for good.
+`hwut a`                  - same -
+`hwut info`               Displays information about previous tests.
+`hwut i`                  - same - 
+`hwut clean`              Delete HWUT-unrelated files from TEST directories.
+                          If a makefile exists, it calls `make clean`.
+`hwut c`                  - same - 
+`hwut mostlyclean`        Delete HWUT-unrelated files from TEST directories.
+                          If a makefile exists, it calls `make mostlyclean`.
+`hwut mc`                 - same -
+---------------------------------------------------------------------------------
+
+If these service calls are done without any further argument, then HWUT searches
+for all TEST directories starting from the current directory. Then it performs the
+specified service for each TEST directory that it found. Calls to HWUT services
+follow all the same scheme:
+
+Call without arguments (e.g. `> hwut `)::
+
+   Starting from the current directory all subdirectories with name `TEST`
+   are searched for and then the service is performed on all files of those
+   directory.
+
+Call with the name of a test program (e.g. `> hwut accept my_script.py`)::
+
+   Services is performed with resped to calls of all possible choices
+   to the given test program.
+
+
+Call with the name of a test program (e.g. `> hwut info str-test 7bit`)::
+
+   Service is performed with respect to the given test program and the
+   given choice only.
+    
+The `--fail` mentioned below allows to filter out experiments that are failed
+in the previous test run.  Note, that the specification of a test program for
+the clean service is meaningless.  The following command line options modify
+the mechanism of quex:
+
+`-e`, `--exec`::
+
+   Execute test programs before doing any action on the output. This option is relevant
+   for the `diff`, `info`, and `accept` services.
+
+`--fail`::
+
+   Consider only files that failed in the last test run.
+
+`--grant`, `--no-grant`::
+
+   These options allow to avoid acknowledgement questions that are asked to confirm
+   that the user really wants to perform a certain action. `--grant` means that
+   all questions asked are answered with `all` and `--no-grant` means that all 
+   actions are answered with `none`.
+
+`-h`, `--help`::
+   
+    Prints some basic help text.
+				   
+`--make` _target_::
+
+   If specified causes HWUT to call `make` for the given target whenever the test of
+   a directory are terminated.
+
+
+`-v`, `--version`::
+
+    Prints the version information about the hwut application.
+
+

@@ -1,0 +1,40 @@
+HWUT is a very lightweight and easy-to-use tool for unit tests and even system
+tests. The effort to come up with a unit test does not significantly exceed
+the effort to write a function that checks out if the thing that one just
+accomplished works. Where other unit test tools require much effort to program
+checks for test conditions, HWUT only requires the program to produce 
+some output that contains information about the process development and
+results. The judgement is binary, i.e. either the output corresponds 100% 
+with the nominal output, or it does not. Things are simple.
+
+This simplicity includes that HWUT is not dependent on an operating system or
+programming language. The techniques that one established in programming unit
+tests with HWUT in C# can be applied equally or similarly when programming
+tests in Python or Smalltalk. Additionally, HWUT is free and downloadable from
+any computer connected to the internet (see <<http:://hwut.sourceforge.net>>).
+Things are general, widely applicable, and available without financial effort.
+
+HWUT can get you very far. Starting fully automated unit tests is prone to
+boost the stability of software systems with minimal efforts, increase the
+trust in what one produces, and enable infrastructures that allow redesigns of
+software when needed. New things become possible.
+
+However, HWUT has restrictions.  It does not provide direct means to ensure
+line coverage, or path coverage of the software under test. This deficiency
+comes from the fact, that HWUT tries to be independent of programming languages
+and therefore it is not able to reflect on the actual code of the software
+application. It is part of the philosophy to rely on external tools as soon as
+something get 'specific'. This was applied when using `make` to compile
+programs and when `diff` et al. is used to display differences. In cases where
+any type of coverage measure is critical, it might be rational to rely on
+traditional tools such as `gcov` for C, or `coverage` for python to measure
+coverage. No automatic tool, though, can beat an 'Evil Peer', i.e. a
+co-programmer that designs software-tests trying to break the code of someone
+else.
+
+The author of HWUT wishes good luck using this tool and a lot of fun. If you
+have any suggestions, critics, or recomendations do not hesitate to contact me.
+
+October 19, 2007
+
+Frank-Rene Schaefer

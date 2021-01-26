@@ -1,0 +1,22 @@
+HWUT can be downloaded from sourceforge.net, see http://hwut.sourceforge.net.
+Once you have the package extract the files into a directory of your choice.
+Then set the environment variable `HWUT_PATH` to this directory. The set a link
+from the file `hwut-exe.py` to `hwut` in a directory where your operating
+system can find executables. In some cases you might set executable rights for
+`hwut-exe.py` and `hwut`. That is all. On a Unix system with a bash shell, this
+could be done with the following steps:
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> tar xfz hwut-x.y.z.tar.gz                       # extract
+> chmod u+x hwut/hwut-exe.py                      # executable rights
+> ln hwut/hwut-exe.py /usr/local/bin/hwut         # link
+> echo "export HWUT_PATH="`pwd`"/hwut" >> .bashrc # HWUT_PATH
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Python should be installed on your system. If not consider downloading it from
+http://python.org. Also the `find` utility should be available.  This is
+generally the case for Unix systems. On Windows based machines it is advisable
+to run HWUT in a cygwin environment (see http://cygwin.com).  For testing on
+compiled code the `make` utility has to be intalled.  Installation of software
+to display differences (diff, vimdiff, etc.) is optional.

@@ -1,0 +1,48 @@
+For a long time, the author of HWUT considered Unit Testing as some ideal that
+one should do, but which was too boring a task for the programmers fine soul.
+So, I never actually took it seriously. During my work on the quex lexical
+analyzer generator <<quex.sourceforge.net>>, a spare-time open-source project,
+         this attitude changed completely. Like with the large majority of
+         software projects this program sensitive in a way that small changes
+         in one part could cause a distant part to fail.  Moreover, there were
+         many special cases that have to be considered which I could not keep
+         permanently on my mind. If any special case was not working the whole
+         software was virtually useless.  Additionally, as the program grew,
+         the need for redesign and refacturing grew exponentially. Since I
+         liked this project very much, giving up was not an option. Eventually,
+         I found my self exposed to one only solution: automated unit tests.
+         This would allow to judge the validity of the program just by pushing
+         a button.
+
+At this time, sometime in 2006 CE, already a large variety of unit test tools
+were available on the internet for free. But, I did not like anyone of them.
+After checking out some of them,  I quickly came to the conclusion that writing
+a little script that allows to compare two files and say 'same' nor 'not same'
+would be much more efficient than checking out all the tools that are
+available. This script was the first step towards HWUT. 
+
+This script search for executables in a TEST directory, executed them and
+compared the output with output that was previously be judged as good.  It was
+by means of this simple script that a large number of refacturings and feature
+additions were safely accomplished in quex. For a long time, there was no need
+to have any other functionality beyond what this simple script provided. I
+felt additional satisfaction when during my day-job the middle management
+imposed NUnit \cite{} on our development team. It turned out that HWUT, that I
+was using at home for my spare-time projects, was much easier to use and much
+more effective than the 'standard' tool that was imposed on us. Eventually, I
+felt that my home-made tool might be useful for other people and published it
+on `sourceforge.net`.
+
+During 2007 several features have been added to HWUT, such as the ability to
+search for test directories in a system tree, the ability to have multiple
+choices for a single test program, interaction with Makefiles, and output in
+XML format. HWUT enables now a wide range of unit and system tests from the
+command line. Additionally, HWUT encorporates services for cleaning
+directories, labeling results as 'good', for queries on previous test runs,
+ and last but not least for running tests.
+
+The software is organized in a way, that facitilitates the development
+of a graphical user interface (GUI) around it. Maybe, this is the next major
+step to be accomplished for this software.
+
+

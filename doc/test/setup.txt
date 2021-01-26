@@ -1,0 +1,150 @@
+To setup a test requires 
+
+- create a dedicated subdirectory `TEST` that will to contain the
+  test programs.
+
+- write test scripts or programs.
+
+- write a response to `--hwut-info`. When the test program receives 
+  `--hwut-info` as first argument it shall report some information
+  about itself. 
+
+- if the program is to be compiled, a makefile must be provided.
+  the makefile needs to respond to `make hwut-info` with the
+  list of targets that can be made by the makefile. 
+    
+- if the test program is interpreted (by python, perl, etc.) then make it
+  executable (set executable rights), so that HWUT can find them.
+
+The previous section introduced a 'hello world' program. Now write some
+similar programs into the same directory and make the executable. Run
+`hwut` again in the command line and see what happens.
+
+..........................................................................
+======================================================================================
+ENTER: .
+DATE:  Tue Oct 16 10:18:32 2007
+TITLE: <no file 'ADM/title.txt'>
+--------------------------------------------------------------------------------------
+ -- hello world
+        (missing 'GOOD/my_script.py.txt')
+        my_script.py ...................................................[NO GOOD FILE]
+ -- Bonjour le Monde
+        (missing 'GOOD/my_script-3.py.txt')
+        my_script-3.py .................................................[NO GOOD FILE]
+ -- Hallo Welt
+        (missing 'GOOD/my_script-2.py.txt')
+        my_script-2.py .................................................[NO GOOD FILE]
+--------------------------------------------------------------------------------------
+  ___  _ _   _  __                        _     _
+ / _ \| | | | |/ /___  _ __ _ __ ___  ___| |_  | |
+| | | | | | | ' // _ \| '__| '__/ _ \/ __| __| | |
+| |_| | | | | . \ (_) | |  | | |  __/ (__| |_  |_|
+ \___/|_|_| |_|\_\___/|_|  |_|  \___|\___|\__| (_)
+
+EXIT:  .
+======================================================================================
+SUMMARY:
+(this directory) ..................[OK]
+======================================================================================
+The following tests have no entry in their 'GOOD/' directory:
+
+DIR:  .
+
+    my_script-2.py 
+    my_script-3.py 
+    my_script.py 
+..........................................................................
+
+Still, is only a couple of tests but no judgement. Run the commands isolatedly
+from the command line and make sure that the output is as wanted and then type:
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > hwut accept 
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HWUT will now ask you to confirm that the mentioned files can be used as
+reference for later tests. If you say `yes` to each one of them (or `all` once)
+    than the HWUT will copy the output of the last test from `OUT` into the
+    `GOOD` directory. Additinally, it will put a write protection on the files
+    so they cannot be changed accidentally. If HWUT is run again in this
+    directory all tests will be reported as 'OK'.
+
+What still lacks is a nice title for the test programs. A Title should tell
+quickly what the program does, so that if it fails everybody nows quickly in
+what area the error is to search. As mentioned before, the program should
+respond to the command line argument `--hwut-info` with some information. The
+previous example programs responded blindly with something like "hello world"
+so that it became its title. Lets change this behavior and edit `my_script.py`
+such as that it contains the following code:
+
+[python]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    #! /usr/bin/env python
+    import sys
+
+    if "--hwut-info" in sys.argv:
+        print "Greeting: English"  # Title = 'Group Title' ':' 'Title'
+        sys.exit(0)
+
+    print "hello world"
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With this piece of code, the python program responds to `--hwut-info` 
+with a title information consistent of a group title and a title. If
+there is no ':' in the title information then HWUT does not try
+to group experiments at all. It is crucial that after responding 
+to `--hwut-info` the program exits. Otherwise the test output will
+be considered as administration information.
+
+Adding title information in the remaining programs of the `TEST`
+directory, and grouping them under `Greeting:` results in the following
+output for the next HWUT run:
+
+..........................................................................
+======================================================================================
+ENTER: .
+DATE:  Tue Oct 16 10:48:49 2007
+TITLE: <no file 'ADM/title.txt'>
+--------------------------------------------------------------------------------------
+
+ -- Greeting:
+
+    English
+        my_script.py ............................................................[OK]
+    French
+        my_script-3.py ..........................................................[OK]
+    German
+        my_script-2.py ..........................................................[OK]
+--------------------------------------------------------------------------------------
+  ___  _ _   _  __                        _     _
+ / _ \| | | | |/ /___  _ __ _ __ ___  ___| |_  | |
+| | | | | | | ' // _ \| '__| '__/ _ \/ __| __| | |
+| |_| | | | | . \ (_) | |  | | |  __/ (__| |_  |_|
+ \___/|_|_| |_|\_\___/|_|  |_|  \___|\___|\__| (_)
+
+EXIT:  .
+======================================================================================
+SUMMARY:
+(this directory) ..................[OK]
+======================================================================================
+..........................................................................
+
+Now, tests can be run. Change the output of your test files, run `hwut` over and
+over and see how it behaves. A last final touch can be achieved by providing a title
+for the directory. This happens by filling some arbitrary text into the file `title.txt`
+in the `ADM` sub-directory. The current set of files, still does not test anything.
+However, it should not be difficult to imagine how such small programs interact
+with some software and print their results to the standard output. As long as 
+you work with interpreted languages the knowledge until here is sufficient to
+run unit tests with HWUT. The application on tests for compiled languages is explained
+in the following section.
+
+
+
+
+
+
+
+

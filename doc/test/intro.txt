@@ -1,0 +1,74 @@
+To understand HWUT's intrinsic philosophy one does not need to more than that
+it compares nominal output stored from an experiment run that was judged to be
+good with output that is recorded during a test run. To get an impression about
+this mechanism write a hello world program in the language of your choice. 
+This is how it looks like in python:
+
+[python]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    #! /usr/bin/env python
+    print "hello world"
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now, save the file, e.g. as `my_script.py` run the program and verify that the
+output is what you expect. If you want HWUT to consider the script as a test
+script you have to make it executable. Under Linux/Unix this is accomplished
+with the command 
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > chmod u+x my_script.py
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For programs that need to be compiled, HWUT relies on the 'make' tool. More
+about that is explained in section <<sec:make/intro>>. It obviously makes sense
+to put all test programs for a module or a submodule into a separate directory.
+Preferably, this directory is to be called `TEST/`. If you create such a directory,
+put the file `my_script.py` in there, and run on the command line
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > hwut
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+you will get an output like this:
+
+
+............................................................................................
+======================================================================================
+ENTER: .
+DATE:  Tue Oct 16 09:55:13 2007
+TITLE: <no file 'ADM/title.txt'>
+--------------------------------------------------------------------------------------
+ -- hello world
+        (missing 'GOOD/my_script.py.txt')
+        my_script.py ...................................................[NO GOOD FILE]
+--------------------------------------------------------------------------------------
+  ___  _ _   _  __                        _     _
+ / _ \| | | | |/ /___  _ __ _ __ ___  ___| |_  | |
+| | | | | | | ' // _ \| '__| '__/ _ \/ __| __| | |
+| |_| | | | | . \ (_) | |  | | |  __/ (__| |_  |_|
+ \___/|_|_| |_|\_\___/|_|  |_|  \___|\___|\__| (_)
+
+EXIT:  .
+======================================================================================
+SUMMARY:
+(this directory) ..................[OK]
+======================================================================================
+The following tests have no entry in their 'GOOD/' directory:
+
+DIR:  .
+
+    my_script.py 
+
+............................................................................................
+
+This output is mostly self-explanatory. The only thing that is currently
+missing for a complete test is the 'good' file, i.e. the reference that is
+taken into account when validity is to be judged. This gives you a first
+impression about how the output of HWUT looks like. Additionally, HWUT must now
+have created three sub-directories: `ADM`, `OUT`, and `GOOD`. In `ADM` usually
+files are located that HWUT requires for administrative purposes. `OUT`
+contains files with the output of test programs, and `GOOD` contains the files
+with the output that has been acknowledge to be good. You may browse through
+these files before continuing with the subsequent section.

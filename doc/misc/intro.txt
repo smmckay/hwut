@@ -1,0 +1,50 @@
+Previous sections discussessed briefly how HWUT allows to test, to accept, and
+to display differences. Additionally, HWUT can be used to quickly review the 
+results of previous test runs. Calling 
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > hwut info
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+goes searches for `TEST/` directories and displays the results of previous
+test runs. This is usually much faster than running all the tests. A useful
+application is to run a general unit test on all tests in located in the 
+current subdirectories, then change directory to where errors occured 
+and then call HWUT with the 'info' option in order to see what exactly went 
+wrong in these tests.
+
+It lies in the nature of tests, that filenames change, temporary files
+are left trailing arround and the like. As a result, the TEST directories
+might be filled with files that are not useful to anyone. Calling HWUT
+with 
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > hwut clean
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+causes HWUT to recurse through all TEST directories in the current directory
+tree and delete files that are not related to HWUT. Note, that this
+is includes a call `make clean` thus emptying any directory from 
+results of compilation processes. If this is not desired better type: 
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > hwut mostly-clean
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This also collects HWUT unrelated files, but does not call `make clean` in the
+TEST directories. However, it calls make with the target `mostlyclean`.  If
+nothing is to happen in this case, then simply do not provide this target in
+your makefile. Note, that `mostlyclean` is considered a 'standard' target for
+many people. See the documentation of `make` for further information.
+
+The option `--make target` allows to specify a target to be made after
+any test execution. If it is desired to make clean after each test
+run in a TEST directory, then type
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > hwut --make clean
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

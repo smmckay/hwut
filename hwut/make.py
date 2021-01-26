@@ -1,6 +1,6 @@
-from   hwut.aux import find, execute_this
-import hwut.io     as io
-import hwut.common as common
+import hwut.auxiliary as aux
+import hwut.io        as io
+import hwut.common    as common
 #
 import os
 import sys
@@ -9,53 +9,65 @@ import sys
 def this(TestFileList):
 
     if TestFileList == []:
-	return
+        return [], []
+
+    TestFileList.sort()
+
+    unmade_file_list = []
+    made_file_list   = []
+
+    for file in TestFileList:
+	if os.system("make -q %s" % file) == 0: made_file_list.append(file)
+	else:                                   unmade_file_list.append(file)
+
+    # -- delete any file to be made, 
+    for file in unmade_file_list:
+	try: 
+	   os.remove(file)
+	   io.on_delete_file_out_of_date(file)
+	except:
+           pass	
 
     # -- if the make version is gnu-make, it supports multiple jobs 
     #    (needs to be changed/deleted for non-gnu systems)
-    execute_this("make", ["clean"], common.HWUT_MAKE_CLEAN_LOG_FILE)
-
     # -- combine make process in bunches according to the job number
     bunch_list = []
-    L          = len(TestFileList)
+    L          = len(unmade_file_list)
     JobN       = common.MAX_CPU_NUMBER
     for i in range(L/JobN + 1):
-	bunch = TestFileList[JobN*i:min(JobN*(i+1),L)]
-	if bunch == []: break
-	bunch_list.append(bunch)
+        bunch = TestFileList[JobN*i:min(JobN*(i+1),L)]
+        if bunch == []: break
+        bunch_list.append(bunch)
 
-    unmade_file_list = []
     for bunch in bunch_list:
-	gnu_make_job_str = "--jobs=%s" % JobN
+        gnu_make_job_str = "--jobs=%s" % JobN
 
-	io.on_make_bunch_of_test_programs(bunch)
-	execute_this("make", [gnu_make_job_str] + bunch)
+        io.on_make_bunch_of_test_programs(bunch)
+        aux.execute_this("make", [gnu_make_job_str] + bunch)
 
-	# -- make sure that all required files have been made
-	for file in bunch:
-	    if not os.access(file, os.F_OK):
-		unmade_file_list.append(file)
+        # -- check if required files have been made
+        for file in bunch:
+            if os.access(file, (os.F_OK | os.X_OK)):
+                del unmade_file_list[unmade_file_list.index(file)]
+		made_file_list.append(file)
 
     if unmade_file_list != []: 
-	io.on_error_make_failed(unmade_file_list)
+        io.on_error_make_failed(unmade_file_list)
 
-    return unmade_file_list
-
-def clean():
-    os.system("make clean")
+    return made_file_list, unmade_file_list
 
 def is_makefile_present():
-    makefiles = find("./", "-name [mM]akefile")
+    makefiles = aux.find("./", "-name [mM]akefile")
     if makefiles != []: return True
     else:               return False
 
-def get_program_list():
+def get_makeable_application_list():
     if is_makefile_present() == False: return []
-    program_list = execute_this("make", ["hwut-info"]).split()
+    program_list = aux.execute_this("make", ["hwut-info"]).split()
 
     if program_list == []:
-	io.on_makefile_does_not_contain_target_hwut_info(common.home_directory)
-	sys.exit(-1)
+        io.on_makefile_does_not_contain_target_hwut_info(os.getcwd())
+        sys.exit(-1)
 
-    return program_list
+    return map(aux.strip_dot_slash, program_list)
 

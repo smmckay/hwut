@@ -1,25 +1,4 @@
-#  -*- python -*- 
-#  GetPot Version $$Version$$                                    $$Date$$
-#  
-#  WEBSITE: http://getpot.sourceforge.net
-#  
-#  This library is  free software; you can redistribute  it and/or modify
-#  it  under  the terms  of  the GNU  Lesser  General  Public License  as
-#  published by the  Free Software Foundation; either version  2.1 of the
-#  License, or (at your option) any later version.
-#  
-#  This library  is distributed in the  hope that it will  be useful, but
-#  WITHOUT   ANY  WARRANTY;   without  even   the  implied   warranty  of
-#  MERCHANTABILITY  or FITNESS  FOR A  PARTICULAR PURPOSE.   See  the GNU
-#  Lesser General Public License for more details.
-#  
-#  You  should have  received a  copy of  the GNU  Lesser  General Public
-#  License along  with this library; if  not, write to  the Free Software
-#  Foundation, Inc.,  59 Temple Place,  Suite 330, Boston,  MA 02111-1307
-#  USA
-#  
-#  (C) 2001, 2002 Frank R. Schaefer  
-#==========================================================================
+#! /usr/bin/env python
 import string
 import os
 import copy
@@ -35,14 +14,16 @@ class GetPot_variable:
         
 
 class GetPot:
-    def __init__(self, Argv=[""], Filename=None):
-        # Make the default argument for Argv=[""], otherwise
+    def __init__(self, Argv=[], Filename=None):
+        # Make the default argument for Argv=[], otherwise
         # strange things may occur, when somewhere the cursor
-        # is set to len(Argv) - 1.
+        # is set to len(Argv) - 1. Even if the user passes a dangerous
+        # [], the case is caught.
+        if Argv == []: Argv = [""]
         
         # in case a search for a specific argument failed,
         # it effects the next functions calls.
-        self.search_failed_f = 0
+        self.search_failed_f = False
 
         # indeces of arguments that do not start with minus
         self.idx_nominus = []
@@ -67,9 +48,9 @@ class GetPot:
             try:    Argv.extend(parsed_argv)
             except: pass
 
-        if Argv != [""]:
-            self.argv = self.__parse_argument_vector(Argv)
-
+        self.argv = self.__parse_argument_vector(Argv)
+            
+        if self.argv == []: self.argv = [""]
 
     def __parse_argument_vector(self, argv_):
 
@@ -109,8 +90,6 @@ class GetPot:
 
         return argv
 
-
-    # (*) file parsing
     def __read_in_file(self, Filename):
         """Parses a file and returns a vector of arguments."""
         try:
@@ -194,7 +173,6 @@ class GetPot:
 
             token += tmp
 
-
     def __get_string(self, FH):
         """Reads characters until the next un-backslashed quote."""
         str = ''; tmp = 0
@@ -206,7 +184,6 @@ class GetPot:
             elif tmp == '\\' and not last_letter == '\\':  continue # don't append 
 
             str += tmp
-
 
     def __get_until_closing_bracket(self, FH):
         """Reads characters until the next un-backslashed '}'."""
@@ -224,8 +201,6 @@ class GetPot:
                 continue  # do not append an unbackslashed backslash
             
             str += tmp
-
-
 
     def __process_section_label(self, label, section_stack):                    
         #  1) subsection of actual section ('./' prefix)
@@ -299,7 +274,6 @@ class GetPot:
         if string.find(String, Start) == 0: return String[len(Start):]
         else:                               return None
 
-
     def __deal_propperly_with_array_arguments(self, Args):
         tmp_args = []
         for arg in Args:
@@ -307,7 +281,6 @@ class GetPot:
             else:                 tmp_args.append(arg)
         return tmp_args
     
-    #     -- search for a certain option and set cursor to position
     def search(self, *Args):
         """Search for a command line argument and set cursor. Starts search
         from current cursor position. Only wraps arround the end, if 'loop'
@@ -318,16 +291,15 @@ class GetPot:
         
         if self.cursor >= len(self.argv)-1:
             self.cursor = len(self.argv)-1
-        self.search_failed_f = 1
+        self.search_failed_f = True
         old_cursor = self.cursor
 
         def check_match(i0, i1, Args, Argv=self.argv, Prefix=self.prefix, obj=self):
             """Checks if one of the arguments in Args matches an argument in sequence."""
             for i in range(i0, i1):
                 for arg in Args:
-                    print "##", i, i1, len(Argv)
                     if Prefix + arg == Argv[i]:
-                        obj.cursor = i; obj.search_failed_f = 0
+                        obj.cursor = i; obj.search_failed_f = False
                         return True
             return False
             
@@ -350,9 +322,9 @@ class GetPot:
     def enable_loop(self):
         self.search_loop_f = 1
         
-    #     -- reset cursor to initial position
     def reset_cursor(self):
-        self.search_failed_f = 0; self.cursor = 0
+        self.search_failed_f = False 
+	self.cursor = 0
 
     def search_failed(self):
         return self.search_failed_f
@@ -363,7 +335,6 @@ class GetPot:
     def set_prefix(self, Prefix):
         self.prefix = Prefix
         
-    # (*) direct access to command line arguments through []-operator
     def __getitem__(self, Idx):
         """Returns a specific argument indexed by Idx or 'None' if this
         does not exist."""
@@ -380,33 +351,33 @@ class GetPot:
         """Returns the size of the argument list."""
         return len(self.argv)
 
-
-    #     -- get argument at cursor++
     def next(self, Default):
         """Tests if the following argument is of the same type as Default. If not
         Default is returned. Note, that if the following argument does not contain
         the 'prefix', the same way the Default argument is returned."""
-        if self.search_failed_f == 1: return Default
-        self.cursor += 1
-        if self.cursor >= len(self.argv): self.cursor = len(self.argv)-1; return Default
+        if self.search_failed_f: 
+	    return Default
 
-        if self.prefix == "": return self.__convert_to_type(self.argv[self.cursor], Default)
+        self.cursor += 1
+        if self.cursor >= len(self.argv): 
+	    self.cursor = len(self.argv)-1 
+	    return Default
+
+        if self.prefix == "": 
+	    return self.__convert_to_type(self.argv[self.cursor], Default)
 
         remain = self.__get_remaining_string(self.argv[self.cursor], self.prefix)
         if remain != None: return self.__convert_to_type(remain, Default)
         else:              return Default
 
-
-    #     -- search for option and get argument at cursor++
     def follow(self, Default, *Args):
+        #     -- search for option and get argument at cursor++
         # make sure to propperly deal with arrays being passed as arguments
         Args = self.__deal_propperly_with_array_arguments(Args)
-
         for arg in Args:
             if self.search(arg) == 1:
                 return self.next(Default)
         return Default
-
 
     def nominus_followers(self, *Args):
         """Returns a list of strings of arguments that directly follow
@@ -431,7 +402,6 @@ class GetPot:
 
         return result_list
         
-
     def direct_follow(self, Default, Arg):
         remaining_string = self.__match_starting_string(Arg)
 
@@ -441,20 +411,19 @@ class GetPot:
         if self.cursor >= len(self.argv): self.cursor = len(self.argv)
         return self.__convert_to_type(remaining_string, Default)
 
-    # helper to find directly followed arguments
     def __match_starting_string(self, StartString):
         """Searches argument list for next occurrence of 'StartString', beginning
         from current cursor position. Returns string after StartString if found.
         Returns None if no argument contains the starting string."""
         old_cursor = self.cursor
 
-        self.search_failed_f = 1
+        self.search_failed_f = True
         # first run: from cursor to end
         if self.cursor < len(self.argv):
             for i in range(old_cursor, len(self.argv)):
                 if string.find(self.argv[i], StartString) == 0:
                     self.cursor = i
-                    self.search_failed_f = 0
+                    self.search_failed_f = False
                     return self.argv[i][len(StartString):]
 
         if self.search_loop_f == 0: return None
@@ -466,7 +435,7 @@ class GetPot:
         for i in range(1, old_cursor):
             if string.find(self.argv[i], StartString) == 0:
                 self.cursor = i
-                self.search_failed_f = 0
+                self.search_failed_f = False
                 return self.argv[i][len(StartString):]
         return None
 
@@ -953,5 +922,3 @@ class GetPot:
 
             if arg not in Knowns: ufos.append(it)
         return ufos
-        
-

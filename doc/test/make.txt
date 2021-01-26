@@ -1,0 +1,56 @@
+Test programs that need to be compiled and linked require a little more care to
+be taken. First of all, HWUT might not be able to interact directly with the
+test applications and ask them `--hwut-info`, since they are possibly not yet build.
+Second, they might rely on some other dependencies that trigger may a re-compilation.
+HWUT relies on the famous utility 'make' that most programmers know anyway, so there
+is no additional learning effort required. HWUT searches for a file named `makefile`
+or `Makefile` in the test directory. Then it 'makes' the target `hwut-info` and the 
+makefile needs to respond with the list of targets that it can actually make.
+
+For a three hello-world-examples in C the makefile might look as the following:
+
+[makefile]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FILES = my-file  my-file-2  my-file-3
+
+# by default make all files
+all: $(FILES)
+
+# respond to the call of 'hwut'
+hwut-info:
+	@echo $(FILES)
+
+# default compilation rule for .c files
+%: %.c
+	gcc $< -o $@
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now, add files of the three files 'my-file.c', 'my-file-2.c' and 'my-file-3.c' in the
+'hello world'-style, e.g. something like:
+
+[c]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#include <stdio.h>
+
+int
+main(int argc, char** argv)
+{
+    if( argc > 2 && strcmp(argv[1], "--hwut-info") == 0 ) {
+        printf("Greeting in C: English");
+        return 0;
+    }
+    printf("hello world\n");
+}
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Calling HWUT will make the applications. Again HWUT will complain that no
+correspondent 'good' files exits. Calling on the command line
+
+[shell]
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   > hwut accept
+source~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+again allows to set the current output of those files as reference. Playing
+around with the C files and the makefile will give you a closer feeling for how
+HWUT works.

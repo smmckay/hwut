@@ -1,0 +1,43 @@
+<test-database execution-time-sec="0.12" date="Tue Oct 16 11:11:27 2007">
+    <test title="hello worldi" make-required="True" time-sum-sec="0.00"> 
+        <application file-name="my-file" info-request-time="1192525884L"/>
+        <make-procedure success="True" />
+        <choice-list number="1">
+           <choice name="" result="NO GOOD FILE" time-sec="0.00"/>
+        </choice-list>
+    </test>
+    <test title="Bonjour le Monde" make-required="True" time-sum-sec="0.00"> 
+        <application file-name="my-file-3" info-request-time="1192525884L"/>
+        <make-procedure success="True" />
+        <choice-list number="1">
+           <choice name="" result="NO GOOD FILE" time-sec="0.00"/>
+        </choice-list>
+    </test>
+    <test title="Hallo Welt" make-required="True" time-sum-sec="0.00"> 
+        <application file-name="my-file-2" info-request-time="1192525884L"/>
+        <make-procedure success="True" />
+        <choice-list number="1">
+           <choice name="" result="NO GOOD FILE" time-sec="0.00"/>
+        </choice-list>
+    </test>
+    <group name="Greeting">
+        <test title="English" make-required="False" time-sum-sec="0.03"> 
+            <application file-name="my_script.py" info-request-time="1192524418L"/>
+            <choice-list number="1">
+               <choice name="" result="OK" time-sec="0.03"/>
+            </choice-list>
+        </test>
+        <test title="German" make-required="False" time-sum-sec="0.03"> 
+            <application file-name="my_script-2.py" info-request-time="1192524478L"/>
+            <choice-list number="1">
+               <choice name="" result="OK" time-sec="0.03"/>
+            </choice-list>
+        </test>
+        <test title="French" make-required="False" time-sum-sec="0.04"> 
+            <application file-name="my_script-3.py" info-request-time="1192524462L"/>
+            <choice-list number="1">
+               <choice name="" result="OK" time-sec="0.04"/>
+            </choice-list>
+        </test>
+    </group>
+</test-database>
