@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>HWUT-homepage</title>
+</head>
+<body>
+<br>
+<h1 style="color: rgb(51, 51, 255);"><span style="font-family: Helvetica,Arial,sans-serif;">What is this?</span></h1>
+<span style="font-family: Helvetica,Arial,sans-serif;">It's about Unit
+Tests. That means, if someone programs some functionality and want to
+be able to see at any time that it is working, he writes a test -- a
+Unit Test. It is essential that those tests are fully automated. This
+way, at any&nbsp;change to the surrounding software it is possible to
+check wether&nbsp;any sub-functionality&nbsp; is effected. On the other
+hand, writing Unit Tests is sometimes very boring and the hesitations
+not to to it are as big as the temptation to go on programming on the
+next issue. Additionally, many Unit Test Tools come with some
+complexity to be understood in order to propperly use its
+functionality. The <span style="color: rgb(0, 153, 0); font-weight: bold;">Hello-Worldler's Unit Test</span> shall enable anyone able to get '<span style="font-family: Courier New,Courier,monospace;">hello world</span>' on the screen to write Unit Tests. And this works as follows:<br>
+
+<br> </span> <h1 style="color: rgb(51, 51, 255);"><span style="font-family:
+    Helvetica,Arial,sans-serif;">How does this work?</span></h1> <span
+style="font-family: Helvetica,Arial,sans-serif;">The philosophy as simple as
+can be. It is assumed that the only thing that is important to someone runing a
+Unit Test is to see which sub-functionalities are working and which are not.
+For a single test this means one only has to compare a good result (one that is
+be acknowledged to be acceptable) with a current result. As a consequence of
+this philosophy, the HWUT only requests the application to write something to
+the standard output (i.e. using <span style="font-family: Courier
+    New,Courier,monospace;">print</span> in Python, <span style="font-family:
+    Courier New,Courier,monospace;">printf</span> in C, or <span
+    style="font-family: Courier New,Courier,monospace;">cout</span> in
+C++)&nbsp; that has something to do with its functionality. HWUT compares this
+with some previous text that has been stored as 'good' and tells wether both
+outputs are the same or not. There are no <span style="font-style:
+    italic;">Asserts</span>, no <span style="font-style:
+    italic;">Comparison</span> <span style="font-style:
+    italic;">Operators</span> or what so ever. Also, it does not matter in 
+what programming language you are programming. The only restriction is that
+this language allows you to write something to the standard output. Thus 
+the very large majority of programming languages can be used here.&nbsp; </span><br> <br>
+
+<h1 style="font-family: Helvetica,Arial,sans-serif; color: rgb(51, 51, 255);">How do I use HWUT?</h1>
+<span style="font-family: Helvetica,Arial,sans-serif;">First of all,
+you need some *nix. Maybe later versions will run under other OS-es.
+Now, change to the directory where you currently implement some functionality (cd my/favorite/dir).
+Make a subdirectory call './TEST' and change to it (mkdir ./TEST). Now, write your test program
+in whatever language you want and make it executable (chmod u+x filename). If this is not
+practical since it needs to be compiled write a Makefile that generates an executable
+program of your test when you do a 'make all'. In this case, the Makefile should also
+contain a rule to 'make clean'. HWUT searches for a Makefile in the ./TEST directory and
+tries to build test application using 'make all'. When you are sure that the ouput
+of your program is correct, then say:
+
+hwut --good test-program-name --exec
+
+This will stimulate HWUT to write the output into the ./GOOD subdirectory. This output
+is then taken as reference. Make sure that the test program uses the same resources
+(header files and libraries) as your later software does. Otherwise, it does not make
+any sense to repeat the tests. Before you go on, you need to ensure that your mini-program
+tells HWUT about its name. For this you need to make your program to respond to 
+a command line argument '--test-info' as a first argument with the title of your test
+to the standard output (using 'printf' or whatsoever) and exit. Note, that a ':' inside
+your title is considered to be a 'grouping' token. That means, that if you let one
+application respond with 'Pacman: Eating Ghosts' and another with 'Pacman: Eating Dots'
+than those two applications will be grouped under 'Pacman' and 'Eating Ghosts' and
+'Eating Dots' are subchapters. That is all. Unit tests can be performed.
+Whenever you change now something in your program
+you can always change to your ./TEST directory and run
+
+hwut
+
+This will perform the unit tests on all files that are executable and compare the results
+with the 'good; results. The final verdict tells you if everything workedout fine, or not.
+It is usually a good idea to build a directory tree for modules and sub-modules. Now,
+if you want to run the unit tests for the whole set of sub-modules, simply change directory
+to the main directory of your project and type 'HWUT'. The program searches for all
+./TEST directories, walks down there, performs the tests and reports a summary on all
+results.
+</span>
+<h1 style="font-family: Helvetica,Arial,sans-serif; color: rgb(51, 51, 255);">OK, What Else?</h1>
+<span style="font-family: Helvetica,Arial,sans-serif;">
+If you spot an error and type
+
+hwut --diff test-program-name
+
+then HWUT will run the diff utility in order to determine the difference between the
+nominal and the actual output of your test program. Typing
+
+hwut --clean
+
+lets HWUT walk down the ./OUT and ./GOOD directory and delete all files that are not HWUT related.
+
+hwut --all-good
+
+performs all tests and copies the results to the ./GOOD directory. This means, that all tests
+are considered to be a referene for future tests.
+</span>
+<h1 style="font-family: Helvetica,Arial,sans-serif; color: rgb(51, 51, 255);">Installation?!</h1>
+<span style="font-family: Helvetica,Arial,sans-serif;">
+    Download the hwut.zip file. 
+    Copy the python file hwut.py into a directory that is known to contain executables (e.g. /usr/share/bin), or
+    change your PATH variable accordingly.
+    You might rename the file to 'hwut', i.e. forget about the .py extension because this looks cooler. But do not forget to 
+    make it executable (chmod a+x /usr/shar/bin/hwut). Then you're ready to bring it on.
+</span>
+<h1 style="font-family: Helvetica,Arial,sans-serif; color: rgb(51, 51, 255);">Licensing?!</h1>
+<span style="font-family: Helvetica,Arial,sans-serif;">
+    HWUT is distributed under LPGL as long as you are not using it for any military related purposes. This means that you can use it without restriction as long as you are not getting involved into the development of anyhting that can kill people. For such projects there is no licence of HWUT.
+</span>    
+<br>
+</body>
+</html>
