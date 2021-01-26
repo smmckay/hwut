@@ -15,7 +15,6 @@ else:
     print "error: Let it point to the directory where hwut is installed."
     sys.exit(-1)
 
-from hwut.frs_py.string_handling import trim
 from hwut.GetPot    import GetPot
 from hwut.classes   import TestApplicationDB
 #
@@ -99,6 +98,7 @@ def info(cl):
 def __check_unrecognized_options(cl):
     ufos = cl.unidentified_options("-v", "--version",
                                    "-h", "--help",
+                                   "-w", "--terminal-width",
                                    #
                                    "d",  "diff", 
                                    "c",  "clean", 
@@ -127,6 +127,7 @@ if __name__ == "__main__":
 
     # -- store the directore from where HWUT was called.
     io.__home_directory = os.getcwd()
+    io.__terminal_width = cl.follow(80, "-w", "--terminal-width")
 
     # -- initialize the database
     common.application_db = TestApplicationDB()

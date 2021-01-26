@@ -4,18 +4,50 @@ import sys
 import hwut.common    as common
 
 __home_directory = ""  # updated by 'core.do_directory_tree()'
+__terminal_width = 80
+
+class something:
+    pass
+
+__setup = something()
+__setup.print_raise_write_protection_f    = False
+__setup.print_update_program_entry_info_f = False
+
+def formatted_output(Header, Message):
+    word_list = Message.split()
+    MaxL = __terminal_width - len(Header) - 3
+
+    line = ""
+    line_size = 0
+    for word in word_list:
+        if line_size + len(word) > MaxL:
+            print Header + ": " + line
+            line_size = 0
+            line = ""
+        line += word + " "
+        line_size += len(word) + 1
+
+    if line_size != 0:
+        print Header + ": " + line
+
 
 def __get_relative_directory(Dir):
+
     adapted_name = Dir.replace(__home_directory, "")
+
     if adapted_name in ["", "./"]:
         return "(this directory)"
+
+    # safe, see entry of this function
+    if adapted_name[0] == "/": adapted_name = "./"
+
     return adapted_name 
 
 def print_line_separator():
-    sys.stdout.write("--------------------------------------------------------------------------------------\n")
+    sys.stdout.write("-" * (max(0, __terminal_width - 1)) + "\n")
 
 def print_double_line_separator():
-    sys.stdout.write("======================================================================================\n")
+    sys.stdout.write("=" * (max(0, __terminal_width - 1)) + "\n")
 
 def print_ok(Dir):
     print_line_separator()
@@ -111,19 +143,24 @@ def on_invalid_response(Response):
 
 def print_summary(Directory_vs_Result_Pairs):
     print_double_line_separator()
+
+    len_of_dir_plus_result = map(lambda x: x[0] + x[1], Directory_vs_Result_Pairs)
+    len_of_dir_plus_result = map(__get_relative_directory, len_of_dir_plus_result)
+
     print "SUMMARY:"
+    L = max(0, __terminal_width - 4)
     if len(Directory_vs_Result_Pairs) != 0:
-        L = max(30, max(map(lambda x: len(x[0]), Directory_vs_Result_Pairs)))
-    else:
-        L = 30
+        L = max([L] + map(len, len_of_dir_plus_result))
 
     for dir, result in Directory_vs_Result_Pairs:
         if   result == "OK":   judgement = "[OK]"
         elif result == "DONE": judgement = "[DONE]"
         else:                  judgement = "[FAIL]"
         
-        if dir == "./": dir = "(this directory)"
-        print dir + " " + "." * (L + 4 - len(dir)) + judgement
+        dir = __get_relative_directory(dir)
+
+        print dir + " " + "." * (L - len(dir) - len(judgement)) + judgement
+
     print_double_line_separator()
 
 def on_directory_enter(Dir, DateStr):
@@ -243,18 +280,21 @@ def __get_title(TestInfo):
     return "        %s " % Label, len(Label)
 
 def on_test_end(TestInfo, Result):
-    L            = 61
+    L            = max(0, __terminal_width - 12)
     TestProgram  = TestInfo.related_entry.file_name
     Choice       = TestInfo.choice
 
     txt, TitleL = __get_title(TestInfo)
-    if TitleL < L: txt += "." * (L - TitleL)
+    ResultL     = len(Result) + 2
+    if TitleL + ResultL < L: 
+        txt += "." * (L - TitleL - ResultL)
 
-    txt += "." * (13 - len(Result)) + "[%s]\n" % Result
+    txt += "[%s]\n" % Result
     output_man.register_test_end(TestInfo.execution_id, txt)
 
 def on_update_program_entry_info(Filename):
-    print "Update: call '%s --hwut-info'" % Filename
+    if __setup.print_update_program_entry_info_f:
+        print "Update: call '%s --hwut-info'" % Filename
 
 def on_database_entry_consistency_check_choice_more_than_once(Entry, ChoiceName):
     print "Inconsistency: Choice '%s' appeared more than once for application '%s'." % \
@@ -269,7 +309,7 @@ def on_update_program_entry_info_all_terminated():
     print  # newline after possible "// update:" messages
 
 def on_copied_OUT_to_GOOD(Dir, Filename):
-    L = 63 
+    L = max(0, __terminal_width - 25)
     Space    = ("." * (L - len(Filename)))
     print "     %s " % Filename + Space + "[COPIED TO GOOD]"
     return
@@ -316,7 +356,8 @@ def __print_missing_files(DB, SubDirectory):
     print_double_line_separator()
 
 def on_raise_write_protection(Dir, Filename):
-    sys.stdout.write("set write protection for '%s/%s'\n" % (Dir, Filename)) 
+    if __setup.print_raise_write_protection_f:
+        sys.stdout.write("set write protection for '%s/%s'\n" % (Dir, Filename)) 
 
 def on_no_test_program_specified():
     print "Error: no test program specified"
@@ -372,11 +413,12 @@ def on_database_entry_not_yet_in_database(ApplicationName):
     print "note: '%s' not yet in database---added." % ApplicationName 
 
 def on_database_contained_entry_multiple_times(ApplicationName):
-    print "Warning: '%s' appeared multiple times in database---dismissed." % ApplicationName 
+    formatted_output("Warning", "'%s' appeared multiple times in database---dismissed." % ApplicationName) 
 
 def on_xml_database_parsing_error():
-    print "Warning: Parsing error in xml-database of directory '%s'" % __get_relative_directory(os.getcwd())
-    print "Warning: Database of this directory is cleared."
+    formatted_output("Warning", 
+                     "Parsing error in xml-database of directory '%s'" % __get_relative_directory(os.getcwd()) + 
+                     "Database of this directory is cleared.")
 
 def on_xml_database_entry_consistency_check_failed(Entry):
     print "Warning: Entry '%s' in xml-database of directory '%s'" % Entry.file_name
@@ -436,9 +478,10 @@ def on_unknown_diff_program(Program):
     print "Warning: diff program '%s' unknown to hwut."
 
 def on_found_unusual_executables(UnusualExecutableNameList):
-    print "Warning: The following executable names have been found, but they have unusual names"
-    print "Warning: or extensions. HWUT ignores those files if it is not forced to consider them."
-    print "Warning: The list consists of the following:"
-    print "Warning: ", UnusualExecutableNameList
+    formatted_output("Warning",  
+                     "The following executable names have been found, but they have unusual names " + \
+                     "or extensions. HWUT ignores those files if it is not forced to consider them. " + \
+                     "The list consists of the following: " + \
+                     repr(UnusualExecutableNameList)[1:-1])
 
 

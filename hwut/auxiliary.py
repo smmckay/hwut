@@ -41,24 +41,28 @@ def execute_this(ApplicationName, OptionList=[], OutputFilename="", ErrorOutputF
     # return string containing standard output from the test program
     return result
 
-def find(Dir, OptionStr):
-    if OptionStr.find("-type") == -1:     OptionStr = "-type f " + OptionStr
-    if OptionStr.find("-mindepth") == -1: OptionStr = "-maxdepth 1 " + OptionStr
-    
-    file_list_str = execute_this("find", [Dir] + OptionStr.split())
-    
-    # return list of files
-    if file_list_str != "": return file_list_str.split()
-    else:                   return []
+def find_executables():
+    """Find the executable files in the current directory.
+    """
+    def condition(Filename):
+        # (1) it must be executable
+        if not os.access(Filename, os.X_OK): return False
+        # (2) it must be a file (and not a directory)
+        if not os.path.isfile(Filename): return False
+
+        return True
+
+    return filter(condition, os.listdir(os.getcwd()))
 
 def raise_write_protection(Dir):
     """Find files in Dir that are not write protected and make them write protected"""
-    unprotected_files = find(Dir, "-perm +u+w")    
-    for file in unprotected_files:
+    for file in os.listdir(Dir):
+        # Never Change Directories that Contain Configuration Management Information
+        if os.path.isfile(file) == False: continue
         io.on_raise_write_protection(Dir, file)
-        os.chmod(file, stat.S_IREAD)
+        os.chmod(Dir + "/" + file, stat.S_IREAD)
 
-def get_hwut_unrelated_files(Dir):
+def get_hwut_unrelated_files():
     common.application_db.init()
 
     test_sequence_element_list = common.application_db.get_test_execution_sequence()
@@ -73,10 +77,10 @@ def get_hwut_unrelated_files(Dir):
     expected_in_ADM  = [ "database.xml", "title.txt" ]
 
 
-    files_in_TEST = map(strip_dot_slash, find("./", "-maxdepth 1  -type f" % TEST_directory_name))
-    files_in_GOOD = map(strip_dot_slash, find("./GOOD", ""))
-    files_in_OUT  = map(strip_dot_slash, find("./OUT", ""))
-    files_in_ADM  = map(strip_dot_slash, find("./ADM", ""))
+    files_in_TEST = map(strip_dot_slash, os.listdir("./"))
+    files_in_GOOD = map(strip_dot_slash, os.listdir("./GOOD"))
+    files_in_OUT  = map(strip_dot_slash, os.listdir("./OUT"))
+    files_in_ADM  = map(strip_dot_slash, os.listdir("./ADM"))
 
 
     result = \
@@ -100,20 +104,29 @@ def get_TEST_directories():
     L_TEST_directory_name = len(TEST_directory_name)
 
     # -- find all sub-dirs that are ./TEST-directories
-    test_dir_list = find("./", "-mindepth 1  -name %s -type d" % TEST_directory_name)
+    def __check_end(Name, End):
+        # cut any trailing slash or backslash
+        while len(Name) > 1 and Name[-1] in ["/", "\\"]: 
+            Name = Name[:-1]
+        # now, one can use python's 'os.path.basename' since the name does not end with '/'
+        return os.path.basename(Name) == End
 
-    def __check_end(Name):
-        return Name.rfind(TEST_directory_name) == len(Name) - L_TEST_directory_name
-
-    # -- take only those directories that end with "/TEST"
-    test_dir_list = filter(__check_end, test_dir_list)
- 
-    # -- add the current directory, if it is called 'TEST'
     current_directory = os.getcwd()
-    if len(current_directory) > 1 and current_directory[-1] in ["/", "\\"]:
-        current_directory = current_directory[:-1]
-    if __check_end(current_directory): 
-        test_dir_list.append("./")
+    # use dictionary to provide list of unique elements
+    test_dir_db = {}
+    for root, dir_list, file_list in os.walk("./", topdown=False):
+        for dir in dir_list:
+            # do not consider the TEST directories in configuration management data (CVS, Subversion)
+            if dir.find(".svn") != -1: continue
+            if dir.find("CVS") != -1:  continue
+            if __check_end(dir, TEST_directory_name):
+                test_dir_db[root + "/" + dir] = True
+
+    # -- add the current directory, if it is called 'TEST_directory_name'
+    if __check_end(current_directory, TEST_directory_name): 
+        test_dir_db[current_directory] = True
+
+    test_dir_list = test_dir_db.keys()
 
     test_dir_list.sort()
 

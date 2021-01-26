@@ -128,7 +128,6 @@ def do_directory_tree(Strategy):
 
     Strategy.end_directory_tree()
 
-
 def __assert_strategy(Strategy):
     assert "do"                             in dir(Strategy)
     assert "break_up_requested"             in dir(Strategy)

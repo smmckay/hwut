@@ -65,9 +65,7 @@ def simply_this(MakeTarget):
     aux.execute_this("make", [gnu_make_job_str] + [MakeTarget])
 
 def is_makefile_present():
-    makefiles = aux.find("./", "-name [mM]akefile")
-    if makefiles != []: return True
-    else:               return False
+    return os.access("makefile", os.F_OK) or os.access("Makefile", os.F_OK)
 
 def get_makeable_application_list():
     if is_makefile_present() == False: return []

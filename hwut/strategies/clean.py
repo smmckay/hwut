@@ -22,7 +22,7 @@ class CleanStrategy(CoreStrategy):
         # ensure that .do() is not called for single test elements
         self.__break_up_f = True
 
-        file_list = aux.get_hwut_unrelated_files(Dir)
+        file_list = aux.get_hwut_unrelated_files()
         self.__to_be_deleted_file_list.extend(map(lambda f: Dir + f, file_list))
 
         # -- 'clean' is called if '--clean' is specified

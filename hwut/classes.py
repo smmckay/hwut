@@ -8,7 +8,6 @@ import hwut.auxiliary as aux
 import hwut.directory as directory
 import hwut.io        as io
 from   hwut.strategies.core import test_info
-from   hwut.frs_py.string_handling import trim
 #
 import xml.sax       as sax
 from xml.sax.handler import feature_namespaces
@@ -129,7 +128,7 @@ class TestApplication:
         """Parse title into 'group' and 'sub-title' if there is a colon.
         """
         field_list = TitleStr.split(":")
-        field_list = map(trim, field_list)
+        field_list = map(lambda x: x.strip(), field_list)
         if len(field_list) > 1: self.group = field_list[0]; self.title = field_list[1]
         else:                   self.group = "";            self.title = field_list[0]
 
@@ -156,7 +155,7 @@ class TestApplication:
             # -- choices: only one of them can be active at a time
             if fields[0] == "CHOICES:":
                 new_choices = line[line.find("CHOICES:") + len("CHOICES:"):].split(",")
-                new_choices = map(lambda p: trim(str(p)), new_choices)
+                new_choices = map(lambda p: str(p).strip(), new_choices)
                 __handle_new_choice(new_choices)
                 __handle_lost_choices(new_choices)
 

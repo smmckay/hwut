@@ -10,7 +10,6 @@ import os
 import stat
 import sys
 
-from hwut.frs_py.string_handling import trim
 from hwut.directory              import test_info
 
 import hwut.common    as common

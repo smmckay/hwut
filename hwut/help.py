@@ -46,6 +46,10 @@ OPTIONS:
    --no-grant
         Answer all interactive questions with 'no'.
 
+   -w, --terminal-width number
+        Sets the terminal width for the output. Default = 80 
+        characters.
+
 SERVICES:
    
    hwut test [test-program [choice]] 

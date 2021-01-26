@@ -1,4 +1,4 @@
-HWUT_VERSION       = "0.5.3"
+HWUT_VERSION = '0.6.1'
 TEST_DIR_NAME      = "TEST"
 
 HWUT_CACHE_FILE          = "ADM/database.xml"

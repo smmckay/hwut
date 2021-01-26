@@ -49,7 +49,7 @@ def get_executable_application_list(AcceptedExtensionList=[]):
                                    ExtensionListOfFilesToBeCompiled)
 
     # -- executable fils in current directory
-    executable_file_list = map(aux.strip_dot_slash, aux.find("./", "-perm +ua+x -maxdepth 1"))
+    executable_file_list = map(aux.strip_dot_slash, aux.find_executables())
 
 
     result                  = []
@@ -61,9 +61,8 @@ def get_executable_application_list(AcceptedExtensionList=[]):
 
         for extension in CriticalExtensionList:
             LE = len(extension)
-	    found_idx = file_name.rfind(extension)
+            found_idx = file_name.rfind(extension)
             if found_idx != -1 and found_idx == LF - LE: 
-		print "##", extension
                 unusual_executable_list.append(file_name)
                 break
         else:
