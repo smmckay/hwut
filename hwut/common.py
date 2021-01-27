@@ -75,7 +75,6 @@ def get_environment_variable(Name, Default=None):
     else:                                     return value_str
 
 TEST_DIR_NAME    = get_environment_variable("HWUT_TEST_DIR_NAME", "TEST")
-HWUT_PATH        = get_environment_variable("HWUT_PATH")
 MAX_CPU_NUMBER   = get_environment_variable("HWUT_MAX_CPU_NUMBER", 1)
 MAKE_APPLICATION = get_environment_variable("HWUT_MAKE_APP", "make")
 GCOV_APPLICATION = get_environment_variable("HWUT_GCOV_APP", "gcov")

@@ -1,8 +1,8 @@
 # SPDX license identifier: LGPL-2.1
 #
 # Copyright (C) Frank-Rene Schaefer, private.
-# Copyright (C) Frank-Rene Schaefer, 
-#               Visteon Innovation&Technology GmbH, 
+# Copyright (C) Frank-Rene Schaefer,
+#               Visteon Innovation&Technology GmbH,
 #               Kerpen, Germany.
 #
 # This file is part of "HWUT -- The hello worldler's unit test".
@@ -38,7 +38,7 @@ import glob
 class DebugFh:
     def __init__(self, FileName, Mode):
         self.fh = open(FileName, Mode)
-        print "fh_%i = open(\"%s\", \"%s\")" % (id(self.fh), FileName, Mode)
+        print("fh_%i = open(\"%s\", \"%s\")" % (id(self.fh), FileName, Mode))
 
     @property
     def name(self):
@@ -48,18 +48,18 @@ class DebugFh:
         before = self.fh.tell()
         result = self.fh.read(N)
         after  = self.fh.tell()
-        print "fh_%i.read(%s) # %i->%i" % (id(self.fh), N, before, after)
+        print("fh_%i.read(%s) # %i->%i" % (id(self.fh), N, before, after))
         return result
 
     def seek(self, X0, X1=0):
         before = self.fh.tell()
         result = self.fh.seek(X0, X1)
         after  = self.fh.tell()
-        print "fh_%i.seek(%s,%s) # %i->%i" % (id(self.fh), X0, X1, before, after)
+        print("fh_%i.seek(%s,%s) # %i->%i" % (id(self.fh), X0, X1, before, after))
 
     def tell(self):
         result = self.fh.tell()
-        print "fh_%i.tell() # %i" % (id(self.fh), result)
+        print("fh_%i.tell() # %i" % (id(self.fh), result))
         return result
 
 def raise_write_protection(Dir):
@@ -76,8 +76,8 @@ def raise_write_protection(Dir):
         chmod(Dir + "/" + file, stat.S_IREAD)
 
     if error_n:
-        print "Error: failed to raise write protection for files in"
-        print "Error: %s" % Dir
+        print("Error: failed to raise write protection for files in")
+        print("Error: %s" % Dir)
 
 def get_hwut_unrelated_files():
     test_sequence_element_list = common.test_db.get_test_sequence_up_to_date()
@@ -90,12 +90,12 @@ def get_hwut_unrelated_files():
         if element.description.temporal_logic_f():
             for file in element.description.temporal_logic_rule_file_list():
                 expected_list.add(os.path.normpath(file))
-                                    
+
 
     expected_list.add(os.path.normpath("./%s" % HWUT_DATABASE_FILE))
 
     def get_content(Dir):
-        return map(lambda x: os.path.normpath(Dir + "/" + x), 
+        return map(lambda x: os.path.normpath(Dir + "/" + x),
                    os.listdir(os.path.normpath(Dir)))
 
     work_list  = get_content(".")
@@ -122,7 +122,7 @@ def get_TEST_directories():
     # -- find all sub-dirs that are ./TEST-directories
     def __check_end(Name, End):
         # cut any trailing slash or backslash
-        while len(Name) > 1 and Name[-1] in ["/", "\\"]: 
+        while len(Name) > 1 and Name[-1] in ["/", "\\"]:
             Name = Name[:-1]
         # now, one can use python's 'os.path.basename' since the name does not end with '/'
         return os.path.basename(Name) == End
@@ -139,7 +139,7 @@ def get_TEST_directories():
                 test_dir_db[root + "/" + dir] = True
 
     # -- add the current directory, if it is called 'TEST_directory_name'
-    if __check_end(current_directory, TEST_directory_name): 
+    if __check_end(current_directory, TEST_directory_name):
         test_dir_db[current_directory] = True
 
     test_dir_list = test_dir_db.keys()
@@ -149,7 +149,7 @@ def get_TEST_directories():
     return map(os.path.normpath, test_dir_list)
 
 def open_or_None(FileName, Mode):
-    try: 
+    try:
         return open(FileName, Mode)
     except:
         return None
@@ -157,13 +157,13 @@ def open_or_None(FileName, Mode):
 def open_or_die(FileName, Mode, NoteF=True):
     assert "b" in Mode, \
            "To be compatible with windows, all files should be opened in binary mode!"
-    try: 
+    try:
         #if os.access(FileName, os.F_OK) and "w" in Mode:
         #    chmod(FileName, stat.S_IWRITE)
         return open(FileName, Mode)
     except:
         if NoteF:
-            print "Cannot open file '%s'" % FileName
+            print("Cannot open file '%s'" % FileName)
         #chmod(common.HWUT_DATABASE_FILE, stat.S_IWRITE)
         #try:    fh = open(common.HWUT_DATABASE_FILE, "wb"); fh.write(txt)
         #except: io.on_file_access_error(common.HWUT_DATABASE_FILE)
@@ -179,15 +179,15 @@ def open_one_or_die(FileNameList, Mode):
             pass
         except:
             continue
-        print "Error: cannot open any of files: %s" % FileNameList
+        print("Error: cannot open any of files: %s" % FileNameList)
         sys.exit(-1)
 
 def read_or_die(FileName, NoteF=True):
-    try: 
+    try:
         fh = open(FileName, "rb")
     except:
         if NoteF:
-            print "Cannot read file '%s'" % FileName
+            print("Cannot read file '%s'" % FileName)
         sys.exit(-1)
 
     content = fh.read()
@@ -195,7 +195,7 @@ def read_or_die(FileName, NoteF=True):
     return content
 
 def move_away(OldFileName):
-    if not os.path.isfile(OldFileName): 
+    if not os.path.isfile(OldFileName):
         return None
     tmp_file_name = tempfile.mktemp(".backup", dir="./")
     rename_file(OldFileName, tmp_file_name)
@@ -219,18 +219,18 @@ def rename_file(old_file_name, new_file_name, PrevUserStatement="YES"):
 
     # -- rename old file to new file
     try:    os.rename(old_file_name, new_file_name)
-    except: return "NO" 
+    except: return "NO"
 
     return "YES" # user_statement
 
 def is_there_an_OUT_file(TestInfo):
-    return os.access(TestInfo.OUT_FileName(), os.F_OK) 
+    return os.access(TestInfo.OUT_FileName(), os.F_OK)
 
 def ensure_GOOD_file_exists(TestInfo):
     file_name = TestInfo.GOOD_FileName()
     if os.access(file_name, os.F_OK): return
     open_or_die(file_name, "wb").close()
-    
+
 def get_GOOD_output(TestInfo):
     txt = read_or_die(TestInfo.GOOD_FileName())
 
@@ -238,7 +238,7 @@ def get_GOOD_output(TestInfo):
     crc32_orig = TestInfo.choice().good_file_crc_32()
     if  crc32_orig is not None and crc32 != crc32_orig:
         io.error_crc32_mismatch(TestInfo)
-        common.history.register(HistoryItem_CRCError(TestInfo.file_name(), TestInfo.choice(), 
+        common.history.register(HistoryItem_CRCError(TestInfo.file_name(), TestInfo.choice(),
                                                      crc32_orig, crc32))
 
         # -- adapt the crc32 value for the given choice
@@ -264,13 +264,13 @@ def ensure_existence(FileSystemObject, OnErrorComment, DirectoryF=False):
 def ensure_directory_structure():
     """Makes sure that ./OUT, ./GOOD, and ./ADM exist in the current directory."""
     for directory in ["OUT", "GOOD", "ADM"]:
-        if not os.access(directory, os.F_OK): 
+        if not os.access(directory, os.F_OK):
             os.mkdir(directory)
 
 def try_remove_files(FileList):
     for file_name in FileList:
         try_remove(file_name)
-        
+
 def try_remove(FileName):
     try:    os.remove(FileName)
     except: pass
@@ -288,7 +288,7 @@ def try_remove_recursively(Dir, Pattern):
         os.chdir(backup)
 
 def chmod(FileName, Mode):
-    try: 
+    try:
         os.chmod(FileName, Mode)
     except:
         pass

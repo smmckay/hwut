@@ -1,8 +1,8 @@
 # SPDX license identifier: LGPL-2.1
 #
 # Copyright (C) Frank-Rene Schaefer, private.
-# Copyright (C) Frank-Rene Schaefer, 
-#               Visteon Innovation&Technology GmbH, 
+# Copyright (C) Frank-Rene Schaefer,
+#               Visteon Innovation&Technology GmbH,
 #               Kerpen, Germany.
 #
 # This file is part of "HWUT -- The hello worldler's unit test".
@@ -25,8 +25,10 @@
 # Boston, MA 02110-1301 USA
 #
 #------------------------------------------------------------------------------
+import pathlib
+
 import hwut.auxiliary.file_system                         as fs
-from   hwut.common                                        import HWUT_PATH, HWUT_VERSION
+from   hwut.common                                        import HWUT_VERSION
 from   hwut.code_generation.generator.parameter           import E_ValueType
 import hwut.code_generation.generator.language.c.section  as     section
 import hwut.code_generation.generator.language.c.printer  as     printer
@@ -41,8 +43,8 @@ def do(GeneratorName, SectionList, ArrayDb, FileStem):
     PrototypeParameterList = SectionList[0].parameter_list
     if len(PrototypeParameterList) == 0: return None
 
-    template_file_name = HWUT_PATH + "/hwut/code_generation/generator/language/c/templates/source.cg"
-    txt = fs.read_or_die(template_file_name)
+    template_file_path = pathlib.Path(__file__).parent.joinpath('templates', 'source.cg').__fspath__()
+    txt = fs.read_or_die(template_file_path)
 
     txt = txt.replace("$$HWUT_VERSION$$", "%s" % HWUT_VERSION)
     txt = txt.replace("$$FILESTEM$$", FileStem)
@@ -71,30 +73,30 @@ def straighten_open_line_pragmas(txt):
         straighten(line, line_n)
         for line_n, line in enumerate(txt.splitlines(), start=1)
     ])
-        
+
 def get_cursor_txt():
-    cursor_file_name = HWUT_PATH + "/hwut/generator/language/c/templates/cursor.cg"
-    content = fs.read_or_die(cursor_file_name)
+    cursor_file_path = pathlib.Path(__file__).parent.joinpath('templates', 'cursor.cg').__fspath__()
+    content = fs.read_or_die(cursor_file_path)
     return "".join([
-        '#line "%s" 0\n' % cursor_file_name, 
-        content, 
-        '#line "<original>" 0\n', 
+        '#line "%s" 0\n' % cursor_file_path,
+        content,
+        '#line "<original>" 0\n',
     ])
-    
+
 def source_index_offset_list(SectionList):
     offset_list = []
     offset      = 0
     for g in SectionList:
         offset += g.setting_number()
         offset_list.append(offset)
-    
+
     return "".join("%s, " % offset in offset_list)
-        
+
 def spaces_implement(txt, GeneratorName):
     length = len(GeneratorName)
     space0 = max(5 - length, 0)
     space1 = max(length - 5, 0)
-        
+
     txt = txt.replace("$Z$", " " * space0)
     txt = txt.replace("$S$", " " * space1)
     txt = txt.replace("$L$", " " * length)

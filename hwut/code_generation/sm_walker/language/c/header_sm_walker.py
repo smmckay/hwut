@@ -1,8 +1,8 @@
 # SPDX license identifier: LGPL-2.1
 #
 # Copyright (C) Frank-Rene Schaefer, private.
-# Copyright (C) Frank-Rene Schaefer, 
-#               Visteon Innovation&Technology GmbH, 
+# Copyright (C) Frank-Rene Schaefer,
+#               Visteon Innovation&Technology GmbH,
 #               Kerpen, Germany.
 #
 # This file is part of "HWUT -- The hello worldler's unit test".
@@ -25,24 +25,24 @@
 # Boston, MA 02110-1301 USA
 #
 #------------------------------------------------------------------------------
-from   hwut.common import HWUT_PATH
+import pathlib
 import hwut.auxiliary.file_system as fs
 from   hwut.code_generation.sm_walker.sm_walker import condition_interpret
 
 from operator import itemgetter, attrgetter
 
 def do(SmWalkerList, event_id_db, condition_id_db):
-    return "".join(do_walker(walker, event_id_db, condition_id_db) 
+    return "".join(do_walker(walker, event_id_db, condition_id_db)
                    for walker in SmWalkerList)
 
 def do_walker(walker, event_id_db, condition_id_db):
-    template_file_name = HWUT_PATH + "/hwut/code_generation/sm_walker/language/c/templates/sm_walker.hg"
-    txt = fs.read_or_die(template_file_name)
+    template_file_path = pathlib.Path(__file__).parent.joinpath('templates', 'sm_walker.hg').__fspath__()
+    txt = fs.read_or_die(template_file_path)
 
-    # Generating the 'source' before this makes sure that the walkers are 
+    # Generating the 'source' before this makes sure that the walkers are
     # setup propperly
     my_event_id_db = dict(
-        (name[1], identifier) 
+        (name[1], identifier)
         for name, identifier in event_id_db.iteritems() if name[0] == walker.name
     )
 
@@ -51,10 +51,10 @@ def do_walker(walker, event_id_db, condition_id_db):
         if not_f: identifier = -Identifier
         else:     identifier = Identifier
         return (condition_name, identifier)
-        
+
     my_condition_id_db = dict(
-        condition_def(name[1], identifier) 
-        for name, identifier in condition_id_db.iteritems() 
+        condition_def(name[1], identifier)
+        for name, identifier in condition_id_db.iteritems()
         if name[0] == walker.name and name[1] is not None
     )
 
@@ -99,7 +99,7 @@ def do_walker(walker, event_id_db, condition_id_db):
     for state in sorted(walker.state_list, key=lambda x: x.global_id):
         if state.intermediate_f: real_limit = state.global_id; break
     state_id_defs += "    %s_%s %s= %i, /* Any state below is 'real' */\n" \
-                     % (walker.name, name_beyond_id, " " * (L-len(str(name_beyond_id))), 
+                     % (walker.name, name_beyond_id, " " * (L-len(str(name_beyond_id))),
                         real_limit)
 
     condition_n = len(my_condition_id_db)
@@ -109,7 +109,7 @@ def do_walker(walker, event_id_db, condition_id_db):
     txt = txt.replace("$$CONDITION_DEFS$$", condition_defs)
     txt = txt.replace("$$STATE_N$$",        "%i" % state_n)
     txt = txt.replace("$$CONDITION_N$$",    "%i" % condition_n)
-    txt = txt.replace("$$NAME$$",           walker.name) 
+    txt = txt.replace("$$NAME$$",           walker.name)
     txt = txt.replace("$$MAX_PATH_SIZE$$",  "%i" % walker.max_path_length)
     txt = txt.replace("$$MAX_LOOP_N$$",     "%i" % walker.max_loop_n)
     txt = txt.replace("$$USER_DATA_TYPE$$", walker.user_data_type)
@@ -117,4 +117,4 @@ def do_walker(walker, event_id_db, condition_id_db):
     txt = txt.replace("$$STATE_ID_DEFS$$",  state_id_defs)
     return txt
 
-    
+

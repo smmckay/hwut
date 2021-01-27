@@ -1,8 +1,8 @@
 # SPDX license identifier: LGPL-2.1
 #
 # Copyright (C) Frank-Rene Schaefer, private.
-# Copyright (C) Frank-Rene Schaefer, 
-#               Visteon Innovation&Technology GmbH, 
+# Copyright (C) Frank-Rene Schaefer,
+#               Visteon Innovation&Technology GmbH,
 #               Kerpen, Germany.
 #
 # This file is part of "HWUT -- The hello worldler's unit test".
@@ -25,7 +25,8 @@
 # Boston, MA 02110-1301 USA
 #
 #------------------------------------------------------------------------------
-from   hwut.common                              import HWUT_PATH, HWUT_VERSION
+import pathlib
+from   hwut.common                              import HWUT_VERSION
 import hwut.auxiliary.file_system               as     fs
 from   hwut.code_generation.generator.parameter import E_ValueType
 from   hwut.code_generation.generator.generator import get_max_array_length_db
@@ -41,20 +42,20 @@ def do(GeneratorName, SectionList, ArrayDb):
         for section in SectionList
     ])
 
-    parameter_list = SectionList[0].parameter_list    
+    parameter_list = SectionList[0].parameter_list
     if len(parameter_list) == 0: return ""
 
-    array_txt  = array_type_definitions(GeneratorName, parameter_list, 
+    array_txt  = array_type_definitions(GeneratorName, parameter_list,
                                         ArrayDb.element_n_max_db)
-    member_str = get_member_string(parameter_list, 
+    member_str = get_member_string(parameter_list,
                                    ArrayDb.element_n_max_db)
     length     = len(GeneratorName)
     space0     = max(5 - length, 0)
     space1     = max(length -5, 0)
 
-    template_file_name = HWUT_PATH + "/hwut/code_generation/generator/language/c/templates/source.hg"
+    template_file_path = pathlib.Path(__file__).parent.joinpath('templates', 'source.hg').__fspath__()
 
-    txt = fs.read_or_die(template_file_name)
+    txt = fs.read_or_die(template_file_path)
     txt = txt.replace("$$HWUT_VERSION$$", "%s" % HWUT_VERSION)
     txt = txt.replace("$$ARRAY_DEF$$", array_txt)
     txt = txt.replace("$$MEMBERS$$",   member_str)
@@ -85,4 +86,4 @@ def array_type_definitions(GeneratorName, ParameterList, MaxArrayLengthDb):
         ])
 
     return "".join(txt)
-        
+
