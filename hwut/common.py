@@ -25,7 +25,7 @@
 # Boston, MA 02110-1301 USA
 #
 #------------------------------------------------------------------------------
-HWUT_VERSION = '0.27.4' # 16y03m21d
+HWUT_VERSION = '0.28.0'
 
 import os
 import ctypes
@@ -33,14 +33,7 @@ import sys
 import re
 import subprocess
 
-import hwut.external.colorama.colorama as colorama_color
-
-if sys.version_info[0] < 2 or \
-   (sys.version_info[0] == 2 and sys.version_info[1] < 7):
-    print "Error: Hwut requires Python Version 2.7.0 or higher, but lesser than 3.0.\n"
-    print "Error: Currently installed is Version %i.%i.%i.\n" % \
-          (sys.version_info[0], sys.version_info[1], sys.version_info[2])
-    sys.exit(-1)
+import colorama
 
 def is_posix():
     try:
@@ -74,7 +67,7 @@ def get_environment_variable(Name, Default=None):
         value_str = os.environ[Name]
     except: 
         if Default is not None: return Default
-        print "Error: %s environment variable has not been defined." % Name
+        print("Error: %s environment variable has not been defined." % Name)
         sys.exit(-1)
 
     if   isinstance(Default, float):          return float(value_str)
@@ -204,7 +197,7 @@ class Something:
 #
 # If '--no-color' is passed on the command line, then all coloring comands are
 # disabled, i.e. replaced by an empty string.
-__color = colorama_color # 'common.color' is referred to as coloring module.
+__color = colorama # 'common.color' is referred to as coloring module.
 def set_color(Color):
     global __color 
     __color = Color
@@ -289,7 +282,7 @@ class Setup:
             try:    
                 subprocess.call(get_lcov_application() + ["-v"])
             except: 
-                print "Error: Cannot call '%s' to invoque lcov." % get_lcov_application()
+                print("Error: Cannot call '%s' to invoque lcov." % get_lcov_application())
                 sys.exit()
 
         self.coverage_trace_tests_f = self.search("--cts", "--coverage-trace-test")
@@ -321,7 +314,7 @@ class Setup:
 
         language = self.follow("c", "--language", "--lang")
         if language != "c": 
-            print "Error: Language '%s' not supported for stubbing."
+            print("Error: Language '%s' not supported for stubbing.")
             sys.exit(-1)
 
     def followers_until(self, Option, Delimiter):
@@ -334,7 +327,7 @@ class Setup:
         while 1 + 1 == 2:
             arg = self.cl.next("")
             if not arg: 
-                print "Error: '%s' not terminated with '%s'" % (Option, Delimiter)
+                print("Error: '%s' not terminated with '%s'" % (Option, Delimiter))
                 break
             self.known_option_set.add(arg)
             if arg == Delimiter: break
@@ -367,11 +360,11 @@ class Setup:
         ufos = self.cl.unidentified_options(self.known_option_set)
         if not ufos: return
 
-        print "Error: unidentified command line option(s):"
-        print ufos
-        print 
-        print "Please, call this application with '--help' to get an overview over the"
-        print "existing options."
+        print("Error: unidentified command line option(s):")
+        print(ufos)
+        print()
+        print("Please, call this application with '--help' to get an overview over the")
+        print("existing options.")
         sys.exit(-1)
         
 def get_next_nominus(cl):
@@ -397,8 +390,8 @@ def change_directory(Dir):
     try:
         os.chdir(norm_dir)  # is relative to 'home directory', i.e.
     except:
-        print "Error: Directory '%s'" % os.getcwd()
-        print "Error: Failed to change to directory: '%s'" % norm_dir
+        print("Error: Directory '%s'" % os.getcwd())
+        print("Error: Failed to change to directory: '%s'" % norm_dir)
         sys.exit(0)
 
     return backup_dir
@@ -415,15 +408,15 @@ def get_free_disk_space():
         free_ref = ctypes.byref(free)
         if isinstance(Directory, unicode):
             if not win_kernel.GetDiskFreeSpaceExW(Directory, d0, d1, free_ref):
-                print "Windows: Cannot determine Disk Space"
+                print("Windows: Cannot determine Disk Space")
                 sys.exit(-1)
         else:
             if not win_kernel.GetDiskFreeSpaceExA(Directory, d0, d1, free_ref):
-                print "Windows: Cannot determine Disk Space"
+                print("Windows: Cannot determine Disk Space")
                 sys.exit(-1)
         return free.value
     else:
-        print "Unknown Operating System"
+        print("Unknown Operating System")
         sys.exit(-1)
 
 def _get_terminal_size():
@@ -549,6 +542,6 @@ def re_compile(PatternStr):
     try: 
         return re.compile(PatternStr)
     except:
-        print "Error: regular expression '%s' compilation failed." % PatternStr
+        print("Error: regular expression '%s' compilation failed." % PatternStr)
         return None
     

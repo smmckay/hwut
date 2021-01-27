@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "hwut"
+version = "0.28.0"
+description = ""
+authors = ["Frank-Rene Schaefer", "Steve McKay <steve@b.abbies.us>"]
+license = "LGPL-2.1"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+colorama = "^0.4"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.scripts]
+hwut = "hwut.cli:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
